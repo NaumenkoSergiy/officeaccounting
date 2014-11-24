@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: active-books_development
+
+test:
+  <<: *default
+  database: active-books_test
+
+production:
+  <<: *default
+  database: active-books_production
