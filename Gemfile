@@ -28,6 +28,9 @@ gem 'spring',        group: :development
 
 gem 'slim-rails'
 
+gem 'heroku'
+gem 'pg'
+
 group :development, :test do
   gem 'pry'
   gem 'minitest'
