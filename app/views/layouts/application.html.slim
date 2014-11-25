@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title ActiveBooks
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags 
+  body
+    - if current_user
+      = link_to 'Log out', destroy_sessions_path
+    - else
+      = link_to 'Log in', new_session_path
+      | |
+      = link_to 'Registration', new_user_path
+    = yield
