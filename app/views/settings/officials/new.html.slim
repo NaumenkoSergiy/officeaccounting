@@ -1,0 +1,58 @@
+div
+  h3
+    | Блок3 (інформація про посадових осіб)
+
+h3
+  | Директор
+
+= form_tag '', id: :official_form_director do
+  = label_tag 'ПІБ'
+  br
+  = text_field_tag :name
+
+  br
+  = label_tag 'ІПН'
+  br
+  = text_field_tag :tin
+
+  br
+  = label_tag 'Номер телефону'
+  br
+  = text_field_tag :phone
+
+  br
+  = label_tag 'Електронна пошта'
+  br
+  = text_field_tag :email
+  = text_field_tag :type, 'Директор', type: :hidden
+
+a onclick='$(".bookkeeper").toggle();'
+  | Додати головного бухгалтера
+
+.bookkeeper style='display:none;'
+  h3
+    | Головний бухгалтер
+
+  = form_tag '', id: :official_form_bookkeeper do
+    = label_tag 'ПІБ'
+    br
+    = text_field_tag :name
+
+    br
+    = label_tag 'ІПН'
+    br
+    = text_field_tag :tin
+
+    br
+    = label_tag 'Номер телефону'
+    br
+    = text_field_tag :phone
+
+    br
+    = label_tag 'Електронна пошта'
+    br
+    = text_field_tag :email
+    = text_field_tag :type, 'Головний бухгалтер', type: :hidden
+
+br
+= button_tag "Закінчити створення підприємства", id: 'official_submit'

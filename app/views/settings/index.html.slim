@@ -1,0 +1,32 @@
+h2
+  | Список підприємств
+
+table
+  - current_user.companies.each do |company|
+    tr
+      th
+        | Повна назва
+      th
+        | Коротка назва
+      th
+        | Латиницею
+      th
+        | Юридична адреса
+      th
+        | Фактична адреса
+      th
+        | Бажаний формат нумерації документів
+
+    tr
+      td
+        = company.full_name
+      td
+        = company.short_name
+      td
+        = company.latin_name
+      td
+        = company.juridical_address
+      td
+        = company.actual_address
+      td
+        = company.numbering_format

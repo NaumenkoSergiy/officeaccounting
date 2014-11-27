@@ -1,0 +1,75 @@
+div
+  h3
+    | Блок2 (інформація про реєстрацію)
+
+= form_tag settings_registrations_path, method: :post, id: :registration_form do
+  = label_tag 'Організаційно-правова форма (код та назва)'
+  br
+  = select('', 'form_of_incorporation', Constants::FORMS_OF_INCORPORATION)
+  br
+  = label_tag 'Код ЄРДПОУ'
+  br
+  = text_field_tag :edrpou
+
+  br
+  = label_tag 'коди КВЕД'
+  br
+  = text_field_tag :nace_codes
+
+  br
+  = label_tag 'розташування за КОАТУУ'
+  br
+  = text_field_tag :koatuu
+
+  br
+  = label_tag 'клас професійного ризику'
+  br
+  = select('', 'risk_class', (1..67).to_a)
+
+  br
+  = label_tag 'номер свідоцтва ПДВ'
+  br
+  = text_field_tag :tin
+
+  br
+  = label_tag 'дата державної реєстрації'
+  br
+  = text_field_tag :state_registration_date
+
+  br
+  = label_tag 'номер реєстрації'
+  br
+  = text_field_tag :registration_number
+
+  br
+  = label_tag 'ким зареєстровано'
+  br
+  = text_field_tag :registered_by
+
+  br
+  = label_tag 'реєстрація у податковій'
+  br
+  = text_field_tag :date_registered_in_revenue_commissioners
+
+  br
+  = label_tag 'номер реєстрації у податковій'
+  br
+  = text_field_tag :number_registered_in_revenue_commissioners
+
+  br
+  = label_tag 'дата реєстрації у пенсійному фонді'
+  br
+  = text_field_tag :registered_in_pension_fund
+
+  br
+  = label_tag 'код пенсійного фонду'
+  br
+  = text_field_tag :code_registered_in_pension_fund
+
+  br
+  = label_tag 'система оподаткування'
+  br
+  = select('', 'tax_system', ['Загальна', 'Спрощена'])
+
+  br
+  = submit_tag "Далі"

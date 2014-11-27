@@ -1,0 +1,36 @@
+div
+  h3
+    | Блок1 (загальна інформація)
+
+= form_tag settings_companies_path, method: :post, id: :company_form do
+  = label_tag 'Назва повна'
+  br
+  = text_field_tag :full_name
+
+  br
+  = label_tag 'Назва коротка'
+  br
+  = text_field_tag :short_name
+
+  br
+  = label_tag 'Назва латиницею'
+  br
+  = text_field_tag :latin_name
+
+  br
+  = label_tag 'Юридична адреса'
+  br
+  = text_field_tag :juridical_address
+
+  br
+  = label_tag 'Адреса фактична'
+  br
+  = text_field_tag :actual_address
+
+  br
+  = label_tag 'Бажаний формат нумерації документів'
+  br
+  = text_field_tag :numbering_format
+
+  br
+  = submit_tag "Далі"
