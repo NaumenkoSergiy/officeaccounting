@@ -13,8 +13,24 @@ $(document).ready(function() {
     $.ajax({
       type: 'POST',
       url: '/settings/officials',
-      data: $('#official_form_director, #official_form_bookkeeper').serializeArray(),
-      success: function (response) {}
+      data: $('#official_form_director').serialize()
+    });
+
+    if (!$('.bookkeeper').is(":hidden")) {
+      $.ajax({
+        type: 'POST',
+        url: '/settings/officials',
+        data: $('#official_form_bookkeeper').serialize()
+      });
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: '/settings/bank_accounts',
+      data: $('#bank_account').serialize(),
+      success: function() {
+        document.location = '/settings';
+      }
     });
   });
 });

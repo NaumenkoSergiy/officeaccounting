@@ -1,11 +1,16 @@
 module Settings
   class OfficialsController < ApplicationController
+    def new
+      redirect_to new_settings_company_path if current_user.companies.present? &&
+                                                  current_user.companies.last.registration &&
+                                                  current_user.companies.last.officials.present?
+    end
+
     def create
-      binding.pry
       official = current_user.companies.last.officials.new officials_params
 
       if official.valid? && official.save
-        redirect_to settings_path
+        render json: true
       else
         render json: false
       end
@@ -14,14 +19,7 @@ module Settings
     private
 
     def officials_params
-      binding.pry
-      params.require(:director).permit(:full_name,
-                    :short_name,
-                    :latin_name,
-                    :juridical_address,
-                    :actual_address,
-                    :numbering_format
-                    )
+      params.permit(:type, :name, :tin, :phone, :email)
     end
   end
 end

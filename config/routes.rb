@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resources :companies, only: [:new, :create]
     resources :registrations, only: [:new, :create]
     resources :officials, only: [:new, :create]
+    resources :bank_accounts, only: [:create]
   end
 end

@@ -54,5 +54,24 @@ a onclick='$(".bookkeeper").toggle();'
     = text_field_tag :email
     = text_field_tag :type, 'Головний бухгалтер', type: :hidden
 
+.bank-account
+  h3
+    | Банківські реквізити
+
+  = form_tag '', id: :bank_account do
+    = label_tag 'Рахунок'
+    br
+    = text_field_tag :account
+
+    br
+    = label_tag 'Банк'
+    br
+    = text_field_tag :bank
+
+    br
+    = label_tag 'МФО'
+    br
+    = text_field_tag :mfo
+
 br
 = button_tag "Закінчити створення підприємства", id: 'official_submit'

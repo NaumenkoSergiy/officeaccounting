@@ -3,9 +3,9 @@ module Settings
     before_filter :has_company?, only: [:new, :create]
 
     def new
-      if current_user.companies && current_user.companies.last.registration.nil?
+      if current_user.companies.present? && current_user.companies.last.registration.nil?
         redirect_to new_settings_registration_path
-      elsif current_user.companies && current_user.companies.last.officials.empty?
+      elsif current_user.companies.present? && current_user.companies.last.officials.empty?
         redirect_to new_settings_official_path
       end
     end
