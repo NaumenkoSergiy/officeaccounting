@@ -1,0 +1,40 @@
+.dropdown-menu {
+  min-width: 400px;
+  margin-left: -260px;
+
+  .columns-2 {
+    min-width: 400px;
+  }
+
+  .columns-3 {
+    min-width: 600px;
+  }
+
+  li a {
+    padding: 5px 15px;
+    font-weight: 300;
+  }
+
+  .multi-column {
+    min-width: 240px !important;
+    overflow-x: hidden;
+  }
+}
+
+.multi-column-dropdown {
+  list-style: none;
+
+  li a {
+    display: block;
+    clear: both;
+    line-height: 1.428571429;
+    color: #333;
+    white-space: normal;
+  }
+
+  li a:hover {
+    text-decoration: none;
+    color: #262626;
+    background-color: #f5f5f5;
+  }
+}

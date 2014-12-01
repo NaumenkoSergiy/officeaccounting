@@ -1,18 +1,23 @@
 .top-bar
   nav.navbar.navbar-default role="navigation"
-    .container-fluid
-      #bs-example-navbar-collapse-1.collapse.navbar-collapse
-        ul.nav.navbar-nav.navbar-right
-          li.dropdown
-            .dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="#" role="button"
-              | Налаштування
-            ul.dropdown-menu role="menu"
-              - if current_user
-                li
-                  = link_to 'Log out', destroy_sessions_path
-
-              - else
-                li
-                  = link_to 'Log in', new_session_path
-                li
-                  = link_to 'Registration', new_user_path
+    .collapse.navbar-collapse
+      ul.pull-right.navbar-right
+        li.dropdown
+          .dropdown-toggle data-toggle="dropdown" href="#"
+            | Налаштування
+          ul.dropdown-menu
+            li
+              .row
+                - if current_user
+                  ul.list-unstyled.col-md-6
+                    li
+                      = link_to 'Налаштування фірми', new_settings_company_path
+                  ul.list-unstyled.col-md-6
+                    li
+                      = link_to 'Log out', destroy_sessions_path
+                - else
+                  ul.list-unstyled.col-md-6
+                    li
+                      = link_to 'Log in', new_session_path
+                    li
+                      = link_to 'Registration', new_user_path

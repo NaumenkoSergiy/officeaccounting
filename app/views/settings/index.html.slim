@@ -1,0 +1,9 @@
+h2
+  | Список підприємств
+
+- current_user.companies.each do |company|
+  h3
+    = company.full_name
+    | (
+    =company.short_name
+    | )

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   validates :email, email: true, uniqueness: true
   validate :is_valid_confirm_password?
 
+  has_many :companies
+
   private
   
   def is_valid_confirm_password?
