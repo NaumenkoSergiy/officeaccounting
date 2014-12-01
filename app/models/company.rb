@@ -6,9 +6,14 @@ class Company < ActiveRecord::Base
             :numbering_format,
             presence: true
 
-  belongs_to :user
+  has_many :user_companies
+  has_many :users, through: :user_companies
 
   has_one :registration
   has_many :officials
   has_one :bank_account
+
+  scope :non_current_user, -> {
+    where(active: true)
+  }
 end
