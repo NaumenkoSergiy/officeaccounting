@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'settings#index'
 
   get 'destroy/sessions' => 'sessions#destroy'
+  get 'users/confirm_registration'
 
   resources :sessions, only: [:new, :create]
   resources :users, only: [:new, :create]
