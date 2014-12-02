@@ -31,6 +31,7 @@ gem 'slim-rails'
 gem 'heroku'
 gem 'pg'
 gem 'rails_12factor', group: :production
+gem 'mandrill_mailer'
 
 group :development, :test do
   gem 'pry'

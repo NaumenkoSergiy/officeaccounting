@@ -73,6 +73,13 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mandrill-api (1.0.53)
+      excon (>= 0.16.0, < 1.0)
+      json (>= 1.7.7, < 2.0)
+    mandrill_mailer (0.4.13)
+      actionpack
+      activesupport
+      mandrill-api (~> 1.0.9)
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (5.4.3)
@@ -195,6 +202,7 @@ DEPENDENCIES
   heroku
   jbuilder (~> 2.0)
   jquery-rails
+  mandrill_mailer
   minitest
   mysql2
   pg

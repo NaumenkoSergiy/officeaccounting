@@ -27,6 +27,6 @@ class UsersController < ApplicationController
   end
 
   def send_confirmation_email
-    UserMailer.welcome_email(params).deliver
+    UserMailer.welcome_email(params).deliver!
   end
 end
