@@ -1,4 +1,4 @@
-= form_tag sessions_path, method: :post do
+= form_tag sessions_path, method: :post, id: 'new_session_form' do
   = label_tag :email
   br
   = text_field_tag :email, params[:email]
