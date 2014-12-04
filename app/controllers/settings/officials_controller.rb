@@ -1,5 +1,7 @@
 module Settings
   class OfficialsController < ApplicationController
+    before_filter :redirect_to_new_session
+
     def new
       redirect_to new_settings_company_path if current_user.companies.present? &&
                                                   current_user.companies.last.registration &&
@@ -12,7 +14,8 @@ module Settings
       if official.valid? && official.save
         render json: true
       else
-        render json: false
+        redirect_to new_settings_official_path,
+                    flash: { error: 'Помилка створення інформації про посадових осіб' }
       end
     end
 
