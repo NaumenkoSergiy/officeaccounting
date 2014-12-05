@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require jquery.validate
-//= require jquery.validate.additional-methods
 
 $(document).on('ready', function(){
   $('.left-bar a').click(function(){

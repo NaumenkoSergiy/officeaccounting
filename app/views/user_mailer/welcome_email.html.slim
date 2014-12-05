@@ -1,0 +1,23 @@
+h2
+  | Welcome to Active Books
+| ===============================================
+
+p
+  | You have successfully signed up to http://active-books.herokuapp.com/,
+p
+  | your credentials are:
+ul
+  li
+    b
+      | email:
+      = @user[:email]
+  li
+    b
+      | password:
+      = @user[:password]
+p
+  | To login to the site, just follow this link:
+p
+  = @url
+p 
+  | Thanks for joining and have a great day!

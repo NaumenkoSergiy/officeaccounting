@@ -31,6 +31,7 @@ gem 'slim-rails'
 gem 'heroku'
 gem 'pg'
 gem 'rails_12factor', group: :production
+gem 'mandrill_mailer'
 gem 'jquery-validation-rails'
 
 group :development, :test do

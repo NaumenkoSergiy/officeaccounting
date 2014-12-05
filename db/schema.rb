@@ -59,9 +59,10 @@ ActiveRecord::Schema.define(version: 20141126134906) do
   end
 
   create_table "users", force: true do |t|
-    t.string "email"
-    t.string "password"
-    t.string "confirm_password"
+    t.string  "email"
+    t.string  "password"
+    t.string  "confirm_password"
+    t.boolean "profile_confirmed", default: false
   end
 
 end

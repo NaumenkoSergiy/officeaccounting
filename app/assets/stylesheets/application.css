@@ -14,6 +14,19 @@
  *= require_self
  */
 
+.notification {
+  background-color:#e3f7fc;
+  color:#555;
+  border:.1em solid;
+  border-color: #8ed9f6;
+  border-radius:10px;
+  font-family:Tahoma,Geneva,Arial,sans-serif;
+  font-size:1.1em;
+  padding:10px 10px 10px 10px;
+  margin:10px;
+  cursor: default;
+}
+
 div.error {
   color: red;
 }
