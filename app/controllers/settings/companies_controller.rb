@@ -1,6 +1,7 @@
 module Settings
   class CompaniesController < ApplicationController
     before_filter :has_company?, only: [:new, :create]
+    before_filter :redirect_to_new_session
 
     def new
       if current_user.companies.present? && current_user.companies.last.registration.nil?
@@ -15,7 +16,7 @@ module Settings
       if company.valid? && company.save
         redirect_to new_settings_registration_path
       else
-        render json: false
+        redirect_to new_settings_company_path, flash: { error: 'Помилка створення компанії' }
       end
     end
 

@@ -1,5 +1,7 @@
 module Settings
   class RegistrationsController < ApplicationController
+    before_filter :redirect_to_new_session
+
     def new
       redirect_to new_settings_official_path if current_user.companies.last.registration &&
                                                 current_user.companies.last.officials.empty?
@@ -10,7 +12,8 @@ module Settings
       if registration.valid? && registration.save
         redirect_to new_settings_official_path
       else
-        render json: false
+        redirect_to new_settings_registration_path,
+                    flash: { error: 'Помилка створення інформації про підприємство' }
       end
     end
 
