@@ -5,7 +5,7 @@ div
 = form_tag settings_registrations_path, method: :post, id: :registration_form do
   = label_tag 'Організаційно-правова форма (код та назва)'
   br
-  = select('', 'form_of_incorporation', forms_of_incorporation)
+  = select('', 'form_of_incorporation', Constants::FORMS_OF_INCORPORATION)
   br
   = label_tag 'Код ЄРДПОУ'
   br

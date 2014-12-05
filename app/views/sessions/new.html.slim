@@ -1,4 +1,4 @@
-= form_tag sessions_path, method: :post do
+= form_tag sessions_path, method: :post, id: 'new_session_form' do
   = label_tag :email
   br
   = text_field_tag :email, params[:email]
@@ -6,7 +6,7 @@
   br
   = label_tag :password
   br
-  = text_field_tag :password, params[:password], type: :password
+  = text_field_tag :password, params[:password]
 
   br
   = submit_tag "Логін"
