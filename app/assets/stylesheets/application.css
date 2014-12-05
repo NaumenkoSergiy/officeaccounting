@@ -26,3 +26,7 @@
   margin:10px;
   cursor: default;
 }
+
+div.error {
+ color: red;
+}
