@@ -172,4 +172,14 @@ $(document).ready(function() {
       return false
     }
   });
+
+  $('.add_company').on('click', function() {
+    $('.add_existing_company, .new_company').toggle();
+    if ($('.add_existing_company').is(':hidden')) {
+      $(this).text('Додати існуюче підприємство');
+    }
+    else {
+      $(this).text('Додати нове підприємство');
+    }
+  });
 });

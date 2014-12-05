@@ -22,7 +22,7 @@ module Settings
     private
 
     def officials_params
-      params.permit(:type, :name, :tin, :phone, :email)
+      params.permit(:official_type, :name, :tin, :phone, :email)
     end
   end
 end
