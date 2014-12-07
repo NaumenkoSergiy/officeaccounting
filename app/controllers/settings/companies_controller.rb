@@ -9,6 +9,8 @@ module Settings
       elsif current_user.companies.present? && current_user.companies.last.officials.empty?
         redirect_to new_settings_official_path
       end
+
+      @companies = not_current_user_companies || {}
     end
 
     def create
