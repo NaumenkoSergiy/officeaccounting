@@ -24,7 +24,7 @@ h3
   = label_tag 'Електронна пошта'
   br
   = text_field_tag :email
-  = text_field_tag :type, 'Директор', type: :hidden
+  = text_field_tag :official_type, 'Директор', type: :hidden
 
 a onclick='$(".bookkeeper").toggle();'
   | Додати головного бухгалтера
@@ -52,7 +52,7 @@ a onclick='$(".bookkeeper").toggle();'
     = label_tag 'Електронна пошта'
     br
     = text_field_tag :email
-    = text_field_tag :type, 'Головний бухгалтер', type: :hidden
+    = text_field_tag :official_type, 'Головний бухгалтер', type: :hidden
 
 .bank-account
   h3
