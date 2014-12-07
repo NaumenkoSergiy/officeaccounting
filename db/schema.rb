@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126134906) do
+ActiveRecord::Schema.define(version: 20141205090417) do
 
   create_table "bank_accounts", force: true do |t|
     t.integer "company_id"
@@ -21,18 +21,17 @@ ActiveRecord::Schema.define(version: 20141126134906) do
   end
 
   create_table "companies", force: true do |t|
-    t.integer "user_id"
-    t.string  "full_name"
-    t.string  "short_name"
-    t.string  "latin_name"
-    t.string  "juridical_address"
-    t.string  "actual_address"
-    t.string  "numbering_format"
+    t.string "full_name"
+    t.string "short_name"
+    t.string "latin_name"
+    t.string "juridical_address"
+    t.string "actual_address"
+    t.string "numbering_format"
   end
 
   create_table "officials", force: true do |t|
     t.integer "company_id"
-    t.string  "type"
+    t.string  "official_type"
     t.string  "name"
     t.integer "tin"
     t.string  "phone"
@@ -58,11 +57,17 @@ ActiveRecord::Schema.define(version: 20141126134906) do
     t.string  "tax_system"
   end
 
+  create_table "user_companies", force: true do |t|
+    t.integer "company_id"
+    t.integer "user_id"
+  end
+
   create_table "users", force: true do |t|
     t.string  "email"
     t.string  "password"
     t.string  "confirm_password"
     t.boolean "profile_confirmed", default: false
+    t.boolean "is_admin",          default: false
   end
 
 end

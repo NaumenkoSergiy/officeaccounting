@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
       redirect_to new_settings_company_path
     end
   end
+
+  def redirect_to_new_session
+    redirect_to new_session_path unless session[:user_id]
+  end
 end

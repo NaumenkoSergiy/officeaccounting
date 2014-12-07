@@ -1,6 +1,8 @@
 h2
   | Список підприємств
 
+= link_to 'Додати нове підприємство', new_settings_company_path, class: 'btn btn-default'
+
 - current_user.companies.each do |company|
   h3
     = company.full_name
