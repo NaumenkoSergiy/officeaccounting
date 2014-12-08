@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   def new; end
 
   def create
-    if @user_service.create_user params
-      send_confirmation_email
+    user = @user_service.create_user params
+    if user
+      send_confirmation_email user
       redirect_to new_session_path,
                   flash: { :notice => "На вашу електронну пошту відправленений лист з активацією." }
     else
@@ -14,9 +15,9 @@ class UsersController < ApplicationController
   end
 
   def confirm_registration
-    user = User.find_by(email: params[:email], password: params[:password])
+    user = User.find(params[:id])
     user.update_attributes(profile_confirmed: true)
-    redirect_to new_session_path(email: params[:email], password: params[:password]),
+    redirect_to new_session_path(id: params[:id]),
                 flash: { :notice => "Аккаунт активований" }
   end
 
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
     @user_service ||= UserService.new session
   end
 
-  def send_confirmation_email
-    UserMailer.welcome_email(params).deliver!
+  def send_confirmation_email user
+    UserMailer.welcome_email(user).deliver!
   end
 end

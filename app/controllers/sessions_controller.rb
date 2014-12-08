@@ -1,7 +1,13 @@
 class SessionsController < ApplicationController
   before_action :define_session_service
 
-  def new; end
+  def new
+    if params[:id]
+      user = User.find(params[:id])
+      @email = user[:email]
+      @password = user[:password]
+    end
+  end
 
   def create
     @session_service.create_session params

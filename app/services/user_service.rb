@@ -3,7 +3,7 @@ class UserService < BaseService
     data = parse_for_create data
     user = User.new data
     if user.valid?
-      user.save
+      user if user.save
     else
       false
     end
