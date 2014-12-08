@@ -1,9 +1,0 @@
-rake db:create <br>
-rake db:migrate <br>
-rake activebooks:add_form_of_incorporation <br>
-rake db:seed <br>
-
-Admin credentials: <br>
-
-email: admin@example.com <br>
-password: password
