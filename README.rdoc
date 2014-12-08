@@ -1,10 +1,9 @@
-```sh
- rake db:create 
- rake db:migrate
- rake activebooks:add_form_of_incorporation
- rake db:seed
-```
-#Admin credentials:
+rake db:create <br>
+rake db:migrate <br>
+rake activebooks:add_form_of_incorporation <br>
+rake db:seed <br>
 
-- email: admin@example.com
-- password: password
+Admin credentials: <br>
+
+email: admin@example.com <br>
+password: password
