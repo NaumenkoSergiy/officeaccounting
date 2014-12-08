@@ -16,4 +16,13 @@ class ApplicationController < ActionController::Base
   def redirect_to_new_session
     redirect_to new_session_path unless session[:user_id]
   end
+
+  def current_admin_user
+    redirect_to root_url unless is_admin?
+    current_user
+  end
+
+  def is_admin?
+    current_user.try(:is_admin)
+  end
 end

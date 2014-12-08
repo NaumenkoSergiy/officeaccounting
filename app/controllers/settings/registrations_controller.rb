@@ -4,6 +4,8 @@ module Settings
       redirect_to new_settings_official_path if !current_user.companies.empty? &&
                                                 current_user.companies.last.registration &&
                                                 current_user.companies.last.officials.empty?
+
+      @incorporation_forms = get_incorporation_forms
     end
 
     def create
@@ -33,6 +35,14 @@ module Settings
                     :code_registered_in_pension_fund,
                     :tax_system,
                     )
+    end
+
+    def get_incorporation_forms
+      IncorporationForm.all
+                       .sort_by{|f| f.name}
+                       .collect do |f|
+                         [ "#{f.number} #{f.name}", "#{f.number} #{f.name}" ]
+                       end
     end
   end
 end
