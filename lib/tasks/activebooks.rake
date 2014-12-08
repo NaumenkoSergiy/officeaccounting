@@ -15,7 +15,6 @@ namespace :activebooks do
     file = File.read('lib/KVED.json')
     data_hash = JSON.parse(file)
 
-    p 'Add data to the DB...'
     data_hash.each do |kved|
       if kved['КВЕД']
         name = kved['Наименование']
@@ -26,6 +25,18 @@ namespace :activebooks do
         )
       end
     end
-    p 'Complete!'
   end
+
+  task add_koatuu: :environment do
+    file = File.open('lib/KOATUU.txt')
+    file.each do |line|
+      line.gsub!("\n","").gsub!("\t","")
+      Koatuu.create(code: line[0..8], name: line[10..-1])
+    end
+  end
+
+  task :all => [:add_form_of_incorporation,
+                :add_form_of_invoice,
+                :add_kved,
+                :add_koatuu]
 end
