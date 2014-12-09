@@ -3,7 +3,7 @@ class SessionService < BaseService
     user = User.find_by(email: data[:email], password: data[:password])
 
     if user && !user[:activate_token]
-      @session[:user_id] = current_user.id
+      @session[:user_id] = user.id
     end
   end
 end
