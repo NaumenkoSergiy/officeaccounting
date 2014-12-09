@@ -1,19 +1,14 @@
 class SessionsController < ApplicationController
   before_action :define_session_service
 
-  def new; end
+  def new
+  end
 
   def create
     @session_service.create_session params
 
-    if current_user
-      if is_admin?
-        redirect_to admin_root_path
-      else
-        redirect_to root_path
-      end
-    else
-      redirect_to new_session_path, flash: { error: 'Введені неправильні креденшіали' }
+    unless current_user
+      flash[:error] = 'Введені невірні креденшіали'
     end
   end
 
