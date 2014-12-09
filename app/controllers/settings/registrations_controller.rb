@@ -13,7 +13,7 @@ module Settings
       if registration.valid? && registration.save
         redirect_to new_settings_official_path
       else
-        render json: false
+        redirect_to new_settings_registration_path, flash: { error: 'Помилкові дані' }
       end
     end
 
