@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def welcome_email(user)
     @user = user
-    @url = "#{host}/users/confirm_registration?id=#{@user[:id]}"
+    @url = "#{host}/users/confirm_registration?token=#{user[:activate_token]}"
     mail(to: @user[:email], subject: 'Welcome to Active Books')
   end
 

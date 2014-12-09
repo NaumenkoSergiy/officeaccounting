@@ -10,4 +10,4 @@ User.create(email: 'admin@example.com',
 						password: 'password',
 						confirm_password: 'password',
 						is_admin: true,
-						profile_confirmed: true)
+						activate_token: nil)

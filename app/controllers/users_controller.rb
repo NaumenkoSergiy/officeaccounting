@@ -15,10 +15,9 @@ class UsersController < ApplicationController
   end
 
   def confirm_registration
-    user = User.find(params[:id])
-    user.update_attributes(profile_confirmed: true)
-    redirect_to new_session_path(id: params[:id]),
-                flash: { :notice => "Аккаунт активований" }
+    user = User.find_by_activate_token(params[:token])
+    user.update_attributes(activate_token: nil)
+    redirect_to new_session_path, flash: { :notice => "Аккаунт активований" }
   end
 
   private
@@ -28,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def send_confirmation_email user
+    user.generate_token(:activate_token)
     UserMailer.welcome_email(user).deliver!
   end
 end

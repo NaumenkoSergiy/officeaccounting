@@ -1,13 +1,13 @@
-= form_tag sessions_path, method: :post, id: 'new_session_form' do
+= form_tag sessions_path, remote: true, method: :post, id: 'new_session_form' do
   = label_tag :email
 
   br
-  = text_field_tag :email, @email
+  = text_field_tag :email
 
   br
   = label_tag :password
   br
-  = text_field_tag :password, @password, type: :password
+  = text_field_tag :password, '', type: :password
 
   br
   = submit_tag "Логін"
