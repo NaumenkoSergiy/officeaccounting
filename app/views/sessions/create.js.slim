@@ -1,0 +1,4 @@
+- if flash[:error]
+  | $('.notification.error').show().text("#{flash[:error]}")
+- else
+  | window.location = "#{root_path}"
