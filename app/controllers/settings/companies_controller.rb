@@ -19,7 +19,7 @@ module Settings
         current_user.user_companies.create(company: company)
         redirect_to new_settings_registration_path
       else
-        render json: false
+        redirect_to new_settings_official_path, flash: { error: 'Помилкові дані' }
       end
     end
 

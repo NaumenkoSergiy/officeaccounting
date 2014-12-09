@@ -14,6 +14,12 @@ class Registration < ActiveRecord::Base
             :code_registered_in_pension_fund,
             :tax_system,
             presence: true
+  validates_numericality_of :edrpou,
+                            :koatuu,
+                            :risk_class,
+                            :tin,
+                            :number_registered_in_revenue_commissioners,
+                            :code_registered_in_pension_fund
 
   belongs_to :company
 end

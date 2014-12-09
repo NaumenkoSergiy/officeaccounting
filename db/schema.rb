@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205090417) do
+ActiveRecord::Schema.define(version: 20141208144651) do
 
   create_table "bank_accounts", force: true do |t|
     t.integer "company_id"
-    t.integer "account"
+    t.string  "account"
     t.text    "bank"
-    t.integer "mfo"
+    t.string  "mfo"
   end
 
   create_table "companies", force: true do |t|
@@ -29,11 +29,16 @@ ActiveRecord::Schema.define(version: 20141205090417) do
     t.string "numbering_format"
   end
 
+  create_table "incorporation_forms", force: true do |t|
+    t.integer "number"
+    t.string  "name"
+  end
+
   create_table "officials", force: true do |t|
     t.integer "company_id"
     t.string  "official_type"
     t.string  "name"
-    t.integer "tin"
+    t.string  "tin"
     t.string  "phone"
     t.string  "email"
   end
@@ -44,16 +49,16 @@ ActiveRecord::Schema.define(version: 20141205090417) do
     t.string  "legal_form_code"
     t.string  "edrpou"
     t.string  "nace_codes"
-    t.integer "koatuu"
+    t.string  "koatuu"
     t.integer "risk_class"
-    t.integer "tin"
+    t.string  "tin"
     t.date    "state_registration_date"
     t.string  "registration_number"
     t.string  "registered_by"
     t.date    "date_registered_in_revenue_commissioners"
     t.string  "number_registered_in_revenue_commissioners"
     t.date    "registered_in_pension_fund"
-    t.integer "code_registered_in_pension_fund"
+    t.string  "code_registered_in_pension_fund"
     t.string  "tax_system"
   end
 
