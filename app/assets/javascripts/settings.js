@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  $('#form_of_incorporation').select2({width: '850px'});
+
   $('#full_name').on('keyup', function() {
     $('#latin_name').val($('#full_name').val().translit());
   });
