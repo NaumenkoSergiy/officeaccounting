@@ -1,0 +1,4 @@
+- if flash[:error]
+  | $('.notification.error').show().text("#{flash[:error]}")
+- else
+  | window.location = "#{new_settings_official_path}"
