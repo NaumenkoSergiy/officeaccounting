@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   def create
     user = @user_service.create_user params
     if user
-      send_confirmation_email user
       redirect_to new_session_path,
                   flash: { :notice => "На вашу електронну пошту відправленений лист з активацією." }
     else
@@ -24,10 +23,5 @@ class UsersController < ApplicationController
 
   def define_user_service
     @user_service ||= UserService.new session
-  end
-
-  def send_confirmation_email user
-    user.generate_token(:activate_token)
-    UserMailer.welcome_email(user).deliver!
   end
 end

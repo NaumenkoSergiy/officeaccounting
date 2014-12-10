@@ -7,12 +7,18 @@ class User < ActiveRecord::Base
   has_many :user_companies
   has_many :companies, through: :user_companies
 
-  def generate_token(column)
-    self[column] = SecureRandom.hex
-    self.save
+  after_create :send_activation_token
+
+  def activated?
+    activate_token.blank?
   end
 
   private
+
+  def send_activation_token
+    self.update_attribute(:activate_token, SecureRandom.hex)
+    UserMailer.welcome_email(self).deliver!
+  end
   
   def is_valid_confirm_password?
     unless self.password == self.confirm_password
