@@ -10,10 +10,11 @@ module Settings
 
     def create
       registration = current_user.companies.last.create_registration registration_params
-      if registration.valid? && registration.save
-        redirect_to new_settings_official_path
+      
+      if !(registration.valid? && registration.save)
+        flash[:error] = 'Введені невірні реєстраційні данні!'
       else
-        redirect_to new_settings_registration_path, flash: { error: 'Помилкові дані' }
+        flash[:error] = nil
       end
     end
 
