@@ -24,8 +24,10 @@ module Settings
     end
 
     def add_existing_company
-      company = Company.find(params[:company].to_i)
-      if current_user.user_companies.create(company: company)
+      company = Company.find(params[:company])
+
+      if current_user_has_not_company?(company.id) &&
+         current_user.user_companies.create(company: company)
         redirect_to settings_path
       else
         redirect_to new_settings_company_path
@@ -58,6 +60,11 @@ module Settings
                      }
                    end
                  end
+    end
+
+    def current_user_has_not_company? company_id
+      user_companies = UserCompany.where(user_id: current_user)
+      !user_companies.map {|c| c.company_id == company_id }.include? true
     end
   end
 end
