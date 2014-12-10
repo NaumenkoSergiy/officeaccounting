@@ -6,10 +6,11 @@ div
   = label_tag 'Організаційно-правова форма (код та назва)'
   br
   = select_tag(:form_of_incorporation, options_for_select(@incorporation_forms))
+  
   br
   = label_tag 'Код ЄРДПОУ'
   br
-  = text_field_tag :edrpou
+  = text_field_tag :edrpou, nil, :class => 'number', placeholder: 'Введіть код ЄРДПОУ вашого підприємства', maxlength: 8
 
   br
   = label_tag 'коди КВЕД'
@@ -19,7 +20,7 @@ div
   br
   = label_tag 'розташування за КОАТУУ'
   br
-  = text_field_tag :koatuu
+  = text_field_tag :koatuu, nil, :class => 'number', placeholder: 'Введіть код розташування за КОАТУУ', maxlength: 10
 
   br
   = label_tag 'клас професійного ризику'
@@ -29,17 +30,17 @@ div
   br
   = label_tag 'номер свідоцтва ПДВ'
   br
-  = text_field_tag :tin
+  = text_field_tag :tin, nil, :class => 'number', placeholder: 'Введіть номер свідоцтва ПДВ вашого підприємства', maxlength: 10
 
   br
   = label_tag 'дата державної реєстрації'
   br
-  = text_field_tag :state_registration_date
+  = text_field_tag :state_registration_date, nil, :class => 'date'
 
   br
   = label_tag 'номер реєстрації'
   br
-  = text_field_tag :registration_number
+  = text_field_tag :registration_number, nil, :class => 'number', placeholder: 'Введіть номер реєстрації вашого підприємства', maxlength: 10
 
   br
   = label_tag 'ким зареєстровано'
@@ -49,22 +50,22 @@ div
   br
   = label_tag 'реєстрація у податковій'
   br
-  = text_field_tag :date_registered_in_revenue_commissioners
+  = text_field_tag :date_registered_in_revenue_commissioners, nil, :class => 'date'
 
   br
   = label_tag 'номер реєстрації у податковій'
   br
-  = text_field_tag :number_registered_in_revenue_commissioners
+  = text_field_tag :number_registered_in_revenue_commissioners, nil, :class => 'number', placeholder: 'Введіть номер реєстрації у податковій', maxlength: 12
 
   br
   = label_tag 'дата реєстрації у пенсійному фонді'
   br
-  = text_field_tag :registered_in_pension_fund
+  = text_field_tag :registered_in_pension_fund, nil, :class => 'date'
 
   br
   = label_tag 'код пенсійного фонду'
   br
-  = text_field_tag :code_registered_in_pension_fund
+  = text_field_tag :code_registered_in_pension_fund, nil, :class => 'number', placeholder: 'Введіть код пенсійного фонду', maxlength: 4
 
   br
   = label_tag 'система оподаткування'

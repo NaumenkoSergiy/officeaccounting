@@ -1,6 +1,11 @@
 $(document).ready(function() {
   $('#form_of_incorporation').select2({width: '850px'});
 
+  $('input.number').numeric({ negative : false, decimal: false });
+
+  $.datepicker.setDefaults( $.datepicker.regional["uk"] );
+  $('.date').datepicker({maxDate: 0});
+
   $('#full_name').on('keyup', function() {
     $('#latin_name').val($('#full_name').val().translit());
   });
@@ -8,10 +13,8 @@ $(document).ready(function() {
   $('#nace_codes').tagsInput({
     defaultText: 'Додати код'
   });
-
-  $('#state_registration_date,\
-     #date_registered_in_revenue_commissioners,\
-     #registered_in_pension_fund').inputmask('99-99-9999');
+  
+  $('#phone').inputmask('"+380"-99-9999999');
 
   $('#official_submit').on('click', function() {
     officials_validate();
