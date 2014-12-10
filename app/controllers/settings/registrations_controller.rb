@@ -1,5 +1,7 @@
 module Settings
   class RegistrationsController < ApplicationController
+    before_filter :redirect_to_new_session
+
     def new
       redirect_to new_settings_official_path if !current_user.companies.empty? &&
                                                 current_user.companies.last.registration &&
