@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def confirm_registration
     user = User.find_by_activate_token(params[:token])
-    user.update_attributes(activate_token: nil)
+    user.activate!
     redirect_to new_session_path, flash: { :notice => "Аккаунт активований" }
   end
 

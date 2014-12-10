@@ -13,10 +13,14 @@ class User < ActiveRecord::Base
     activate_token.blank?
   end
 
+  def activate!
+    self.update_column(:activate_token, nil)
+  end
+
   private
 
   def send_activation_token
-    self.update_attribute(:activate_token, SecureRandom.hex)
+    self.update_column(:activate_token, SecureRandom.hex)
     UserMailer.welcome_email(self).deliver!
   end
   
