@@ -1,5 +1,7 @@
 module Settings
   class BankAccountsController < ApplicationController
+    before_filter :redirect_to_new_session
+
     def create
       if current_user.companies.last.officials.empty?
         redirect_to new_settings_official_path

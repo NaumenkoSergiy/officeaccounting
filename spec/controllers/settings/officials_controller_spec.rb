@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Settings::OfficialsController, :type => :controller do
   let(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let(:company) { FactoryGirl.create(:company) }
-  let(:registration_attributes) { FactoryGirl.attributes_for(:registration) }
   let(:official_attributes) { FactoryGirl.attributes_for(:official) }
   let(:unvalid_official_attributes) do
     FactoryGirl.attributes_for(:unvalid_official)
@@ -12,7 +11,6 @@ RSpec.describe Settings::OfficialsController, :type => :controller do
   before(:each) do
     session[:user_id] = user.id
     FactoryGirl.create(:user_company, user_id: user.id, company_id: company.id)
-    post :create, registration_attributes
   end
 
   describe '#create' do
