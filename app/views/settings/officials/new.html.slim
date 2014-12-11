@@ -36,7 +36,7 @@ a onclick='$(".bookkeeper").toggle();'
   = form_tag '', id: :official_form_bookkeeper do
     = label_tag 'ПІБ'
     br
-    = text_field_tag :name
+    = text_field_tag :name, nil, placeholder: "Введіть ПІБ Головного бухгалтера"
 
     br
     = label_tag 'ІПН'

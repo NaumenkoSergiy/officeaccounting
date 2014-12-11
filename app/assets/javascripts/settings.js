@@ -14,7 +14,7 @@ $(document).ready(function() {
     defaultText: 'Додати код'
   });
   
-  $('#phone').inputmask('"+380"-99-9999999');
+  $('#phone').inputmask('+(380)-99-9999999');
 
   $('#official_submit').on('click', function() {
     officials_validate();
