@@ -1,0 +1,23 @@
+.conterpaties
+  = link_to 'Реєстр', registers_path
+  h1 Список контрагентів
+  = link_to 'Додати нового контрагента', new_counterparty_path
+
+  table
+    thead
+      tr
+        th Ім'я
+        th Дата
+        th
+
+
+    tbody
+      - @counterparties.each do |counterparty|
+        tr class = counterparty.id
+          td = counterparty.name
+          td = counterparty.start_date
+          td 
+            = link_to 'Редагувати ', edit_counterparty_path(counterparty)
+            = link_to 'Видалити', counterparty, data: {:confirm => 'Насправді ви бажєте видалити контрагента?'}, :method => :delete, remote:true
+
+

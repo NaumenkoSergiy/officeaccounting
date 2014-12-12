@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   ActiveAdmin.routes(self)
   root 'settings#index'
 
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
   resources :users, only: [:new, :create]
   resources :settings, only: [:index]
+  resources :counterparties
+  resources :registers
 
   namespace 'settings' do
     resources :companies, only: [:new, :create]
