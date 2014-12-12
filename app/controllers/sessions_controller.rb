@@ -1,8 +1,7 @@
 class SessionsController < ApplicationController
   before_action :define_session_service
 
-  def new
-  end
+  def new; end
 
   def create
     @session_service.create_session params

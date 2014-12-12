@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe SessionsController, :type => :controller do
 
   context 'session' do
-    let(:user) { FactoryGirl.create(:user, profile_confirmed: true) }
-    let(:unconfirmed_user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, activate_token: nil) }
+    let(:unconfirmed_user) { FactoryGirl.create(:user, activate_token: SecureRandom.hex) }
     let(:none_user) { FactoryGirl.attributes_for(:user)}
-    let(:admin) { FactoryGirl.create(:user, is_admin: true, profile_confirmed: true)}
-    let(:unconfirmed_admin) { FactoryGirl.create(:user, is_admin: true)}
+    let(:admin) { FactoryGirl.create(:user, is_admin: true, activate_token: nil)}
+    let(:unconfirmed_admin) { FactoryGirl.create(:user, is_admin: true, activate_token: SecureRandom.hex)}
 
     describe '#create' do
       it 'create new session' do

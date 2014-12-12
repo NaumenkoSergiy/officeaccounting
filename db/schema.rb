@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208144651) do
+ActiveRecord::Schema.define(version: 20141209194356) do
 
   create_table "bank_accounts", force: true do |t|
     t.integer "company_id"
@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 20141208144651) do
     t.string  "email"
     t.string  "password"
     t.string  "confirm_password"
-    t.boolean "profile_confirmed", default: false
-    t.boolean "is_admin",          default: false
+    t.string  "activate_token"
+    t.boolean "is_admin",         default: false
   end
 
 end
