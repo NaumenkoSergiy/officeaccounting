@@ -28,6 +28,7 @@ module Settings
                     :nace_codes,
                     :koatuu,
                     :risk_class,
+                    :pdv,
                     :tin,
                     :state_registration_date,
                     :registration_number,

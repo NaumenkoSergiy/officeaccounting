@@ -275,4 +275,16 @@ $(document).ready(function() {
       $(this).text('Додати нове підприємство');
     }
   });
+
+  $('#pdv').click(function(){
+    if($(this).hasClass('checked')) {
+      $('#tin').attr('disabled', 'disabled');
+      $(this).removeClass('checked');
+    }
+    else
+    {
+      $('#tin').removeAttr('disabled');
+      $(this).addClass('checked');
+    }
+  });
 });

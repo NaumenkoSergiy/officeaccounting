@@ -28,9 +28,14 @@ div
   = select('', 'risk_class', (1..67).to_a)
 
   br
+  = label_tag 'Чи є підприємство платником податку на додану вартість (ПДВ)?'
+  br
+  = check_box_tag :pdv
+
+  br
   = label_tag 'номер свідоцтва ПДВ'
   br
-  = text_field_tag :tin, nil, :class => 'number', placeholder: 'Введіть номер свідоцтва ПДВ вашого підприємства', maxlength: 10
+  = text_field_tag :tin, nil, :class => 'number', placeholder: 'Введіть номер свідоцтва ПДВ вашого підприємства', maxlength: 10, disabled: :disabled
 
   br
   = label_tag 'дата державної реєстрації'
