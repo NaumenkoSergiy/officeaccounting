@@ -8,12 +8,12 @@ h3
 = form_tag '', id: :official_form_director do
   = label_tag 'ПІБ'
   br
-  = text_field_tag :name
+  = text_field_tag :name, nil, placeholder: "Введіть ПІБ Директора"
 
   br
   = label_tag 'ІПН'
   br
-  = text_field_tag :tin
+  = text_field_tag :tin, nil, :class => 'number', placeholder: 'Введіть код ІПН', maxlength: 10
 
   br
   = label_tag 'Номер телефону'
@@ -36,12 +36,12 @@ a onclick='$(".bookkeeper").toggle();'
   = form_tag '', id: :official_form_bookkeeper do
     = label_tag 'ПІБ'
     br
-    = text_field_tag :name
+    = text_field_tag :name, nil, placeholder: "Введіть ПІБ Головного бухгалтера"
 
     br
     = label_tag 'ІПН'
     br
-    = text_field_tag :tin
+    = text_field_tag :tin, nil, :class => 'number', placeholder: 'Введіть код ІПН', maxlength: 10
 
     br
     = label_tag 'Номер телефону'
@@ -61,17 +61,17 @@ a onclick='$(".bookkeeper").toggle();'
   = form_tag '', id: :bank_account do
     = label_tag 'Рахунок'
     br
-    = text_field_tag :account
+    = text_field_tag :account, nil, :class => 'number', placeholder: 'Введіть № рахунку', maxlength: 11
 
     br
     = label_tag 'Банк'
     br
-    = text_field_tag :bank
+    = text_field_tag :bank, nil, placeholder: 'Введіть повну назву банківської установи'
 
     br
     = label_tag 'МФО'
     br
-    = text_field_tag :mfo
+    = text_field_tag :mfo, nil, :class => 'number', placeholder: 'Введіть МФО', maxlength: 6
 
 br
 = button_tag "Закінчити створення підприємства", id: 'official_submit'
