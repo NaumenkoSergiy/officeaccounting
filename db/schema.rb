@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209194356) do
+ActiveRecord::Schema.define(version: 20141212115605) do
 
   create_table "bank_accounts", force: true do |t|
     t.integer "company_id"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20141209194356) do
     t.string "numbering_format"
   end
 
+  create_table "counterparties", force: true do |t|
+    t.string   "name"
+    t.date     "start_date"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "incorporation_forms", force: true do |t|
     t.integer "number"
     t.string  "name"
@@ -41,6 +49,17 @@ ActiveRecord::Schema.define(version: 20141209194356) do
     t.string  "tin"
     t.string  "phone"
     t.string  "email"
+  end
+
+  create_table "registers", force: true do |t|
+    t.date     "date"
+    t.integer  "counterparty_id"
+    t.string   "operations"
+    t.integer  "value"
+    t.boolean  "holding"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "registrations", force: true do |t|
@@ -60,6 +79,7 @@ ActiveRecord::Schema.define(version: 20141209194356) do
     t.date    "registered_in_pension_fund"
     t.string  "code_registered_in_pension_fund"
     t.string  "tax_system"
+    t.boolean "pdv"
   end
 
   create_table "user_companies", force: true do |t|

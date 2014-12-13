@@ -4,7 +4,6 @@ class Registration < ActiveRecord::Base
             :nace_codes,
             :koatuu,
             :risk_class,
-            :tin,
             :state_registration_date,
             :registration_number,
             :registered_by,
@@ -17,7 +16,6 @@ class Registration < ActiveRecord::Base
   validates_numericality_of :edrpou,
                             :koatuu,
                             :risk_class,
-                            :tin,
                             :number_registered_in_revenue_commissioners,
                             :code_registered_in_pension_fund
 
