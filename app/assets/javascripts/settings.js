@@ -287,4 +287,5 @@ $(document).ready(function() {
       $(this).addClass('checked');
     }
   });
+  $('a[href="' + this.location.pathname + '"]').parent().addClass('current');
 });
