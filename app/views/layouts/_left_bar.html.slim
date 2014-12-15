@@ -4,11 +4,9 @@
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
           li
-            a.current href="#" role="button"
-              | Головна
+            = link_to 'Головна', root_path
           li
-            a href="#" role="button"
-              | Засоби та інвентар
+            = link_to 'Засоби та інвентар', registers_path
           li
             a href="#" role="button"
               | Гроші
