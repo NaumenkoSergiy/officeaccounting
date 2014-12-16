@@ -1,6 +1,7 @@
 = link_to 'Котрагенти', counterparties_path
 h1 Реєстр
 = link_to 'Додати новий', new_register_path
+
 table
   thead
     tr
@@ -25,6 +26,3 @@ table
         td = register.notes
         td = link_to 'Редагувати', edit_register_path(register)
         td = link_to 'Видалити', register, data: {:confirm => 'Впевнені?'}, :method => :delete, remote:true
-
-br
-

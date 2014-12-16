@@ -10,7 +10,6 @@
         th Дата
         th
 
-
     tbody
       - @counterparties.each do |counterparty|
         tr class = counterparty.id
@@ -19,5 +18,3 @@
           td 
             = link_to 'Редагувати ', edit_counterparty_path(counterparty)
             = link_to 'Видалити', counterparty, data: {:confirm => 'Насправді ви бажєте видалити контрагента?'}, :method => :delete, remote:true
-
-

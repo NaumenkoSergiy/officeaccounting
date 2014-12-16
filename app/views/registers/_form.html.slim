@@ -13,7 +13,6 @@
   .field
     = f.label 'Контрагент'
     br
-
     = f.select 'counterparty_id', options_for_select(@counterparty.collect {|c| [c[:name], c[:id]]})
   .field
     = f.label 'Зміст операції'
