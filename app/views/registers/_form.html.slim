@@ -1,0 +1,36 @@
+= form_for @register do |f|
+  - if @register.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@register.errors.count, "error")} prohibited this register from being saved:"
+      ul
+        - @register.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label 'Дата'
+    br
+    = f.text_field :date, class: 'date' 
+  .field
+    = f.label 'Контрагент'
+    br
+    = f.select 'counterparty_id', options_for_select(@counterparty.collect {|c| [c[:name], c[:id]]})
+  .field
+    = f.label 'Зміст операції'
+    br
+    = f.text_field :operations
+  .field
+    = f.label 'Сумма'
+    br
+    = f.text_field :value
+  .field
+    = f.label 'Відмітка про проведення'
+    br
+    = f.check_box :holding
+  .field
+    = f.label 'Інші параметри'
+    br
+    = f.text_area :notes
+  .actions 
+    = f.submit 'Зберегти'
+    = link_to registers_path
+      button Назад
