@@ -1,28 +1,34 @@
-= link_to 'Котрагенти', counterparties_path
-h1 Реєстр
-= link_to 'Додати новий', new_register_path
+.register
+  = link_to 'Котрагенти', counterparties_path
+  h1 Реєстр
+  = link_to 'Додати новий', new_register_path
 
-table
-  thead
-    tr
-      th Дата
-      th Котрагент
-      th Зміст операції
-      th Сумма
-      th Відмітка про проведення
-      th Інші параметри
-      th
-      th
-      th
+  table
+    thead
+      tr
+        th Дата
+        th Котрагент
+        th Зміст операції
+        th Сумма
+        th Відмітка про проведення
+        th Інші параметри
+        th
+        th
+        th
 
-  tbody
-    - @registers.each do |register|
-      tr class = register.id 
-        td = register.date
-        td = register.counterparty.name
-        td = register.operations
-        td = register.value
-        td = check_box_tag '', '', register.holding
-        td = register.notes
-        td = link_to 'Редагувати', edit_register_path(register)
-        td = link_to 'Видалити', register, data: {:confirm => 'Впевнені?'}, :method => :delete, remote:true
+    tbody
+      - @registers.each do |register|
+        tr class = register.id 
+          td class = "date"
+            = link_to register.date, '#', data: { placement: 'right', type: 'date', name: :date, pk: register.id, model: :register, url: register_url(register), xeditable: true }
+          td
+            = link_to register.counterparty.name, '#', data: { placement: 'bottom', value: register.counterparty.id, type: 'select', source: @select_conterparty, pk: register.id, model: :register, url: register_url(register), xeditable: true, name: :counterparty_id } 
+          td 
+            = link_to register.operations, '#', data: { emptytext: 'Не вказано', placement: 'bottom', name: :operations, pk: register.id, model: :register, url: register_url(register), xeditable: true }
+          td class="registre-value"
+            = link_to register.value, '#', data: { placement: 'bottom', name: :value, pk: register.id, model: :register, url: register_url(register), xeditable: true }
+          td = check_box_tag '', '', register.holding, remote: true
+          td
+            = link_to register.notes, '#', data: { emptytext: 'Не вказано', placement: 'bottom', name: :notes, pk: register.id, model: :register, url: register_url(register), xeditable: true }
+            = link_to register, data: {confirm: 'Впевнені?'}, method: :delete, remote:true do %
+              span class="glyphicon glyphicon-trash"

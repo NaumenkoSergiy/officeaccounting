@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20141222092928) do
 
   create_table "bank_accounts", force: true do |t|
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 20141222092928) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "incorporation_forms", force: true do |t|
@@ -68,6 +70,7 @@ ActiveRecord::Schema.define(version: 20141222092928) do
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "registrations", force: true do |t|

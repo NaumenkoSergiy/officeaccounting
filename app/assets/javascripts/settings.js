@@ -4,7 +4,7 @@ $(document).ready(function() {
   $('input.number').numeric({ negative : false, decimal: false });
 
   $.datepicker.setDefaults( $.datepicker.regional["uk"] );
-  $('.date').datepicker({maxDate: 0});
+  $('.date_reg').datepicker({maxDate: 0});
 
   $('#full_name').on('keyup', function() {
     $('#latin_name').val($('#full_name').val().translit());

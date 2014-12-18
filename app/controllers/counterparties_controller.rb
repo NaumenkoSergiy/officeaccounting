@@ -4,7 +4,7 @@ class CounterpartiesController < ApplicationController
   before_filter :has_company?, only: [:index, :new]
 
   def index
-    @counterparties = Counterparty.all
+    @counterparties = current_user.counterparties
   end
 
   def new
@@ -15,11 +15,11 @@ class CounterpartiesController < ApplicationController
   end
 
   def create
-    @counterparty = Counterparty.new(counterparty_params)
+    @counterparty = current_user.counterparties.new counterparty_params
 
     respond_to do |format|
       if @counterparty.save
-        format.html { redirect_to counterparties_path }
+        format.html { redirect_to counterparties_url }
       else
         format.html { render :new }
       end
@@ -29,10 +29,8 @@ class CounterpartiesController < ApplicationController
   def update
     respond_to do |format|
       if @counterparty.update(counterparty_params)
-        format.html { redirect_to @counterparty }
-        format.json { render :show, status: :ok, location: @counterparty }
+        format.json { head :no_content }
       else
-        format.html { render :edit }
         format.json { render json: @counterparty.errors, status: :unprocessable_entity }
       end
     end

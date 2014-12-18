@@ -32,6 +32,8 @@ gem 'rails_12factor', group: :production
 gem 'mandrill_mailer'
 gem 'jquery-validation-rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'bootstrap-sass'
+gem 'bootstrap-x-editable-rails'
 
 group :development, :test do
   gem 'pry'

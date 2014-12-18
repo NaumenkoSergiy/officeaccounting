@@ -16,8 +16,11 @@
 //= require jquery-ui
 //= require jquery.validate
 //= require jquery.validate.additional-methods
+//= require bootstrap
+//= require bootstrap3-editable/bootstrap-editable
 
 $(document).on('ready', function(){
+  
   $('.left-bar a').click(function(){
     $('.left-bar a').removeClass('current');
     $(this).addClass('current');

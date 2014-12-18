@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :user_companies
   has_many :companies, through: :user_companies
+  has_many :registers
+  has_many :counterparties
 
   after_create :send_activation_token
 
