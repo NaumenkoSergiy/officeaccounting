@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require jquery.turbolinks
 //= require jquery-ui
 //= require jquery.validate
 //= require jquery.validate.additional-methods
