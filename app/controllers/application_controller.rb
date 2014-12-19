@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :is_admin?
 
   def current_user
+    @current_user ||= User.find_by_auth_token!(cookies[:activate_token]) if cookies[:activate_token]
     session[:user_id] ? User.find(session[:user_id]) : nil
   end
 

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :settings, only: [:index]
   resources :counterparties
   resources :registers
+  resources :password_resets
 
   namespace 'settings' do
     resources :companies, only: [:new, :create]

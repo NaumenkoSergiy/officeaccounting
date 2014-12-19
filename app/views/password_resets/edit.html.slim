@@ -1,0 +1,14 @@
+= form_for @user, url: password_reset_path(params[:id]) do |f| 
+  - if @user.errors.any?
+    .error_messages
+      h2 Пароль підтвердження не є таким як пароль
+
+  .field
+    = f.label 'Пароль'
+    br
+    = f.password_field :password
+  .field
+    = f.label 'Підтвердження пароля'
+    br
+    = f.password_field :confirm_password
+  .actions = f.submit "Оновити пароль"

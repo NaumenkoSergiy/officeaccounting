@@ -11,4 +11,9 @@ class UserMailer < ActionMailer::Base
     options = ActionMailer::Base.default_url_options
     "http://#{options[:host]}"
   end
+
+  def password_reset(user)
+    @user = user
+    mail :to => user.email, :subject => "Відновлення паролю Active-books"
+  end
 end
