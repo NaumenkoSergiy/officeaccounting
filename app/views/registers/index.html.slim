@@ -27,7 +27,7 @@
             = link_to register.operations, '#', data: { emptytext: 'Не вказано', placement: 'bottom', name: :operations, pk: register.id, model: :register, url: register_url(register), xeditable: true }
           td class="registre-value"
             = link_to register.value, '#', data: { placement: 'bottom', name: :value, pk: register.id, model: :register, url: register_url(register), xeditable: true }
-          td = check_box_tag '', '', register.holding, remote: true
+          td = check_box_tag '', '', register.holding, class: "check"
           td
             = link_to register.notes, '#', data: { emptytext: 'Не вказано', placement: 'bottom', name: :notes, pk: register.id, model: :register, url: register_url(register), xeditable: true }
             = link_to register, data: {confirm: 'Впевнені?'}, method: :delete, remote:true do %

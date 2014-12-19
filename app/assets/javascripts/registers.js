@@ -19,4 +19,13 @@ $(document).ready(function() {
       });
     });
   });
+
+  $('.check').click(function(){
+    id = $(this).parent().parent()[0].className;
+    $.ajax({
+      type: 'PUT',
+      url: '/registers/' + id,
+      data: {register: {holding: $(this).is(':checked')}},
+    });
+  })
 });
