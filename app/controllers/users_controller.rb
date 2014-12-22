@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :define_user_service
 
   def new
-    redirect_to root_path if session[:user_id] != nil
+    redirect_to root_path if session[:user_id]
   end
 
   def create
