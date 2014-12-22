@@ -3,22 +3,27 @@ require 'rails_helper'
 RSpec.describe SessionsController, :type => :controller do
 
   context 'session' do
-    let(:user) { FactoryGirl.create(:user, activate_token: nil) }
     let(:unconfirmed_user) { FactoryGirl.create(:user, activate_token: SecureRandom.hex) }
     let(:none_user) { FactoryGirl.attributes_for(:user)}
-    let(:admin) { FactoryGirl.create(:user, is_admin: true, activate_token: nil)}
     let(:unconfirmed_admin) { FactoryGirl.create(:user, is_admin: true, activate_token: SecureRandom.hex)}
+
+    before(:all) do
+      @user = FactoryGirl.create(:user)
+      @admin = FactoryGirl.create(:user, is_admin: true)
+      @user.update_attribute(:activate_token, nil)
+      @admin.update_attribute(:activate_token, nil)
+    end
 
     describe '#create' do
       it 'create new session' do
-        post :create, email: user.email, password: user.password, format: :js
-        expect(session[:user_id]).to equal user.id
+        post :create, email: @user.email, password: @user.password, format: :js
+        expect(session[:user_id]).to equal @user.id
       end
 
       it 'create new admin session' do
-        post :create, email: admin.email, password: admin.password, format: :js
-        expect(session[:user_id]).to equal admin.id
-        expect(admin.is_admin).to be_truthy
+        post :create, email: @admin.email, password: @admin.password, format: :js
+        expect(session[:user_id]).to equal @admin.id
+        expect(@admin.is_admin).to be_truthy
       end
 
       it 'failed create new session' do
@@ -46,7 +51,7 @@ RSpec.describe SessionsController, :type => :controller do
 
     describe '#destroy' do
       it 'destroy current user' do
-        delete :destroy, id: user.id 
+        delete :destroy, id: @user.id
         expect(session[:user_id]).to be_nil
       end
     end
