@@ -1,7 +1,8 @@
 - if flash[:error]
-  | $('.notification.error').show().text("#{flash[:error]}")
+  | $('.notification.error').show().text("#{flash[:error]}");
 - else
   - if is_admin?
-    | window.location = "#{admin_root_path}"
+    | window.location = "#{admin_root_path}";
   - else
-    | window.location = "#{root_path}"
+    | window.location = "#{root_path}";
+| $.unblockUI();

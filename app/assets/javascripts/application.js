@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 //= require jquery-ui
 //= require jquery.validate
@@ -23,6 +22,23 @@ $(document).on('ready', function(){
     $('.left-bar a').removeClass('current');
     $(this).addClass('current');
   });
+
+  $('form').submit(function(){
+    $.blockUI({
+      message: 'Зачекайте, будь ласка'
+    });
+
+    if (!$(this).valid()){
+      $.unblockUI();
+    }
+  });
+
+  $(document).ajaxStart(function(){
+    $.blockUI({
+      message: 'Зачекайте, будь ласка'
+    });
+  });
+  .ajaxStop(function () { $.unblockUI(); });
 });
 
 String.prototype.translit = (function () {
