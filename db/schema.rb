@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211125901) do
+ActiveRecord::Schema.define(version: 20141222092928) do
 
   create_table "bank_accounts", force: true do |t|
     t.integer "company_id"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 20141211125901) do
   create_table "incorporation_forms", force: true do |t|
     t.integer "number"
     t.string  "name"
+  end
+
+  create_table "invoice_forms", force: true do |t|
+    t.integer "account_number"
+    t.string  "name"
+    t.string  "invoice_type"
+    t.string  "subcount1"
+    t.string  "subcount2"
   end
 
   create_table "officials", force: true do |t|
@@ -88,11 +96,13 @@ ActiveRecord::Schema.define(version: 20141211125901) do
   end
 
   create_table "users", force: true do |t|
-    t.string  "email"
-    t.string  "password"
-    t.string  "confirm_password"
-    t.string  "activate_token"
-    t.boolean "is_admin",         default: false
+    t.string   "email"
+    t.string   "password"
+    t.string   "confirm_password"
+    t.string   "activate_token"
+    t.boolean  "is_admin",               default: false
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end
