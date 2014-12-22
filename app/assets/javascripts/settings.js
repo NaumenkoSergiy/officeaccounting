@@ -116,12 +116,6 @@ $(document).ready(function() {
       },
       number_registered_in_revenue_commissioners: {
         required: true
-      },
-      registered_in_pension_fund: {
-        required: true
-      },
-      code_registered_in_pension_fund: {
-        required: true
       }
     },
     messages: {
@@ -144,12 +138,6 @@ $(document).ready(function() {
         required: 'поле не може бути пустим'
       },
       number_registered_in_revenue_commissioners: {
-        required: 'поле не може бути пустим'
-      },
-      registered_in_pension_fund: {
-        required: 'поле не може бути пустим'
-      },
-      code_registered_in_pension_fund: {
         required: 'поле не може бути пустим'
       }
     }
