@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :define_user_service
 
-  def new; end
+  def new
+    redirect_to root_path if session[:user_id]
+  end
 
   def create
     user = @user_service.create_user params
