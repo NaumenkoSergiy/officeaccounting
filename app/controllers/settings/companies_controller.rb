@@ -51,15 +51,16 @@ module Settings
     def not_current_user_companies
       current_user_companies = UserCompany.where(user_id: current_user)
                                           .map {|r| r.company_id}
-      UserCompany.where.not(user_id: current_user)
-                 .map do |c|
-                   unless current_user_companies.include?(c.company_id)
-                     {
-                       id: c.company.id,
-                       company_name: "#{c.company.full_name} (#{c.company.short_name})"
-                     }
-                   end
-                 end
+      companies= UserCompany.where.not(user_id: current_user)
+                            .map do |c|
+                              if c.company && !current_user_companies.include?(c.company_id)
+                                {
+                                  id: c.company_id,
+                                  company_name: "#{c.company.full_name} (#{c.company.short_name})"
+                                }
+                              end
+                            end
+      companies.try(:compact)
     end
 
     def current_user_has_not_company? company_id
