@@ -4,11 +4,8 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    @session_service.create_session params
-
-    unless current_user
-      flash[:error] = 'Введені невірні креденшіали'
-    end
+    session = @session_service.create_session params
+    flash[:error] = session[:error] if session[:error]
   end
 
   def destroy

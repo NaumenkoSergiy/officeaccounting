@@ -1,11 +1,15 @@
 class UserService < BaseService
   def create_user data
-    data = parse_for_create data
-    user = User.new data
-    if user.valid?
-      user if user.save
+    if is_user_not_existing data[:email]
+      data = parse_for_create data
+      user = User.new data
+      if user.valid?
+        user if user.save
+      else
+        {error: 'Введені неправильні дані'}
+      end
     else
-      false
+      {error: 'Користувач існує будь ласка скористуйтеся відновленням паролю!'}
     end
   end
 
@@ -17,5 +21,9 @@ class UserService < BaseService
       password: data[:password],
       confirm_password: data[:confirm_password]
     }
+  end
+
+  def is_user_not_existing email
+    User.where(email: email).empty?
   end
 end

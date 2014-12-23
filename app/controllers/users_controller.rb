@@ -5,11 +5,11 @@ class UsersController < ApplicationController
 
   def create
     user = @user_service.create_user params
-    if user
+    unless user[:error]
       redirect_to new_session_path,
-                  flash: { :notice => "На вашу електронну пошту відправленений лист з активацією." }
+                  flash: { :notice => "На вашу електронну адресу відправленений лист з активацією." }
     else
-      redirect_to new_user_path, flash: { error: 'Введені неправильні дані' }
+      redirect_to new_user_path, flash: { error: user[:error] }
     end
   end
 
