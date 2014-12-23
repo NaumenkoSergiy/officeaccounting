@@ -12,7 +12,11 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap3-editable/bootstrap-editable
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 
 .notification {
   background-color:#e3f7fc;
@@ -29,4 +33,20 @@
 
 div.error {
   color: red;
+}
+
+.glyphicon { font-size: 14px; }
+
+.glyphicon.glyphicon-trash { 
+  display: none;
+  font-size: 15px;
+}
+
+tr {
+
+  &:hover {
+    .glyphicon-trash {
+      display: initial;
+    }
+  }
 }

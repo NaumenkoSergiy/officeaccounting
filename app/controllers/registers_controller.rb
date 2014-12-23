@@ -4,20 +4,22 @@ class RegistersController < ApplicationController
   before_filter :has_company?, only: [:index, :new]
 
   def index
-    @registers = Register.all
+    @registers = current_user.registers
+    @counterparty = current_user.counterparties
+    @select_conterparty = current_user.counterparties.pluck(:id, :name).to_h
   end
 
   def new
     @register = Register.new
-    @counterparty = Counterparty.all
+    @counterparty = current_user.counterparties
   end
 
   def edit
-    @counterparty = Counterparty.all
+    @counterparty = current_user.counterparties
   end
 
   def create
-    @register = Register.new(register_params)
+    @register = current_user.registers.new register_params
     respond_to do |format|
       if @register.save
         format.html { redirect_to registers_url}
@@ -30,9 +32,9 @@ class RegistersController < ApplicationController
   def update
     respond_to do |format|
       if @register.update(register_params)
-        format.html { redirect_to registers_url }
+        format.json { head :no_content }
       else
-        format.html { render :edit }
+        format.json { render json: @register.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,4 +57,3 @@ class RegistersController < ApplicationController
       params.require(:register).permit(:date, :counterparty_id, :operations, :value, :holding, :notes)
     end
 end
-

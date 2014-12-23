@@ -13,8 +13,9 @@
     tbody
       - @counterparties.each do |counterparty|
         tr class = counterparty.id
-          td = counterparty.name
-          td = counterparty.start_date
-          td 
-            = link_to 'Редагувати ', edit_counterparty_path(counterparty)
-            = link_to 'Видалити', counterparty, data: {:confirm => 'Насправді ви бажєте видалити контрагента?'}, :method => :delete, remote:true
+          td class="counterparty_name"
+            = link_to  counterparty.name, '#', data: { name: :name, pk: counterparty.id, model: :counterparty, url: counterparty_url(counterparty), xeditable: true } 
+          td class = "date"
+            = link_to counterparty.start_date, '#', data: { placement: 'right', type: 'date', name: :start_date, pk: counterparty.id, model: :counterparty, url: counterparty_url(counterparty), xeditable: true }
+            = link_to counterparty, data: {confirm: 'Впевнені?'}, method: :delete, remote:true do %
+              span class="glyphicon glyphicon-trash"
