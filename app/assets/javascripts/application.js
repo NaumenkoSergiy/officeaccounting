@@ -41,7 +41,7 @@ $(document).on('ready', function(){
       message: 'Зачекайте, будь ласка'
     });
   });
-  .ajaxStop(function () { $.unblockUI(); });
+  $(document).ajaxStop(function () { $.unblockUI(); });
 });
 
 String.prototype.translit = (function () {
