@@ -19,7 +19,8 @@ class UserService < BaseService
     {
       email: data[:email],
       password: data[:password],
-      confirm_password: data[:confirm_password]
+      confirm_password: data[:confirm_password],
+      activate_token: SecureRandom.hex
     }
   end
 

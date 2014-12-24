@@ -270,4 +270,20 @@ $(document).ready(function() {
       url: 'https://query.yahooapis.com/v1/public/yql?q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDUAH,EURUAH,RUBUAH%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback='
     });
   }
+
+  $('.permision_select').select2({width: '130px', minimumResultsForSearch: '5', placeholder: "Права доступу" });
+
+  $('.glyphicon-user').click(function(){
+    a = $(this).parent().next();
+
+    if($(this).hasClass('checked')) {
+      a.hide();
+      $(this).removeClass('checked');
+    }
+    else
+    {
+      a.show();
+      $(this).addClass('checked');
+    }
+  });
 });

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'destroy/sessions' => 'sessions#destroy'
   get 'users/confirm_registration'
   get 'settings/registrations/get_koatuu'
+  post 'users/create_delegate'
 
   resources :sessions, only: [:new, :create]
   resources :users, only: [:new, :create]

@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  before_create { generate_token(:activate_token) }
   validates :email, :password, :confirm_password, presence: true
   validates :password, :confirm_password, length: { minimum: 6, maximum: 32 }
   validates :email, email: true, uniqueness: true
@@ -36,8 +35,7 @@ class User < ActiveRecord::Base
   private
 
   def send_activation_token
-    self.update_column(:activate_token, SecureRandom.hex)
-    UserMailer.welcome_email(self).deliver!
+    UserMailer.welcome_email(self).deliver! if self.activate_token
   end
   
   def is_valid_confirm_password?
