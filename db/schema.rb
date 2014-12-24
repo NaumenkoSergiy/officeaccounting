@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141224090518) do
+ActiveRecord::Schema.define(version: 20141224184200) do
 
   create_table "bank_accounts", force: true do |t|
     t.integer "company_id"
@@ -49,6 +49,11 @@ ActiveRecord::Schema.define(version: 20141224090518) do
     t.string  "invoice_type"
     t.string  "subcount1"
     t.string  "subcount2"
+  end
+
+  create_table "koatuus", force: true do |t|
+    t.string "code"
+    t.string "name"
   end
 
   create_table "kveds", force: true do |t|
