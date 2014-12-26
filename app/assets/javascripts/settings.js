@@ -271,19 +271,24 @@ $(document).ready(function() {
     });
   }
 
-  $('.permision_select').select2({width: '130px', minimumResultsForSearch: '5', placeholder: "Права доступу" });
+  $('.role').select2({width: '130px', minimumResultsForSearch: '5', placeholder: "Права доступу" });
 
-  $('.glyphicon-user').click(function(){
-    a = $(this).parent().next();
+  $('.checkPdv').click(function(){
+    $.ajax({
+      type: 'PUT',
+      url: '/settings/registrations/1',
+      data: {registrations: {pdv: $(this).is(':checked')}},
+    });
+  })
 
-    if($(this).hasClass('checked')) {
-      a.hide();
-      $(this).removeClass('checked');
-    }
-    else
-    {
-      a.show();
-      $(this).addClass('checked');
-    }
-  });
+  $('#bookkeeper').click(function() {
+    $.ajax({
+      type: 'POST',
+      url: '/settings/officials',
+      data: $('#official_form_bookkeeper').serialize(),
+      success: function() {
+        document.location = document.location;
+      }
+    });
+  })
 });

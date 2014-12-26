@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create]
   resources :users, only: [:new, :create]
-  resources :settings, only: [:index]
+  resources :settings, only: [:index, :show]
   resources :counterparties
   resources :registers
   resources :password_resets

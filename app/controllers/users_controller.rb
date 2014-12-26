@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def create_delegate
+    binding.pry
     user = User.new(delegate_params)
     company = Company.find(params[:company_id])
     
@@ -41,7 +42,8 @@ class UsersController < ApplicationController
       password: 'empty_password',
       confirm_password: 'empty_password',
       activate_token: nil,
-      password_reset_sent_at: Time.zone.now
+      password_reset_sent_at: Time.zone.now,
+      role: params[:role]
     }
   end
 

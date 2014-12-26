@@ -1,0 +1,112 @@
+- if can? :update, Official
+  = label_tag ' Директор (ПІБ)'
+  br
+  = link_to @director.name, '#', data: { placement: 'right', name: :name, pk: @company, model: 'official', url: "officials/#{@director.id}", xeditable: true }
+
+  br
+  = label_tag 'ІПН'
+  br
+  = link_to @director.tin, '#', data: { placement: 'right', name: :tin, pk: @company, model: 'official', url: "officials/#{@director.id}", xeditable: true }
+
+  br
+  = label_tag 'Номер телефону'
+  br
+  = link_to @director.phone, '#', data: { placement: 'right', name: :phone, pk: @company, model: 'official', url: "officials/#{@director.id}", xeditable: true }
+
+  br
+  = label_tag 'Електронна пошта'
+  br
+  = link_to @director.email, '#', data: { placement: 'right', name: :email, pk: @company, model: 'official', url: "officials/#{@director.id}", xeditable: true }
+  br
+
+  - if @bookkeeper
+    .bookkeeper
+      = label_tag 'Головний бухгалтер (ПІБ)'
+      br
+      = link_to @bookkeeper.name, '#', data: { placement: 'right', name: :name, pk: @company, model: 'official', url: "officials/#{@bookkeeper.id}}", xeditable: true }
+
+      br
+      = label_tag 'ІПН'
+      br
+      = link_to @bookkeeper.tin, '#', data: { placement: 'right', name: :tin, pk: @company, model: 'official', url: "officials/#{@bookkeeper.id}}", xeditable: true }        
+
+      br
+      = label_tag 'Номер телефону'
+      br
+      = link_to @bookkeeper.phone, '#', data: { placement: 'right', name: :phone, pk: @company, model: 'official', url: "officials/#{@bookkeeper.id}}", xeditable: true }
+
+      br
+      = label_tag 'Електронна пошта'
+      br
+      = link_to @bookkeeper.email, '#', data: { placement: 'right', name: :email, pk: @company, model: 'official', url: "officials/#{@bookkeeper.id}}", xeditable: true }
+      br
+
+  - else
+    h3
+      | Додати головного бухгалтера
+    = form_tag('', id: :official_form_bookkeeper) do 
+      = label_tag 'ПІБ'
+      br
+      = text_field_tag :name, nil, placeholder: "Введіть ПІБ Головного бухгалтера"
+
+      br
+      = label_tag 'ІПН'
+      br
+      = text_field_tag :tin, nil, :class => 'number', placeholder: 'Введіть код ІПН', maxlength: 10
+
+      br
+      = label_tag 'Номер телефону'
+      br
+      = text_field_tag :phone
+
+      br
+      = label_tag 'Електронна пошта'
+      br
+      = text_field_tag :email
+      = text_field_tag :official_type, 'Головний бухгалтер', type: :hidden
+      = text_field_tag :company_id, @company.id, type: :hidden
+      br
+      = button_tag "Додати", id: :bookkeeper
+
+- else
+  = label_tag ' Директор (ПІБ)'
+  br
+  = @director.name
+
+  br
+  = label_tag 'ІПН'
+  br
+  = @director.tin
+
+  br
+  = label_tag 'Номер телефону'
+  br
+  = @director.phone
+
+  br
+  = label_tag 'Електронна пошта'
+  br
+  = @director.email
+  br
+
+  - if @bookkeeper
+    .bookkeeper
+      = label_tag 'Головний бухгалтер (ПІБ)'
+      br
+      = @bookkeeper.name
+
+      br
+      = label_tag 'ІПН'
+      br
+      = @bookkeeper.tin      
+
+      br
+      = label_tag 'Номер телефону'
+      br
+      = @bookkeeper.phone
+
+      br
+      = label_tag 'Електронна пошта'
+      br
+      = @bookkeeper.email
+      br

@@ -129,7 +129,6 @@ ActiveRecord::Schema.define(version: 20150108065922) do
   create_table "user_companies", force: true do |t|
     t.integer "company_id"
     t.integer "user_id"
-    t.string  "permissions"
   end
 
   create_table "users", force: true do |t|
@@ -140,6 +139,7 @@ ActiveRecord::Schema.define(version: 20150108065922) do
     t.boolean  "is_admin",               default: false
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "role"
   end
 
 end

@@ -1,0 +1,32 @@
+.hed_company
+  .row
+    .col.col-lg-6
+      h1
+        | Налаштування компанії:
+      h2
+        = @company.full_name
+    .col.col-lg-6
+      - if can? :create_delegate, User
+        h3
+          | Налаштування делегування компанією
+        = form_tag users_create_delegate_path, method: :post do
+          = select_tag :role, options_for_select(User::ROLES), class: "role"
+          = text_field_tag :company_id, @company.id, type: :hidden
+          = text_field_tag  :email, nil, placeholder: "Електронна адресса", class: :permision_email
+          = submit_tag 'Ok'
+.row
+  .col.col-lg-6
+    = render 'companies'
+    br
+    = render 'registrations'
+
+  .col.col-lg-6
+    = label_tag 'Система оподаткування'
+    br
+    - if can? :update, Company
+      = link_to @company.registration.tax_system, '#', data: { placement: 'bottom', value: @company.registration.tax_system, type: 'select', source: ['Загальна', 'Спрощена'], pk: @company, model: "registration", url: "registrations/#{@company.id}", xeditable: true, name: :tax_system }
+    - else
+      = @company.registration.tax_system
+    h3
+      | Інформація про посадових осіб
+    = render 'official'

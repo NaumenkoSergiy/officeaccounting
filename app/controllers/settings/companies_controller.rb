@@ -2,6 +2,8 @@ module Settings
   class CompaniesController < ApplicationController
     before_filter :redirect_to_new_session
     before_filter :check_creating_company_step, only: [:new]
+    before_action :set_company, only: [:update]
+    load_and_authorize_resource
 
     def new
       @companies = not_current_user_companies || {}
@@ -14,6 +16,16 @@ module Settings
         current_user.user_companies.create(company: company) #ToDo move it to the model in the after_save
       else
         flash[:error] = 'Помилкові дані'
+      end
+    end
+    
+    def update
+      respond_to do |format|
+        if @company.update(company_params)
+          format.json { head :no_content }
+        else
+          format.json { render json: @company.errors, status: :unprocessable_entity }
+        end
       end
     end
 
@@ -52,6 +64,10 @@ module Settings
     def current_user_has_company? company_id
       user_companies = UserCompany.user_companies(current_user.id).pluck(:company_id).compact
       user_companies.include? company_id
+    end
+
+    def set_company
+      @company = Company.find(params[:id])
     end
   end
 end

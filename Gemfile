@@ -35,6 +35,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'bootstrap-sass'
 gem 'bootstrap-x-editable-rails'
 gem 'state_machine'
+gem 'cancancan', '~> 1.9'
 
 group :development, :test do
   gem 'pry'

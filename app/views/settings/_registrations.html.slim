@@ -1,0 +1,138 @@
+- if can? :update, Registration
+  = label_tag 'Організаційно-правова форма (код та назва)'
+  br
+  =link_to @company.registration.form_of_incorporation, '#', data: { placement: 'bottom', value: @company.registration.form_of_incorporation, type: 'select2', source: @incorporation_forms.to_json, pk: @company, model: "registration", url: "registrations/#{@company.id}", xeditable: true, name: :form_of_incorporation}
+
+  br
+  = label_tag 'Код ЄРДПОУ'
+  br
+  = link_to @company.registration.edrpou, '#', data: { placement: 'right', name: :edrpou, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
+
+  br
+  = label_tag 'Коди КВЕД'
+  br
+  = link_to @company.registration.nace_codes, '#', data: { placement: 'right', name: :nace_codes, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
+
+  br
+  = label_tag 'Розташування за КОАТУУ'
+  br
+  = link_to @company.registration.koatuu, '#', data: { placement: 'right', name: :koatuu, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
+
+  br
+  = label_tag 'Клас професійного ризику'
+  br
+  =link_to @company.registration.risk_class, '#', data: { placement: 'bottom', value: @company.registration.risk_class, type: 'select', source: (1..67).step(1), pk: @company, model: "registration", url: "registrations/#{@company.id}", xeditable: true, name: :risk_class }
+
+  br
+  = label_tag 'Чи є підприємство платником податку на додану вартість (ПДВ)?'
+  br
+  = check_box_tag '', '', @company.registration.pdv, class: "checkPdv"
+
+  br
+  = label_tag 'Номер свідоцтва ПДВ'
+  br
+  = link_to @company.registration.tin, '#', data: { placement: 'right', name: :tin, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
+
+  br
+  = label_tag 'Дата державної реєстрації'
+  br
+  = link_to @company.registration.state_registration_date, '#', data: { type: 'date', placement: 'right', name: :state_registration_date, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
+
+  br
+  = label_tag 'Номер реєстрації'
+  br
+  = link_to @company.registration.registration_number, '#', data: { placement: 'right', name: :registration_number, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
+
+  br
+  = label_tag 'Ким зареєстровано'
+  br
+  = link_to @company.registration.registered_by, '#', data: { placement: 'right', name: :registered_by, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
+
+  br
+  = label_tag 'Реєстрація у податковій'
+  br
+  = link_to @company.registration.date_registered_in_revenue_commissioners, '#', data: { type: 'date', placement: 'right', name: :date_registered_in_revenue_commissioners, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
+
+  br
+  = label_tag 'Номер реєстрації у податковій'
+  br
+  = link_to @company.registration.number_registered_in_revenue_commissioners, '#', data: { placement: 'right', name: :number_registered_in_revenue_commissioners, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
+
+  br
+  = label_tag 'Дата реєстрації у пенсійному фонді'
+  br
+  = link_to @company.registration.registered_in_pension_fund, '#', data: { type: 'date', placement: 'right', name: :registered_in_pension_fund, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
+
+  br
+  = label_tag 'Код пенсійного фонду'
+  br
+  = link_to @company.registration.code_registered_in_pension_fund, '#', data: { placement: 'right', name: :code_registered_in_pension_fund, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
+
+- else
+  = label_tag 'Організаційно-правова форма (код та назва)'
+  br
+  = @company.registration.form_of_incorporation
+
+  br
+  = label_tag 'Код ЄРДПОУ'
+  br
+  = @company.registration.edrpou
+
+  br
+  = label_tag 'Коди КВЕД'
+  br
+  = @company.registration.nace_codes
+
+  br
+  = label_tag 'Розташування за КОАТУУ'
+  br
+  = @company.registration.koatuu
+
+  br
+  = label_tag 'Клас професійного ризику'
+  br
+  = @company.registration.risk_class
+
+  br
+  = label_tag 'Чи є підприємство платником податку на додану вартість (ПДВ)?'
+  br
+  = check_box_tag '', '', @company.registration.pdv
+  br
+  = label_tag 'Номер свідоцтва ПДВ'
+  br
+  = @company.registration.tin
+
+  br
+  = label_tag 'Дата державної реєстрації'
+  br
+  = @company.registration.state_registration_date
+
+  br
+  = label_tag 'Номер реєстрації'
+  br
+  = @company.registration.registration_number
+
+  br
+  = label_tag 'Ким зареєстровано'
+  br
+  = @company.registration.registered_by
+
+  br
+  = label_tag 'Реєстрація у податковій'
+  br
+  = @company.registration.date_registered_in_revenue_commissioners
+
+  br
+  = label_tag 'Номер реєстрації у податковій'
+  br
+  = @company.registration.number_registered_in_revenue_commissioners
+
+  br
+  = label_tag 'Дата реєстрації у пенсійному фонді'
+  br
+  = @company.registration.registered_in_pension_fund
+
+  br
+  = label_tag 'Код пенсійного фонду'
+  br
+  = @company.registration.code_registered_in_pension_fund

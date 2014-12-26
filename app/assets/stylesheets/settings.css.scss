@@ -1,6 +1,4 @@
-#nace_codes_tag {
-  width: 100px;
-}
+#nace_codes_tag { width: 100px; }
 
 .kurs_full {
   display: table;
@@ -11,18 +9,13 @@
   position: absolute;
   right: 0px;
 
-.title_company { 
-  font-size: 25px;
-  display: table;
-  
-  a { text-decoration: none; }
-}
+.hed_company { 
+  height: 144px;
 
-.name_company {
   #email {
-    width: auto;
-    height: 27px;
+    width: 170px;
+    height: 26px;
   }
-
-  .delegate-user { width: 620px; }
 }
+
+
