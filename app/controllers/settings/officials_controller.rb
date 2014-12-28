@@ -4,6 +4,7 @@ module Settings
     before_filter :check_creating_company_step, only: [:new]
     before_filter :define_official
     before_action :set_officials, only: [:update]
+    load_and_authorize_resource
 
     def new
     end

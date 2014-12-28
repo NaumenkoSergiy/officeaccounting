@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :companies, only: [:new, :create, :update]
     resources :registrations, only: [:new, :create, :update]
     resources :officials, only: [:new, :create, :update]
-    resources :bank_accounts, only: [:new, :create]
+    resources :bank_accounts, only: [:new, :create, :update]
 
     post 'companies/add_existing_company'
   end

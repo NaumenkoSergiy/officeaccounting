@@ -29,11 +29,11 @@
   = check_box_tag '', '', @company.registration.pdv, class: "checkPdv"
 
   br
-  = label_tag 'Номер свідоцтва ПДВ'
-  br
-  = link_to @company.registration.tin, '#', data: { placement: 'right', name: :tin, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
-
-  br
+  - if @company.registration.pdv
+    = label_tag 'Номер свідоцтва ПДВ'
+    br
+    = link_to @company.registration.tin, '#', data: { placement: 'right', name: :tin, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
+    br
   = label_tag 'Дата державної реєстрації'
   br
   = link_to @company.registration.state_registration_date, '#', data: { type: 'date', placement: 'right', name: :state_registration_date, pk: @company, model: 'registration', url: "registrations/#{@company.id}", xeditable: true }
@@ -93,14 +93,11 @@
   br
   = @company.registration.risk_class
 
-  br
-  = label_tag 'Чи є підприємство платником податку на додану вартість (ПДВ)?'
-  br
-  = check_box_tag '', '', @company.registration.pdv
-  br
-  = label_tag 'Номер свідоцтва ПДВ'
-  br
-  = @company.registration.tin
+  - if @company.registration.pdv
+    br
+    = label_tag 'Номер свідоцтва ПДВ'
+    br
+    = @company.registration.tin
 
   br
   = label_tag 'Дата державної реєстрації'

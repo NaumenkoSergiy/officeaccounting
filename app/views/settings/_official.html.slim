@@ -42,31 +42,35 @@
       br
 
   - else
-    h3
+    br
+    a onclick='$(".bookkeeper").toggle();'
       | Додати головного бухгалтера
-    = form_tag('', id: :official_form_bookkeeper) do 
-      = label_tag 'ПІБ'
-      br
-      = text_field_tag :name, nil, placeholder: "Введіть ПІБ Головного бухгалтера"
+    .bookkeeper style='display:none;'
+      h3
+        | Додати головного бухгалтера
+      = form_tag('', id: :official_form_bookkeeper) do
+        = label_tag 'ПІБ'
+        br
+        = text_field_tag :name, nil, placeholder: "Введіть ПІБ Головного бухгалтера"
 
-      br
-      = label_tag 'ІПН'
-      br
-      = text_field_tag :tin, nil, :class => 'number', placeholder: 'Введіть код ІПН', maxlength: 10
+        br
+        = label_tag 'ІПН'
+        br
+        = text_field_tag :tin, nil, :class => 'number', placeholder: 'Введіть код ІПН', maxlength: 10
 
-      br
-      = label_tag 'Номер телефону'
-      br
-      = text_field_tag :phone
+        br
+        = label_tag 'Номер телефону'
+        br
+        = text_field_tag :phone
 
-      br
-      = label_tag 'Електронна пошта'
-      br
-      = text_field_tag :email
-      = text_field_tag :official_type, 'Головний бухгалтер', type: :hidden
-      = text_field_tag :company_id, @company.id, type: :hidden
-      br
-      = button_tag "Додати", id: :bookkeeper
+        br
+        = label_tag 'Електронна пошта'
+        br
+        = text_field_tag :email
+        = text_field_tag :official_type, 'Головний бухгалтер', type: :hidden
+        = text_field_tag :company_id, @company.id, type: :hidden
+        br
+        = button_tag "Додати", id: :bookkeeper
 
 - else
   = label_tag ' Директор (ПІБ)'
