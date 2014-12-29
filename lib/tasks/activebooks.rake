@@ -35,8 +35,16 @@ namespace :activebooks do
     end
   end
 
+  task add_form_of_article_cash_flows: :environment do
+    Constants::FORMS_OF_ARTICLE_CASH_FLOWS.each do |form|
+      ArticlesCashFlows.create({code: form[:code], name: form[:name]})
+    end
+  end
+
   task :all => [:add_form_of_incorporation,
                 :add_form_of_invoice,
                 :add_kved,
-                :add_koatuu]
+                :add_koatuu,
+                :add_form_of_article_cash_flows
+                ]
 end
