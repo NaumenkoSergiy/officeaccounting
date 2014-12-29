@@ -28,7 +28,6 @@ class UsersController < ApplicationController
     if user.save
       user.user_companies.create(company: company)
       UserMailer.create_delegate(user, company.full_name).deliver!
-    else
     end
     redirect_to root_path
   end
