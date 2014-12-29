@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   after_create :send_activation_token
 
-  ROLES = %w[read read-write]
+  ROLES = %w[Перегляд Редагування]
   
   def activated?
     activate_token.blank?

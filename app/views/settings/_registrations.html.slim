@@ -27,7 +27,7 @@
   = label_tag 'Чи є підприємство платником податку на додану вартість (ПДВ)?'
   br
   = check_box_tag '', '', @company.registration.pdv, class: "checkPdv"
-
+  = hidden_field '', 'registration_id', id: :registration_id, value: @company.registration.id
   br
   - if @company.registration.pdv
     = label_tag 'Номер свідоцтва ПДВ'

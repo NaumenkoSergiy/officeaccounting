@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
 
   def create_delegate
-    binding.pry
     user = User.new(delegate_params)
     company = Company.find(params[:company_id])
     

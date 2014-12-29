@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
   
   def initialize(user)
-    can :manage, :all if user.role == "read-write"
-    can :read, :all if user.role == "read"
+    can :manage, :all if user.role == "Редагування"
+    can :read, :all if user.role == "Перегляд"
   end
 end

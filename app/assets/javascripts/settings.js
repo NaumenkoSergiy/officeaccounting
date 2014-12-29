@@ -271,13 +271,18 @@ $(document).ready(function() {
     });
   }
 
-  $('.role').select2({width: '130px', minimumResultsForSearch: '5', placeholder: "Права доступу" });
+  $('.role').select2({ width: '130px', minimumResultsForSearch: '5' });
 
   $('.checkPdv').click(function(){
+    id = $('#registration_id').val();
+    
     $.ajax({
       type: 'PUT',
-      url: '/settings/registrations/1',
-      data: {registrations: {pdv: $(this).is(':checked')}},
+      url: '/settings/registrations/' + id,
+      data: {registration: {pdv: $(this).is(':checked')}},
+      success: function() {
+        document.location = document.location;
+      }
     });
   })
 

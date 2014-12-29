@@ -14,7 +14,9 @@ class Registration < ActiveRecord::Base
   validates_numericality_of :edrpou,
                             :koatuu,
                             :risk_class,
-                            :number_registered_in_revenue_commissioners
+                            :number_registered_in_revenue_commissioners,
+                            :registration_number,
+                            :code_registered_in_pension_fund
 
   belongs_to :company
 
