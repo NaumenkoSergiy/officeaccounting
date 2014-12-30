@@ -5,7 +5,7 @@ h2
 
 - current_user.companies.each do |company|
   h3
-    =link_to company.full_name, "settings/#{company.id}"
+    = link_to company.full_name, "settings/#{ company.id }"
     | (
-    =company.short_name
+    = company.short_name
     | )

@@ -2,7 +2,7 @@ module Settings
   class CompaniesController < ApplicationController
     before_filter :redirect_to_new_session
     before_filter :check_creating_company_step, only: [:new]
-    before_action :set_company, only: [:update]
+    before_action :set_company, only: [:update, :new, :create]
     load_and_authorize_resource
 
     def new
@@ -67,7 +67,7 @@ module Settings
     end
 
     def set_company
-      @company = Company.find(params[:id])
+      @company = params[:id] ? Company.find(params[:id]) : Company.new
     end
   end
 end

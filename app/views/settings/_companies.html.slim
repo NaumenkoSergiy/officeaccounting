@@ -1,29 +1,29 @@
 - if can? :update, Company
   = label_tag 'Назва повна'
   br
-  = link_to @company.full_name, '#', data: { placement: 'right', name: :full_name, pk: @company, model: 'company', url: "companies/#{@company.id}", xeditable: true }
+  = link_to @company.full_name, '#', data: { placement: 'right', name: :full_name, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
 
   br
   = label_tag 'Назва коротка'
   br
-  = link_to @company.short_name, '#', data: { placement: 'right', name: :short_name, pk: @company, model: 'company', url: "companies/#{@company.id}", xeditable: true }
+  = link_to @company.short_name, '#', data: { placement: 'right', name: :short_name, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
 
   br
   = label_tag 'Назва латиницею'
   br
-  = link_to @company.latin_name, '#', data: { placement: 'right', name: :latin_name, pk: @company, model: 'company', url: "companies/#{@company.id}", xeditable: true }
+  = link_to @company.latin_name, '#', data: { placement: 'right', name: :latin_name, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
   br
   = label_tag 'Юридична адреса'
   br
-  = link_to @company.juridical_address, '#', data: { placement: 'right', name: :juridical_address, pk: @company, model: 'company', url: "companies/#{@company.id}", xeditable: true }
+  = link_to @company.juridical_address, '#', data: { placement: 'right', name: :juridical_address, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
   br
   = label_tag 'Адреса фактична'
   br
-  = link_to @company.actual_address, '#', data: { placement: 'right', name: :actual_address, pk: @company, model: 'company', url: "companies/#{@company.id}", xeditable: true, emptytext: 'Не вказано' }
+  = link_to @company.actual_address, '#', data: { placement: 'right', name: :actual_address, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true, emptytext: 'Не вказано' }
   br
   = label_tag 'Бажаний формат нумерації документів'
   br
-  = link_to @company.numbering_format, '#', data: { placement: 'right', name: :numbering_format, pk: @company, model: 'company', url: "companies/#{@company.id}", xeditable: true }
+  = link_to @company.numbering_format, '#', data: { placement: 'right', name: :numbering_format, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
   
 - else
   = label_tag 'Назва повна'

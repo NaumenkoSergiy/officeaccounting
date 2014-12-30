@@ -10,8 +10,11 @@ class User < ActiveRecord::Base
   has_many :counterparties
 
   after_create :send_activation_token
-
-  ROLES = %w[Перегляд Редагування]
+  
+  ROLES_TITLES = {
+    'Перегляд' => :view,
+    'Редагування' => :edit
+  }
   
   def activated?
     activate_token.blank?
@@ -37,7 +40,7 @@ class User < ActiveRecord::Base
   private
 
   def send_activation_token
-    UserMailer.welcome_email(self).deliver! if self.activate_token
+    UserMailer.welcome_email(self).deliver! unless self.activated?
   end
   
   def is_valid_confirm_password?

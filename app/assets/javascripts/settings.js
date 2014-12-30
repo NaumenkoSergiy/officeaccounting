@@ -16,6 +16,13 @@ $(document).ready(function() {
     }
   });
 
+  if($(".checkPdv").is(':checked')){
+    $('.numberPdv').show();
+  }
+  else {
+    $('.numberPdv').hide();
+  }
+
   $('input.number').numeric({ negative : false, decimal: false });
 
   $.datepicker.setDefaults( $.datepicker.regional["uk"] );
@@ -251,14 +258,14 @@ $(document).ready(function() {
     }
   });
 
-  $('#pdv').click(function(){
+  $('#registration_pdv').click(function(){
     if($(this).hasClass('checked')) {
-      $('#tin').attr('disabled', 'disabled');
+      $('#registration_tin').attr('disabled', 'disabled');
       $(this).removeClass('checked');
     }
     else
     {
-      $('#tin').removeAttr('disabled');
+      $('#registration_tin').removeAttr('disabled');
       $(this).addClass('checked');
     }
   });
@@ -281,18 +288,13 @@ $(document).ready(function() {
       url: '/settings/registrations/' + id,
       data: {registration: {pdv: $(this).is(':checked')}},
       success: function() {
-        document.location = document.location;
-      }
-    });
-  })
 
-  $('#bookkeeper').click(function() {
-    $.ajax({
-      type: 'POST',
-      url: '/settings/officials',
-      data: $('#official_form_bookkeeper').serialize(),
-      success: function() {
-        document.location = document.location;
+        if($(".checkPdv").is(':checked')){
+          $('.numberPdv').show();
+        }
+        else {
+          $('.numberPdv').hide();
+        }
       }
     });
   })

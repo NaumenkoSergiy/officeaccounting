@@ -6,7 +6,7 @@ module Settings
     load_and_authorize_resource
 
     def new
-      @incorporation_forms = get_incorporation_forms #TODO move to the model
+      @incorporation_forms = get_incorporation_forms
       @koatuu              = []
     end
 

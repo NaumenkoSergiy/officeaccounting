@@ -4,6 +4,7 @@ module Settings
     before_filter :check_creating_company_step, only: [:new]
     before_filter :define_official
     before_action :set_officials, only: [:update]
+    before_action :set_company, only: [:create]
     load_and_authorize_resource
 
     def new
@@ -48,7 +49,11 @@ module Settings
     end
     
     def set_officials
-      @official = Official.find(params[:id])
+      @official = params[:id] ? Official.find(params[:id]) : Official.new
+    end
+
+    def set_company
+      @company ||= current_user.companies.last
     end
   end
 end

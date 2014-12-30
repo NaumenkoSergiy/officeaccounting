@@ -6,3 +6,11 @@
     | document.location = "#{new_settings_bank_account_path}";
   - else
     | document.location = "#{new_settings_official_path(official_type: 'bookeeper')}";
+
+
+
+  
+  / | $(".bookkeeper").html("
+  / = j render 'settings/bookkeeper'
+  / |");
+  / | $('.OpenBookkeeper').hide();
