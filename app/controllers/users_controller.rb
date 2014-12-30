@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :define_user_service
+  before_filter :redirect_to_new_session, only: [:create_delegate]
 
   def new
     redirect_to root_path if session[:user_id]
