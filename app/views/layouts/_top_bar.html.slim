@@ -2,6 +2,9 @@
   nav.navbar.navbar-default role="navigation"
     .collapse.navbar-collapse
       ul.pull-right.navbar-right
+        -if current_user
+          .kurs
+           = render 'layouts/currency'
         li.dropdown
           .dropdown-toggle data-toggle="dropdown" href="#"
             | Налаштування
