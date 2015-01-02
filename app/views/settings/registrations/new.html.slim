@@ -2,80 +2,91 @@ div
   h3
     | Блок2 (інформація про реєстрацію)
 
-= form_tag settings_registrations_path, remote: true, method: :post, id: :registration_form do
-  = label_tag 'Організаційно-правова форма (код та назва)'
+= form_for [:settings, @registration], remote: true, id: :registration_form do |f|
+  = f.label 'Організаційно-правова форма (код та назва)'
   br
-  = select_tag(:form_of_incorporation, options_for_select(@incorporation_forms))
+  = f.select :form_of_incorporation, options_for_select(@incorporation_forms)
   
   br
-  = label_tag 'Код ЄРДПОУ'
+  = f.label 'Код ЄРДПОУ'
   br
-  = text_field_tag :edrpou, nil, :class => 'number', placeholder: 'Введіть код ЄРДПОУ вашого підприємства', maxlength: 8
+  = f.text_field :edrpou, :class => 'number', placeholder: 'Введіть код ЄРДПОУ вашого підприємства', maxlength: 8
 
   br
-  = label_tag 'коди КВЕД'
+  = f.label 'коди КВЕД'
   br
-  = text_field_tag :nace_codes
+  = f.text_field :nace_codes
 
   br
-  = label_tag 'розташування за КОАТУУ'
+  = f.label 'розташування за КОАТУУ'
   br
-  = text_field_tag :koatuu, nil, :class => 'number', placeholder: 'Введіть код розташування за КОАТУУ', maxlength: 10
+  = f.text_field(:koatuu)
 
   br
-  = label_tag 'клас професійного ризику'
+  = f.label 'клас професійного ризику'
   br
-  = select('', 'risk_class', (1..67).to_a)
+  = f.select :risk_class, (1..67).to_a
 
   br
-  = label_tag 'Чи є підприємство платником податку на додану вартість (ПДВ)?'
+  = f.label 'Чи є підприємство платником податку на додану вартість (ПДВ)?'
   br
-  = check_box_tag :pdv
+  = f.check_box :pdv
 
   br
-  = label_tag 'номер свідоцтва ПДВ'
+  = f.label 'номер свідоцтва ПДВ'
   br
-  = text_field_tag :tin, nil, :class => 'number', placeholder: 'Введіть номер свідоцтва ПДВ вашого підприємства', maxlength: 10, disabled: :disabled
+  = f.text_field :tin, :class => 'number', placeholder: 'Введіть номер свідоцтва ПДВ вашого підприємства', maxlength: 10, disabled: :disabled
 
   br
-  = label_tag 'дата державної реєстрації'
+  = f.label 'дата державної реєстрації'
   br
-  = text_field_tag :state_registration_date, nil, :class => 'date_reg'
+  = f.text_field :state_registration_date, :class => 'date_reg'
 
   br
-  = label_tag 'номер реєстрації'
+  = f.label 'номер реєстрації'
   br
-  = text_field_tag :registration_number, nil, :class => 'number', placeholder: 'Введіть номер реєстрації вашого підприємства', maxlength: 10
+  = f.text_field :registration_number, :class => 'number', placeholder: 'Введіть номер реєстрації вашого підприємства', maxlength: 10
 
   br
-  = label_tag 'ким зареєстровано'
+  = f.label 'ким зареєстровано'
   br
-  = text_field_tag :registered_by
+  = f.text_field :registered_by
 
   br
-  = label_tag 'реєстрація у податковій'
+  = f.label 'реєстрація у податковій'
   br
-  = text_field_tag :date_registered_in_revenue_commissioners, nil, :class => 'date_reg'
+  = f.text_field :date_registered_in_revenue_commissioners, :class => 'date_reg'
 
   br
-  = label_tag 'номер реєстрації у податковій'
+  = f.label 'місце реєстрації у податковій'
   br
-  = text_field_tag :number_registered_in_revenue_commissioners, nil, :class => 'number', placeholder: 'Введіть номер реєстрації у податковій', maxlength: 12
+  = f.select :tax_inspection, options_for_select(TaxInspection.get_all), class: 'select2'
 
   br
-  = label_tag 'дата реєстрації у пенсійному фонді'
+  = f.label 'номер реєстрації у податковій'
   br
-  = text_field_tag :registered_in_pension_fund, nil, :class => 'date_reg'
+  = f.text_field :number_registered_in_revenue_commissioners, :class => 'number', placeholder: 'Введіть номер реєстрації у податковій', maxlength: 12
 
   br
-  = label_tag 'код пенсійного фонду'
+  = f.label 'дата реєстрації у пенсійному фонді'
   br
-  = text_field_tag :code_registered_in_pension_fund, nil, :class => 'number', placeholder: 'Введіть код пенсійного фонду', maxlength: 4
+  = f.text_field :registered_in_pension_fund, :class => 'date_reg'
 
   br
-  = label_tag 'система оподаткування'
+  = f.label 'код пенсійного фонду'
   br
-  = select('', 'tax_system', ['Загальна', 'Спрощена'])
+  = f.text_field :code_registered_in_pension_fund, :class => 'number', placeholder: 'Введіть код пенсійного фонду', maxlength: 4
 
   br
-  = submit_tag "Далі"
+  = f.label 'система оподаткування'
+  br
+  = f.select :tax_system, ['Загальна', 'Спрощена']
+
+  br
+  = link_to 'Назад', new_settings_company_path(back: true)
+  = f.submit "Далі"
+
+javascript:
+  $('#registration_nace_codes').select2({ tags: #{@kveds},
+                             placeholder: "Додати код",
+                             width: 'calc(80% - 22px)'});

@@ -1,26 +1,25 @@
 module Settings
   class CompaniesController < ApplicationController
-    before_filter :has_company?, only: [:new, :create]
     before_filter :redirect_to_new_session
+    before_filter :check_creating_company_step, only: [:new]
 
     def new
-      if current_user.companies.present? && current_user.companies.last.registration.nil?
-        redirect_to new_settings_registration_path
-      elsif current_user.companies.present? && current_user.companies.last.officials.empty?
-        redirect_to new_settings_official_path
-      end
-
       @companies = not_current_user_companies || {}
     end
 
     def create
       company = Company.new(company_params)
+
       if company.valid? && company.save
-        current_user.user_companies.create(company: company)
-        redirect_to new_settings_registration_path
+        current_user.user_companies.create(company: company) #ToDo move it to the model in the after_save
       else
-        redirect_to new_settings_official_path, flash: { error: 'Помилкові дані' }
+        flash[:error] = 'Помилкові дані'
       end
+    end
+
+    def update
+      company = Company.find(params['id'])
+      flash[:error] = 'Помилкові дані' unless company.update_attributes company_params
     end
 
     def add_existing_company
@@ -37,15 +36,12 @@ module Settings
     private
 
     def company_params
-      params.permit(:full_name,
-                    :short_name,
-                    :latin_name,
-                    :juridical_address,
-                    :numbering_format)
-    end
-
-    def has_company?
-      return
+      params.require(:company).permit(:full_name,
+                                      :short_name,
+                                      :latin_name,
+                                      :juridical_address,
+                                      :actual_address,
+                                      :numbering_format)
     end
 
     def not_current_user_companies

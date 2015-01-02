@@ -1,28 +1,39 @@
 module Settings
   class OfficialsController < ApplicationController
     before_filter :redirect_to_new_session
+    before_filter :check_creating_company_step
+    before_filter :define_official
 
     def new
-      redirect_to new_settings_company_path if current_user.companies.present? &&
-        current_user.companies.last.registration &&
-        current_user.companies.last.officials.present?
     end
 
     def create
-      official = current_user.companies.last.officials.new officials_params
-
-      if official.valid? && official.save
-        render json: true
-      else
-        redirect_to new_settings_official_path,
-          flash: { error: 'Помилка створення інформації про посадових осіб' }
+      unless @official.update_attributes(officials_params) && @official.save
+        flash[:error] = 'Помилкові дані'
       end
+    end
+
+    def update
+      official = Official.find(params['id'])
+      flash[:error] = 'Помилкові дані' unless official.update_attributes officials_params
     end
 
     private
 
     def officials_params
-      params.permit(:official_type, :name, :tin, :phone, :email)
+      params.require(:official).permit(:official_type, :name, :tin, :phone, :email)
+    end
+
+    def define_official
+      @official = if params[:back]
+                    if params[:official_type] == 'bookeeper'
+                      @company.officials.find_by(official_type: :bookeeper)
+                    else
+                      @company.officials.find_by(official_type: :director)
+                    end
+                  else
+                    current_user.companies.last.officials.new
+                  end
     end
   end
 end

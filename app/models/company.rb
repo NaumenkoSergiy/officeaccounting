@@ -15,4 +15,8 @@ class Company < ActiveRecord::Base
   scope :non_current_user, -> {
     where(active: true)
   }
+
+  def complite?
+    registration && officials.present? && bank_account
+  end
 end

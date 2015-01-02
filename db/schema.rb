@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141224184200) do
+ActiveRecord::Schema.define(version: 20150102121723) do
 
   create_table "bank_accounts", force: true do |t|
     t.integer "company_id"
@@ -101,6 +101,11 @@ ActiveRecord::Schema.define(version: 20141224184200) do
     t.string  "code_registered_in_pension_fund"
     t.string  "tax_system"
     t.boolean "pdv"
+    t.string  "tax_inspection"
+  end
+
+  create_table "tax_inspections", force: true do |t|
+    t.string "name"
   end
 
   create_table "user_companies", force: true do |t|

@@ -1,91 +1,78 @@
 $(document).ready(function() {
-  $('#form_of_incorporation').select2({width: '850px'});
+  $('#registration_form_of_incorporation, #registration_tax_inspection').select2({width: '970px'});
+
+  $('#registration_koatuu').select2({
+    width: '970px',
+    minimumInputLength: 3,
+    ajax: {
+      url: '/settings/registrations/get_koatuu',
+      dataType: 'json',
+      data: function(term) {
+        return { q: term };
+      },
+      results: function(data) {
+        return { results: data['data'] };
+      }
+    }
+  });
 
   $('input.number').numeric({ negative : false, decimal: false });
 
   $.datepicker.setDefaults( $.datepicker.regional["uk"] );
-  $('.date_reg').datepicker({maxDate: 0});
+  $('.date_reg').datepicker({ maxDate: 0,
+                              changeMonth: true,
+                              changeYear: true,
+                              yearRange: 'c-100:c+1'
+                            });
 
-  $('#full_name').on('keyup', function() {
-    $('#latin_name').val($('#full_name').val().translit());
-  });
-
-  $('#nace_codes').tagsInput({
-    defaultText: 'Додати код'
+  $('#company_full_name').on('keyup', function() {
+    $('#company_latin_name').val($('#company_full_name').val().translit());
   });
   
   $('#phone').inputmask('+(380)-99-9999999');
 
-  $('#official_submit').on('click', function() {
-    officials_validate();
-    bookkeeper = $('#official_form_bookkeeper').valid();
-    bank = $('#bank_account').valid();
-    director = $('#official_form_director').valid();
-    if (bookkeeper && bank && director) {
-      $.ajax({
-        type: 'POST',
-        url: '/settings/officials',
-        data: $('#official_form_director').serialize()
-      });
-      if (!$('.bookkeeper').is(":hidden")) {
-        $.ajax({
-          type: 'POST',
-          url: '/settings/officials',
-          data: $('#official_form_bookkeeper').serialize()
-        });
-      }
-      $.ajax({
-        type: 'POST',
-        url: '/settings/bank_accounts',
-        data: $('#bank_account').serialize(),
-        success: function() {
-          document.location = '/settings';
-        }
-      });
-    }
-  });
   $('#company_form').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
       error.insertBefore(element);
     },
     rules: {
-      full_name: {
+      company_full_name: {
         required: true
       },
-      short_name: {
+      company_short_name: {
         required: true
       },
-      latin_name: {
+      company_latin_name: {
         required: true
       },
-      juridical_address: {
+      company_juridical_address: {
         required: true
       },
-      actual_address: {
+      company_actual_address: {
         required: true
       },
-      numbering_format: {
+      company_numbering_format: {
         required: true
       }
     },
     messages: {
-      full_name: {
+      company_full_name: {
         required: 'поле не може бути пустим'
       },
-      short_name: {
+      company_short_name: {
         required: 'поле не може бути пустим'
       },
-      latin_name: {
+      company_latin_name: {
         required: 'поле не може бути пустим'
       },
-      juridical_address: {
+      company_juridical_address: {
         required: 'поле не може бути пустим'
       },
-      actual_address: {
+      company_actual_address: {
         required: 'поле не може бути пустим'
       },
-      numbering_format: {
+      company_numbering_format: {
         required: 'поле не може бути пустим'
       }
     }
@@ -249,7 +236,7 @@ $(document).ready(function() {
     .on('blur focusout change keyup', function() {
       $(this).validate();
     });
-  $('#company_form, #registration_form').submit(function() {
+  $('form').submit(function() {
     if (!$(this).valid()) {
       return false
     }

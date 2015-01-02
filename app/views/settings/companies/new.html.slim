@@ -12,35 +12,35 @@ a.btn.btn-default.add_company
     = submit_tag 'Додати', class: 'btn btn-primary add_company_btn'
 
 .new_company
-  = form_tag settings_companies_path, method: :post, id: :company_form do
-    = label_tag 'Назва повна'
+  = form_for [:settings, @company], id: :company_form, remote: true do |f|
+    = f.label 'Назва повна'
     br
-    = text_field_tag :full_name
+    = f.text_field :full_name
 
     br
-    = label_tag 'Назва коротка'
+    = f.label 'Назва коротка'
     br
-    = text_field_tag :short_name
+    = f.text_field :short_name
 
     br
-    = label_tag 'Назва латиницею'
+    = f.label 'Назва латиницею'
     br
-    = text_field_tag :latin_name
+    = f.text_field :latin_name
 
     br
-    = label_tag 'Юридична адреса'
+    = f.label 'Юридична адреса'
     br
-    = text_field_tag :juridical_address
+    = f.text_field :juridical_address
 
     br
-    = label_tag 'Адреса фактична'
+    = f.label 'Адреса фактична'
     br
-    = text_field_tag :actual_address
+    = f.text_field :actual_address
 
     br
-    = label_tag 'Бажаний формат нумерації документів'
+    = f.label 'Бажаний формат нумерації документів'
     br
-    = text_field_tag :numbering_format
+    = f.text_field :numbering_format
 
     br
-    = submit_tag "Далі"
+    = f.submit "Далі"

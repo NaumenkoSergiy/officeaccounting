@@ -1,0 +1,29 @@
+.bookkeeper
+  h3
+    | Блок 4 (головний бухгалтер)
+
+= form_for [:settings, @official], remote: true do |f|
+  = f.label 'ПІБ'
+  br
+  = f.text_field :name, placeholder: "Введіть ПІБ Директора"
+
+  br
+  = f.label 'ІПН'
+  br
+  = f.text_field :tin, :class => 'number', placeholder: 'Введіть код ІПН', maxlength: 10
+
+  br
+  = f.label 'Номер телефону'
+  br
+  = f.text_field :phone
+
+  br
+  = f.label 'Електронна пошта'
+  br
+  = f.text_field :email
+  = f.hidden_field :official_type, value: :bookeeper
+    
+  br
+  = link_to 'Назад', new_settings_official_path(back: true)
+  = f.submit "Далі"
+  = link_to 'Пропустити', new_settings_bank_account_path
