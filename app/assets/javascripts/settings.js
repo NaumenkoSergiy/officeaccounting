@@ -276,4 +276,11 @@ $(document).ready(function() {
     }
   });
   $('a[href="' + this.location.pathname + '"]').parent().addClass('current');
+  
+  function currency () {
+    $.ajax({
+          type: 'GET',
+          url: 'https://query.yahooapis.com/v1/public/yql?q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDUAH,EURUAH,RUBUAH%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback='
+    });
+  }
 });
