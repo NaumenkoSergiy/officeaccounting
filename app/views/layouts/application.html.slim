@@ -7,6 +7,8 @@ html
     = csrf_meta_tags 
   body
     = render 'layouts/top_bar'
+    - if current_user
+      = render 'layouts/currency'
     = render 'layouts/notification'
     = render 'layouts/left_bar'
 
