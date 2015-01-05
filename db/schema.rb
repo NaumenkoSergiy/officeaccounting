@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20150108065922) do
     t.string  "mfo"
   end
 
+  create_table "banks", force: true do |t|
+    t.string  "name"
+    t.integer "code_edrpo"
+    t.integer "mfo"
+    t.string  "lawyer_adress"
+  end
+
   create_table "companies", force: true do |t|
     t.string "full_name"
     t.string "short_name"
