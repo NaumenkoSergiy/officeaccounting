@@ -14,10 +14,12 @@ class SettingsController < ApplicationController
 
   def get_incorporation_forms
     IncorporationForm.all
-                        .sort_by{|f| f.name}
-                        .collect do |f|
-                        {value: "#{f.number} #{f.name}", 
-                        text:  "#{f.number} #{f.name}"}
-                        end
+                     .sort_by{|f| f.name}
+                     .collect do |f|
+                       {
+                         value: "#{f.number} #{f.name}", 
+                         text:  "#{f.number} #{f.name}"
+                       }
+                     end
   end
 end

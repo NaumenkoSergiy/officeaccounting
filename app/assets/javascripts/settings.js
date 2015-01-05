@@ -23,6 +23,13 @@ $(document).ready(function() {
     $('.numberPdv').hide();
   }
 
+  
+  function numberPdv () {
+    $(".checkPdv").is(':checked') ? $('.numberPdv').show() : $('.numberPdv').hide();
+  }
+
+  numberPdv();
+
   $('input.number').numeric({ negative : false, decimal: false });
 
   $.datepicker.setDefaults( $.datepicker.regional["uk"] );
@@ -287,15 +294,7 @@ $(document).ready(function() {
       type: 'PUT',
       url: '/settings/registrations/' + id,
       data: {registration: {pdv: $(this).is(':checked')}},
-      success: function() {
-
-        if($(".checkPdv").is(':checked')){
-          $('.numberPdv').show();
-        }
-        else {
-          $('.numberPdv').hide();
-        }
-      }
+      success: numberPdv()
     });
   })
 });
