@@ -10,9 +10,7 @@ module Settings
     private
 
     def bank_account_params
-      params.require(:bank_account).permit(:account,
-                                           :bank,
-                                           :mfo)
+      params.require(:bank_account).permit(:account, :bank, :mfo)
     end
 
     def define_bank_account

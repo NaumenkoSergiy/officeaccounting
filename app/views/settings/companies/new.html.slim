@@ -8,7 +8,7 @@ a.btn.btn-default.add_company
 .add_existing_company style='display: none'
   br
   = form_tag settings_companies_add_existing_company_path, method: :post do
-    = select_tag 'company', options_for_select(@companies.collect {|c| [c[:company_name], c[:id]]})
+    = select_tag 'company', options_for_select(@companies)
     = submit_tag 'Додати', class: 'btn btn-primary add_company_btn'
 
 .new_company

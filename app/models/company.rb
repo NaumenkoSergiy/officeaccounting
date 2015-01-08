@@ -14,8 +14,9 @@ class Company < ActiveRecord::Base
 
   after_save { set_registration }
 
-  scope :non_current_user, -> {
-    where(active: true)
+  scope :non_current_user, -> (id) {
+    company_ids = UserCompany.user_companies(id).pluck(:company_id)
+    where("id not in (?)", company_ids.compact)
   }
 
   state_machine :state, initial: :step1 do
@@ -36,5 +37,9 @@ class Company < ActiveRecord::Base
       transition :step3_1 => :complite
       transition :step4   => :complite
     end
+  end
+
+  def full_short_name
+     "#{full_name} (#{short_name})"
   end
 end

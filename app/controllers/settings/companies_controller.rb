@@ -25,7 +25,7 @@ module Settings
     def add_existing_company
       company = Company.find(params[:company])
 
-      if current_user_has_not_company?(company.id) &&
+      if !current_user_has_company?(company.id) &&
          current_user.user_companies.create(company: company)
         redirect_to settings_path
       else
@@ -45,23 +45,13 @@ module Settings
     end
 
     def not_current_user_companies
-      current_user_companies = UserCompany.where(user_id: current_user)
-                                          .map {|r| r.company_id}
-      companies= UserCompany.where.not(user_id: current_user)
-                            .map do |c|
-                              if c.company && !current_user_companies.include?(c.company_id)
-                                {
-                                  id: c.company_id,
-                                  company_name: "#{c.company.full_name} (#{c.company.short_name})"
-                                }
-                              end
-                            end
-      companies.try(:compact)
+      companies = Company.non_current_user(current_user.id)
+      companies.collect{ |c| [c.full_short_name, c.id] }
     end
 
-    def current_user_has_not_company? company_id
-      user_companies = UserCompany.where(user_id: current_user)
-      !user_companies.map {|c| c.company_id == company_id }.include? true
+    def current_user_has_company? company_id
+      user_companies = UserCompany.user_companies(current_user.id).pluck(:company_id).compact
+      user_companies.include? company_id
     end
   end
 end
