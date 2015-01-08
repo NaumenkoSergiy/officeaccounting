@@ -23,34 +23,21 @@ class ApplicationController < ActionController::Base
   end
 
   def check_creating_company_step
-    @company      = current_user.companies.last
-    @company      = nil if @company && @company.complite?
-    company       = new_settings_company_path
-    registration  = new_settings_registration_path
-    official      = new_settings_official_path
-    redirect_path = nil
-    if params[:back]
-      @registration = @company.registration
-    else
-      if @company
-        redirect_path = case params[:controller]
-        when "settings/companies"
-          registration if @company.registration.nil?
-        when "settings/registrations"
-          if @company.registration.present? &&
-             @company.officials.empty? &&
-             @company.bank_account.nil?
-            official
-          end
-        when "settings/officials"
-          registration if @company.registration.nil?
-        end
-        redirect_to redirect_path if redirect_path
-      elsif params[:controller] != "settings/companies"
-        redirect_to company
-      else
-        @company = Company.new
-      end
+    company = current_user.companies.last
+    @company = company.complite? ? Company.new : company
+
+    unless params[:back]
+      redirect_path = {
+        step1:    new_settings_company_path,
+        step2:    new_settings_registration_path,
+        step3:    new_settings_official_path,
+        step3_1:  new_settings_official_path(official_type: 'bookeeper'),
+        step4:    new_settings_bank_account_path,
+        complite: new_settings_company_path
+      }
+
+      state = @company.state.to_sym
+      redirect_to redirect_path[state] unless redirect_path[state].match(/\/.{1,}\/.{1,}\//).to_s == "/#{params['controller']}/"
     end
   end
 end

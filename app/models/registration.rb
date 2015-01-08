@@ -17,4 +17,6 @@ class Registration < ActiveRecord::Base
                             :number_registered_in_revenue_commissioners
 
   belongs_to :company
+
+  after_save { company.set_official }
 end

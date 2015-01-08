@@ -60,7 +60,7 @@ div
   br
   = f.label 'місце реєстрації у податковій'
   br
-  = f.select :tax_inspection, options_for_select(TaxInspection.get_all), class: 'select2'
+  = f.select :tax_inspection, options_for_select(TaxInspection.pluck(:name)), class: 'select2'
 
   br
   = f.label 'номер реєстрації у податковій'
@@ -87,6 +87,6 @@ div
   = f.submit "Далі"
 
 javascript:
-  $('#registration_nace_codes').select2({ tags: #{@kveds},
+  $('#registration_nace_codes').select2({ tags: #{present(@registration).kveds},
                              placeholder: "Додати код",
                              width: 'calc(80% - 22px)'});

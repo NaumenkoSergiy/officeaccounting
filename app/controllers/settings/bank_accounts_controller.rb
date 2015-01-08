@@ -4,9 +4,7 @@ module Settings
     before_filter :define_bank_account
 
     def create
-      unless @bank_account.update_attributes(bank_account_params) && @bank_account.save
-        flash[:error] = 'Помилкові дані'
-      end
+      flash[:error] = 'Помилкові дані' unless @bank_account.update_attributes(bank_account_params)
     end
 
     private

@@ -1,6 +1,11 @@
 class Koatuu < ActiveRecord::Base
-  def self.get_all
-    all.sort_by{|k| k.name}
-       .collect{|k| ["#{k.code} #{k.name}", "#{k.code} #{k.name}"] }
+  scope :by_code_and_name, -> (query) {
+    where("lower(concat(code, ' ', name)) LIKE ?", "%#{query.downcase}%")
+    .limit(10)
+    .collect{ |k| { id: k.id, text: k.code_name } }
+  }
+
+  def code_name
+    "#{code} #{name}"
   end
 end

@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102121723) do
+ActiveRecord::Schema.define(version: 20150108065922) do
+
+  create_table "articles_cash_flows", force: true do |t|
+    t.integer "code"
+    t.string  "name"
+  end
 
   create_table "bank_accounts", force: true do |t|
     t.integer "company_id"
@@ -27,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150102121723) do
     t.string "juridical_address"
     t.string "actual_address"
     t.string "numbering_format"
+    t.string "state"
   end
 
   create_table "counterparties", force: true do |t|

@@ -10,7 +10,7 @@ module Settings
     def create
       company = Company.new(company_params)
 
-      if company.valid? && company.save
+      if company.save
         current_user.user_companies.create(company: company) #ToDo move it to the model in the after_save
       else
         flash[:error] = 'Помилкові дані'

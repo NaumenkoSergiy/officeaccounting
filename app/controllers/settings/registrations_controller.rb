@@ -6,7 +6,6 @@ module Settings
 
     def new
       @incorporation_forms = get_incorporation_forms #TODO move to the model
-      @kveds               = Kved.get_all
       @koatuu              = []
     end
 
@@ -26,9 +25,7 @@ module Settings
     end
 
     def get_koatuu
-      koatuus = Koatuu.where("lower(concat(code, ' ', name)) LIKE ?", "%#{params[:q].downcase}%")
-                      .limit(10)
-                      .collect{ |k| {id: k.id, text: "#{k.code} #{k.name}"} }
+      koatuus = Koatuu.by_code_and_name params[:q]
       render json: { data: koatuus }
     end
 
@@ -56,9 +53,9 @@ module Settings
 
     def get_incorporation_forms
       IncorporationForm.all
-                       .sort_by{|f| f.name}
+                       .order('name asc')
                        .collect do |f|
-                         [ "#{f.number} #{f.name}", "#{f.number} #{f.name}" ]
+                         [ f.number_name, f.number_name ]
                        end
     end
 
