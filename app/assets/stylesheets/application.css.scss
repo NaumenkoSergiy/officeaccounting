@@ -50,3 +50,27 @@ tr {
     }
   }
 }
+
+a.btn-primary {
+  text-decoration: none;
+
+  &:visited {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+a.btn-success {
+  text-decoration: none;
+  color: white;
+}
+
+.dropdown-menu {
+  min-width: 400px;
+
+  ul {
+    li {
+      margin: 5px;
+    }
+  }
+}
