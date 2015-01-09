@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :counterparties
   resources :registers
   resources :password_resets
+  resources :money, only: [:index]
 
   namespace 'settings' do
     resources :companies, only: [:new, :create]
@@ -20,5 +21,9 @@ Rails.application.routes.draw do
     resources :bank_accounts, only: [:create]
 
     post 'companies/add_existing_company'
+  end
+
+  namespace 'money' do
+    resources :currency, only: [:index]
   end
 end
