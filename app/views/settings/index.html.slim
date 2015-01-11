@@ -5,7 +5,9 @@ h2
 
 - current_user.companies.each do |company|
   h3
-    = link_to company.full_name, "settings/#{ company.id }"
-    | (
-    = company.short_name
-    | )
+    label
+      = radio_button_tag('sampleinlineradio', company.id, checked = company.current_company(current_user.id), class: 'companyChoose')
+      = link_to company.full_name, "settings/#{ company.id }"
+      | (
+      = company.short_name
+      | )

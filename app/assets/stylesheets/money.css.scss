@@ -1,0 +1,64 @@
+#moneyNew {
+  h4 { text-align: center; }
+
+  .modal-dialog {
+    width: 670px;
+    margin-top: 70px;
+  }
+
+  .btn { margin-bottom: 8px; }
+}
+
+.btn-modal {
+  width: 100%;
+  text-decoration: none;
+}
+
+#charts_money {
+  height: 255px;
+}
+
+.links { height: 45px; }
+
+.currencyRemove {
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+#companyCurrency {
+
+  td { width: 250px; }
+}
+
+.flag {
+  float: left;
+  margin-top: 4px;
+  margin-right: 5px;
+}
+
+.flag { background: url(image-path('flags.png')) no-repeat top left;  } 
+.flag.AUD { background-position: 0px 0px; width: 16px; height: 11px;  } 
+.flag.AZN { background-position: -26px 0px; width: 16px; height: 11px;  } 
+.flag.BYR { background-position: -52px 0px; width: 16px; height: 11px;  } 
+.flag.CAD { background-position: -78px 0px; width: 16px; height: 11px;  } 
+.flag.CHF { background-position: -104px 0px; width: 11px; height: 11px;  } 
+.flag.CNY { background-position: -125px 0px; width: 16px; height: 11px;  } 
+.flag.CZK { background-position: -151px 0px; width: 16px; height: 11px;  } 
+.flag.DKK { background-position: -177px 0px; width: 16px; height: 11px;  } 
+.flag.EUR { background-position: -203px 0px; width: 16px; height: 11px;  } 
+.flag.GBP { background-position: -229px 0px; width: 16px; height: 11px;  } 
+.flag.HUF { background-position: -255px 0px; width: 16px; height: 11px;  } 
+.flag.JPY { background-position: -281px 0px; width: 16px; height: 11px;  } 
+.flag.KZT { background-position: -307px 0px; width: 16px; height: 11px;  } 
+.flag.ISK { background-position: -333px 0px; width: 16px; height: 11px;  } 
+.flag.MDL { background-position: -359px 0px; width: 16px; height: 11px;  } 
+.flag.NOK { background-position: -385px 0px; width: 16px; height: 11px;  } 
+.flag.PLN { background-position: -411px 0px; width: 16px; height: 11px;  } 
+.flag.RUB { background-position: -437px 0px; width: 16px; height: 11px;  } 
+.flag.SGD { background-position: -463px 0px; width: 16px; height: 11px;  } 
+.flag.SEK { background-position: -489px 0px; width: 16px; height: 11px;  } 
+.flag.TMT { background-position: -515px 0px; width: 16px; height: 11px;  } 
+.flag.USD { background-position: -567px 0px; width: 16px; height: 11px;  } 
+.flag.UZS { background-position: -593px 0px; width: 16px; height: 11px;  }
+.flag.ua { background-position: -541px 0px; width: 16px; height: 11px;  }  
+

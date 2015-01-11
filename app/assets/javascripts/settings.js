@@ -268,14 +268,18 @@ $(document).ready(function() {
       $(this).addClass('checked');
     }
   });
-  $('a[href="' + this.location.pathname + '"]').parent().addClass('current');
   
-  function currency () {
+  $('a[href="' + this.location.pathname + '"]').parent().addClass('current');
+
+  $('.companyChoose').click(function () {
+    companyId = $(this).val();
+
     $.ajax({
-      type: 'GET',
-      url: 'https://query.yahooapis.com/v1/public/yql?q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDUAH,EURUAH,RUBUAH%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback='
+      type: 'POST',
+      url: '/sessions/change_company/',
+      data: { company_id: companyId }
     });
-  }
+  });
 
   $('.role').select2({ width: '130px', minimumResultsForSearch: '5' });
 

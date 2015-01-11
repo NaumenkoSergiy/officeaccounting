@@ -10,4 +10,9 @@ class SessionService < BaseService
       {error: 'Введені неправильні дані'}
     end
   end
+
+  def change_current_company old_current_company, new_current_company
+    old_current_company.update_current(false) if old_current_company
+    new_current_company.update_current(true)
+  end
 end

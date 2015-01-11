@@ -1,0 +1,33 @@
+#moneyNew.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        .row
+          .col.col-lg-12
+            button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
+        .row
+          .col.col-lg-4
+            h4#myModalLabel.modal-title Документи
+          .col.col-lg-4
+            h4#myModalLabel.modal-title Звіти
+          .col.col-lg-4
+            h4#myModalLabel.modal-title Довідники
+      .modal-body
+        .row
+          .col.col-lg-4
+            = link_to "Надходження", '#', class: 'btn  btn-success btn-modal'
+            = link_to "Витрачання", '#', class: 'btn  btn-success btn-modal'
+            = link_to "Авансові звіти", '#', class: 'btn  btn-success btn-modal'
+            = link_to "Покупка валюти", '#', class: 'btn  btn-success btn-modal'
+            = link_to "Продаж валюти", '#', class: 'btn  btn-success btn-modal'
+          .col.col-lg-4
+            = link_to "Залишки на рахунках", '#', class: 'btn  btn-success btn-modal'
+            = link_to "Відомість з під звіту", '#', class: 'btn  btn-success btn-modal'
+          .col.col-lg-4
+            = link_to "Рахунки", '#', class: 'btn  btn-success btn-modal'
+            = link_to "Каси", '#', class: 'btn  btn-success btn-modal'
+            = link_to "Банки", '#', class: 'btn  btn-success btn-modal'
+            = link_to "Валюти", '#', class: 'btn  btn-success btn-modal', data: { toggle: "modal", target: "#companyCurrency"}, class: 'btn  btn-success btn-modal'
+            = link_to "Валютні курси", '#',  data: { toggle: "modal", target: "#moneyCurrency"}, class: 'btn  btn-success btn-modal'
+            = link_to "Кредити та позики", '#', class: 'btn  btn-success btn-modal'
+            = link_to "Статті руху грошей", '#', class: 'btn  btn-success btn-modal'
