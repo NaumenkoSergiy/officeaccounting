@@ -4,19 +4,18 @@ module Money
     before_action :set_currency, only: [:destroy]
 
     def create
-      currency = current_company.currencies.new currency_params
+      currency = current_user.current_company.currencies.new currency_params
       flash[:error] = 'Більше немає валют для вибору' unless currency.save
-      @currencies = current_company.currencies
+      @currencies = current_user.current_company.currencies
       respond_to do |format|
         format.js
       end
     end
 
     def destroy
-      @currency_id = params[:id]
-      render json:{ success: @currency.destroy }
+      currency = Currency.find(params[:id])
+      render json:{ success: currency.destroy }
     end
-
 
     private
 
@@ -25,7 +24,7 @@ module Money
     end
 
     def currency_params
-      params.require(:currency).permit(:name).merge!(company_id: current_company.id)
+      params.require(:currency).permit(:name).merge!(company_id: current_user.current_company.id)
     end
   end
 end
