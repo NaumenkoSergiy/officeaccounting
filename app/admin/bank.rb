@@ -1,4 +1,4 @@
-ActiveAdmin.register Banks do
+ActiveAdmin.register Bank do
   permit_params :name, :code_edrpo, :mfo, :lawyer_adress
 
   form do |f|

@@ -12,3 +12,9 @@ user = User.create(email: 'admin@example.com',
 						is_admin: true,
 						activate_token: nil)
 user.update_column(:activate_token, nil)
+
+file = File.open('db/UkraineBanks.txt')
+file.each do |form|
+  form = eval form[0..-3]
+  Bank.create({name: form[:name], code_edrpo: form[:code_edrpo], mfo: form[:mfo], lawyer_adress: form[:lawyer_adress] })
+end

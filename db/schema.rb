@@ -18,6 +18,11 @@ ActiveRecord::Schema.define(version: 20150108065922) do
     t.string  "name"
   end
 
+  create_table "articles_cash_flows", force: true do |t|
+    t.integer "code"
+    t.string  "name"
+  end
+
   create_table "bank_accounts", force: true do |t|
     t.integer "company_id"
     t.string  "account"
