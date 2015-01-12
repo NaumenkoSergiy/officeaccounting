@@ -35,6 +35,13 @@ namespace :activebooks do
     end
   end
 
+  task add_tax_inspection: :environment do
+    file = File.open('lib/CodesNalogovixInspekciyUkraine.txt')
+    file.each do |line|
+      TaxInspection.create(name: line[15..-2])
+    end
+  end
+
   task add_form_of_article_cash_flows: :environment do
     Constants::FORMS_OF_ARTICLE_CASH_FLOWS.each do |form|
       ArticlesCashFlows.create({code: form[:code], name: form[:name]})
@@ -45,6 +52,7 @@ namespace :activebooks do
                 :add_form_of_invoice,
                 :add_kved,
                 :add_koatuu,
+                :add_tax_inspection,
                 :add_form_of_article_cash_flows
                 ]
 end

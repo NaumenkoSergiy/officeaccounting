@@ -1,0 +1,5 @@
+| $.unblockUI();
+- if flash[:error]
+  | $('.notification.error').show().text("#{flash[:error].to_s.html_safe}");
+- else
+  | document.location = "#{root_path}";

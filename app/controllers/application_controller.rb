@@ -9,12 +9,6 @@ class ApplicationController < ActionController::Base
     session[:user_id] ? User.find(session[:user_id]) : nil
   end
 
-  def has_company?
-    if current_user && current_user.companies.empty?
-      redirect_to new_settings_company_path
-    end
-  end
-
   def redirect_to_new_session
     redirect_to new_session_path unless session[:user_id]
   end
@@ -26,5 +20,24 @@ class ApplicationController < ActionController::Base
 
   def is_admin?
     current_user.try(:is_admin)
+  end
+
+  def check_creating_company_step
+    company = current_user.companies.last
+    @company = company.complite? ? Company.new : company
+
+    unless params[:back]
+      redirect_path = {
+        step1:    new_settings_company_path,
+        step2:    new_settings_registration_path,
+        step3:    new_settings_official_path,
+        step3_1:  new_settings_official_path(official_type: 'bookeeper'),
+        step4:    new_settings_bank_account_path,
+        complite: new_settings_company_path
+      }
+
+      state = @company.state.to_sym
+      redirect_to redirect_path[state] unless redirect_path[state].match(/\/.{1,}\/.{1,}\//).to_s == "/#{params['controller']}/"
+    end
   end
 end

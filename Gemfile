@@ -34,6 +34,7 @@ gem 'jquery-validation-rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'bootstrap-sass'
 gem 'bootstrap-x-editable-rails'
+gem 'state_machine'
 
 group :development, :test do
   gem 'pry'
