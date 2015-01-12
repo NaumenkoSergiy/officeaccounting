@@ -13,25 +13,27 @@ module Settings
       company = Company.new(company_params)
 
       if company.save
-        current_user.user_companies.create(company: company) #ToDo move it to the model in the after_save
+        current_user.user_companies.create(company: company)
       else
         flash[:error] = 'Помилкові дані'
       end
     end
     
     def update
+      company = Company.find(params['id'])
       respond_to do |format|
-        if @company.update(company_params)
-          format.json { head :no_content }
+        if company.update(company_params)
+            format.json { head :no_content } if params[:page]
+            format.js unless params[:page]
         else
-          format.json { render json: @company.errors, status: :unprocessable_entity }
+          if params[:page]
+            format.json { render json: @company.errors, status: :unprocessable_entity }
+          else
+            flash[:error] = 'Помилкові дані'
+            format.js
+          end
         end
       end
-    end
-
-    def update
-      company = Company.find(params['id'])
-      flash[:error] = 'Помилкові дані' unless company.update_attributes company_params
     end
 
     def add_existing_company

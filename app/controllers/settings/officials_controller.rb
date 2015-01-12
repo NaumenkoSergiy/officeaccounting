@@ -11,20 +11,26 @@ module Settings
     end
 
     def create
-      flash[:error] = 'Помилкові дані' unless @official.update_attributes(officials_params)
+      if @official.update_attributes(officials_params)
+        @bookkeeper = @official
+      else
+        flash[:error] = 'Помилкові дані'
+      end
     end
 
     def update
       official = Official.find(params['id'])
-      flash[:error] = 'Помилкові дані' unless official.update_attributes officials_params
-    end
-
-    def update
       respond_to do |format|
-        if @official.update(officials_params)
-          format.json { head :no_content }
+        if official.update(officials_params)
+            format.json { head :no_content } if params[:page]
+            format.js unless params[:page]
         else
-          format.json { render json: @official.errors, status: :unprocessable_entity }
+          if params[:page]
+            format.json { render json: @official.errors, status: :unprocessable_entity }
+          else
+            flash[:error] = 'Помилкові дані'
+            format.js
+          end
         end
       end
     end
@@ -44,7 +50,11 @@ module Settings
                       @company.officials.find_by(official_type: :director)
                     end
                   else
-                    current_user.companies.last.officials.new
+                    if params[:official] && params[:official][:company_id]
+                      Company.find(params[:official][:company_id]).officials.new
+                    else
+                      current_user.companies.last.officials.new
+                    end
                   end
     end
     

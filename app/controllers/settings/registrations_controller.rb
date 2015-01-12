@@ -22,7 +22,19 @@ module Settings
 
     def update
       registration = Registration.find(params['id'])
-      flash[:error] = 'Помилкові дані' unless registration.update_attributes registration_params
+      respond_to do |format|
+        if registration.update(registration_params)
+            format.json { head :no_content } if params[:page]
+            format.js unless params[:page]
+        else
+          if params[:page]
+            format.json { render json: @registration.errors, status: :unprocessable_entity }
+          else
+            flash[:error] = 'Помилкові дані'
+            format.js
+          end
+        end
+      end
     end
 
     def get_koatuu

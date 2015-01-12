@@ -7,8 +7,8 @@ class SettingsController < ApplicationController
 
   def show
     @company    = current_user.companies.find(params[:id])
-    @bookkeeper = @company.officials.find_by(official_type: 'Головний бухгалтер')
-    @director   = @company.officials.find_by(official_type: 'Директор')
+    @bookkeeper = @company.officials.find_by(official_type: :bookeeper)
+    @director   = @company.officials.find_by(official_type: :director)
     @incorporation_forms = get_incorporation_forms
   end
 

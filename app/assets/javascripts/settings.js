@@ -293,7 +293,7 @@ $(document).ready(function() {
     $.ajax({
       type: 'PUT',
       url: '/settings/registrations/' + id,
-      data: {registration: {pdv: $(this).is(':checked')}},
+      data: {registration: {pdv: $(this).is(':checked')}, page: 'show'},
       success: numberPdv()
     });
   })
