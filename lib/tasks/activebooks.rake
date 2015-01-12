@@ -53,6 +53,5 @@ namespace :activebooks do
                 :add_kved,
                 :add_koatuu,
                 :add_tax_inspection,
-                :add_form_of_article_cash_flows
-                ]
+                :add_form_of_article_cash_flows]
 end

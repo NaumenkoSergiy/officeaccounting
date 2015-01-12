@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   def check_creating_company_step
     company = current_user.companies.last
-    @company = company.complite? ? Company.new : company
+    @company = (!company || company.complite?) ? Company.new : company
 
     unless params[:back]
       redirect_path = {
