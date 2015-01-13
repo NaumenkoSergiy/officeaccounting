@@ -51,6 +51,7 @@ GEM
     arel (5.0.1.20140414130214)
     bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
+    bootstrap-switch-rails (3.3.1)
     bootstrap-x-editable-rails (1.5.1.1)
       railties (>= 3.0)
     bourbon (3.2.3)
@@ -254,6 +255,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   bootstrap-sass
+  bootstrap-switch-rails
   bootstrap-x-editable-rails
   cancancan (~> 1.9)
   coffee-rails (~> 4.0.0)

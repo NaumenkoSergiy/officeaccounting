@@ -18,6 +18,7 @@
 //= require jquery.validate.additional-methods
 //= require bootstrap
 //= require bootstrap3-editable/bootstrap-editable
+//= require bootstrap-switch
 
 $(document).on('ready', function(){
   

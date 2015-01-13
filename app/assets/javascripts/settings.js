@@ -271,8 +271,10 @@ $(document).ready(function() {
   
   $('a[href="' + this.location.pathname + '"]').parent().addClass('current');
 
-  $('.companyChoose').click(function () {
+  $('.companyChoose').on('switchChange.bootstrapSwitch', function() {
     companyId = $(this).val();
+
+    $('.bootstrap-switch-on').next().show().css({ 'font-size':'12px', 'margin-left':'10px' });
 
     $.ajax({
       type: 'POST',
@@ -294,3 +296,7 @@ $(document).ready(function() {
     });
   })
 });
+
+  $(".companyChoose").bootstrapSwitch();
+
+ });

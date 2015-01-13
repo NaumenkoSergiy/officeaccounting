@@ -16,6 +16,7 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap3-switch";
 
 
 .notification {
@@ -74,3 +75,5 @@ a.btn-success {
     }
   }
 }
+
+.active { display: none; }
