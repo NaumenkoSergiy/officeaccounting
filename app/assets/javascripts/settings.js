@@ -273,8 +273,8 @@ $(document).ready(function() {
 
   $('.companyChoose').on('switchChange.bootstrapSwitch', function() {
     companyId = $(this).val();
-    $('.bootstrap-switch-on').next().show().css({ 'font-size':'12px', 'margin-left':'10px' });
-    $('.bootstrap-switch-off').next().hide();
+    $('.bootstrap-switch-on').next().next().show().css({ 'font-size':'12px', 'margin-left':'10px' });
+    $('.bootstrap-switch-off').next().next().hide();
 
     $.ajax({
       type: 'POST',
@@ -298,5 +298,5 @@ $(document).ready(function() {
 
   $(".companyChoose").bootstrapSwitch({ 'size':'small','offColor':'danger', 'onText':'Вкл', 'offText':'Вик' });
   
-  $('.bootstrap-switch-on').next().css({ 'font-size':'13px', 'margin-left':'10px' }).show();
+  $('.bootstrap-switch-on').next().next().css({ 'font-size':'13px', 'margin-left':'10px' }).show();
  });
