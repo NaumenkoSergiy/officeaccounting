@@ -1,6 +1,4 @@
-#nace_codes_tag {
-  width: 100px;
-}
+#nace_codes_tag { width: 100px; }
 
 .kurs_full {
   display: table;
@@ -10,4 +8,13 @@
 #minfin-informer-m1Fn-currency {
   position: absolute;
   right: 0px;
+}
+
+.hed_company { 
+  height: 144px;
+
+  #email {
+    width: 170px;
+    height: 26px;
+  }
 }

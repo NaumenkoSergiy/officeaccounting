@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 20150108065922) do
     t.boolean  "is_admin",               default: false
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "role"
   end
 
 end

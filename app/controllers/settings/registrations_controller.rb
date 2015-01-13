@@ -3,9 +3,10 @@ module Settings
     before_filter :redirect_to_new_session
     before_filter :define_registration
     before_filter :check_creating_company_step, only: [:new]
+    load_and_authorize_resource
 
     def new
-      @incorporation_forms = get_incorporation_forms #TODO move to the model
+      @incorporation_forms = get_incorporation_forms
       @koatuu              = []
     end
 
@@ -21,7 +22,19 @@ module Settings
 
     def update
       registration = Registration.find(params['id'])
-      flash[:error] = 'Помилкові дані' unless registration.update_attributes registration_params
+      respond_to do |format|
+        if registration.update(registration_params)
+            format.json { head :no_content } if params[:page]
+            format.js unless params[:page]
+        else
+          if params[:page]
+            format.json { render json: @registration.errors, status: :unprocessable_entity }
+          else
+            flash[:error] = 'Помилкові дані'
+            format.js
+          end
+        end
+      end
     end
 
     def get_koatuu

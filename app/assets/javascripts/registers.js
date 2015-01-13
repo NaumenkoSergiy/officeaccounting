@@ -14,6 +14,7 @@ $(document).ready(function() {
           railsParams = {};
           railsParams[$(this).data("model")] = {};
           railsParams[$(this).data("model")][params.name] = params.value;
+          railsParams['page'] = 'show';
           return railsParams;
         }
       });

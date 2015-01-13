@@ -12,6 +12,7 @@
   = label_tag :confirm_password
   br
   = text_field_tag :confirm_password, '', type: :password
+  = hidden_field_tag :role, 'edit'
 
   br
   = submit_tag "Створити профіль"

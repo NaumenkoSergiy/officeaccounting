@@ -1,0 +1,20 @@
+.bookkeeper
+  = label_tag 'Головний бухгалтер (ПІБ)'
+  br
+  = link_to @bookkeeper.name, '#', data: { placement: 'right', name: :name, pk: @company, model: 'official', url: "officials/#{ @bookkeeper.id }", xeditable: true }
+
+  br
+  = label_tag 'ІПН'
+  br
+  = link_to @bookkeeper.tin, '#', data: { placement: 'right', name: :tin, pk: @company, model: 'official', url: "officials/#{ @bookkeeper.id }", xeditable: true }        
+
+  br
+  = label_tag 'Номер телефону'
+  br
+  = link_to @bookkeeper.phone, '#', data: { placement: 'right', name: :phone, pk: @company, model: 'official', url: "officials/#{ @bookkeeper.id }", xeditable: true }
+
+  br
+  = label_tag 'Електронна пошта'
+  br
+  = link_to @bookkeeper.email, '#', data: { placement: 'right', name: :email, pk: @company, model: 'official', url: "officials/#{ @bookkeeper.id }", xeditable: true }
+  br

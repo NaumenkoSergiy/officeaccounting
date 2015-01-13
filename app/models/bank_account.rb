@@ -3,5 +3,5 @@ class BankAccount < ActiveRecord::Base
 
   belongs_to :company
 
-  after_save { company.complite }
+  after_create { company.complite }
 end

@@ -1,0 +1,31 @@
+h3
+  | Банківські реквізити
+- if can? :update, BankAccount
+  = label_tag 'Номер рахунку'
+  br
+  = link_to @company.bank_account.account, '#', data: { placement: 'right', name: :account, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }", xeditable: true }
+
+  br
+  = label_tag 'Банк'
+  br
+  = link_to @company.bank_account.bank, '#', data: { placement: 'right', name: :bank, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }", xeditable: true }
+
+  br
+  = label_tag 'МФО'
+  br
+  = link_to @company.bank_account.mfo, '#', data: { placement: 'right', name: :mfo, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }", xeditable: true }
+
+- else
+  = label_tag 'Номер рахунку'
+  br
+  = @company.bank_account.account
+
+  br
+  = label_tag 'Банк'
+  br
+  = @company.bank_account.bank
+
+  br
+  = label_tag 'МФО'
+  br
+  = @company.bank_account.mfo

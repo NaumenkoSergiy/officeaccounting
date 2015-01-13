@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   get 'destroy/sessions' => 'sessions#destroy'
   get 'users/confirm_registration'
   get 'settings/registrations/get_koatuu'
+  post 'users/create_delegate'
 
   resources :sessions, only: [:new, :create]
   resources :users, only: [:new, :create]
-  resources :settings, only: [:index]
+  resources :settings, only: [:index, :show]
   resources :counterparties
   resources :registers
   resources :password_resets
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
     resources :companies, only: [:new, :create, :update]
     resources :registrations, only: [:new, :create, :update]
     resources :officials, only: [:new, :create, :update]
-    resources :bank_accounts, only: [:new, :create]
+    resources :bank_accounts, only: [:new, :create, :update]
 
     post 'companies/add_existing_company'
   end

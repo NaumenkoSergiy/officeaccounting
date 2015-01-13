@@ -2,6 +2,8 @@ module Settings
   class CompaniesController < ApplicationController
     before_filter :redirect_to_new_session
     before_filter :check_creating_company_step, only: [:new]
+    before_action :set_company, only: [:update, :new, :create]
+    load_and_authorize_resource
 
     def new
       @companies = not_current_user_companies || {}
@@ -11,15 +13,27 @@ module Settings
       company = Company.new(company_params)
 
       if company.save
-        current_user.user_companies.create(company: company) #ToDo move it to the model in the after_save
+        current_user.user_companies.create(company: company)
       else
         flash[:error] = 'Помилкові дані'
       end
     end
-
+    
     def update
       company = Company.find(params['id'])
-      flash[:error] = 'Помилкові дані' unless company.update_attributes company_params
+      respond_to do |format|
+        if company.update(company_params)
+            format.json { head :no_content } if params[:page]
+            format.js unless params[:page]
+        else
+          if params[:page]
+            format.json { render json: @company.errors, status: :unprocessable_entity }
+          else
+            flash[:error] = 'Помилкові дані'
+            format.js
+          end
+        end
+      end
     end
 
     def add_existing_company
@@ -52,6 +66,10 @@ module Settings
     def current_user_has_company? company_id
       user_companies = UserCompany.user_companies(current_user.id).pluck(:company_id).compact
       user_companies.include? company_id
+    end
+
+    def set_company
+      @company = params[:id] ? Company.find(params[:id]) : Company.new
     end
   end
 end

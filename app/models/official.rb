@@ -3,5 +3,5 @@ class Official < ActiveRecord::Base
 
   belongs_to :company
 
-  after_create { company.set_bank_account }
+  after_create { company.set_bank_account } if try(:company)
 end

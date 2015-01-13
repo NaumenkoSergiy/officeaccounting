@@ -16,6 +16,12 @@ $(document).ready(function() {
     }
   });
 
+  function numberPdv () {
+    $(".checkPdv").is(':checked') ? $('.numberPdv').show() : $('.numberPdv').hide();
+  }
+
+  numberPdv();
+
   $('input.number').numeric({ negative : false, decimal: false });
 
   $.datepicker.setDefaults( $.datepicker.regional["uk"] );
@@ -251,14 +257,14 @@ $(document).ready(function() {
     }
   });
 
-  $('#pdv').click(function(){
+  $('#registration_pdv').click(function(){
     if($(this).hasClass('checked')) {
-      $('#tin').attr('disabled', 'disabled');
+      $('#registration_tin').attr('disabled', 'disabled');
       $(this).removeClass('checked');
     }
     else
     {
-      $('#tin').removeAttr('disabled');
+      $('#registration_tin').removeAttr('disabled');
       $(this).addClass('checked');
     }
   });
@@ -270,4 +276,17 @@ $(document).ready(function() {
       url: 'https://query.yahooapis.com/v1/public/yql?q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDUAH,EURUAH,RUBUAH%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback='
     });
   }
+
+  $('.role').select2({ width: '130px', minimumResultsForSearch: '5' });
+
+  $('.checkPdv').click(function(){
+    id = $('#registration_id').val();
+    
+    $.ajax({
+      type: 'PUT',
+      url: '/settings/registrations/' + id,
+      data: {registration: {pdv: $(this).is(':checked')}, page: 'show'},
+      success: numberPdv
+    });
+  })
 });

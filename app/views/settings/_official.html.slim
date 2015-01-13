@@ -1,0 +1,99 @@
+- if can? :update, Official
+  = label_tag ' Директор (ПІБ)'
+  br
+  = link_to @director.name, '#', data: { placement: 'right', name: :name, pk: @company, model: 'official', url: "officials/#{ @director.id }", xeditable: true }
+
+  br
+  = label_tag 'ІПН'
+  br
+  = link_to @director.tin, '#', data: { placement: 'right', name: :tin, pk: @company, model: 'official', url: "officials/#{ @director.id }", xeditable: true }
+
+  br
+  = label_tag 'Номер телефону'
+  br
+  = link_to @director.phone, '#', data: { placement: 'right', name: :phone, pk: @company, model: 'official', url: "officials/#{ @director.id }", xeditable: true }
+
+  br
+  = label_tag 'Електронна пошта'
+  br
+  = link_to @director.email, '#', data: { placement: 'right', name: :email, pk: @company, model: 'official', url: "officials/#{ @director.id }", xeditable: true }
+  br
+
+  - if @bookkeeper
+
+    = render "bookkeeper"
+
+  - else
+    br
+    a class= "OpenBookkeeper" onclick='$(".bookkeeper").toggle();'
+      | Додати головного бухгалтера
+    .bookkeeper style='display:none;'
+      h3
+        | Додати головного бухгалтера
+      = form_for([:settings, @official ||= Official.new], id: :official_form_bookkeeper, remote: true) do |f|
+        = f.label 'ПІБ'
+        br
+        = f.text_field :name, placeholder: "Введіть ПІБ Головного бухгалтера"
+
+        br
+        = f.label 'ІПН'
+        br
+        = f.text_field :tin, :class => 'number', placeholder: 'Введіть код ІПН', maxlength: 10
+
+        br
+        = f.label 'Номер телефону'
+        br
+        = f.text_field :phone
+
+        br
+        = f.label 'Електронна пошта'
+        br
+        = f.text_field :email
+        = f.hidden_field :official_type, value: :bookeeper
+        = hidden_field_tag :action_show, value: true
+        = f.hidden_field :company_id, value: @company.id
+        br
+        = f.submit "Додати", id: :bookkeeper
+
+- else
+  = label_tag ' Директор (ПІБ)'
+  br
+  = @director.name
+
+  br
+  = label_tag 'ІПН'
+  br
+  = @director.tin
+
+  br
+  = label_tag 'Номер телефону'
+  br
+  = @director.phone
+
+  br
+  = label_tag 'Електронна пошта'
+  br
+  = @director.email
+  br
+
+  - if @bookkeeper
+    .bookkeeper
+      = label_tag 'Головний бухгалтер (ПІБ)'
+      br
+      = @bookkeeper.name
+
+      br
+      = label_tag 'ІПН'
+      br
+      = @bookkeeper.tin      
+
+      br
+      = label_tag 'Номер телефону'
+      br
+      = @bookkeeper.phone
+
+      br
+      = label_tag 'Електронна пошта'
+      br
+      = @bookkeeper.email
+      br
