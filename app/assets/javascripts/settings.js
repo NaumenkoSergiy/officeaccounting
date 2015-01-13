@@ -16,14 +16,6 @@ $(document).ready(function() {
     }
   });
 
-  if($(".checkPdv").is(':checked')){
-    $('.numberPdv').show();
-  }
-  else {
-    $('.numberPdv').hide();
-  }
-
-  
   function numberPdv () {
     $(".checkPdv").is(':checked') ? $('.numberPdv').show() : $('.numberPdv').hide();
   }
@@ -294,7 +286,7 @@ $(document).ready(function() {
       type: 'PUT',
       url: '/settings/registrations/' + id,
       data: {registration: {pdv: $(this).is(':checked')}, page: 'show'},
-      success: numberPdv()
+      success: numberPdv
     });
   })
 });
