@@ -62,4 +62,20 @@ RSpec.describe Settings::CompaniesController, :type => :controller do
     end
   end
 
+  describe '#change_company' do
+    let(:old_current_company) { FactoryGirl.create(:company) }
+    let(:new_current_company) { FactoryGirl.create(:company) }
+
+    before(:each) do
+      FactoryGirl.create(company: old_current_company,
+                         user: user,
+                         current_company: true)
+      FactoryGirl.create(company: old_current_company, user: user)
+    end
+
+    it 'change current company' do
+      post :change_company, company_id: new_current_company.id
+      user.current_company.to eq(new_current_company)
+    end
+  end
 end

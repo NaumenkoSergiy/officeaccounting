@@ -273,12 +273,12 @@ $(document).ready(function() {
 
   $('.companyChoose').on('switchChange.bootstrapSwitch', function() {
     companyId = $(this).val();
-
     $('.bootstrap-switch-on').next().show().css({ 'font-size':'12px', 'margin-left':'10px' });
+    $('.bootstrap-switch-off').next().hide();
 
     $.ajax({
       type: 'POST',
-      url: '/sessions/change_company/',
+      url: '/settings/companies/change_company/',
       data: { company_id: companyId }
     });
   });
@@ -294,9 +294,9 @@ $(document).ready(function() {
       data: {registration: {pdv: $(this).is(':checked')}, page: 'show'},
       success: numberPdv
     });
-  })
-});
+  });
 
-  $(".companyChoose").bootstrapSwitch();
-
+  $(".companyChoose").bootstrapSwitch({ 'size':'small','offColor':'danger', 'onText':'Вкл', 'offText':'Вик' });
+  
+  $('.bootstrap-switch-on').next().css({ 'font-size':'13px', 'margin-left':'10px' }).show();
  });

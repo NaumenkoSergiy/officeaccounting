@@ -1,6 +1,8 @@
 class Currency < ActiveRecord::Base
   belongs_to :company
-  
+  validates_uniqueness_of :name, scope: :company_id
+  validates :name, presence: true, allow_blank: false
+
   CURRENCY = {
     'AUD - австралійський долар' => :AUD,
     'AZN - Азербайджанський манат' => :AZN,

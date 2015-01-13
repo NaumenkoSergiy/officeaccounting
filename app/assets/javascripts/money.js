@@ -10,9 +10,8 @@ $(document).ready(function() {
       type: 'POST',
       url: '/money/currency',
       data: data,
-      success: function() {
-        RemoveOptionsCurrensy();
-      }
+      success: RemoveOptionsCurrensy
+
     });
   });
 
@@ -32,6 +31,9 @@ $(document).ready(function() {
         }
       });    
     });
+    if ($('.currencySelect option').length == 0) {
+      $('#currency_form').hide();
+    }
   };
 
   ratesLoad();
@@ -66,6 +68,7 @@ function currencyRemove (id) {
       $('.currencyRates_' + id).remove();
       value = currencies.slice(0,3);
       $('select').append('<option value=' + value + '>' + currencies + '</option>');
+      $('#currency_form').show();
     }
   });
 };

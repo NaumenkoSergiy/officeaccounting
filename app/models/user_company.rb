@@ -6,7 +6,13 @@ class UserCompany < ActiveRecord::Base
     where(user_id: user_id)
   }
 
+  after_create :check_current_company
+
   def update_current value
     update_attribute(:current_company, value)
+  end
+
+  def check_current_company
+    update_current(true) unless user.current_company
   end
 end
