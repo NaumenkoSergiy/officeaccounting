@@ -11,6 +11,7 @@ class Company < ActiveRecord::Base
   has_one :registration
   has_many :officials
   has_one :bank_account
+  has_many :currencies
 
   after_create { set_registration }
 
@@ -40,6 +41,12 @@ class Company < ActiveRecord::Base
   end
 
   def full_short_name
-     "#{full_name} (#{short_name})"
+    "#{full_name} (#{short_name})"
+  end
+
+  def current_company user_id
+    user_companies.where(user_id: user_id, company_id: id)
+                  .first
+                  .current_company
   end
 end

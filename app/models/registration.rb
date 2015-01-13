@@ -20,5 +20,5 @@ class Registration < ActiveRecord::Base
 
   belongs_to :company
 
-  after_save { company.set_official }
+  after_create { company.set_official }
 end

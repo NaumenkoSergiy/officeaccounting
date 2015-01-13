@@ -5,7 +5,10 @@ h2
 
 - current_user.companies.each do |company|
   h3
+    = radio_button_tag('sampleinlineradio', company.id, checked = (current_user.current_company.id == company.id), class: 'companyChoose')
     = link_to company.full_name, "settings/#{ company.id }"
     | (
-    = company.short_name
+    =company.short_name
     | )
+    span class="label label-success active"
+      | Активне

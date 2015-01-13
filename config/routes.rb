@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'users/confirm_registration'
   get 'settings/registrations/get_koatuu'
   post 'users/create_delegate'
+  post 'settings/companies/change_company'
 
   resources :sessions, only: [:new, :create]
   resources :users, only: [:new, :create]
@@ -26,6 +27,6 @@ Rails.application.routes.draw do
   end
 
   namespace 'money' do
-    resources :currency, only: [:index]
+    resources :currency, only: [:index, :create, :destroy]
   end
 end

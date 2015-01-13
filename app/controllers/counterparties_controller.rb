@@ -1,7 +1,6 @@
 class CounterpartiesController < ApplicationController
   before_action :set_counterparty, only: [:edit, :update, :destroy]
   before_filter :redirect_to_new_session
-  before_filter :has_company?, only: [:index, :new]
 
   def index
     @counterparties = current_user.counterparties

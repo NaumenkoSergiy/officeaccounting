@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
   has_many :companies, through: :user_companies
   has_many :registers
   has_many :counterparties
-
+  has_one :user_company, -> { where(current_company: true) }
+  has_one :current_company, through: :user_company, source: :company
+  
   after_create :send_activation_token
   
   ROLES_TITLES = {

@@ -40,4 +40,8 @@ class ApplicationController < ActionController::Base
       redirect_to redirect_path[state] unless redirect_path[state].match(/\/.{1,}\/.{1,}\//).to_s == "/#{params['controller']}/"
     end
   end
+
+  def current_company
+    @current_company ||= current_user.user_companies.where(current_company: true).first.company
+  end
 end

@@ -47,6 +47,13 @@ module Settings
       end
     end
 
+    def change_company
+      company = current_user.user_companies.find_by(company_id: params[:company_id])
+      old_company = current_user.user_companies.find_by(company_id: current_user.current_company.id) if current_user.current_company
+      result = change_current_company(old_company, company)
+      render json: result
+    end
+
     private
 
     def company_params
@@ -70,6 +77,11 @@ module Settings
 
     def set_company
       @company = params[:id] ? Company.find(params[:id]) : Company.new
+    end
+
+    def change_current_company old_current_company, new_current_company
+      old_current_company.update_current(false) if old_current_company
+      new_current_company.update_current(true)
     end
   end
 end

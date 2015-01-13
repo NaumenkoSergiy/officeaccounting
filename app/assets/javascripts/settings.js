@@ -268,14 +268,20 @@ $(document).ready(function() {
       $(this).addClass('checked');
     }
   });
-  $('a[href="' + this.location.pathname + '"]').parent().addClass('current');
   
-  function currency () {
+  $('a[href="' + this.location.pathname + '"]').parent().addClass('current');
+
+  $('.companyChoose').on('switchChange.bootstrapSwitch', function() {
+    companyId = $(this).val();
+    $('.bootstrap-switch-on').next().next().show().css({ 'font-size':'12px', 'margin-left':'10px' });
+    $('.bootstrap-switch-off').next().next().hide();
+
     $.ajax({
-      type: 'GET',
-      url: 'https://query.yahooapis.com/v1/public/yql?q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDUAH,EURUAH,RUBUAH%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback='
+      type: 'POST',
+      url: '/settings/companies/change_company/',
+      data: { company_id: companyId }
     });
-  }
+  });
 
   $('.role').select2({ width: '130px', minimumResultsForSearch: '5' });
 
@@ -288,5 +294,9 @@ $(document).ready(function() {
       data: {registration: {pdv: $(this).is(':checked')}, page: 'show'},
       success: numberPdv
     });
-  })
-});
+  });
+
+  $(".companyChoose").bootstrapSwitch({ 'size':'small','offColor':'danger', 'onText':'Вкл', 'offText':'Вик' });
+  
+  $('.bootstrap-switch-on').next().next().css({ 'font-size':'13px', 'margin-left':'10px' }).show();
+ });

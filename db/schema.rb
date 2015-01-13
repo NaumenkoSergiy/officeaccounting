@@ -18,11 +18,6 @@ ActiveRecord::Schema.define(version: 20150108065922) do
     t.string  "name"
   end
 
-  create_table "articles_cash_flows", force: true do |t|
-    t.integer "code"
-    t.string  "name"
-  end
-
   create_table "bank_accounts", force: true do |t|
     t.integer "company_id"
     t.string  "account"
@@ -54,6 +49,13 @@ ActiveRecord::Schema.define(version: 20150108065922) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "currencies", force: true do |t|
+    t.string   "name"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "incorporation_forms", force: true do |t|
@@ -129,6 +131,7 @@ ActiveRecord::Schema.define(version: 20150108065922) do
   create_table "user_companies", force: true do |t|
     t.integer "company_id"
     t.integer "user_id"
+    t.boolean "current_company"
   end
 
   create_table "users", force: true do |t|
