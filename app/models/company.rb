@@ -12,7 +12,7 @@ class Company < ActiveRecord::Base
   has_many :officials
   has_one :bank_account
 
-  after_save { set_registration }
+  after_create { set_registration }
 
   scope :non_current_user, -> (id) {
     company_ids = UserCompany.user_companies(id).pluck(:company_id)
