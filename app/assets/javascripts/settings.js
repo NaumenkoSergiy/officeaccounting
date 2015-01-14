@@ -16,6 +16,64 @@ $(document).ready(function() {
     }
   });
 
+  $('.registration_koatuu').editable({
+    ajaxOptions: {
+      type: "PUT",
+      dataType: "json"
+    },
+    params: function(params) {
+      var railsParams;
+      railsParams = {};
+      railsParams[$(this).data("model")] = {};
+      railsParams[$(this).data("model")][params.name] = params.value;
+      railsParams['page'] = 'show';
+      return railsParams;
+    },
+    select2: {
+      width: '340px',
+      minimumInputLength: 3,
+      ajax: {
+        url: '/settings/registrations/get_koatuu',
+        dataType: 'json',
+        data: function(term) {
+          return { q: term };
+        },
+        results: function(data) {
+          return { results: data['data'] };
+        }
+      }
+    }
+  });
+
+  $('.nace_codes').editable({
+    ajaxOptions: {
+      type: "PUT",
+      dataType: "json"
+    },
+    params: function(params) {
+      var railsParams;
+      railsParams = {};
+      railsParams[$(this).data("model")] = {};
+      railsParams[$(this).data("model")][params.name] = params.value;
+      railsParams['page'] = 'show';
+      return railsParams;
+    },
+    select2: {
+      width: '340px',
+      minimumInputLength: 3,
+      ajax: {
+        url: '/settings/registrations/get_koatuu',
+        dataType: 'json',
+        data: function(term) {
+          return { q: term };
+        },
+        results: function(data) {
+          return { results: data['data'] };
+        }
+      }
+    }
+  });
+
   function numberPdv () {
     $(".checkPdv").is(':checked') ? $('.numberPdv').show() : $('.numberPdv').hide();
   }
@@ -299,4 +357,4 @@ $(document).ready(function() {
   $(".companyChoose").bootstrapSwitch({ 'size':'small','offColor':'danger', 'onText':'Вкл', 'offText':'Вик' });
   
   $('.bootstrap-switch-on').next().next().css({ 'font-size':'13px', 'margin-left':'10px' }).show();
- });
+});

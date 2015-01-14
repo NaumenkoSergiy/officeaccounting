@@ -36,22 +36,19 @@ $(document).ready(function() {
     }
   };
 
-  ratesLoad();
-
-  RemoveOptionsCurrensy();
-  
   curr_date = new Date();
 
   $('#moneyCurrency h4').append(' на сьогодні ' + $.datepicker.formatDate('dd.mm.yy', curr_date));
   
-  function ratesLoad () {
-    currencyRate = $.ajax({
-      type: 'GET',
-      url: 'https://query.yahooapis.com/v1/public/yql?q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDUAH,EURUAH,AUDUAH,AZNUAH,GBPUAH,BYRUAH,DKKUAH,ISKUAH,KZTUAH,CADUAH,MDLUAH,NOKUAH,PLNUAH,SGDUAH,HUFUAH,TMTUAH,UZSUAH,CZKUAH,SEKUAH,CHFUAH,CNYUAH,JPYUAH,RUBUAH%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=',
-      async: false
-    });
-    return currencyRate.response;
-  }
+  $('.money_add_new').click(function () {
+      currencyRate = $.ajax({
+        type: 'GET',
+        url: 'https://query.yahooapis.com/v1/public/yql?q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDUAH,EURUAH,AUDUAH,AZNUAH,GBPUAH,BYRUAH,DKKUAH,ISKUAH,KZTUAH,CADUAH,MDLUAH,NOKUAH,PLNUAH,SGDUAH,HUFUAH,TMTUAH,UZSUAH,CZKUAH,SEKUAH,CHFUAH,CNYUAH,JPYUAH,RUBUAH%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=',
+        async: false
+      });
+    RemoveOptionsCurrensy(currencyRate.response);
+  });
+
 
   $('.currencySelect').select2({width: '255px'});
 

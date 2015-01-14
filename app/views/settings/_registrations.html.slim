@@ -1,27 +1,27 @@
 - if can? :update, Registration
   = label_tag 'Організаційно-правова форма (код та назва)'
   br
-  = link_to @company.registration.form_of_incorporation, '#', data: { placement: 'bottom', value: @company.registration.form_of_incorporation, type: 'select2', source: @incorporation_forms.to_json, pk: @company, model: "registration", url: "registrations/#{ @company.id }", xeditable: true, name: :form_of_incorporation}
+  = link_to @company.registration.form_of_incorporation, '#', data: { placement: 'bottom', value: @company.registration.form_of_incorporation, type: 'select2', source: @incorporation_forms.to_json, pk: @company, model: "registration", url: "registrations/#{ @company.registration.id }", xeditable: true, name: :form_of_incorporation}
 
   br
   = label_tag 'Код ЄРДПОУ'
   br
-  = link_to @company.registration.edrpou, '#', data: { placement: 'right', name: :edrpou, pk: @company, model: 'registration', url: "registrations/#{ @company.id }", xeditable: true }
+  = link_to @company.registration.edrpou, '#', data: { placement: 'right', name: :edrpou, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
 
   br
   = label_tag 'Коди КВЕД'
   br
-  = link_to @company.registration.nace_codes, '#', data: { placement: 'right', name: :nace_codes, pk: @company, model: 'registration', url: "registrations/#{ @company.id }", xeditable: true }
+  = link_to @company.registration.nace_codes, '#', class: 'nace_codes', data: { placement: 'bottom', value: @company.registration.nace_codes, name: :nace_codes, pk: @company.registration, model: 'registration', type: 'select2', url: "registrations/#{ @company.registration.id }", xeditable: true }
 
   br
   = label_tag 'Розташування за КОАТУУ'
   br
-  = link_to @company.registration.koatuu, '#', data: { placement: 'right', name: :koatuu, pk: @company, model: 'registration', url: "registrations/#{ @company.id }", xeditable: true }
+  = link_to @company.registration.koatuu, '#', class: 'registration_koatuu', data: { xeditable: true, placement: 'right', value: @company.registration.koatuu, type: 'select2', name: :koatuu, pk: @company.registration, model: 'registration', url: "registrations/#{ @company.registration.id }" }
 
   br
   = label_tag 'Клас професійного ризику'
   br
-  =link_to @company.registration.risk_class, '#', data: { placement: 'bottom', value: @company.registration.risk_class, type: 'select', source: (1..67).step(1), pk: @company, model: "registration", url: "registrations/#{ @company.id }", xeditable: true, name: :risk_class }
+  =link_to @company.registration.risk_class, '#', data: { placement: 'bottom', value: @company.registration.risk_class, type: 'select', source: (1..67).step(1), pk: @company, model: "registration", url: "registrations/#{ @company.registration.id }", xeditable: true, name: :risk_class }
 
   br
   = label_tag 'Чи є підприємство платником податку на додану вартість (ПДВ)?'
@@ -32,42 +32,66 @@
   .numberPdv style="display: none;"
     = label_tag 'Номер свідоцтва ПДВ'
     br
-    = link_to @company.registration.tin, '#', data: { placement: 'right', name: :tin, pk: @company, model: 'registration', url: "registrations/#{ @company.id }", xeditable: true }
+    = link_to @company.registration.tin, '#', data: { placement: 'right', name: :tin, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
     br
   = label_tag 'Дата державної реєстрації'
   br
-  = link_to @company.registration.state_registration_date, '#', data: { type: 'date', placement: 'right', name: :state_registration_date, pk: @company, model: 'registration', url: "registrations/#{ @company.id }", xeditable: true }
+  = link_to @company.registration.state_registration_date, '#', data: { type: 'date', placement: 'right', name: :state_registration_date, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
 
   br
   = label_tag 'Номер реєстрації'
   br
-  = link_to @company.registration.registration_number, '#', data: { placement: 'right', name: :registration_number, pk: @company, model: 'registration', url: "registrations/#{ @company.id }", xeditable: true }
+  = link_to @company.registration.registration_number, '#', data: { placement: 'right', name: :registration_number, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
 
   br
   = label_tag 'Ким зареєстровано'
   br
-  = link_to @company.registration.registered_by, '#', data: { placement: 'right', name: :registered_by, pk: @company, model: 'registration', url: "registrations/#{ @company.id }", xeditable: true }
+  = link_to @company.registration.registered_by, '#', data: { placement: 'right', name: :registered_by, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
 
   br
   = label_tag 'Реєстрація у податковій'
   br
-  = link_to @company.registration.date_registered_in_revenue_commissioners, '#', data: { type: 'date', placement: 'right', name: :date_registered_in_revenue_commissioners, pk: @company, model: 'registration', url: "registrations/#{ @company.id }", xeditable: true }
+  = link_to @company.registration.date_registered_in_revenue_commissioners, '#', data: { type: 'date', placement: 'right', name: :date_registered_in_revenue_commissioners, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
+
+  br
+  = label_tag 'Місце реєстрації у податковій'
+  br
+
+  = link_to @company.registration.tax_inspection, '#', data: { placement: 'bottom', value: @company.registration.tax_inspection, type: 'select2', source: TaxInspection.all.collect{|f| {value: f.name, text: f.name}}.to_json, pk: @company.registration, model: "registration", url: "registrations/#{ @company.registration.id }", xeditable: true, name: :tax_inspection}
 
   br
   = label_tag 'Номер реєстрації у податковій'
   br
-  = link_to @company.registration.number_registered_in_revenue_commissioners, '#', data: { placement: 'right', name: :number_registered_in_revenue_commissioners, pk: @company, model: 'registration', url: "registrations/#{ @company.id }", xeditable: true }
+  = link_to @company.registration.number_registered_in_revenue_commissioners, '#', data: { placement: 'right', name: :number_registered_in_revenue_commissioners, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
 
   br
   = label_tag 'Дата реєстрації у пенсійному фонді'
   br
-  = link_to @company.registration.registered_in_pension_fund, '#', data: { type: 'date', placement: 'right', name: :registered_in_pension_fund, pk: @company, model: 'registration', url: "registrations/#{ @company.id }", xeditable: true }
+  = link_to @company.registration.registered_in_pension_fund, '#', data: { type: 'date', placement: 'right', name: :registered_in_pension_fund, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
 
   br
   = label_tag 'Код пенсійного фонду'
   br
-  = link_to @company.registration.code_registered_in_pension_fund, '#', data: { placement: 'right', name: :code_registered_in_pension_fund, pk: @company, model: 'registration', url: "registrations/#{ @company.id }", xeditable: true }
+  = link_to @company.registration.code_registered_in_pension_fund, '#', data: { placement: 'right', name: :code_registered_in_pension_fund, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
 
+  javascript:
+    $('.nace_codes').editable({
+      ajaxOptions: {
+        type: "PUT",
+        dataType: "json"
+      },
+      params: function(params) {
+        var railsParams;
+        railsParams = {};
+        railsParams[$(this).data("model")] = {};
+        railsParams[$(this).data("model")][params.name] = params.value.join(',');
+        railsParams['page'] = 'show';
+        return railsParams;
+      },
+      select2: { tags: #{present(@company.registration).kveds},
+                                 placeholder: "Додати код",
+                                 width: '450px'}
+                                 });
 - else
   = label_tag 'Організаційно-правова форма (код та назва)'
   br

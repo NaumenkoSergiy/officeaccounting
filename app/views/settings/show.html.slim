@@ -24,7 +24,7 @@
     = label_tag 'Система оподаткування'
     br
     - if can? :update, Company
-      = link_to @company.registration.tax_system, '#', data: { placement: 'bottom', value: @company.registration.tax_system, type: 'select', source: ['Загальна', 'Спрощена'], pk: @company, model: "registration", url: "registrations/#{ @company.id }", xeditable: true, name: :tax_system }
+      = link_to @company.registration.tax_system, '#', data: { placement: 'bottom', value: @company.registration.tax_system, type: 'select', source: ['Загальна', 'Спрощена'], pk: @company, model: "registration", url: "registrations/#{ @company.registration.id }", xeditable: true, name: :tax_system }
     - else
       = @company.registration.tax_system
     h3
