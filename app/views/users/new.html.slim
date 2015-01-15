@@ -1,18 +1,12 @@
 = form_tag users_path, method: :post, id: 'new_user_form' do
-  = label_tag :email
-  br
-  = text_field_tag :email
+  = text_field_tag :email, '', placeholder: 'Електронна пошта'
 
-  br
-  = label_tag :password
-  br
-  = text_field_tag :password, '', type: :password
+  = text_field_tag :password, '', placeholder: 'Пароль', type: :password
 
-  br
-  = label_tag :confirm_password
-  br
-  = text_field_tag :confirm_password, '', type: :password
+  = text_field_tag :confirm_password, '', placeholder: 'Підтвердження пароля', type: :password
   = hidden_field_tag :role, 'edit'
 
-  br
   = submit_tag "Створити профіль"
+
+  .margin-top-20
+    = link_to 'Логін', new_session_path, class: 'btn btn-sm btn-white btn-block'

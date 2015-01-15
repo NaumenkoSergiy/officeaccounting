@@ -20,7 +20,32 @@
 //= require bootstrap3-editable/bootstrap-editable
 //= require bootstrap-switch
 
+LEFT_BAR_HIDE = 45;
+LEFT_BAR_SHOW = 220;
+
 $(document).on('ready', function(){
+
+  // left bar toggle
+  $('.navbar-minimalize').click(function () {
+    if ($('#page-wrapper').css('margin-left')==LEFT_BAR_HIDE+'px') {
+      $.cookie('leftBar', LEFT_BAR_SHOW);
+      px = LEFT_BAR_SHOW;
+    }
+    else {
+      $.cookie('leftBar', LEFT_BAR_HIDE);
+      px = LEFT_BAR_HIDE;
+    }
+
+    $('#page-wrapper').animate(
+      { marginLeft: px },
+      { duration: 200,
+        complete: function(){
+          $('.dropdown.profile-element').toggle();
+        }
+      }
+    );
+  });
+  ///////////////////////
   
   $('.left-bar a').click(function(){
     $('.left-bar a').removeClass('current');

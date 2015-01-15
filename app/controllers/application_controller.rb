@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   skip_before_filter :verify_authenticity_token
 
-  helper_method :current_user, :is_admin?
+  helper_method :current_user, :is_admin?, :application_present
 
   def current_user
     @current_user ||= User.find_by_auth_token!(cookies[:activate_token]) if cookies[:activate_token]
@@ -43,5 +43,9 @@ class ApplicationController < ActionController::Base
 
   def current_company
     @current_company ||= current_user.user_companies.where(current_company: true).first.company
+  end
+
+  def application_present
+    @present ||= ApplicationPresenter.new
   end
 end

@@ -301,7 +301,10 @@ $(document).ready(function() {
     $.ajax({
       type: 'POST',
       url: '/settings/companies/change_company/',
-      data: { company_id: companyId }
+      data: { company_id: companyId },
+      success: function(results) {
+        $('.navbar-top-links li .current-company-name').text(results.company_name);
+      }
     });
   });
 

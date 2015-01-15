@@ -1,0 +1,25 @@
+#page-wrapper.gray-bg.dashbard-1 style="margin-left: #{cookies['leftBar']}px"
+  .row.border-bottom
+    .nav.navbar-static-top role='navigation' style='margin-bottom: 0;'
+      .navbar-header
+        a.navbar-minimalize.minimalize-styl-2.btn.btn-primary href='#'
+          i.fa.fa-bars
+
+      ul.nav.navbar-top-links.navbar-right
+        li
+          span.m-r-sm.text-muted.current-company-name
+            = current_user.current_company.full_short_name
+        li
+          span.m-r-sm.text-muted
+            = current_user.email
+        li
+          = link_to destroy_sessions_path
+            i.fa.fa-sign-out
+            | Вийти
+
+  .wrapper.wrapper-content.animated.fadeInRight
+    .row
+      .col-lg-12
+        .ibox.white-bg
+          = yield
+

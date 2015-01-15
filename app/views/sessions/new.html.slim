@@ -1,14 +1,14 @@
-= form_tag sessions_path, :remote=>true, method: :post, id: 'new_session_form' do
-  = label_tag :email
+.margin-top-20
+  = form_tag sessions_path, remote: true, method: :post, id: 'new_session_form' do
+    = text_field_tag :email, '', placeholder: 'Електронна пошта'
 
-  br
-  = text_field_tag :email
+    = text_field_tag :password, '', placeholder: 'Пароль', type: :password
 
-  br
-  = label_tag :password
-  br
-  = text_field_tag :password, '', type: :password
+    = submit_tag "Логін"
+    = link_to "Забули пароль?", new_password_reset_path
 
-  br
-  = submit_tag "Логін"
-  = link_to "Забули пароль?", new_password_reset_path 
+  p.text-muted.text-center
+    small
+      | Не маєте аккаунта?
+
+  = link_to 'Створити аккаунт', new_user_path, class: 'btn btn-sm btn-white btn-block'
