@@ -62,3 +62,9 @@
 .flag.UZS { background-position: -593px 0px; width: 16px; height: 11px;  }
 .flag.ua { background-position: -541px 0px; width: 16px; height: 11px;  }  
 
+#companyBanks .modal-body {
+  max-height: 350px;
+  overflow-y: scroll;
+}
+
+#bank_show { position: fixed; }

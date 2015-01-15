@@ -1,4 +1,4 @@
-$(document).ready(function() {
+on$(document).ready(function() {
   $('#currency_form').click(function () {
     data = {
       currency: {
@@ -15,6 +15,27 @@ $(document).ready(function() {
     });
   });
 
+
+  $('#bank_form input[type=button]').click(function () {
+    dataBank = {
+      bank: {
+        name: $('#bank_form #name').val(),
+        code_edrpo: $('#bank_form #code_edrpo').val(),
+        mfo: $('#bank_form #mfo').val(),
+        lawyer_adress: $('#bank_form #lawyer_adress').val()
+      }
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: '/money/bank',
+      data: dataBank,
+      success: function  () {
+        $('#bank_form').hide();
+      }
+    });
+  });
+
   curr_date = new Date();
 
   $('#moneyCurrency h4').append(' на сьогодні ' + $.datepicker.formatDate('dd.mm.yy', curr_date));
@@ -23,6 +44,12 @@ $(document).ready(function() {
   $('.currencySelect').select2({width: '255px'});
 
   $('#moneyCurrency .currencyRemove').remove();
+
+  $('#bank_form').hide();
+
+  $('#add_new_bank').css({'margin-bottom':'30px'}).click(function () {
+    $('#bank_form').toggle();
+  });
 });
 
 function ratesLoad () {
@@ -69,3 +96,23 @@ function currencyRemove (id) {
     }
   });
 };
+
+function bankRemove (id) {
+  $.ajax({
+    type: 'DELETE',
+    url: '/money/bank/' + id,
+    success: function(){
+      $('.bank_' + id).remove();
+    }
+  });
+}
+
+function bankShow (id) {
+  $.ajax({
+    type: 'GET',
+    url: '/money/bank/' + id,
+    success: function(){
+      editableStart();
+    }
+  });
+}
