@@ -4,11 +4,9 @@ html
     title ActiveBooks
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags 
-  body
-    = render 'layouts/top_bar'
-    = render 'layouts/notification'
-    = render 'layouts/left_bar'
+    = csrf_meta_tags
+    = render 'layouts/authorized/index' if current_user
+    = render 'layouts/none_authorized/index' unless current_user
 
-    .main
-      = yield
+    = yield :authorized if current_user
+    = yield :none_authorized unless current_user

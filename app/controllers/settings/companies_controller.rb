@@ -51,7 +51,7 @@ module Settings
       company = current_user.user_companies.find_by(company_id: params[:company_id])
       old_company = current_user.user_companies.find_by(company_id: current_user.current_company.id) if current_user.current_company
       result = change_current_company(old_company, company)
-      render json: result
+      render json: { success: result, company_name: company.company.full_short_name }
     end
 
     private
