@@ -3,9 +3,13 @@
     .row
       = image_tag('charts.jpg')
   .row.links
-    = link_to "Додати новий", '#', data: { toggle: "modal", target: "#moneyNew"}, class: 'btn btn-success money_add_new'
+    = link_to "Додати новий", '#', data: { toggle: "modal", target: "#moneyNew"}, class: 'btn btn-success'
     = render 'money/addNew'
     = render 'money/currency/currency'
     = render 'money/currency/company_currency'
   .row
     |Тут буде таблиця! 
+ 
+javascript:
+  ratesLoad();
+  RemoveOptionsCurrensy();
