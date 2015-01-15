@@ -3,6 +3,6 @@ class MoneyController < ApplicationController
 
   def index
     @currency = Currency.new
-    @currencies = current_user.current_company.try(:currencies)
+    @currencies = current_user.current_company.try(:currencies) || {}
   end
 end
