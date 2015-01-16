@@ -43,12 +43,14 @@ $(document).ready(function() {
 
   $('.currencySelect').select2({width: '255px'});
 
+  $('.accountSelect').select2({width: '100%'});
+
   $('#moneyCurrency .currencyRemove').remove();
 
-  $('#bank_form').hide();
+  $('#bank_form, #account_form').hide();
 
-  $('#add_new_bank').click(function () {
-    $('#bank_form').toggle();
+  $('#add_new_bank, #add_new_account').click(function () {
+    $('#bank_form, #account_form').toggle();
   });
 });
 

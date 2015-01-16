@@ -1,0 +1,49 @@
+#companyAccount.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        .row
+          .col.col-lg-12
+            button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
+        .row
+          .col.col-lg-12
+            h4#myModalLabel.modal-title Рахунки
+            = link_to "Додати новий", '#', class: 'btn btn-success ', id: 'add_new_account'
+        .row
+          .col.col-lg-12
+            #bank_account
+      .modal-body
+        .row
+          .col.col-lg-12
+            = form_tag '', method: :post, id: :account_form, remote: :true do
+              = label_tag 'Назва рахунку'
+              br
+              = text_field_tag :name
+
+              br
+              = label_tag 'Вид рахунку'
+              br
+              = select_tag :account_type, options_for_select(Account::ACCOUNT), class: 'accountSelect'
+              
+              br
+              = label_tag 'Номер рахунку'
+              br
+              = text_field_tag :number, nil, :class => 'number', maxlength: 8
+
+              br
+              = label_tag 'Валюта'
+              br
+              = select_tag :currency, options_for_select(Currency::CURRENCY), class: "accountSelect"
+              br
+
+              br
+              = label_tag 'Банк'
+              br
+              = select_tag :account_type, options_for_select(@banks.collect {|c| [c[:name], c[:id]]}), class: 'accountSelect'
+              br
+
+              br
+              = hidden_field_tag :company_id, current_user.current_company.id
+              = submit_tag 'Додати', type: :button
+            #banks_form
+              = render 'money/bank/form'
