@@ -1,0 +1,7 @@
+- if flash[:error]
+  | $('.notification.error').show().text("#{flash[:error]}");
+- else
+  | 
+  | $('#banks_form').html("#{j render 'money/bank/form'}");
+  | $.unblockUI();
+ 
