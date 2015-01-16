@@ -48,4 +48,10 @@ class ApplicationController < ActionController::Base
   def application_present
     @present ||= ApplicationPresenter.new
   end
+
+  def has_company?
+    if current_user && current_user.companies.empty?
+      redirect_to new_settings_company_path
+    end
+  end
 end

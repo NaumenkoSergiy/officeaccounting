@@ -1,5 +1,6 @@
 class MoneyController < ApplicationController
   before_filter :redirect_to_new_session
+  before_filter :has_company?, only: [:index]
 
   def index
     @currency = Currency.new
