@@ -13,7 +13,7 @@ module Money
     def create
       bank = Bank.new bank_params
       @banks = Bank.all
-      flash[:error] = 'Ви ввели е коректні данні' unless bank.save
+      flash[:error] = 'Ви ввели не коректні данні' unless bank.save
       respond_to do |format|
         format.js
       end

@@ -1,4 +1,4 @@
-on$(document).ready(function() {
+$(document).ready(function() {
   $('#currency_form').click(function () {
     data = {
       currency: {
@@ -47,7 +47,7 @@ on$(document).ready(function() {
 
   $('#bank_form').hide();
 
-  $('#add_new_bank').css({'margin-bottom':'30px'}).click(function () {
+  $('#add_new_bank').click(function () {
     $('#bank_form').toggle();
   });
 });

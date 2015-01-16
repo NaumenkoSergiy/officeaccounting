@@ -8,11 +8,13 @@
         .row
           .col.col-lg-12
             h4#myModalLabel.modal-title Банки
+            = link_to "Додати новий", '#', class: 'btn btn-success ', id: 'add_new_bank'
+        .row
+          .col.col-lg-12
+            #bank_show
       .modal-body
         .row
           .col.col-lg-12
-            = link_to "Додати новий", '#', class: 'btn btn-success ', id: 'add_new_bank'
-            #bank_show
             = form_tag '', method: :post, id: :bank_form, remote: :true do
               = label_tag 'Назва'
               br
