@@ -1,0 +1,8 @@
+table
+  tbody
+    - @banks.each do |bank|
+      tr class='bank_#{ bank.id }'
+        td
+          = link_to bank.name, '#', onclick:"bankShow(#{bank.id})"
+        td
+          span class='glyphicon glyphicon-trash currencyRemove' onclick='bankRemove(#{bank.id});'
