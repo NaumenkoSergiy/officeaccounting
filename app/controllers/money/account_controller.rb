@@ -53,12 +53,12 @@ module Money
 
     def money_select (name)
       name.invert
-                 .collect do |key, value|
-                 {
-                  value: "#{key}",
-                  text:  "#{value}"
-                 }
-               end
+          .collect do |key, value|
+            {
+              value: "#{key}",
+              text:  "#{value}"
+            }
+          end
     end
   end
 end
