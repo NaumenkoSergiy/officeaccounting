@@ -32,6 +32,7 @@ $(document).ready(function() {
       data: dataBank,
       success: function  () {
         $('#bank_form').hide();
+        $('#bank_form').trigger('reset');
       }
     });
   });
@@ -53,6 +54,26 @@ $(document).ready(function() {
       data: dataAccount,
       success: function  () {
         $('#account_form').hide();
+        $('#account_form').trigger('reset');
+      }
+    });
+  });
+
+  $('#cashier_form input[type=button]').click(function () {
+    dataCashier = {
+      cashier: {
+        name: $('#cashier_form #name').val(),
+        currency: $('#cashier_form #currency').val(),
+      }
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: '/money/cashier',
+      data: dataCashier,
+      success: function  () {
+        $('#cashier_form').hide();
+        $('#cashier_form').trigger('reset');
       }
     });
   });
@@ -68,10 +89,10 @@ $(document).ready(function() {
 
   $('#moneyCurrency .currencyRemove').remove();
 
-  $('#bank_form, #account_form').hide();
+  $('#bank_form, #account_form, #cashier_form').hide();
 
-  $('#add_new_bank, #add_new_account').click(function () {
-    $('#bank_form, #account_form').toggle();
+  $('#add_new_bank, #add_new_account, #add_new_cashier').click(function () {
+    $(this).parent().parent().parent().next().find('form').toggle();
   });
 });
 

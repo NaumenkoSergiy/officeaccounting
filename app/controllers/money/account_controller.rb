@@ -5,8 +5,6 @@ module Money
 
     def show
       @banks = Bank.all
-      @account_select = money_select(Account::ACCOUNT)
-      @currency_select = money_select(Currency::CURRENCY)
       @account = Account.find(params[:id])
       respond_to do |format|
         format.js
@@ -49,16 +47,6 @@ module Money
                                       :number,
                                       :currency,
                                       :bank_id).merge!(company_id: current_user.current_company.id)
-    end
-
-    def money_select (name)
-      name.invert
-          .collect do |key, value|
-            {
-              value: "#{key}",
-              text:  "#{value}"
-            }
-          end
     end
   end
 end
