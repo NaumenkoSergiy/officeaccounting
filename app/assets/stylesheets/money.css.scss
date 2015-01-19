@@ -62,9 +62,9 @@
 .flag.UZS { background-position: -593px 0px; width: 16px; height: 11px;  }
 .flag.ua { background-position: -541px 0px; width: 16px; height: 11px;  }  
 
-#companyBanks {
+#companyBanks, #companyAccount {
   .modal-dialog {
-    right: 50px;
+    right: 45px;
     width: 680px;
    }
 
@@ -76,7 +76,7 @@
   overflow-y: scroll;
 }
 
-#bank_show {
+#bank_show, #account_show {
   background-color: #F2F1F0;
   max-height: 124px;
 

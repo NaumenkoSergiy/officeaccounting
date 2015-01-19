@@ -1,6 +1,10 @@
 class Account < ActiveRecord::Base
   belongs_to :company
+  belongs_to :bank
   
+  validates :name, presence: true
+  validates_numericality_of :number
+
   ACCOUNT = {
     'Поточний рахунок' => :current,
     'Вкладний (депозитний) рахунок' => :deposit,

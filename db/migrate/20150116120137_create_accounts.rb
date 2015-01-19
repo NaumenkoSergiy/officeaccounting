@@ -5,7 +5,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :account_type
       t.integer :number
       t.string :currency
-      t.string :bank
+      t.integer :bank_id
       t.integer :company_id
 
       t.timestamps

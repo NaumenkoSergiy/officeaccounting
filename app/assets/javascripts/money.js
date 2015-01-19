@@ -36,6 +36,27 @@ $(document).ready(function() {
     });
   });
 
+  $('#account_form input[type=button]').click(function () {
+    dataAccount = {
+      account: {
+        name: $('#account_form #name').val(),
+        account_type: $('#account_form #account_type').val(),
+        number: $('#account_form #number').val(),
+        currency: $('#account_form #currency').val(),
+        bank_id: $('#account_form #bank_id').val()
+      }
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: '/money/account',
+      data: dataAccount,
+      success: function  () {
+        $('#account_form').hide();
+      }
+    });
+  });
+
   curr_date = new Date();
 
   $('#moneyCurrency h4').append(' на сьогодні ' + $.datepicker.formatDate('dd.mm.yy', curr_date));
@@ -99,20 +120,20 @@ function currencyRemove (id) {
   });
 };
 
-function bankRemove (id) {
+function moneyRemove (name, id) {
   $.ajax({
     type: 'DELETE',
-    url: '/money/bank/' + id,
+    url: '/money/'+ name + '/' + id,
     success: function(){
-      $('.bank_' + id).remove();
+      $('.' + name + '_' + id).remove();
     }
   });
 }
 
-function bankShow (id) {
+function moneyShow (name, id) {
   $.ajax({
     type: 'GET',
-    url: '/money/bank/' + id,
+    url: '/money/' + name + '/' + id,
     success: function(){
       editableStart();
     }

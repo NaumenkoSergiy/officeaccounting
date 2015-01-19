@@ -11,7 +11,7 @@
             = link_to "Додати новий", '#', class: 'btn btn-success ', id: 'add_new_account'
         .row
           .col.col-lg-12
-            #bank_account
+            #account_show
       .modal-body
         .row
           .col.col-lg-12
@@ -39,11 +39,8 @@
               br
               = label_tag 'Банк'
               br
-              = select_tag :account_type, options_for_select(@banks.collect {|c| [c[:name], c[:id]]}), class: 'accountSelect'
+              = select_tag :bank_id, options_for_select(@banks.collect {|c| [c[:name], c[:id]]}), class: 'accountSelect'
               br
-
-              br
-              = hidden_field_tag :company_id, current_user.current_company.id
               = submit_tag 'Додати', type: :button
-            #banks_form
-              = render 'money/bank/form'
+            #accouns_table
+              = render 'money/account/table'
