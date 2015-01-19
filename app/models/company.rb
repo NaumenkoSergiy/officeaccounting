@@ -13,6 +13,7 @@ class Company < ActiveRecord::Base
   has_one :bank_account
   has_many :currencies
   has_many :accounts
+  has_many :cashiers
 
   after_create { set_registration }
 

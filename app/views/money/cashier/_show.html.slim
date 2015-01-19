@@ -1,0 +1,12 @@
+table
+  tbody
+    tr
+      th
+        | Назва каси
+      th
+        | Валюта
+    tr
+      td
+        = link_to @cashier.name, '#', data: { name: :name, pk: @cashier, placement: 'bottom', model: 'cashier', url: "money/cashier/#{ @cashier.id }", xeditable: true }
+      td
+        = link_to Currency::CURRENCY.invert[@cashier.currency.to_sym], '#', data: { name: :currency, pk: @cashier, placement: 'bottom', type: 'select2', source: application_present.money_select(Currency::CURRENCY), value: @cashier.currency, model: 'cashier', url: "money/cashier/#{ @cashier.id }", xeditable: true }
