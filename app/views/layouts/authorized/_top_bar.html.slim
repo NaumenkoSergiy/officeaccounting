@@ -7,9 +7,6 @@
 
       ul.nav.navbar-top-links.navbar-right
         li
-          span.m-r-sm.text-muted.current-company-name
-            = current_user.current_company.try(:full_short_name)
-        li
           span.m-r-sm.text-muted
             = current_user.email
         li
