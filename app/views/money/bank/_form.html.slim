@@ -3,6 +3,6 @@ table
     - @banks.each do |bank|
       tr class='bank_#{ bank.id }'
         td
-          = link_to bank.name, '#', onclick:"bankShow(#{bank.id})"
+          = link_to bank.name, '#', onclick:"moneyShow('bank', #{bank.id})"
         td
-          span class='glyphicon glyphicon-trash currencyRemove' onclick='bankRemove(#{bank.id});'
+          span class='glyphicon glyphicon-trash currencyRemove' onclick='moneyRemove("bank", #{bank.id});'
