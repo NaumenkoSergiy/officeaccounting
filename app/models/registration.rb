@@ -14,7 +14,8 @@ class Registration < ActiveRecord::Base
   validates_numericality_of :edrpou,
                             :risk_class,
                             :number_registered_in_revenue_commissioners,
-                            :registration_number
+                            :registration_number,
+                            :code_registered_in_pension_fund, allow_blank: true
   belongs_to :company
 
   after_create { company.set_official }
