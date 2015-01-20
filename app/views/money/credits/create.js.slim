@@ -1,0 +1,7 @@
+- if flash[:error]
+  | $('.notification.error').show().text("#{flash[:error]}");
+- else
+  | $('#new_credit')[0].reset();
+  | $('#credits_form').toggle();
+  | $('#credits_list').html("#{j render 'money/credits/list'}");
+  | $.unblockUI();

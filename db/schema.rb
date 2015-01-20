@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108065922) do
+ActiveRecord::Schema.define(version: 20150119075153) do
 
   create_table "articles_cash_flows", force: true do |t|
     t.integer "code"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 20150108065922) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "credits", force: true do |t|
+    t.string  "name"
+    t.string  "credit_type"
+    t.string  "account_number"
+    t.integer "bank_id"
+    t.integer "company_id"
   end
 
   create_table "currencies", force: true do |t|

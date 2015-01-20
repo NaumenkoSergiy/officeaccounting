@@ -15,7 +15,6 @@ $(document).ready(function() {
     });
   });
 
-
   $('#bank_form input[type=button]').click(function () {
     dataBank = {
       bank: {
@@ -41,14 +40,14 @@ $(document).ready(function() {
   $('#moneyCurrency h4').append(' на сьогодні ' + $.datepicker.formatDate('dd.mm.yy', curr_date));
   
 
-  $('.currencySelect').select2({width: '255px'});
+  $('.currencySelect, .editable-select').select2({width: '255px'});
 
   $('#moneyCurrency .currencyRemove').remove();
 
   $('#bank_form').hide();
 
-  $('#add_new_bank').click(function () {
-    $('#bank_form').toggle();
+  $('#add_new_bank, #add_new_credit').click(function () {
+    $(this).parents('.modal-header').next().find('#credits_form').toggle();
   });
 });
 

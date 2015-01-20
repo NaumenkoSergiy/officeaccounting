@@ -16,6 +16,9 @@ $(document).ready(function() {
 
 function editableStart () {
   return $("[data-xeditable=true]").each(function() {
+    var name;
+    var valueNew = null;
+    var id = 0;
     return $(this).editable({
       ajaxOptions: {
         type: "PUT",
@@ -23,11 +26,23 @@ function editableStart () {
       },
       params: function(params) {
         var railsParams;
+        id = params.pk.id;
+        name = params.name;
+        if ($(this).data().source) {
+          $.map( $(this).data().source, function( val, i ) {
+            if (val['value']==params.value){
+              valueNew = val['text'];
+            }
+          });
+        }
         railsParams = {};
         railsParams[$(this).data("model")] = {};
         railsParams[$(this).data("model")][params.name] = params.value;
         railsParams['page'] = 'show';
         return railsParams;
+      },
+      success: function(response, newValue) {
+        $("table tr[value='" + id + "'] td#"+name).find('a').text(valueNew || newValue);
       }
     });
   });

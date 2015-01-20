@@ -50,6 +50,10 @@ tr {
     .glyphicon-trash {
       display: initial;
     }
+
+    .record-remove {
+      display: block;
+    }
   }
 }
 
@@ -78,3 +82,12 @@ a.btn-success {
 }
 
 .active { display: none; }
+
+.record-remove {
+  display: none;
+  color: grey;
+}
+
+.modal-body {
+  font-size: 14px;
+}

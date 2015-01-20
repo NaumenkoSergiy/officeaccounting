@@ -29,5 +29,5 @@
             = link_to "Банки", '#', class: 'btn  btn-success btn-modal', data: { toggle: "modal", target: "#companyBanks"}
             = link_to "Валюти", '#', class: 'btn  btn-success btn-modal', data: { toggle: "modal", target: "#companyCurrency"}
             = link_to "Валютні курси", '#',  data: { toggle: "modal", target: "#moneyCurrency"}, class: 'btn  btn-success btn-modal'
-            = link_to "Кредити та позики", '#', class: 'btn  btn-success btn-modal'
-            = link_to "Статті руху грошей", '#', class: 'btn  btn-success btn-modal'
+            = link_to "Кредити та позики", money_credits_path, class: 'btn btn-success btn-modal', remote: true
+            = link_to "Статті руху грошей", '#', class: 'btn btn-success btn-modal'
