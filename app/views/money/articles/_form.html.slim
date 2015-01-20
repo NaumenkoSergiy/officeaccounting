@@ -1,0 +1,6 @@
+= form_for [:money, @article], method: :post, remote: :true do |f|
+  = f.label 'Назва каси'
+  br
+  = f.text_field :name
+  br
+  = f.submit 'Додати'

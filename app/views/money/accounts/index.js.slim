@@ -1,0 +1,7 @@
+| $('#companyAccount').modal('show');
+| $('#account_form').html("#{j render 'money/accounts/form'}");
+| $('#account_list').html("#{j render 'money/accounts/list'}");
+| $('#account_account_type, #account_currency, #account_bank_id').select2({width: '100%'});
+| $('input.number').numeric({ negative : false, decimal: false });
+| $('#new_account').hide();
+| $.unblockUI();

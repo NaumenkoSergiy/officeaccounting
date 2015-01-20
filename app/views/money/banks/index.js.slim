@@ -1,0 +1,7 @@
+| $('#companyBanks').modal('show');
+| $('#bank_form').html("#{j render 'money/banks/form'}");
+| $('input.number').numeric({ negative : false, decimal: false });
+| $('#bank_list').html("#{j render 'money/banks/list'}");
+| $('#new_bank').hide();
+| $('#cashier_currency').select2({width: '100%'});
+| $.unblockUI();

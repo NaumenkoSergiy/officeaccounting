@@ -9,6 +9,7 @@ Add references:
  rake activebooks:add_form_of_invoice
  rake activebooks:add_kved
  rake activebooks:add_koatuu
+ rake activebooks:add_form_of_article
 
  rake activebooks:add_tax_inspection
 

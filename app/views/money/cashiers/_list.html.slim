@@ -1,0 +1,13 @@
+table.table
+  tbody
+    thead
+      tr
+        th
+          | Назва каси
+        th
+    - @cashiers.each do |cashier|
+      tr class='cashier_#{ cashier.id }'
+        td
+          = link_to cashier.name, money_cashier_path(cashier), remote: true
+        td
+          = application_present.destroy_link money_cashier_path(cashier)

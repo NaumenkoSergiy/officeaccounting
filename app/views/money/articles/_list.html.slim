@@ -1,0 +1,12 @@
+table.table
+  tbody
+    thead
+      tr
+        th
+          | Назва статті
+    - @articles.each do |article|
+      tr class='articles_#{ article.id }'
+        td
+          = link_to article.name, money_article_path(article), remote: true
+        td
+          = application_present.destroy_link money_article_path(article)

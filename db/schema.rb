@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150119084717) do
     t.datetime "updated_at"
   end
 
-  create_table "articles_cash_flows", force: true do |t|
+  create_table "articles", force: true do |t|
     t.integer "code"
     t.string  "name"
   end

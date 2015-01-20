@@ -1,0 +1,19 @@
+#companyBanks.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        .row
+          .col.col-lg-12
+            button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
+        .row
+          .col.col-lg-12
+            h4#myModalLabel.modal-title Банки
+            = link_to "Додати новий", '#', class: 'btn btn-success ', id: 'add_new_bank'
+        .row
+          .col.col-lg-12
+            #bank_show
+      .modal-body
+        .row
+          .col.col-lg-12
+            #bank_form
+            #bank_list

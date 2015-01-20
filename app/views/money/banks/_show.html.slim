@@ -1,0 +1,20 @@
+table.table
+  tbody
+    tr
+      th class='banks'
+        | Назва
+      th
+        | Код ЄДРПО
+      th
+        | МФО
+      th
+        | Юридична адреса
+    tr
+      td
+        = link_to @bank.name, '#', data: { name: :name, pk: @bank, type: 'textarea', placement: 'bottom', model: 'bank', url: "money/banks/#{ @bank.id }", xeditable: true }
+      td
+        = link_to @bank.code_edrpo, '#', data: { name: :code_edrpo, pk: @bank, model: 'bank', placement: 'bottom', url: "money/banks/#{ @bank.id }", xeditable: true }
+      td
+        = link_to @bank.mfo, '#', data: { name: :mfo, pk: @bank, model: 'bank', placement: 'bottom', url: "money/banks/#{ @bank.id }", xeditable: true }
+      td
+        = link_to @bank.lawyer_adress, '#', data: { name: :lawyer_adress, type: 'textarea', placement: 'bottom', pk: @bank, model: 'bank', url: "money/banks/#{ @bank.id }", xeditable: true }

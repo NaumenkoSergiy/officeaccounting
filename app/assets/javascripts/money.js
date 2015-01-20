@@ -8,72 +8,10 @@ $(document).ready(function() {
     
     $.ajax({
       type: 'POST',
-      url: '/money/currency',
+      url: '/money/currencies',
       data: data,
       success: RemoveOptionsCurrensy
 
-    });
-  });
-
-  $('#bank_form input[type=button]').click(function () {
-    dataBank = {
-      bank: {
-        name: $('#bank_form #name').val(),
-        code_edrpo: $('#bank_form #code_edrpo').val(),
-        mfo: $('#bank_form #mfo').val(),
-        lawyer_adress: $('#bank_form #lawyer_adress').val()
-      }
-    };
-
-    $.ajax({
-      type: 'POST',
-      url: '/money/bank',
-      data: dataBank,
-      success: function  () {
-        $('#bank_form').hide();
-        $('#bank_form').trigger('reset');
-      }
-    });
-  });
-
-  $('#account_form input[type=button]').click(function () {
-    dataAccount = {
-      account: {
-        name: $('#account_form #name').val(),
-        account_type: $('#account_form #account_type').val(),
-        number: $('#account_form #number').val(),
-        currency: $('#account_form #currency').val(),
-        bank_id: $('#account_form #bank_id').val()
-      }
-    };
-
-    $.ajax({
-      type: 'POST',
-      url: '/money/account',
-      data: dataAccount,
-      success: function  () {
-        $('#account_form').hide();
-        $('#account_form').trigger('reset');
-      }
-    });
-  });
-
-  $('#cashier_form input[type=button]').click(function () {
-    dataCashier = {
-      cashier: {
-        name: $('#cashier_form #name').val(),
-        currency: $('#cashier_form #currency').val(),
-      }
-    };
-
-    $.ajax({
-      type: 'POST',
-      url: '/money/cashier',
-      data: dataCashier,
-      success: function  () {
-        $('#cashier_form').hide();
-        $('#cashier_form').trigger('reset');
-      }
     });
   });
 
@@ -84,14 +22,10 @@ $(document).ready(function() {
 
   $('.currencySelect, .editable-select').select2({width: '255px'});
 
-  $('.accountSelect').select2({width: '100%'});
-
   $('#moneyCurrency .currencyRemove').remove();
 
-  $('#bank_form, #account_form, #cashier_form').hide();
-
-  $('#add_new_bank, #add_new_account, #add_new_cashier, add_new_credit').click(function () {
-    $(this).parent().parent().parent().next().find('form').toggle();
+  $('#add_new_bank, #add_new_account, #add_new_cashier, #add_new_article').click(function () {
+    $(this).parents('.modal-header').next().find('form').toggle();
   });
 });
 
@@ -128,7 +62,7 @@ function RemoveOptionsCurrensy () {
 function currencyRemove (id) {
   $.ajax({
     type: 'DELETE',
-    url: '/money/currency/' + id,
+    url: '/money/currencies/' + id,
     success: function(){
       currencies = $('.currency_' + id + ' td:first').text();
       $('.currency_' + id).remove();
@@ -139,23 +73,3 @@ function currencyRemove (id) {
     }
   });
 };
-
-function moneyRemove (name, id) {
-  $.ajax({
-    type: 'DELETE',
-    url: '/money/'+ name + '/' + id,
-    success: function(){
-      $('.' + name + '_' + id).remove();
-    }
-  });
-}
-
-function moneyShow (name, id) {
-  $.ajax({
-    type: 'GET',
-    url: '/money/' + name + '/' + id,
-    success: function(){
-      editableStart();
-    }
-  });
-}

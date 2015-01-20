@@ -1,0 +1,21 @@
+= form_for [:money, @bank], method: :post, remote: :true do |f|
+  = f.label 'Назва'
+  br
+  = f.text_field :name
+
+  br
+  = f.label 'Код за ЄДРПО'
+  br
+  = f.text_field :code_edrpo, :class => 'number', maxlength: 8
+
+  br
+  = f.label 'МФО'
+  br
+  = f.text_field :mfo, :class => 'number', maxlength: 8
+
+  br
+  = f.label 'Юридична адреса'
+  br
+  = f.text_field :lawyer_adress
+  br
+  = f.submit 'Додати'

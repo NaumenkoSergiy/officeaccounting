@@ -1,6 +1,0 @@
-- if flash[:error]
-  | $('.notification.error').show().text("#{flash[:error]}");
-- else
-  | $('.currensy_form').html("#{j render 'money/currency/currency_form'}");
-  | $('#exchangeRates').html("#{j render 'money/currency/exchange_rates'}");
-  | $.unblockUI();

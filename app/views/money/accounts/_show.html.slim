@@ -1,0 +1,24 @@
+table.table
+  tbody
+    tr
+      th
+        | Назва рахунку
+      th
+        | Вид рахунку
+      th
+        | № рахунку
+      th
+        | Валюта
+      th
+        | Банк
+    tr
+      td
+        = link_to @account.name, '#', data: { name: :name, pk: @account, placement: 'bottom', model: 'account', url: "money/accounts/#{ @account.id }", xeditable: true }
+      td
+        = link_to Account::ACCOUNT.invert[@account.account_type.to_sym], '#', data: { name: :account_type, type: 'select2', pk: @account, value: @account.account_type, source:  application_present.money_select(Account::ACCOUNT), placement: 'bottom', model: 'account', url: "money/accounts/#{ @account.id }", xeditable: true }
+      td
+        = link_to @account.number, '#', data: { name: :number, pk: @account, placement: 'bottom', model: 'account', url: "money/accounts/#{ @account.id }", xeditable: true }
+      td
+        = link_to Currency::CURRENCY.invert[@account.currency.to_sym], '#', data: { name: :currency, pk: @account, placement: 'bottom', type: 'select2', source: application_present.money_select(Currency::CURRENCY), value: @account.currency, model: 'account', url: "money/accounts/#{ @account.id }", xeditable: true }
+      td
+         = link_to @account.bank_id, '#', data: { name: :bank_id, type: 'select2', pk: @account, value: @account.bank_id, source: @banks.collect{|f| {value: f.id, text: f.name}}.to_json, placement: 'bottom', model: 'account', url: "money/accounts/#{ @account.id }", xeditable: true }

@@ -63,6 +63,7 @@
 .flag.ua { background-position: -541px 0px; width: 16px; height: 11px;  }  
 
 #companyBanks, #companyAccount {
+  .modal-header { border: none; }
   .modal-dialog {
     right: 45px;
     width: 680px;
@@ -71,19 +72,20 @@
   .modal-header, .modal-body { padding-bottom: 0px; }
 }
 
-#banks_form {
+#bank_list, #article_list, #account_list, #cashier_list {
   max-height: 300px;
   overflow-y: scroll;
   margin-bottom: 10px;
 }
 
-#bank_show, #account_show, #cashier_show {
+#bank_show, #account_show, #cashier_show, #article_show, #moneyCurrency tr:first-child  {
   background-color: #F2F1F0;
-  max-height: 124px;
 
   table { margin-bottom: 1px; }
 }
 
 #add_new_bank { margin-bottom: 5px; }
 
-#companyCashier td { width: 200px; }
+#companyCashier, #companyBanks, #article_cash, #companyCurrency {
+  .modal-header { border: none; }
+}
