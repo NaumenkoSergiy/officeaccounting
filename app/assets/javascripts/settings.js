@@ -59,7 +59,7 @@ $(document).ready(function() {
   
   $('#phone').inputmask('+(380)-99-9999999');
 
-  $('#company_form').validate({
+  $('#new_company').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
       error.insertBefore(element);
