@@ -1,0 +1,19 @@
+#companyCredits.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        .row
+          .col.col-lg-12
+            button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
+        .row
+          .col.col-lg-12
+            h4#myModalLabel.modal-title Кредити і позики
+            = link_to "Додати новий", '#', class: 'btn btn-success ', id: 'add_new_credit'
+        .row
+          .col.col-lg-12
+            #credit_show
+      .modal-body
+        .row
+          .col.col-lg-12
+            #credits_form style='display: none;'
+            #credits_list

@@ -12,6 +12,7 @@ class Company < ActiveRecord::Base
   has_many :officials
   has_one :bank_account
   has_many :currencies
+  has_many :credits
   has_many :accounts
   has_many :cashiers
 

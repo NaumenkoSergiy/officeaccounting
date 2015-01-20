@@ -1,0 +1,23 @@
+h3
+  | Всі кредити
+table.table
+  thead
+    tr
+      th
+        | Назва
+      th
+        | Тип кредиту
+      th
+        | Номер рахунку
+      th
+  tbody
+    - @credits.each do |credit|
+      tr class='credit_#{ credit.id }' id='credit_row' value="#{credit.id}"
+        td id='name'
+          = link_to credit.name, money_credit_path(credit), remote: true
+        td id='credit_type'
+          = link_to Credit::CREDIT_TYPE.invert[credit.credit_type.to_sym], money_credit_path(credit), remote: true
+        td id='account_number'
+          = link_to credit.account_number, money_credit_path(credit), remote: true
+        td style='width: 40px'
+          = application_present.destroy_link money_credit_path(credit)

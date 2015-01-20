@@ -15,7 +15,6 @@ $(document).ready(function() {
     });
   });
 
-
   $('#bank_form input[type=button]').click(function () {
     dataBank = {
       bank: {
@@ -83,7 +82,7 @@ $(document).ready(function() {
   $('#moneyCurrency h4').append(' на сьогодні ' + $.datepicker.formatDate('dd.mm.yy', curr_date));
   
 
-  $('.currencySelect').select2({width: '255px'});
+  $('.currencySelect, .editable-select').select2({width: '255px'});
 
   $('.accountSelect').select2({width: '100%'});
 
@@ -91,7 +90,7 @@ $(document).ready(function() {
 
   $('#bank_form, #account_form, #cashier_form').hide();
 
-  $('#add_new_bank, #add_new_account, #add_new_cashier').click(function () {
+  $('#add_new_bank, #add_new_account, #add_new_cashier, add_new_credit').click(function () {
     $(this).parent().parent().parent().next().find('form').toggle();
   });
 });

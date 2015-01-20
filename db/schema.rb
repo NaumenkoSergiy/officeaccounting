@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(version: 20150119084717) do
     t.integer  "user_id"
   end
 
+  create_table "credits", force: true do |t|
+    t.string  "name"
+    t.string  "credit_type"
+    t.string  "account_number"
+    t.integer "bank_id"
+    t.integer "company_id"
+  end
+
   create_table "currencies", force: true do |t|
     t.string   "name"
     t.integer  "company_id"
