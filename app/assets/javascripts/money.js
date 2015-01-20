@@ -24,7 +24,7 @@ $(document).ready(function() {
 
   $('#moneyCurrency .currencyRemove').remove();
 
-  $('#add_new_bank, #add_new_account, #add_new_cashier, #add_new_article').click(function () {
+  $('#add_new_bank, #add_new_account, #add_new_cashier, #add_new_article, #add_new_credit').click(function () {
     $(this).parents('.modal-header').next().find('form').toggle();
   });
 });
