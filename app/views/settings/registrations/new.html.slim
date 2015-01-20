@@ -1,96 +1,96 @@
-div
-  h3
-    | Блок2 (інформація про реєстрацію)
+.center
+  div
+    h3
+      | Блок2 (інформація про реєстрацію)
 
-= form_for [:settings, @registration], remote: true, id: :registration_form do |f|
-  = f.label 'Організаційно-правова форма (код та назва)'
-  br
-  = f.select :form_of_incorporation, options_for_select(@incorporation_forms)
-  
-  br
-  = f.label 'Код ЄРДПОУ'
-  br
-  = f.text_field :edrpou, :class => 'number', placeholder: 'Введіть код ЄРДПОУ вашого підприємства', maxlength: 8
+  = form_for [:settings, @registration], remote: true, id: :registration_form do |f|
+    = f.label 'Організаційно-правова форма (код та назва)'
+    br
+    = f.select :form_of_incorporation, options_for_select(@incorporation_forms)
+    
+    br
+    = f.label 'Код ЄРДПОУ'
+    br
+    = f.text_field :edrpou, :class => 'number', placeholder: 'Введіть код ЄРДПОУ вашого підприємства', maxlength: 8
 
 
-  = f.label 'коди КВЕД'
-  br
-  .error-registration style='display:none;'
-    | поле не може бути пустим
-  = f.text_field :nace_codes, :class => "required"
+    = f.label 'коди КВЕД'
+    br
+    .error-registration style='display:none;'
+      | поле не може бути пустим
+    = f.text_field :nace_codes
 
-  br
-  = f.label 'розташування за КОАТУУ'
-  br
-  .error-registration style='display:none;'
-    | поле не може бути пустим
-  = f.text_field :koatuu, :class => 'number', placeholder: 'Введіть код розташування за КОАТУУ'
+    br
+    = f.label 'розташування за КОАТУУ'
+    br
+    .error-registration style='display:none;'
+      | поле не може бути пустим
+    = f.text_field :koatuu, :class => 'number', placeholder: 'Введіть код розташування за КОАТУУ'
 
-  br
-  = f.label 'клас професійного ризику'
-  br
-  = f.select :risk_class, (1..67).to_a
+    br
+    = f.label 'клас професійного ризику'
+    br
+    = f.select :risk_class, (1..67).to_a
 
-  br
-  = f.label 'Чи є підприємство платником податку на додану вартість (ПДВ)?'
-  br
-  = f.check_box :pdv
+    br
+    = f.label 'Чи є підприємство платником податку на додану вартість (ПДВ)?', :id => 'label_pdv'
+    = f.check_box :pdv
 
-  br
-  = f.label 'номер свідоцтва ПДВ'
-  br
-  = f.text_field :tin, :class => 'number', placeholder: 'Введіть номер свідоцтва ПДВ вашого підприємства', maxlength: 10, disabled: :disabled
+    br
+    = f.label 'номер свідоцтва ПДВ'
+    br
+    = f.text_field :tin, :class => 'number', placeholder: 'Введіть номер свідоцтва ПДВ вашого підприємства', maxlength: 10, disabled: :disabled
 
-  br
-  = f.label 'дата державної реєстрації'
-  br
-  = f.text_field :state_registration_date, :class => 'date_reg'
+    br
+    = f.label 'дата державної реєстрації'
+    br
+    = f.text_field :state_registration_date, :class => 'date_reg'
 
-  br
-  = f.label 'номер реєстрації'
-  br
-  = f.text_field :registration_number, :class => 'number', placeholder: 'Введіть номер реєстрації вашого підприємства', maxlength: 10
+    br
+    = f.label 'номер реєстрації'
+    br
+    = f.text_field :registration_number, :class => 'number', placeholder: 'Введіть номер реєстрації вашого підприємства', maxlength: 10
 
-  br
-  = f.label 'ким зареєстровано'
-  br
-  = f.text_field :registered_by
+    br
+    = f.label 'ким зареєстровано'
+    br
+    = f.text_field :registered_by
 
-  br
-  = f.label 'реєстрація у податковій'
-  br
-  = f.text_field :date_registered_in_revenue_commissioners, :class => 'date_reg'
+    br
+    = f.label 'реєстрація у податковій'
+    br
+    = f.text_field :date_registered_in_revenue_commissioners, :class => 'date_reg'
 
-  br
-  = f.label 'місце реєстрації у податковій'
-  br
-  = f.select :tax_inspection, options_for_select(TaxInspection.pluck(:name)), class: 'select2'
+    br
+    = f.label 'місце реєстрації у податковій'
+    br
+    = f.select :tax_inspection, options_for_select(TaxInspection.pluck(:name)), class: 'select2'
 
-  br
-  = f.label 'номер реєстрації у податковій'
-  br
-  = f.text_field :number_registered_in_revenue_commissioners, :class => 'number', placeholder: 'Введіть номер реєстрації у податковій', maxlength: 12
+    br
+    = f.label 'номер реєстрації у податковій'
+    br
+    = f.text_field :number_registered_in_revenue_commissioners, :class => 'number', placeholder: 'Введіть номер реєстрації у податковій', maxlength: 12
 
-  br
-  = f.label 'дата реєстрації у пенсійному фонді'
-  br
-  = f.text_field :registered_in_pension_fund, :class => 'date_reg'
+    br
+    = f.label 'дата реєстрації у пенсійному фонді'
+    br
+    = f.text_field :registered_in_pension_fund, :class => 'date_reg'
 
-  br
-  = f.label 'код пенсійного фонду'
-  br
-  = f.text_field :code_registered_in_pension_fund, :class => 'number', placeholder: 'Введіть код пенсійного фонду', maxlength: 4
+    br
+    = f.label 'код пенсійного фонду'
+    br
+    = f.text_field :code_registered_in_pension_fund, :class => 'number', placeholder: 'Введіть код пенсійного фонду', maxlength: 4
 
-  br
-  = f.label 'система оподаткування'
-  br
-  = f.select :tax_system, ['Загальна', 'Спрощена']
+    br
+    = f.label 'система оподаткування'
+    br
+    = f.select :tax_system, ['Загальна', 'Спрощена']
 
-  br
-  = link_to 'Назад', new_settings_company_path(back: true)
-  = f.submit "Далі"
+    br
+    = link_to '', new_settings_company_path(back: true), :class => 'glyphicon glyphicon-arrow-left back-arrow'
+    = f.submit "Далі"
 
-javascript:
-  $('#registration_nace_codes').select2({ tags: #{present(@registration).kveds},
-                             placeholder: "Додати код",
-                             width: 'calc(80% - 22px)'});
+  javascript:
+    $('#registration_nace_codes').select2({ tags: #{present(@registration).kveds},
+                               placeholder: "Додати код",
+                               width: 'calc(80% - 22px)'});

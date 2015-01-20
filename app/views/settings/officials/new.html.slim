@@ -1,4 +1,5 @@
-- if params[:official_type] == 'bookeeper'
-  = render 'bookeeper'
-- else
-  = render 'director'
+.center
+  - if params[:official_type] == 'bookeeper'
+    = render 'bookeeper'
+  - else
+    = render 'director'

@@ -235,3 +235,43 @@ h1, h2, h3, h4, h5, h6 {
   border-style: solid solid none;
   box-shadow: 0 5px 5px rgba(0,0,0, 0.55);
 }
+
+input[type="submit"] {
+  width: 260px;
+}
+
+input.companyChoose {
+  margin: 0;
+}
+
+a.add-company {
+  margin-bottom: 10px;
+}
+
+.glyphicon.glyphicon-arrow-left.back-arrow {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+.center {
+  width: 500px;
+  margin: 0 auto;
+}
+
+#select2-drop, .select2-container {
+  width: 500px !important;
+  margin-bottom: 15px !important;
+}
+
+#label_pdv {
+  float: left;
+  margin-right: 10px;
+}
+
+#registration_pdv {
+  width: auto;
+  float: left;
+  height: 15px;
+}

@@ -1,22 +1,23 @@
-.bank-account
-  h3
-    | Блок 5 (банківські реквізити)
+.center
+  .bank-account
+    h3
+      | Блок 5 (банківські реквізити)
 
-  = form_for [:settings, @bank_account], remote: :true do |f|
-    = f.label 'Рахунок'
-    br
-    = f.text_field :account, :class => 'number', placeholder: 'Введіть № рахунку', maxlength: 11
+    = form_for [:settings, @bank_account], remote: :true do |f|
+      = f.label 'Рахунок'
+      br
+      = f.text_field :account, :class => 'number', placeholder: 'Введіть № рахунку', maxlength: 11
 
-    br
-    = f.label 'Банк'
-    br
-    = f.text_field :bank, placeholder: 'Введіть повну назву банківської установи'
+      br
+      = f.label 'Банк'
+      br
+      = f.text_field :bank, placeholder: 'Введіть повну назву банківської установи'
 
-    br
-    = f.label 'МФО'
-    br
-    = f.text_field :mfo, :class => 'number', placeholder: 'Введіть МФО', maxlength: 6
+      br
+      = f.label 'МФО'
+      br
+      = f.text_field :mfo, :class => 'number', placeholder: 'Введіть МФО', maxlength: 6
 
-    br
-    = link_to 'Назад', new_settings_official_path(back: true, official_type: 'bookeeper')
-    = f.submit "Закінчити створення підприємства"
+      br
+      = link_to '', new_settings_official_path(back: true, official_type: 'bookeeper'), :class => 'glyphicon glyphicon-arrow-left back-arrow'
+      = f.submit "Закінчити створення підприємства"

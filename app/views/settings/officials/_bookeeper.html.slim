@@ -24,6 +24,6 @@
   = f.hidden_field :official_type, value: :bookeeper
     
   br
-  = link_to 'Назад', new_settings_official_path(back: true)
+  = link_to '', new_settings_official_path(back: true), :class => 'glyphicon glyphicon-arrow-left back-arrow'
   = f.submit "Далі"
   = link_to 'Пропустити', new_settings_bank_account_path
