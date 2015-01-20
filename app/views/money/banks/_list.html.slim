@@ -1,0 +1,13 @@
+table.table
+  tbody
+    thead
+      tr
+        th
+          | Назва банку
+        th
+    - @banks.each do |bank|
+      tr class='bank_#{ bank.id }'
+        td
+          = link_to bank.name, money_bank_path(bank), remote: true
+        td
+          = application_present.destroy_link money_bank_path(bank)

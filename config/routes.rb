@@ -27,10 +27,11 @@ Rails.application.routes.draw do
   end
 
   namespace 'money' do
-    resources :currency, only: [:create, :destroy]
-    resources :bank, only: [ :show, :create, :destroy, :update]
+    resources :currencies, only: [:create, :destroy]
+    resources :banks
     resources :credits
-    resources :account, only: [ :show, :create, :destroy, :update]
-    resources :cashier, only: [ :show, :create, :destroy, :update]
+    resources :accounts
+    resources :cashiers
+    resources :articles
   end
 end

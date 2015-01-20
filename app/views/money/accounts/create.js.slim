@@ -1,0 +1,6 @@
+- if flash[:error]
+  | $('.notification.error').show().text("#{flash[:error]}");
+- else
+  | $('#account_list').html("#{j render 'money/accounts/list'}");
+  | $('#new_account').hide()[0].reset();
+  | $.unblockUI();

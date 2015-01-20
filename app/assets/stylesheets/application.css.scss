@@ -47,13 +47,9 @@ div.error {
 tr {
 
   &:hover {
-    .glyphicon-trash {
-      display: initial;
-    }
+    .glyphicon-trash { display: initial; }
 
-    .record-remove {
-      display: block;
-    }
+    .record-remove { display: block; }
   }
 }
 
@@ -88,6 +84,4 @@ a.btn-success {
   color: grey;
 }
 
-.modal-body {
-  font-size: 14px;
-}
+.modal-body { font-size: 14px; }

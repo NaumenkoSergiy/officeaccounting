@@ -1,8 +1,0 @@
-table
-  tbody
-    - @cashiers.each do |cashier|
-      tr class='cashier_#{ cashier.id }'
-        td
-          = link_to cashier.name, '#', onclick:"moneyShow('cashier', #{cashier.id})"
-        td
-          span class='glyphicon glyphicon-trash currencyRemove' onclick='moneyRemove("cashier", #{cashier.id});'

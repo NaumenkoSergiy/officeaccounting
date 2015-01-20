@@ -24,10 +24,10 @@
             = link_to "Залишки на рахунках", '#', class: 'btn  btn-success btn-modal'
             = link_to "Відомість з під звіту", '#', class: 'btn  btn-success btn-modal'
           .col.col-lg-4
-            = link_to "Рахунки", '#', class: 'btn  btn-success btn-modal', data: { toggle: "modal", target: "#companyAccount"}
-            = link_to "Каси", '#', class: 'btn  btn-success btn-modal', data: { toggle: "modal", target: "#companyCashier"}
-            = link_to "Банки", '#', class: 'btn  btn-success btn-modal', data: { toggle: "modal", target: "#companyBanks"}
+            = link_to "Рахунки", 'money/accounts', remote: true, type: :get, class: 'btn  btn-success btn-modal'
+            = link_to "Каси", 'money/cashiers', remote: true, type: :get, class: 'btn  btn-success btn-modal'
+            = link_to "Банки", 'money/banks', remote: true, type: :get, class: 'btn  btn-success btn-modal'
             = link_to "Валюти", '#', class: 'btn  btn-success btn-modal', data: { toggle: "modal", target: "#companyCurrency"}
             = link_to "Валютні курси", '#',  data: { toggle: "modal", target: "#moneyCurrency"}, class: 'btn  btn-success btn-modal'
             = link_to "Кредити та позики", money_credits_path, class: 'btn btn-success btn-modal', remote: true
-            = link_to "Статті руху грошей", '#', class: 'btn btn-success btn-modal'
+            = link_to "Статті руху грошей", 'money/articles', remote: true, type: :get, class: 'btn  btn-success btn-modal'

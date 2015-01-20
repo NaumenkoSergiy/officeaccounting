@@ -1,0 +1,6 @@
+- if flash[:error]
+  | $('.notification.error').show().text("#{flash[:error]}");
+- else
+  | $('#cashier_list').html("#{j render 'money/cashiers/list'}");
+  | $('#new_cashier').hide()[0].reset();
+  | $.unblockUI();

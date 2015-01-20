@@ -6,7 +6,5 @@ class MoneyController < ApplicationController
     @currency = Currency.new
     @currencies = current_user.current_company.try(:currencies) || {}
     @banks = Bank.all
-    @accounts = Account.all
-    @cashiers = Cashier.all
   end
 end

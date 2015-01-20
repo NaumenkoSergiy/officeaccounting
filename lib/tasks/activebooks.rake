@@ -42,9 +42,9 @@ namespace :activebooks do
     end
   end
 
-  task add_form_of_article_cash_flows: :environment do
-    Constants::FORMS_OF_ARTICLE_CASH_FLOWS.each do |form|
-      ArticlesCashFlows.create({code: form[:code], name: form[:name]})
+  task add_form_of_article: :environment do
+    Constants::FORMS_OF_ARTICLE.each do |form|
+      Article.create({code: form[:code], name: form[:name]})
     end
   end
 
@@ -53,5 +53,5 @@ namespace :activebooks do
                 :add_kved,
                 :add_koatuu,
                 :add_tax_inspection,
-                :add_form_of_article_cash_flows]
+                :add_form_of_article]
 end
