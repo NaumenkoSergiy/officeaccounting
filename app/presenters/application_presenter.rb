@@ -18,4 +18,14 @@ class ApplicationPresenter
   def i_name icon, name=nil
     "#{content_tag(:i, nil, class: "fa #{icon}")} #{name}".html_safe
   end
+
+  def money_select (hash)
+    hash.invert
+        .collect do |key, value|
+          {
+            value: "#{key}",
+            text:  "#{value}"
+          }
+        end
+  end
 end

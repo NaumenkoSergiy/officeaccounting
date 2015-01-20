@@ -24,8 +24,8 @@
             = link_to "Залишки на рахунках", '#', class: 'btn  btn-success btn-modal'
             = link_to "Відомість з під звіту", '#', class: 'btn  btn-success btn-modal'
           .col.col-lg-4
-            = link_to "Рахунки", '#', class: 'btn  btn-success btn-modal'
-            = link_to "Каси", '#', class: 'btn  btn-success btn-modal'
+            = link_to "Рахунки", '#', class: 'btn  btn-success btn-modal', data: { toggle: "modal", target: "#companyAccount"}
+            = link_to "Каси", '#', class: 'btn  btn-success btn-modal', data: { toggle: "modal", target: "#companyCashier"}
             = link_to "Банки", '#', class: 'btn  btn-success btn-modal', data: { toggle: "modal", target: "#companyBanks"}
             = link_to "Валюти", '#', class: 'btn  btn-success btn-modal', data: { toggle: "modal", target: "#companyCurrency"}
             = link_to "Валютні курси", '#',  data: { toggle: "modal", target: "#moneyCurrency"}, class: 'btn  btn-success btn-modal'

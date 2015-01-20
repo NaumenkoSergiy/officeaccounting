@@ -31,6 +31,48 @@ $(document).ready(function() {
       data: dataBank,
       success: function  () {
         $('#bank_form').hide();
+        $('#bank_form').trigger('reset');
+      }
+    });
+  });
+
+  $('#account_form input[type=button]').click(function () {
+    dataAccount = {
+      account: {
+        name: $('#account_form #name').val(),
+        account_type: $('#account_form #account_type').val(),
+        number: $('#account_form #number').val(),
+        currency: $('#account_form #currency').val(),
+        bank_id: $('#account_form #bank_id').val()
+      }
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: '/money/account',
+      data: dataAccount,
+      success: function  () {
+        $('#account_form').hide();
+        $('#account_form').trigger('reset');
+      }
+    });
+  });
+
+  $('#cashier_form input[type=button]').click(function () {
+    dataCashier = {
+      cashier: {
+        name: $('#cashier_form #name').val(),
+        currency: $('#cashier_form #currency').val(),
+      }
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: '/money/cashier',
+      data: dataCashier,
+      success: function  () {
+        $('#cashier_form').hide();
+        $('#cashier_form').trigger('reset');
       }
     });
   });
@@ -42,12 +84,14 @@ $(document).ready(function() {
 
   $('.currencySelect, .editable-select').select2({width: '255px'});
 
+  $('.accountSelect').select2({width: '100%'});
+
   $('#moneyCurrency .currencyRemove').remove();
 
-  $('#bank_form').hide();
+  $('#bank_form, #account_form, #cashier_form').hide();
 
-  $('#add_new_bank, #add_new_credit').click(function () {
-    $(this).parents('.modal-header').next().find('#credits_form').toggle();
+  $('#add_new_bank, #add_new_account, #add_new_cashier, add_new_credit').click(function () {
+    $(this).parent().parent().parent().next().find('form').toggle();
   });
 });
 
@@ -96,20 +140,20 @@ function currencyRemove (id) {
   });
 };
 
-function bankRemove (id) {
+function moneyRemove (name, id) {
   $.ajax({
     type: 'DELETE',
-    url: '/money/bank/' + id,
+    url: '/money/'+ name + '/' + id,
     success: function(){
-      $('.bank_' + id).remove();
+      $('.' + name + '_' + id).remove();
     }
   });
 }
 
-function bankShow (id) {
+function moneyShow (name, id) {
   $.ajax({
     type: 'GET',
-    url: '/money/bank/' + id,
+    url: '/money/' + name + '/' + id,
     success: function(){
       editableStart();
     }
