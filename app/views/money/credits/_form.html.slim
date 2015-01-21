@@ -3,19 +3,18 @@
   br
   = f.text_field :name
 
-  br
   = label_tag 'Тип кредита'
   br
-  = f.select :credit_type, options_for_select(Credit::CREDIT_TYPE)
+  = f.select :credit_type, options_for_select(Credit::CREDIT_TYPE), {}, { class: 'select2' }
 
   br
   = label_tag 'Номер рахунку'
   br
   = f.text_field :account_number
 
-  br
   = label_tag 'Банк'
   br
-  = f.select :bank_id, options_for_select(Bank.select(:name, :id).collect{|b| [b.name, b.id]})
+  = f.select :bank_id, options_for_select(Bank.select(:name, :id).collect{|b| [b.name, b.id]}), {}, { class: 'select2' }
+  br
   br
   = f.submit 'Додати'
