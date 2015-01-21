@@ -107,10 +107,6 @@ $(document).ready(function() {
     }
   });
 
-  $.validator.addMethod("valueNotEquals", function(value, element, arg){
-    return arg != value;
-  }, "Value must not equal arg.");
-
   $('#new_registration').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
