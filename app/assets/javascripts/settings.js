@@ -15,8 +15,9 @@ $(document).ready(function() {
   $('#registration_koatuu').select2({
     width: '970px',
     minimumInputLength: 3,
+    triggerChange: true,
     ajax: AjaxGetKoatuu
-  });
+  })
 
   $('.registration_koatuu').editable({
     ajaxOptions: {
@@ -65,201 +66,206 @@ $(document).ready(function() {
       error.insertBefore(element);
     },
     rules: {
-      company_full_name: {
+      "company[full_name]": {
         required: true
       },
-      company_short_name: {
+      "company[short_name]": {
         required: true
       },
-      company_latin_name: {
+      "company[latin_name]": {
         required: true
       },
-      company_juridical_address: {
+      "company[juridical_address]": {
         required: true
       },
-      company_actual_address: {
+      "company[actual_address]": {
         required: true
       },
-      company_numbering_format: {
-        required: true
-      }
-    },
-    messages: {
-      company_full_name: {
-        required: 'поле не може бути пустим'
-      },
-      company_short_name: {
-        required: 'поле не може бути пустим'
-      },
-      company_latin_name: {
-        required: 'поле не може бути пустим'
-      },
-      company_juridical_address: {
-        required: 'поле не може бути пустим'
-      },
-      company_actual_address: {
-        required: 'поле не може бути пустим'
-      },
-      company_numbering_format: {
-        required: 'поле не може бути пустим'
-      }
-    }
-  });
-  $('#registration_form').validate({
-    errorElement: "div",
-    errorPlacement: function(error, element) {
-      error.insertBefore(element);
-    },
-    rules: {
-      edrpou: {
-        required: true
-      },
-      koatuu: {
-        required: true
-      },
-      tin: {
-        required: true
-      },
-      state_registration_date: {
-        required: true
-      },
-      registration_number: {
-        required: true
-      },
-      date_registered_in_revenue_commissioners: {
-        required: true
-      },
-      number_registered_in_revenue_commissioners: {
+      "company[numbering_format]": {
         required: true
       }
     },
     messages: {
-      edrpou: {
+      "company[full_name]": {
         required: 'поле не може бути пустим'
       },
-      koatuu: {
+      "company[short_name]": {
         required: 'поле не може бути пустим'
       },
-      tin: {
+      "company[latin_name]": {
         required: 'поле не може бути пустим'
       },
-      state_registration_date: {
+      "company[juridical_address]": {
         required: 'поле не може бути пустим'
       },
-      registration_number: {
+      "company[actual_address]": {
         required: 'поле не може бути пустим'
       },
-      date_registered_in_revenue_commissioners: {
-        required: 'поле не може бути пустим'
-      },
-      number_registered_in_revenue_commissioners: {
+      "company[numbering_format]": {
         required: 'поле не може бути пустим'
       }
     }
   });
 
-  function officials_validate() {
-    $('#official_form_director').validate({
-      errorElement: "div",
-      errorPlacement: function(error, element) {
-        error.insertBefore(element);
+  $.validator.addMethod("valueNotEquals", function(value, element, arg){
+    return arg != value;
+  }, "Value must not equal arg.");
+
+  $('#new_registration').validate({
+    errorElement: "div",
+    errorPlacement: function(error, element) {
+      error.insertBefore(element);
+    },
+    rules: {
+      "registration[edrpou]": {
+        required: true
       },
-      rules: {
-        name: {
-          required: true
-        },
-        tin: {
-          required: true
-        },
-        phone: {
-          required: true
-        },
-        email: {
-          required: true,
-          pattern: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
-        }
+      "registration[nace_codes]":{min:1},
+      "registration[koatuu]": {
+        required: true
       },
-      messages: {
-        name: {
-          required: 'поле не може бути пустим'
-        },
-        tin: {
-          required: 'поле не може бути пустим'
-        },
-        phone: {
-          required: 'поле не може бути пустим'
-        },
-        email: {
-          required: 'поле не може бути пустим',
-          pattern: 'поле має бути валідним'
-        }
+      "registration[tin]": {
+        required: true
+      },
+      "registration[state_registration_date]": {
+        required: true
+      },
+      "registration[registered_by]":{
+        required: true
+      },
+      "registration[registration_number]": {
+        required: true
+      },
+      "registration[date_registered_in_revenue_commissioners]": {
+        required: true
+      },
+      "registration[number_registered_in_revenue_commissioners]": {
+        required: true
+      },
+      "select2-choices": {
+        required: true
+      }
+    },
+    messages: {
+      "registration[edrpou]": {
+        required: 'поле не може бути пустим'
+      },
+      "registration[nace_codes]": { 
+        valueNotEquals: "Please select an item!" 
+      },
+        "registration[koatuu]": {
+        required: 'поле не може бути пустим'
+      },
+        "registration[tin]": {
+        required: 'поле не може бути пустим'
+      },
+        "registration[state_registration_date]": {
+        required: 'поле не може бути пустим'
+      },
+        "registration[registered_by]": {
+        required: 'поле не може бути пустим'
+      },
+        "registration[registration_number]": {
+        required: 'поле не може бути пустим'
+      },
+        "registration[date_registered_in_revenue_commissioners]": {
+        required: 'поле не може бути пустим'
+      },
+        "registration[number_registered_in_revenue_commissioners]": {
+        required: 'поле не може бути пустим'
+      }
+    }
+  });
+
+    $('#registration_nace_codes, #registration_koatuu').change(function (argument) {
+        $(this).prev().prev().hide();
+    })
+
+    $('#new_registration').submit(function() {
+      error = 0;
+      if ($('#registration_nace_codes').val() === '') {
+        error = 1;
+        $('#registration_nace_codes').prev().prev().show();
+      }
+
+      if ($('#registration_koatuu').val() === '') {
+        error = 1;
+        $('#registration_koatuu').prev().prev().show();
+      }
+
+      if (error) {
+          return false;
+      } else {
+          return true;
       }
     });
-    $('#official_form_bookkeeper').validate({
-      errorElement: "div",
-      errorPlacement: function(error, element) {
-        error.insertBefore(element);
+
+  $('#new_official').validate({
+    errorElement: "div",
+    errorPlacement: function(error, element) {
+      error.insertBefore(element);
+    },
+    rules: {
+      "official[name]": {
+        required: true
       },
-      rules: {
-        name: {
-          required: true
-        },
-        tin: {
-          required: true
-        },
-        phone: {
-          required: true
-        },
-        email: {
-          required: true,
-          pattern: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
-        }
+      "official[tin]": {
+        required: true
       },
-      messages: {
-        name: {
-          required: 'поле не може бути пустим'
-        },
-        tin: {
-          required: 'поле не може бути пустим'
-        },
-        phone: {
-          required: 'поле не може бути пустим'
-        },
-        email: {
-          required: 'поле не може бути пустим',
-          pattern: 'поле має бути валідним'
-        }
+      "official[phone]": {
+        required: true
+      },
+      "official[email]": {
+        required: true,
+        pattern: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
       }
-    });
-    $('#bank_account').validate({
-      errorElement: "div",
-      errorPlacement: function(error, element) {
-        error.insertBefore(element);
+    },
+    messages: {
+      "official[name]": {
+        required: 'поле не може бути пустим'
       },
-      rules: {
-        account: {
-          required: true
-        },
-        bank: {
-          required: true
-        },
-        mfo: {
-          required: true
-        }
+      "official[tin]": {
+        required: 'поле не може бути пустим'
       },
-      messages: {
-        account: {
-          required: 'поле не може бути пустим'
-        },
-        bank: {
-          required: 'поле не може бути пустим'
-        },
-        mfo: {
-          required: 'поле не може бути пустим'
-        }
+      "official[phone]": {
+        required: 'поле не може бути пустим'
+      },
+      "official[email]": {
+        required: 'поле не може бути пустим',
+        pattern: 'поле має бути валідним'
       }
-    });
-  }
+    }
+  });
+
+  $('#new_bank_account').validate({
+    errorElement: "div",
+    errorPlacement: function(error, element) {
+      error.insertBefore(element);
+    },
+    rules: {
+      "bank_account[account]": {
+        required: true
+      },
+      "bank_account[bank]": {
+        required: true
+      },
+      "bank_account[mfo]": {
+        required: true
+      }
+    },
+    messages: {
+      "bank_account[account]": {
+        required: 'поле не може бути пустим'
+      },
+      "bank_account[bank]": {
+        required: 'поле не може бути пустим'
+      },
+      "bank_account[mfo]": {
+        required: 'поле не може бути пустим'
+      }
+    }
+  });
+
   $('#company_form, #registration_form, #official_form_director, #official_form_bookkeeper, #bank_account')
     .on('blur focusout change keyup', function() {
       $(this).validate();
@@ -324,4 +330,5 @@ $(document).ready(function() {
   $(".companyChoose").bootstrapSwitch({ 'size':'small','offColor':'danger', 'onText':'Вкл', 'offText':'Вик' });
   
   $('.bootstrap-switch-on').next().next().css({ 'font-size':'13px', 'margin-left':'10px' }).show();
+
 });
