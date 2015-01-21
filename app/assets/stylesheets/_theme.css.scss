@@ -236,7 +236,11 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 5px 5px rgba(0,0,0, 0.55);
 }
 
-input[type="submit"] {
+input[type="submit"], #currency_form {
+  width: 100px;
+}
+
+.bank-account input[type="submit"] {
   width: 260px;
 }
 
@@ -252,7 +256,6 @@ a.add-company {
   font-size: 30px;
   margin-top: 10px;
   margin-bottom: 10px;
-
 }
 
 .center {
@@ -274,4 +277,8 @@ a.add-company {
   width: auto;
   float: left;
   height: 15px;
+}
+
+#registration_tax_system {
+  width: auto;
 }
