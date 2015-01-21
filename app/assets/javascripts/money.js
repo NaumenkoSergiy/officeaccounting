@@ -73,3 +73,128 @@ function currencyRemove (id) {
     }
   });
 };
+
+function validAccount () {
+  $('#new_account').validate({
+    errorElement: "div",
+    errorPlacement: function(error, element) {
+      error.insertBefore(element);
+    },
+    rules: {
+      "account[name]": {
+        required: true
+      },
+      "account[number]": {
+        required: true
+      }
+    },
+    messages: {
+      "account[name]": {
+        required: 'поле не може бути пустим'
+      },
+      "account[number]": {
+        required: 'поле не може бути пустим'
+      }
+    }
+  });
+}
+
+function validCashier () {
+  $('#new_cashier').validate({
+    errorElement: "div",
+    errorPlacement: function(error, element) {
+      error.insertBefore(element);
+    },
+    rules: {
+      "cashier[name]": {
+        required: true
+      }
+    },
+    messages: {
+      "cashier[name]": {
+        required: 'поле не може бути пустим'
+      }
+    }
+  });
+}
+
+function validBank () {
+  $('#new_bank').validate({
+    errorElement: "div",
+    errorPlacement: function(error, element) {
+      error.insertBefore(element);
+    },
+    rules: {
+      "bank[name]": {
+        required: true
+      },
+      "bank[code_edrpo]": {
+        required: true
+      },
+      "bank[mfo]": {
+        required: true
+      },
+      "bank[lawyer_adress]": {
+        required: true
+      }
+    },
+    messages: {
+      "bank[name]": {
+        required: 'поле не може бути пустим'
+      },
+      "bank[code_edrpo]": {
+        required: 'поле не може бути пустим'
+      },
+      "bank[mfo]": {
+        required: 'поле не може бути пустим'
+      },
+      "bank[lawyer_adress]": {
+        required: 'поле не може бути пустим'
+      }
+    }
+  });
+}
+
+function validArticle () {
+  $('#new_article').validate({
+    errorElement: "div",
+    errorPlacement: function(error, element) {
+      error.insertBefore(element);
+    },
+    rules: {
+      "article[name]": {
+        required: true
+      }
+    },
+    messages: {
+      "article[name]": {
+        required: 'поле не може бути пустим'
+      }
+    }
+  });
+}
+
+function validCredit () {
+  $('#new_credit').validate({
+    errorElement: "div",
+    errorPlacement: function(error, element) {
+      error.insertBefore(element);
+    },
+    rules: {
+      "credit[name]": {
+        required: true
+      },
+      "credit[account_number]": {
+        required: true
+      }
+    },
+    messages: {
+      "credit[name]": {
+        required: 'поле не може бути пустим'
+      },
+      "credit[account_number]": {
+        required: 'поле не може бути пустим'
+      }
+    }
+  });
+}

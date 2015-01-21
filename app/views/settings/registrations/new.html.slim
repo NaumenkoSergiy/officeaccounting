@@ -12,14 +12,18 @@ div
   br
   = f.text_field :edrpou, :class => 'number', placeholder: 'Введіть код ЄРДПОУ вашого підприємства', maxlength: 8
 
-  br
+
   = f.label 'коди КВЕД'
   br
-  = f.text_field :nace_codes
+  .error-registration style='display:none;'
+    | поле не може бути пустим
+  = f.text_field :nace_codes, :class => "required", :name =>"lstColors"
 
   br
   = f.label 'розташування за КОАТУУ'
   br
+  .error-registration style='display:none;'
+    | поле не може бути пустим
   = f.text_field :koatuu, :class => 'number', placeholder: 'Введіть код розташування за КОАТУУ'
 
   br
