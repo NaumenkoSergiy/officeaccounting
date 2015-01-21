@@ -48,14 +48,9 @@ body {
   color: white;
 }
 
-i {
-  margin-right: 12px;
+i { margin-right: 12px; }
 
-}
-
-i.fa-bars {
-  margin-right: 0;
-}
+i.fa-bars { margin-right: 0; }
 
 #page-wrapper {
   margin: 0 0 0 220px;
@@ -64,17 +59,11 @@ i.fa-bars {
   padding: 0 15px;
 }
 
-.gray-bg {
-  background-color: #f3f3f4;
-}
+.gray-bg { background-color: #f3f3f4; }
 
-.border-bottom {
-  border-bottom: 1px solid #e7eaec !important;
-}
+.border-bottom { border-bottom: 1px solid #e7eaec !important; }
 
-.navbar {
-  border: 0 none;
-}
+.navbar { border: 0 none; }
 
 .nav-static-top {
   border-radius: 0;
@@ -105,13 +94,9 @@ i.fa-bars {
   margin-right: 10px;
 }
 
-.nav.navbar-right > li > a {
-  color: #999c9e;
-}
+.nav.navbar-right > li > a { color: #999c9e; }
 
-.navbar-top-links li {
-  display: inline-block;
-}
+.navbar-top-links li { display: inline-block; }
 
 .loginscreen.middle-box {
   margin-left: -200px;
@@ -128,9 +113,7 @@ i.fa-bars {
   right: 50%;
 }
 
-.fadeInDown {
-  animation-name: fadeInDown;
-}
+.fadeInDown { animation-name: fadeInDown; }
 
 .animated {
   animation-duration: 1s;
@@ -172,9 +155,7 @@ input, select {
   }
 }
 
-a:focus, a:hover {
-  text-decoration: none;
-}
+a:focus, a:hover { text-decoration: none; }
 
 @for $i from 1 through 30 {
   .margin-top-#{$i} {
@@ -182,17 +163,11 @@ a:focus, a:hover {
   }
 }
 
-p {
-  margin: 0 0 10px;
-}
+p { margin: 0 0 10px; }
 
-.text-muted {
-  color: #888888;
-}
+.text-muted { color: #888888; }
 
-small, .small {
-  font-size: 85%;
-}
+small, .small { font-size: 85%; }
 
 .btn-white {
   background: none repeat scroll 0 0 white;
@@ -210,17 +185,11 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 24px;
 }
 
-.white-bg {
-  background-color: #ffffff;
-}
+.white-bg { background-color: #ffffff; }
 
-.wrapper-content {
-  padding: 20px 10px 40px;
-}
+.wrapper-content { padding: 20px 10px 40px; }
 
-.fadeInRight {
-  animation-name: fadeInRight;
-}
+.fadeInRight { animation-name: fadeInRight; }
 
 .animated {
   animation-duration: 1s;
@@ -236,21 +205,13 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 5px 5px rgba(0,0,0, 0.55);
 }
 
-input[type="submit"], #currency_form {
-  width: 100px;
-}
+input[type="submit"], #currency_form { width: 100px; }
 
-.bank-account input[type="submit"] {
-  width: 260px;
-}
+.bank-account input[type="submit"] { width: 260px; }
 
-input.companyChoose {
-  margin: 0;
-}
+input.companyChoose { margin: 0; }
 
-a.add-company {
-  margin-bottom: 10px;
-}
+a.add-company { margin-bottom: 10px; }
 
 .glyphicon.glyphicon-arrow-left.back-arrow {
   font-size: 30px;
