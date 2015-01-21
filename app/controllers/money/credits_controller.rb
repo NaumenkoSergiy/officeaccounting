@@ -33,7 +33,7 @@ module Money
       respond_to do |format|
         if @credit.update(credit_params)
           @credits = current_user.current_company.try(:credits)
-          format.js { render layout: false; head :no_content }
+          format.json { head :no_content }
         else
           format.json { render json: @credit.errors, status: :unprocessable_entity }
         end
