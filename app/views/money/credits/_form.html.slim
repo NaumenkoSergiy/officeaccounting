@@ -11,7 +11,7 @@
   br
   = label_tag 'Номер рахунку'
   br
-  = f.text_field :account_number
+  = f.text_field :account_number, :class => 'number', maxlength: 8
 
   br
   = label_tag 'Банк'
