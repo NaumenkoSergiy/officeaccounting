@@ -60,7 +60,7 @@
 .flag.TMT { background-position: -515px 0px; width: 16px; height: 11px;  } 
 .flag.USD { background-position: -567px 0px; width: 16px; height: 11px;  } 
 .flag.UZS { background-position: -593px 0px; width: 16px; height: 11px;  }
-.flag.ua { background-position: -541px 0px; width: 16px; height: 11px;  }  
+.flag.UAH { background-position: -541px 0px; width: 16px; height: 11px;  }  
 
 #companyBanks, #companyAccount {
   .modal-header { border: none; }
@@ -72,7 +72,7 @@
   .modal-header, .modal-body { padding-bottom: 0px; }
 }
 
-#bank_list, #article_list, #account_list, #cashier_list {
+#bank_list, #article_list, #account_list, #cashier_list, .currensy_form, #exchangeRates {
   max-height: 300px;
   overflow-y: scroll;
   margin-bottom: 10px;
