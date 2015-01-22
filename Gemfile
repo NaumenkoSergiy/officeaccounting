@@ -49,3 +49,11 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda'
 end
+
+group :development do
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'passenger'
+end
