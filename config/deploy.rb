@@ -53,6 +53,8 @@ set :rvm_type, :user
 set :rvm_ruby_version, '2.0.0'
 set :default_shell, '/bin/bash -l'
 set :ssh_options, { :forward_agent => true }
+set_default :rvm_install_type, :stable
+
 
 set :bundle_gemfile, -> { release_path.join('Gemfile') }
 set :bundle_dir, -> { shared_path.join('bundle') }
@@ -97,4 +99,6 @@ namespace :deploy do
 
   before "deploy", "deploy:check_revision"
 
+  before 'deploy:setup', 'rvm:install_rvm'
+  before 'deploy:setup', 'rvm:install_ruby'
 end
