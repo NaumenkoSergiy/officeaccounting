@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'settings/registrations/get_koatuu'
   post 'users/create_delegate'
   post 'settings/companies/change_company'
+  delete 'settings/companies/delete_delegate_user'
 
   resources :sessions, only: [:new, :create]
   resources :users, only: [:new, :create]

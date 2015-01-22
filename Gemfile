@@ -35,6 +35,7 @@ gem 'bootstrap-x-editable-rails'
 gem 'state_machine'
 gem 'cancancan', '~> 1.9'
 gem "bootstrap-switch-rails"
+gem 'bootstrap-select-rails'
 
 group :development, :test do
   gem 'pry'

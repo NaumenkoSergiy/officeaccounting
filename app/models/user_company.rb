@@ -6,6 +6,10 @@ class UserCompany < ActiveRecord::Base
     where(user_id: user_id)
   }
 
+  scope :company_parent_user, -> (company_id) {
+    where(company_id: company_id)
+  }
+
   after_create :check_current_company
 
   def update_current value

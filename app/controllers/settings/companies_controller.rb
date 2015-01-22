@@ -54,6 +54,14 @@ module Settings
       render json: { success: result, company_name: company.company.full_short_name }
     end
 
+    def delete_delegate_user
+      delegate_user = UserCompany.where(company_id: params[:company_id], user_id: params[:user_id]).first
+      delegate_user.destroy
+      respond_to do |format|
+        format.js
+      end
+    end
+
     private
 
     def company_params

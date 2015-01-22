@@ -30,7 +30,11 @@ class UsersController < ApplicationController
       user.user_companies.create(company: company)
       UserMailer.create_delegate(user, company.full_name).deliver!
     end
-    redirect_to root_path
+
+    @search_users = UserCompany.where(company_id: params[:company_id]).where.not(user_id: current_user.id)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
