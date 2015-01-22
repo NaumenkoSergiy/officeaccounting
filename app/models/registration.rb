@@ -19,4 +19,12 @@ class Registration < ActiveRecord::Base
   belongs_to :company
 
   after_create { company.set_official }
+
+  validate :validate_date
+
+  def validate_date
+    unless registered_in_pension_fund.is_a?(Date) || registered_in_pension_fund.nil?
+      errors.add(:registered_in_pension_fund, 'must be a valid date')
+    end
+  end
 end
