@@ -54,4 +54,11 @@ class ApplicationController < ActionController::Base
       redirect_to new_settings_company_path
     end
   end
+
+  def page_not_found
+    respond_to do |format|
+      format.html { render file: 'public/404.html', status: 404 }
+      format.all  { render nothing: true, status: 404 }
+    end
+  end
 end

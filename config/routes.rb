@@ -34,4 +34,6 @@ Rails.application.routes.draw do
     resources :cashiers
     resources :articles
   end
+
+  get '*path', to: 'application#page_not_found'
 end

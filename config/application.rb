@@ -22,5 +22,7 @@ module ActiveBooks
     ENV.update YAML.load(File.read('config/application.yml'))[Rails.env] rescue {}
 
     config.autoload_paths << File.join(config.root, "lib")
+
+    config.exceptions_app = self.routes
   end
 end
