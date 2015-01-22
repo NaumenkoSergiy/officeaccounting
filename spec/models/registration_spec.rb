@@ -30,7 +30,7 @@ context 'validation pension fund' do
   describe 'unvalid pension fund validation' do
     it 'has unvalid code registration pension fund' do
       registration.code_registered_in_pension_fund = 'fhdjdfksl'
-      expect(registration).to be_invalid
+      expect(registration).to have(1).error_on(:code_registered_in_pension_fund)
     end
   end
 end
