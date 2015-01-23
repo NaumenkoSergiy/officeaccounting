@@ -38,7 +38,7 @@ application = 'active-books'
 
 set :repo_url, 'git@github.com:activebridge/active-books.git'
 
-server '104.131.21.46', user: user, password: 'activebridge', roles: [:app, :web, :db], primary: true
+server '104.131.21.46', user: user, password: password, roles: [:app, :web, :db], primary: true
 set :user, user
 
 # Default deploy_to directory is /var/www/my_app
@@ -50,10 +50,10 @@ set :application, application
 set :repo_url, 'git@github.com:activebridge/active-books.git'
 set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 set :rvm_type, :user
-set :rvm_ruby_version, '2.0.0'
+set :rvm_ruby_version, '2.1.5'
 set :default_shell, '/bin/bash -l'
 set :ssh_options, { :forward_agent => true }
-set_default :rvm_install_type, :stable
+# set_default :rvm_install_type, :stable
 
 
 set :bundle_gemfile, -> { release_path.join('Gemfile') }
@@ -67,7 +67,7 @@ set :keep_releases, 2
 
 set :branch, branch
 set :pty, true
-set :use_sudo, true
+set :use_sudo, false
 
 # Default value for :linked_files is []
 set :linked_files, %w{config/database.yml config/application.yml}
@@ -75,6 +75,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 # Default value for :scm is :git
 set :scm, :git
+
 
 namespace :deploy do
 
@@ -98,7 +99,4 @@ namespace :deploy do
   end
 
   before "deploy", "deploy:check_revision"
-
-  before 'deploy:setup', 'rvm:install_rvm'
-  before 'deploy:setup', 'rvm:install_ruby'
 end
