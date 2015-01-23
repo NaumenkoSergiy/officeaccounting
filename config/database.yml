@@ -16,4 +16,7 @@ test:
 
 production:
   <<: *default
-  database: active-books_production
+  username: root
+  password:
+  host: 127.0.0.1
+  database: active-books
