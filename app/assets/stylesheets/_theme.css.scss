@@ -207,7 +207,7 @@ h1, h2, h3, h4, h5, h6 {
 
 input[type="submit"], #currency_form { width: 100px; }
 
-.bank-account input[type="submit"], #create_profile, #change_password { width: auto; }
+.bank-account input[type="submit"], #new_user_form .create_profile, .loginscreen .change_password { width: auto; }
 
 input.companyChoose { margin: 0; }
 
