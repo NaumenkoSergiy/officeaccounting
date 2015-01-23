@@ -45,6 +45,19 @@ $(document).ready(function() {
 
   numberPdv();
 
+  function hideShowPdvNumber () {
+    $("#registration_pdv").is(':checked') ? $('#registration_tin').show() : $('#registration_tin').hide();
+
+    $('#registration_pdv').change(function() {
+      if (this.checked)
+        $('#registration_tin').fadeIn()
+      else
+        $('#registration_tin').fadeOut()
+    })
+  }
+
+  hideShowPdvNumber();
+
   $('input.number').numeric({ negative : false, decimal: false });
 
   $.datepicker.setDefaults( $.datepicker.regional["uk"] );
@@ -299,18 +312,6 @@ $(document).ready(function() {
     }
   });
 
-  $('#registration_pdv').click(function(){
-    if($(this).hasClass('checked')) {
-      $('#registration_tin').attr('disabled', 'disabled');
-      $(this).removeClass('checked');
-    }
-    else
-    {
-      $('#registration_tin').removeAttr('disabled');
-      $(this).addClass('checked');
-    }
-  });
-  
   $('a[href="' + this.location.pathname + '"]').parent().addClass('current');
 
   $('.companyChoose').on('switchChange.bootstrapSwitch', function() {
