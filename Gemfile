@@ -46,6 +46,7 @@ group :development, :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'shoulda'
+  gem 'passenger'
 end
 
 group :development do
