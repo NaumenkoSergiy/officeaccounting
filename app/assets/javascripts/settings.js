@@ -332,7 +332,7 @@ $(document).ready(function() {
 
   $('#delegate_form').hide();
 
-  $('.add_delegate').click(function () {
+  $('.add_delegate').click(function() {
     $('#delegate_form').toggle();
   })
 

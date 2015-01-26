@@ -10,8 +10,8 @@ class SettingsController < ApplicationController
     @bookkeeper = @company.officials.find_by(official_type: :bookeeper)
     @director   = @company.officials.find_by(official_type: :director)
     @incorporation_forms = get_incorporation_forms
-    @search_users = UserCompany.where(company_id: params[:id]).where.not(user_id: current_user.id)
-    search_company_parent_user = UserCompany.company_parent_user(params[:id]).first
+    @search_users = UserCompany.users_for(params[:id], current_user.id)
+    search_company_parent_user = UserCompany.find(params[:id])
     @company_parent_user = search_company_parent_user.user_id == current_user.id
   end
 

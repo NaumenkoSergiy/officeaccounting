@@ -36,3 +36,10 @@
   width: 100%;
   color: red;
 }
+
+#new_registration {
+  #select2-drop, .select2-container {
+    width: 500px !important;
+    margin-bottom: 15px !important;
+  }
+}

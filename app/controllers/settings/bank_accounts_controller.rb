@@ -2,8 +2,7 @@ module Settings
   class BankAccountsController < ApplicationController
     before_filter :redirect_to_new_session
     before_filter :define_bank_account, only: [:create]
-    before_action :set_bank_account, only: [:update]
-    load_and_authorize_resource
+    before_action :set_bank_account, only: [:update, :new]
 
     def create
       flash[:error] = 'Помилкові дані' unless @bank_account.update_attributes(bank_account_params)

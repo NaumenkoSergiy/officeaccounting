@@ -1,0 +1,7 @@
+- if flash[:error]
+  | $('.notification.error').show().text("#{flash[:error]}");
+- else
+  | $('#delegated_users').html("#{j render 'settings/list_delegated_users'}");
+  | $('#delegate_form').hide()[0].reset();
+  | editableStart();
+  | $.unblockUI();

@@ -5,7 +5,6 @@ module Settings
     before_filter :define_official
     before_action :set_officials, only: [:update]
     before_action :set_company, only: [:create]
-    load_and_authorize_resource
 
     def new
     end

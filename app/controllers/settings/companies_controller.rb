@@ -3,7 +3,6 @@ module Settings
     before_filter :redirect_to_new_session
     before_filter :check_creating_company_step, only: [:new]
     before_action :set_company, only: [:update, :new, :create]
-    load_and_authorize_resource
 
     def new
       @companies = not_current_user_companies || {}
@@ -13,7 +12,7 @@ module Settings
       company = Company.new(company_params)
 
       if company.save
-        current_user.user_companies.create(company: company)
+        current_user.user_companies.create(company: company, role: 'edit')
       else
         flash[:error] = 'Помилкові дані'
       end
@@ -52,14 +51,6 @@ module Settings
       old_company = current_user.user_companies.find_by(company_id: current_user.current_company.id) if current_user.current_company
       result = change_current_company(old_company, company)
       render json: { success: result, company_name: company.company.full_short_name }
-    end
-
-    def delete_delegate_user
-      delegate_user = UserCompany.where(company_id: params[:company_id], user_id: params[:user_id]).first
-      delegate_user.destroy
-      respond_to do |format|
-        format.js
-      end
     end
 
     private

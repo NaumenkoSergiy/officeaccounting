@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :define_user_service
-  before_filter :redirect_to_new_session, only: [:create_delegate]
 
   def new
     redirect_to root_path if session[:user_id]
@@ -22,33 +21,7 @@ class UsersController < ApplicationController
     redirect_to new_session_path, flash: { :notice => "Аккаунт активований" }
   end
 
-  def create_delegate
-    user = User.new(delegate_params)
-    company = Company.find(params[:company_id])
-    
-    if user.save
-      user.user_companies.create(company: company)
-      UserMailer.create_delegate(user, company.full_name).deliver!
-    end
-
-    @search_users = UserCompany.where(company_id: params[:company_id]).where.not(user_id: current_user.id)
-    respond_to do |format|
-      format.js
-    end
-  end
-
   private
-
-  def delegate_params
-    {
-      email: params[:email],
-      password: 'empty_password',
-      confirm_password: 'empty_password',
-      activate_token: nil,
-      password_reset_sent_at: Time.zone.now,
-      role: params[:role]
-    }
-  end
 
   def define_user_service
     @user_service ||= UserService.new session

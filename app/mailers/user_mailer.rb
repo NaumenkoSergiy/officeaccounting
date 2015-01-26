@@ -25,4 +25,11 @@ class UserMailer < ActionMailer::Base
     @url = "#{host}/password_resets/#{user.password_reset_token}/edit"
     (mail :to => user.email, :subject => "Запрошення на делегування компанією").deliver!
   end
+
+  def create_delegate_existing_user(user, company)
+    @company = company.full_name
+    @user = user
+    @url = "#{host}#{setting_path(company)}"
+    (mail :to => user.email, :subject => "Запрошення на делегування компанією").deliver!
+  end
 end

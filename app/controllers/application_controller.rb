@@ -61,4 +61,8 @@ class ApplicationController < ActionController::Base
       format.all  { render nothing: true, status: 404 }
     end
   end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_user, params)
+  end
 end
