@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     session = @session_service.create_session params
-    flash[:error] = session[:error] if session[:error]
+    flash.now[:error] = session[:error] if session[:error]
   end
 
   def destroy
