@@ -1,5 +1,7 @@
 - if flash[:error]
-  | $('.notification.error').show().text("#{flash[:error]}");
+  | $('#error').html("#{j render 'layouts/notification'}");
+  | $.unblockUI();
+  | $('.notification.error').fadeTo(9000, 0);
 - else
   | $('#delegated_users').html("#{j render 'settings/list_delegated_users'}");
   | $('#delegate_form').hide()[0].reset();

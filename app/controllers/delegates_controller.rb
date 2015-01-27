@@ -1,24 +1,11 @@
 class DelegatesController < ApplicationController
   before_filter :redirect_to_new_session, only: [:create]
   before_action :set_delegate, only: [:update, :destroy]
+  before_action :define_session_service
 
   def create
-    existing_user = User.find_by_email params[:email]
-    company = Company.find(params[:company_id])
-
-    if existing_user.nil?
-      user = User.new(delegate_params)
-      if user.save
-        user.user_companies.create(company: company, role: params[:role])
-        UserMailer.create_delegate(user, company.full_name).deliver!
-      else
-        flash[:error] = 'Введений невалідний Email'
-      end
-    else
-      existing_user.user_companies.create(company: company, role: params[:role])
-      UserMailer.create_delegate_existing_user(existing_user, company).deliver!
-    end
-
+    delegate = @delegate_service.create_delegate params
+    flash[:error] = delegate[:error] if delegate[:error]
     @search_users = UserCompany.users_for(params[:company_id], current_user.id)
     respond_to do |format|
       format.js
@@ -45,20 +32,14 @@ class DelegatesController < ApplicationController
   private
 
   def delegate_params
-    if params[:page].nil?
-      {
-        email: params[:email],
-        password: 'empty_password',
-        confirm_password: 'empty_password',
-        activate_token: nil,
-        password_reset_sent_at: Time.zone.now
-      }
-    else
-      params.require(:user_company).permit(:role)
-    end
+    params.require(:user_company).permit(:role)
   end
 
   def set_delegate
     @delegate_user = UserCompany.user_permission(params[:company_id], params[:id])
+  end
+
+  def define_session_service
+    @delegate_service ||= DelegateService.new session
   end
 end
