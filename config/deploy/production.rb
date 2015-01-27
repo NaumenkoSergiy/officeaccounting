@@ -30,6 +30,8 @@
    forward_agent: true,
    auth_methods: %w(password)
  }
+
+load 'lib/task/activebooks.rake'
 #
 # And/or per server (overrides global)
 # ------------------------------------
