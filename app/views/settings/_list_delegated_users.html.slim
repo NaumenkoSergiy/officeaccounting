@@ -1,0 +1,19 @@
+.row
+  .col-lg-9
+    table.table
+      tbody
+        thead
+          tr
+            th
+              | Користувач
+            th
+              | Права
+            th
+      - @search_users.each do |user_in_company| 
+        tr class='delegegate_user_#{ user_in_company.user_id }'
+          td style='width: 200px;'
+            = user_in_company.user.email
+          td
+            = link_to User::ROLES_TITLES.invert[user_in_company.role.to_sym], '#', data: { name: :role, type: 'select2', pk: user_in_company, value: user_in_company.role, source:  application_present.options_for_select2(User::ROLES_TITLES), placement: 'bottom', model: 'user_company', url: "/delegates/#{ user_in_company.user_id  }?company_id=#{user_in_company.company_id}", xeditable: true }
+          td
+            = application_present.destroy_link delegate_path(id: user_in_company.user_id, company_id: user_in_company.company_id)

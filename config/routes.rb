@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'destroy/sessions' => 'sessions#destroy'
   get 'users/confirm_registration'
   get 'settings/registrations/get_koatuu'
-  post 'users/create_delegate'
   post 'settings/companies/change_company'
 
   resources :sessions, only: [:new, :create]
@@ -16,7 +15,8 @@ Rails.application.routes.draw do
   resources :registers
   resources :password_resets
   resources :money, only: [:index]
-
+  resources :delegates, only: [:create, :destroy, :update]
+  
   namespace 'settings' do
     resources :companies, only: [:new, :create, :update]
     resources :registrations, only: [:new, :create, :update]

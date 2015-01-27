@@ -3,7 +3,6 @@ module Settings
     before_filter :redirect_to_new_session
     before_filter :define_registration
     before_filter :check_creating_company_step, only: [:new]
-    load_and_authorize_resource
 
     def new
       @incorporation_forms = get_incorporation_forms

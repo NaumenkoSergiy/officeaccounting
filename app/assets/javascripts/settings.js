@@ -262,6 +262,24 @@ $(document).ready(function() {
     }
   });
 
+  $('#delegate_form').validate({
+    errorElement: "div",
+    errorPlacement: function(error, element) {
+      error.insertBefore(element);
+    },
+    rules: {
+       email: {
+        required: true,
+        pattern: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
+      }
+    },
+    messages: {
+      email: {
+        required: 'поле не може бути пустим'
+      }
+    }
+  });
+
   $('#company_form, #registration_form, #official_form_director, #official_form_bookkeeper, #bank_account')
     .on('blur focusout change keyup', function() {
       $(this).validate();
@@ -310,7 +328,13 @@ $(document).ready(function() {
     });
   });
 
-  $('.role').select2({ width: '130px', minimumResultsForSearch: '5' });
+  $('.role').selectpicker({'width':'210px'});
+
+  $('#delegate_form').hide();
+
+  $('.add_delegate').click(function() {
+    $('#delegate_form').toggle();
+  })
 
   $('.checkPdv').click(function(){
     id = $('#registration_id').val();

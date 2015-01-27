@@ -6,6 +6,14 @@ class UserCompany < ActiveRecord::Base
     where(user_id: user_id)
   }
 
+  scope :users_for, -> (company_id, current_user) {
+    where(company_id: company_id).where.not(user_id: current_user)
+  }
+
+  scope :user_permission, -> (company_id, current_user_id) {
+    find_by(company_id: company_id, user_id: current_user_id)
+  }
+
   after_create :check_current_company
 
   def update_current value

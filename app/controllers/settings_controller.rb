@@ -10,6 +10,9 @@ class SettingsController < ApplicationController
     @bookkeeper = @company.officials.find_by(official_type: :bookeeper)
     @director   = @company.officials.find_by(official_type: :director)
     @incorporation_forms = get_incorporation_forms
+    @search_users = UserCompany.users_for(params[:id], current_user.id)
+    search_company_parent_user = UserCompany.find_by(company_id: params[:id])
+    @company_parent_user = search_company_parent_user.user_id == current_user.id
   end
 
   def get_incorporation_forms

@@ -3,7 +3,6 @@ module Settings
     before_filter :redirect_to_new_session
     before_filter :check_creating_company_step, only: [:new]
     before_action :set_company, only: [:update, :new, :create]
-    load_and_authorize_resource
 
     def new
       @companies = not_current_user_companies || {}
@@ -13,7 +12,7 @@ module Settings
       company = Company.new(company_params)
 
       if company.save
-        current_user.user_companies.create(company: company)
+        current_user.user_companies.create(company: company, role: 'edit')
       else
         flash[:error] = 'Помилкові дані'
       end
