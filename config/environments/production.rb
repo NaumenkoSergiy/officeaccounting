@@ -89,6 +89,6 @@ Rails.application.configure do
     password:             ENV['MANDRILL_PASSWORD'] }
 
   config.action_mailer.default_url_options = {
-    host: 'active-books.herokuapp.com'
+    host: 'www.active-books.org'
   }
 end
