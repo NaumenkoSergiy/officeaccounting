@@ -5,7 +5,7 @@ class DelegatesController < ApplicationController
 
   def create
     delegate = @delegate_service.create_delegate params
-    flash[:error] = delegate[:error] if delegate[:error]
+    flash.now[:error] = delegate[:error] if delegate[:error]
     @search_users = UserCompany.users_for(params[:company_id], current_user.id)
     respond_to do |format|
       format.js
