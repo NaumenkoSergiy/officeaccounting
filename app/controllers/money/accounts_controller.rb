@@ -3,9 +3,9 @@ module Money
     before_filter :redirect_to_new_session
     before_action :set_account, only: [:destroy, :update]
     before_action :define_account, only: [:index, :create]
+    before_action :company_account, only: [:index, :create]
 
     def index
-      @accounts = Account.all
       @banks = Bank.all
       respond_to do |format|
         format.js
@@ -14,7 +14,6 @@ module Money
 
     def show
       @banks = Bank.all
-      @accounts = Account.all
       @account = Account.find(params[:id])
       respond_to do |format|
         format.js
@@ -23,7 +22,6 @@ module Money
 
     def create
       account = Account.new account_params
-      @accounts = Account.all
       flash[:error] = 'Ви ввели не коректні данні' unless account.save
       respond_to do |format|
         format.js
@@ -64,6 +62,10 @@ module Money
 
     def define_account
       @account ||= Account.new
+    end
+
+    def company_account
+      @accounts = Account.where(company_id: current_user.current_company.id)
     end
   end
 end
