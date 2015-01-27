@@ -31,7 +31,7 @@
    auth_methods: %w(password)
  }
 
-load 'lib/task/activebooks.rake'
+load 'lib/tasks/activebooks.rake'
 #
 # And/or per server (overrides global)
 # ------------------------------------
