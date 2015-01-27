@@ -16,7 +16,8 @@
   br
   = label_tag 'Розташування за КОАТУУ'
   br
-  = link_to @company.registration.koatuu, '#', class: 'registration_koatuu', data: { xeditable: true, placement: 'right', value: @company.registration.koatuu, type: 'select2', name: :koatuu, pk: @company.registration, model: 'registration', url: "registrations/#{ @company.registration.id }" }
+
+  = link_to @company.registration.koatuu, '#', class: 'registration_koatuu', data: { placement: 'bottom', value: @company.registration.koatuu, type: 'select2', name: :koatuu, pk: @company.registration, model: 'registration', url: "registrations/#{ @company.registration.id }" }
 
   br
   = label_tag 'Клас професійного ризику'
@@ -25,10 +26,8 @@
 
   br
   = label_tag 'Чи є підприємство платником податку на додану вартість (ПДВ)?'
-  br
   = check_box_tag '', '', @company.registration.pdv, class: "checkPdv"
   = hidden_field '', 'registration_id', id: :registration_id, value: @company.registration.id
-  br
   .numberPdv style="display: none;"
     = label_tag 'Номер свідоцтва ПДВ'
     br
