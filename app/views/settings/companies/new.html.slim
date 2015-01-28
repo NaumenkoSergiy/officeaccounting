@@ -1,10 +1,10 @@
 .center
   div
     h3
-      | Блок1 (загальна інформація)
+      = t('companies.new.block_title')
 
   a.btn.btn-default.add-company
-    | Додати існуюче підприємство
+    = t('companies.new.add_button')
 
   .add_existing_company style='display: none'
     br
@@ -18,39 +18,39 @@
 
   .new_company
     = form_for [:settings, @company], id: :company_form, remote: true do |f|
-      = f.label 'Назва повна'
+      = f.label t('companies.new.full_name')
       br
       = f.text_field :full_name
       i.info.glyphicon.glyphicon-info-sign title="Введіть повну назву підприємства наприклад: Товариство з обмеженою відповідальністю «Active-bridge» "
 
       br
-      = f.label 'Назва коротка'
+      = f.label t('companies.new.short_name')
       br
       = f.text_field :short_name
       i.info.glyphicon.glyphicon-info-sign title="Введіть коротку назву підприємства наприклад: ТОВ «Active-bridge» "
 
       br
-      = f.label 'Назва латиницею'
+      = f.label t('companies.new.latin_name')
       br
       = f.text_field :latin_name
 
       br
-      = f.label 'Юридична адреса'
+      = f.label t('companies.new.juridical_address')
       br
       = f.text_field :juridical_address
       i.info.glyphicon.glyphicon-info-sign title="Юридична адреса - це адреса місцезнаходження виконавчого органу організації, що вказується в установчих документах, на юрадресу компанії надсилається вся офіційна кореспонденція, іноді за юридичною адресою розташований офіс компанії."
 
       br
-      = f.label 'Адреса фактична'
+      = f.label t('companies.new.actual_address')
       br
       = f.text_field :actual_address
       i.info.glyphicon.glyphicon-info-sign title="Фактична адреса - це місцезнаходження юридичної особи, де є фактичне місце ведення діяльності чи розташування офісу, з якого проводиться щоденне керування діяльністю юридичної особи (переважно знаходиться керівництво) та здійснення управління і обліку"
 
       br
-      = f.label 'Бажаний формат нумерації документів'
+      = f.label t('companies.new.numbering_format')
       br
       = f.text_field :numbering_format
       i.info.glyphicon.glyphicon-info-sign  title="Це коли випускає на друк акти чи рахунки  - то перед номером префікс ставиться наприклад для Ектів Брідж можна АВ-000000001"
 
       br
-      = f.submit "Далі"
+      = f.submit t("buttons.forward")

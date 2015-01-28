@@ -7,12 +7,16 @@
 
       ul.nav.navbar-top-links.navbar-right
         li
+          = link_to '', sessions_set_language_path(locale: 'ua'), class: 'ua-language'
+        li
+          = link_to '', sessions_set_language_path(locale: 'en'), class: 'en-language'
+        li
           span.m-r-sm.text-muted
             = current_user.email
         li
           = link_to destroy_sessions_path
             i.fa.fa-sign-out
-            | Вийти
+            = t('top-bar.signout')
 
   .wrapper.wrapper-content.animated.fadeInRight
     .row

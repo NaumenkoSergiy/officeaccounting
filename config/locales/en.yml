@@ -20,4 +20,55 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  dd: "England"
+  navigation:
+    main: "Main"
+    money: "Money"
+    sales: "Sales"
+    purchases: "Purchases"
+    accounting: "Accounting"
+    register: "Register"
+  top-bar:
+    signout: "Signout"
+  companies:
+    new:
+      block_title: "Blok1 (general information)"
+      add_button: "Add an existing company"
+      full_name: "Full name"
+      short_name: "Short name"
+      latin_name: "Latin name"
+      juridical_address: "juridical address"
+      actual_address: "Actual address"
+      numbering_format: "Preferred document numbering format"
+  registrations:
+    fields:
+      block_title: "Blok2 (registration information)"
+      form_of_incorporation: "Incorporation form(code and name)"
+      edrpou_code: "EDRPOU (National State Registry of Ukrainian Enterprises and Organizations)"
+      enter_edrpou: "Enter EDRPOU"
+      nace_codes: "NACE codes"
+      koatuu: "CATSOU (Classifier of Administrative-Territorial System Objects of Ukraine)"
+      enter_koatuu: "Enter CATSOU"
+      risk_class: "Professional risk class"
+      is_pdv: "Is there a company taxable value added tax (VAT)?"
+      pdv_number: "number of the certificate(VAT)"
+      enter_pdv: "Enter your company VAT certificate number"
+      state_registration_date: "state registration date"
+      registration_number: "registration number"
+      enter_registration_number: "Enter the registration number of your company"
+      registered_by: "registered by"
+      date_reg_rev_com: "registered date in revenue commissioners"
+      tax_inspection: "place of registration tax"
+      number_reg_rev_com: "registered number in revenue commissioners"
+      registered_in_pension_fund: "date of registration in the pension fund"
+      enter_registration_tax: "enter registration tax"
+      enter_reg_pens_fund: "Enter pension fund code"
+      code_reg_pens_fund: "pension fund code"
+      tax_system: "taxation system"
+      general: "General"
+      simplified: "Simplified"
+  buttons:
+    forward: "Forward"
+  validation:
+    errors:
+      cant_be_blank: "This field cannot be blank"

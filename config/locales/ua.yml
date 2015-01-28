@@ -1,0 +1,53 @@
+ua:
+  dd: "Україна"
+  navigation:
+    main: "Головна"
+    money: "Гроші"
+    sales: "Продажі"
+    purchases: "Закупівлі"
+    accounting: "Звітність"
+    register: "Журнал"
+  top-bar:
+    signout: "Вийти"
+  companies:
+    new:
+      block_title: "Блок1 (загальна інформація)"
+      add_button: "Додати існуюче підприємство"
+      full_name: "Повна назва"
+      short_name: "Коротка назва"
+      latin_name: "Назва латиницею"
+      juridical_address: "Юридична адресса"
+      actual_address: "Фактична адресса"
+      numbering_format: "Бажаний формат нумерації документів"
+  registrations:
+    fields:
+      block_title: "Блок2 (інформація про реєстрацію)"
+      form_of_incorporation: "Організаційно-правова форма (код та назва)"
+      edrpou_code: "Код ЄРДПОУ"
+      enter_edrpou: "Введіть код ЄРДПОУ вашого підприємства"
+      nace_codes: "коди КВЕД"
+      koatuu: "розташування за КОАТУУ"
+      enter_koatuu: "Введіть код розташування за КОАТУУ"
+      risk_class: "клас професійного ризику"
+      is_pdv: "Чи є підприємство платником податку на додану вартість (ПДВ)?"
+      pdv_number: "номер свідоцтва ПДВ"
+      enter_pdv: "Введіть номер свідоцтва ПДВ вашого підприємства"
+      state_registration_date: "дата державної реєстрації"
+      registration_number: "номер реєстрації"
+      enter_registration_number: "Введіть номер реєстрації вашого підприємства"
+      registered_by: "ким зареєстровано"
+      date_reg_rev_com: "реєстрація у податковій"
+      tax_inspection: "місце реєстрації у податковій"
+      registered_in_pension_fund: "дата реєстрації у пенсійному фонді"
+      number_reg_rev_com: "номер реєстрації у податковій"
+      enter_registration_tax: "Введіть номер реєстрації у податковій"
+      enter_reg_pens_fund: "Введіть код пенсійного фонду"
+      code_reg_pens_fund: "код пенсійного фонду"
+      tax_system: "система оподаткування"
+      general: "Загальна"
+      simplified: "Спрощена"
+  buttons:
+    forward: "Далі"
+  validation:
+    errors:
+      cant_be_blank: "Поле не може бути пустим"

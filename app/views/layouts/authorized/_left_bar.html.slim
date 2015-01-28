@@ -6,14 +6,14 @@ nav.navbar-default.navbar-static-side role='navigation'
           h3
             | Active Books
       li
-        = application_present.nav_link_to(root_path, 'fa-building', 'Головна')
+        = application_present.nav_link_to(root_path, 'fa-building', t('navigation.main'))
       li
-        = application_present.nav_link_to(money_index_path, 'fa-money', 'Гроші')
+        = application_present.nav_link_to(money_index_path, 'fa-money', t('navigation.money'))
       li
-        = application_present.nav_link_to(sales_path, 'fa-cc-visa', 'Продажі')
+        = application_present.nav_link_to(sales_path, 'fa-cc-visa', t('navigation.sales'))
       li
-        = application_present.nav_link_to(purchases_path, 'fa-pie-chart', 'Закупівлі')
+        = application_present.nav_link_to(purchases_path, 'fa-pie-chart', t('navigation.purchases'))
       li
-        = application_present.nav_link_to('#', 'fa-file-excel-o', 'Звітність')
+        = application_present.nav_link_to('#', 'fa-file-excel-o', t('navigation.accounting'))
       li
-        = application_present.nav_link_to('#', 'fa-file-text', 'Журнал')
+        = application_present.nav_link_to('#', 'fa-file-text', t('navigation.register'))

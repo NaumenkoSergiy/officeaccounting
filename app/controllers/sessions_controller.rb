@@ -15,6 +15,12 @@ class SessionsController < ApplicationController
     redirect_to new_session_path
   end
 
+  def set_language
+    session[:user_language] = params[:language]
+    I18n.locale = session[:user_language]
+    redirect_to root_path
+  end
+
   private
 
   def define_session_service

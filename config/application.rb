@@ -16,13 +16,16 @@ module ActiveBooks
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    #The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+    #config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.default_locale = :ua
+    config.i18n.available_locales = [:ua, :en]
     ENV.update YAML.load(File.read('config/application.yml'))[Rails.env] rescue {}
 
     config.autoload_paths << File.join(config.root, "lib")
 
     config.exceptions_app = self.routes
+    config.middleware.use SimplesIdeias::I18n::Middleware
+    config.assets.initialize_on_precompile = true
   end
 end

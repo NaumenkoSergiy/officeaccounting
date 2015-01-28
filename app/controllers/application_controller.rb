@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   skip_before_filter :verify_authenticity_token
 
   helper_method :current_user, :is_admin?, :application_present
+  before_filter :set_locale
 
   def current_user
     @current_user ||= User.find_by_auth_token!(cookies[:activate_token]) if cookies[:activate_token]
@@ -64,5 +65,13 @@ class ApplicationController < ActionController::Base
 
   def current_ability
     @current_ability ||= Ability.new(current_user, params)
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+   def default_url_options(options={})
+    { locale: I18n.locale }
   end
 end
