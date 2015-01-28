@@ -47,14 +47,14 @@ $(document).ready(function() {
 
   function togglePdvNumber () {
     registration_pdv = $('#registration_pdv')
-    registration_tin = $('#registration_tin')
-    registration_pdv.is(':checked') ? registration_tin.show() : registration_tin.hide();
+    registration_tin = $('#registration_tin, .tin')
+    registration_pdv.is(':checked') ? registration_tin.show() : registration_tin.hide().next().hide();
 
     registration_pdv.change(function() {
       if (this.checked)
-        registration_tin.fadeIn()
+        registration_tin.fadeIn().next().fadeIn();
       else
-        registration_tin.fadeOut()
+        registration_tin.fadeOut().next().fadeOut();
     })
   }
 
