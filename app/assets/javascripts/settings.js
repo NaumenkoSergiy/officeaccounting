@@ -351,4 +351,9 @@ $(document).ready(function() {
   
   $('.bootstrap-switch-on').next().next().css({ 'font-size':'13px', 'margin-left':'10px' }).show();
 
+  $('.info').tooltipster({ theme: 'tooltipster-shadow', position: 'right', maxWidth: '240' });
+
+  $('#registration_risk_class').selectpicker({'width':'474', 'margin-bottom':'10px'});
+
+  $('#registration_tax_system').selectpicker({'width':'150'});
 });
