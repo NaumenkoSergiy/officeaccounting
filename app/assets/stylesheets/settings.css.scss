@@ -37,9 +37,22 @@
   color: red;
 }
 
-#new_registration {
+#new_company, #new_registration {
+  input[type="text"] {
+    width: 474px;
+    display: table;
+    float: left;
+  }
+
+  .glyphicon-info-sign {
+    margin: 10px 0 0 7px;
+    cursor: pointer;
+    color: rgb(26, 179, 148);
+    font-size: 16px;
+  }
+
   #select2-drop, .select2-container {
-    width: 500px !important;
+    width: 474px !important;
     margin-bottom: 15px !important;
   }
 }
