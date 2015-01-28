@@ -21,17 +21,17 @@ $(document).ready(function() {
     },
     messages: {
       email: {
-        required: 'Поле email не має бути бути порожнім',
+        required: 'Поле email не має бути порожнім',
         pattern:  'Поле email має бути валідним'
       },
       password: {
-        required:  'Поле password не має бути бути порожнім',
+        required:  'Поле password не має бути порожнім',
         minlength: 'Поле password має бути довшим 8 символів',
         maxlength: 'Поле password має бути не довшим 32 символів'
       },
       confirm_password: {
-        required: 'Поле confirm password не має бути бути порожнім',
-        equalTo:  'Поле confirm password має бути бути відповідним до поля password'
+        required: 'Поле confirm password не має бути порожнім',
+        equalTo:  'Поле confirm password має бути відповідним до поля password'
       }
     }
   });
