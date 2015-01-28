@@ -65,7 +65,7 @@ module Money
     end
 
     def company_account
-      @accounts = Account.where(company_id: current_user.current_company.id)
+      @accounts = current_user.current_company.accounts
     end
   end
 end
