@@ -5,7 +5,7 @@
 
   = text_field_tag :confirm_password, '', placeholder: 'Підтвердження пароля', type: :password
 
-  = submit_tag "Створити профіль"
+  = submit_tag "Створити профіль", class: 'create_profile'
 
   .margin-top-20
     = link_to 'Логін', new_session_path, class: 'btn btn-sm btn-white btn-block'
