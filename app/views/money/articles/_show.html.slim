@@ -6,4 +6,4 @@ table.table
       th
     tr
       td
-        = link_to @article.name, '#', data: { name: :name, pk: @article, placement: 'bottom', model: 'article', url: "money/articles/#{ @article.id }", xeditable: true }
+        = link_to @article.name, '#', data: { type: 'textarea', name: :name, pk: @article, placement: 'bottom', model: 'article', url: money_article_path(@article.id), xeditable: true }

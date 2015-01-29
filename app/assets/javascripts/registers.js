@@ -30,7 +30,7 @@ function editableStart () {
         name = params.name;
         if ($(this).data().source) {
           $.map( $(this).data().source, function( val, i ) {
-            if (val['value']==params.value){
+            if (val['id']==params.value){
               valueNew = val['text'];
             }
           });

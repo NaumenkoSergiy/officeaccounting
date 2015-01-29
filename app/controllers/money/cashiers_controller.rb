@@ -1,18 +1,17 @@
 module Money
   class CashiersController < ApplicationController
     before_filter :redirect_to_new_session
-    before_action :set_cashier, only: [:destroy, :update]
+    before_action :set_cashier, only: [:destroy, :update, :show]
     before_action :define_cashier, only: [:index, :create]
+    before_action :company_cashier, only: [:index, :create]
 
     def index
-      @cashiers = Cashier.all
       respond_to do |format|
         format.js
       end
     end
 
     def show
-      @cashier = Cashier.find(params[:id])
       respond_to do |format|
         format.js
       end
@@ -20,7 +19,6 @@ module Money
 
     def create
       cashier = Cashier.new cashier_params
-      @cashiers = Cashier.all
       flash[:error] = 'Ви ввели не коректні данні' unless cashier.save
       respond_to do |format|
         format.js
@@ -38,8 +36,7 @@ module Money
     end
 
     def destroy
-      cashier = Cashier.find(params[:id])
-      cashier.destroy
+      @cashier.destroy
         respond_to do |format|
         format.js
       end
@@ -57,6 +54,10 @@ module Money
 
     def define_cashier
       @cashier ||= Cashier.new
+    end
+
+    def company_cashier
+      @cashiers = current_user.current_company.cashiers
     end
   end
 end
