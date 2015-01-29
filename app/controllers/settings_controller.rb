@@ -1,6 +1,6 @@
 class SettingsController < ApplicationController
   before_filter :redirect_to_new_session
-  before_filter :is_company_complete?, only: [:show]
+  before_filter :company_complete?, only: [:show]
 
   def index
     redirect_to new_session_path unless current_user
@@ -28,7 +28,7 @@ class SettingsController < ApplicationController
 
   private
 
-  def is_company_complete?
+  def company_complete?
     @company = current_user.companies.find(params[:id])
     unless @company.complite?
       redirect_to new_settings_company_path
