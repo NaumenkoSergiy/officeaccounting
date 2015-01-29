@@ -1,6 +1,5 @@
 class Counterparty < ActiveRecord::Base
-  has_many :registers
-  belongs_to :user
+  belongs_to :company
 
   validates :name, presence: true
   validates :start_date, presence: true

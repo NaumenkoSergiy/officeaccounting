@@ -1,0 +1,39 @@
+#purchasesNew {
+  h4 { text-align: center; }
+
+  .modal-dialog {
+    width: 630px;
+    margin-top: 70px;
+  }
+
+  .btn { margin-bottom: 8px; }
+}
+
+#counterparty_list {
+  max-height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
+
+#counterparty_show tr:first-child  {
+  background-color: #F2F1F0;
+
+  table { margin-bottom: 1px; }
+}
+
+#add_new_counterparty { margin-bottom: 5px; }
+
+#counterparty {
+  .modal-header { border: none; }
+}
+
+#counterparty {
+  .modal-header {
+    border: none;
+     padding-bottom: 0px;
+  }
+
+  .modal-dialog { right: 15px; }
+
+  table { margin-bottom: 1px; }
+}

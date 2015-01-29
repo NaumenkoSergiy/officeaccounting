@@ -1,0 +1,10 @@
+.center
+  = form_for [:purchases, @counterparty], method: :post, remote: :true do |f|
+    = f.label "Ім'я"
+    br
+    = f.text_field :name
+    = f.label "Дата"
+    br
+    = f.text_field :start_date
+      br
+    = f.submit 'Зберегти'

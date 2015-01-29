@@ -1,0 +1,65 @@
+module Purchases
+  class CounterpartiesController < ApplicationController
+    before_filter :redirect_to_new_session
+    before_filter :has_company?, only: [:index]
+    before_action :set_counterparty, only: [:show, :update, :destroy]
+    before_action :define_counterparty, only: [:index, :create]
+    before_action :get_all_counterparties, only: [:show, :index, :create]
+
+    def index
+      respond_to do |format|
+        format.js
+      end
+    end
+
+    def show
+      respond_to do |format|
+        format.js
+      end
+    end
+
+    def create
+      @counterparty = Counterparty.new counterparty_params
+      flash[:error] = 'Ви ввели не коректні данні' unless @counterparty.save
+      respond_to do |format|
+        format.js
+      end
+    end
+
+    def update
+      respond_to do |format|
+        if @counterparty.update(counterparty_params)
+          format.json { head :no_content }
+        else
+          format.json { render json: @counterparty.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    def destroy
+      @counterparty.destroy
+      @counterparty_id = params[:id]
+      respond_to do |format|
+        format.js
+      end
+    end
+
+    private
+
+    def set_counterparty
+      @counterparty = Counterparty.find(params[:id])
+    end
+
+    def counterparty_params
+      params.require(:counterparty).permit(:name, :start_date, :active).merge!(company_id: current_user.current_company.id)
+    end
+    
+    def define_counterparty
+      @counterparty ||= current_user.current_company.counterparties.new
+    end
+
+    def get_all_counterparties
+      @counterparties ||= current_user.current_company.try(:counterparties)
+    end
+  end
+end
