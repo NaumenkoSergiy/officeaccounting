@@ -20,6 +20,7 @@
 //= require bootstrap3-editable/bootstrap-editable
 //= require bootstrap-switch
 //= require bootstrap-select
+//= require select2
 
 LEFT_BAR_HIDE = 45;
 LEFT_BAR_SHOW = 220;

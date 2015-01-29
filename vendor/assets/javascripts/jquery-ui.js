@@ -7,4 +7,3 @@
 //= require jquery-ui/jquery.inputmask
 //= require jquery-ui/jquery.tagsinput.min
 //= require jquery-ui/jquery.tooltipster
-//= require jquery-ui/select2

@@ -36,6 +36,7 @@ gem 'state_machine'
 gem 'cancancan', '~> 1.9'
 gem "bootstrap-switch-rails"
 gem 'bootstrap-select-rails'
+gem "select2-rails"
 
 group :development, :test do
   gem 'pry'
