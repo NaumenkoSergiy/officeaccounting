@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :password_resets
   resources :money, only: [:index]
   resources :delegates, only: [:create, :destroy, :update]
+  resources :sales, only: [:index]
   
   namespace 'settings' do
     resources :companies, only: [:new, :create, :update]
