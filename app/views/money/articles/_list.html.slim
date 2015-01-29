@@ -5,8 +5,8 @@ table.table
         th
           | Назва статті
     - @articles.each do |article|
-      tr class='articles_#{ article.id }'
-        td
+      tr class='articles_#{ article.id }' value='#{ article.id }'
+        td id='name'
           = link_to article.name, money_article_path(article), remote: true
         td
           = application_present.destroy_link money_article_path(article)

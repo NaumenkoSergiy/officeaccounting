@@ -5,8 +5,9 @@ table.table
         | Назва каси
       th
         | Валюта
+      th
     tr
+      td style='width: 260px;'
+        = link_to @cashier.name, '#', data: { name: :name, type:'textarea', pk: @cashier, placement: 'bottom', model: 'cashier', url: money_cashier_path(@cashier.id), xeditable: true }
       td
-        = link_to @cashier.name, '#', data: { name: :name, pk: @cashier, placement: 'bottom', model: 'cashier', url: "money/cashiers/#{ @cashier.id }", xeditable: true }
-      td
-        = link_to Currency::CURRENCY.invert[@cashier.currency.to_sym], '#', data: { name: :currency, pk: @cashier, placement: 'bottom', type: 'select2', source: application_present.options_for_select2(Currency::CURRENCY), value: @cashier.currency, model: 'cashier', url: "money/cashiers/#{ @cashier.id }", xeditable: true }
+        = link_to Currency::CURRENCY.invert[@cashier.currency.to_sym], '#', data: { name: :currency, pk: @cashier, placement: 'bottom', type: 'select2', source: application_present.options_for_select2(Currency::CURRENCY), value: @cashier.currency, model: 'cashier', url:money_cashier_path(@cashier.id), xeditable: true }, style: 'width: 200px;' 

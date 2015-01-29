@@ -5,9 +5,17 @@ table.table
         th
           | Назва банку
         th
+          | МФО
+        th
+          | Код ЄДРПО
+        th
     - @banks.each do |bank|
-      tr class='bank_#{ bank.id }'
-        td
+      tr class='bank_#{ bank.id }' value='#{ bank.id }'
+        td id='name'
           = link_to bank.name, money_bank_path(bank), remote: true
-        td
+        td id='mfo'
+          = link_to bank.mfo, money_bank_path(bank), remote: true
+        td id='code_edrpo'
+          = link_to bank.code_edrpo, money_bank_path(bank), remote: true
+        td style='width: 40px;'
           = application_present.destroy_link money_bank_path(bank)

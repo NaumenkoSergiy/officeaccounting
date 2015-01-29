@@ -28,9 +28,10 @@ function editableStart () {
         var railsParams;
         id = params.pk.id;
         name = params.name;
+        console.log($(this));
         if ($(this).data().source) {
           $.map( $(this).data().source, function( val, i ) {
-            if (val['value']==params.value){
+            if (val['id']==params.value){
               valueNew = val['text'];
             }
           });
