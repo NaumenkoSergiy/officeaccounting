@@ -1,4 +1,4 @@
-function validCounterparty () {
+function validCounterparty() {
   $('#new_counterparty').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
@@ -24,7 +24,7 @@ function validCounterparty () {
   });
 }
 
-function openform () {
+function openform() {
   $('#add_new_counterparty').click(function() {
     $(this).parents('.modal-header').next().find('form').toggle();
   });
