@@ -9,24 +9,19 @@ function validCounterparty() {
         required: true
       },
       "counterparty[name]": {
-        required: true,
-        dpDate: true
+        required: true
       },
       "counterparty[edrpo]": {
-        required: true,
-        dpDate: true
+        required: true
       },
       "counterparty[adress]": {
-        required: true,
-        dpDate: true
+        required: true
       },
       "counterparty[account]": {
-        required: true,
-        dpDate: true
+        required: true
       },
       "counterparty[mfo]": {
-        required: true,
-        dpDate: true
+        required: true
       }
     },
     messages: {
