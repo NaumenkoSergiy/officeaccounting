@@ -1,12 +1,12 @@
 class SettingsController < ApplicationController
   before_filter :redirect_to_new_session
+  before_filter :company_complete?, only: [:show]
 
   def index
     redirect_to new_session_path unless current_user
   end
 
   def show
-    @company    = current_user.companies.find(params[:id])
     @bookkeeper = @company.officials.find_by(official_type: :bookeeper)
     @director   = @company.officials.find_by(official_type: :director)
     @incorporation_forms = get_incorporation_forms
@@ -24,5 +24,14 @@ class SettingsController < ApplicationController
                          text:  "#{f.number} #{f.name}"
                        }
                      end
+  end
+
+  private
+
+  def company_complete?
+    @company = current_user.companies.find(params[:id])
+    unless @company.complite?
+      redirect_to new_settings_company_path
+    end
   end
 end
