@@ -54,7 +54,7 @@ function openform() {
 }
 
 function checkResident() {
-  $('.counterparty_resident').click(function(){
+  $('.counterparty_resident').click(function() {
     id = $(this).data('id');
     $.ajax({
       type: 'PUT',
