@@ -63,11 +63,18 @@ ActiveRecord::Schema.define(version: 20150129153852) do
 
   create_table "counterparties", force: true do |t|
     t.string   "name"
-    t.date     "start_date"
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_id"
+    t.string   "title"
+    t.boolean  "resident"
+    t.string   "edrpo"
+    t.string   "adress"
+    t.string   "contract_id"
+    t.string   "account"
+    t.integer  "bank_id"
+    t.integer  "mfo"
   end
 
   create_table "credits", force: true do |t|

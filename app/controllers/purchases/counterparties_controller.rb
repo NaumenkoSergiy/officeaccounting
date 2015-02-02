@@ -2,23 +2,19 @@ module Purchases
   class CounterpartiesController < ApplicationController
     before_filter :redirect_to_new_session
     before_filter :has_company?, only: [:index]
-    before_action :set_counterparty, only: [:show, :update, :destroy]
+    before_action :set_counterparty, only: [:update, :destroy]
     before_action :define_counterparty, only: [:index, :create]
-    before_action :get_all_counterparties, only: [:show, :index, :create]
+    before_action :get_all_counterparties, only: [:index, :create]
 
     def index
-      respond_to do |format|
-        format.js
-      end
-    end
-
-    def show
+      @banks = Bank.all
       respond_to do |format|
         format.js
       end
     end
 
     def create
+      @banks = Bank.all
       @counterparty = Counterparty.new counterparty_params
       flash[:error] = 'Ви ввели не коректні данні' unless @counterparty.save
       respond_to do |format|
@@ -51,7 +47,14 @@ module Purchases
     end
 
     def counterparty_params
-      params.require(:counterparty).permit(:name, :start_date, :active).merge!(company_id: current_user.current_company.id)
+      params.require(:counterparty).permit(:name,
+                                           :title,
+                                           :resident,
+                                           :edrpo,
+                                           :adress,
+                                           :account,
+                                           :bank_id,
+                                           :mfo).merge!(company_id: current_user.current_company.id)
     end
     
     def define_counterparty

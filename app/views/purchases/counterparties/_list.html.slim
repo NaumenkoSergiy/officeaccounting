@@ -1,16 +1,41 @@
 table.table
   thead
     tr
-      th Ім'я
-      th Дата
       th
+        | Назва
+      th
+        | Ім'я
+      th
+        | Резидент
+      th
+        | ЄДРПО
+      th
+        | МФО
+      th
+        | Рахунок
+      th
+        | Банк
+      th
+        | Адреса
 
   tbody
     - @counterparties.each do |counterparty|
-      tr class='counterparty_#{counterparty.id}' value='#{counterparty.id}'
-        td id='name' style='width:270px;'
-          = link_to  counterparty.name, purchases_counterparty_path(counterparty), remote: true 
-        td id='start_date'
-          = link_to counterparty.start_date, purchases_counterparty_path(counterparty), remote: true
+      tr id="counterparty_#{counterparty.id}" class=counterparty.id
+        td
+          = link_to  counterparty.title, '#', data: { name: :title, type: 'textarea', placement: 'bottom', pk: counterparty, model: :counterparty, url: purchases_counterparty_path(counterparty.id), xeditable: true }
+        td
+          = link_to  counterparty.name, '#', data: { name: :name, type: 'textarea', placement: 'bottom', pk: counterparty, model: :counterparty, url: purchases_counterparty_path(counterparty.id), xeditable: true } 
+        td
+          = check_box_tag '', '', counterparty.resident, :class =>'counterparty_resident'
+        td
+          = link_to  counterparty.edrpo, '#', data: { name: :edrpo, placement: 'bottom', pk: counterparty, model: :counterparty, url: purchases_counterparty_path(counterparty.id), xeditable: true }
+        td
+          = link_to  counterparty.mfo, '#', data: { name: :mfo, placement: 'bottom', pk: counterparty, model: :counterparty, url: purchases_counterparty_path(counterparty.id), xeditable: true }
+        td
+          = link_to  counterparty.account, '#', data: { name: :account, placement: 'bottom', pk: counterparty, model: :counterparty, url: purchases_counterparty_path(counterparty.id), xeditable: true }
+        td
+          = link_to counterparty.bank.name, '#', data: { name: :bank_id, type: 'select2', pk: counterparty, value: counterparty.bank_id, source: @banks.collect{|f| {value: f.id, text: f.name}}.to_json, placement: 'bottom', model: :counterparty, url:  purchases_counterparty_path(counterparty.id), xeditable: true }
+        td
+          = link_to  counterparty.adress, '#', data: { name: :adress, type: 'textarea', placement: 'bottom', pk: counterparty, model: :counterparty, url: purchases_counterparty_path(counterparty.id), xeditable: true }
         td style='width:40px;' 
           = application_present.destroy_link purchases_counterparty_path(counterparty)

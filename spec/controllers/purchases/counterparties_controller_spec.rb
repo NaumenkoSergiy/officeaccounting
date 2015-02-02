@@ -4,7 +4,13 @@ RSpec.describe Purchases::CounterpartiesController, :type => :controller do
   let(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let(:company) { FactoryGirl.create(:company) }
   let(:counterparty_attributes) { FactoryGirl.attributes_for(:counterparty) }
-  let(:unvalid_counterparty_attributes) { FactoryGirl.attributes_for(:counterparty, name: '', start_date: '' )}
+  let(:unvalid_counterparty_attributes) { FactoryGirl.attributes_for(:counterparty, title:'',
+                                                                                    name:'',
+                                                                                    adress: '',
+                                                                                    edrpo: '',
+                                                                                    mfo:'',
+                                                                                    account:''
+                                                                                    )}
   let!(:counterparty) { FactoryGirl.create(:counterparty) }
 
   before(:each) do |test|

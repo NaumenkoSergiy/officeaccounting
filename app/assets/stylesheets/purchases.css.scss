@@ -10,7 +10,7 @@
 }
 
 #counterparty_list {
-  max-height: 300px;
+  max-height: 282px;
   overflow-y: scroll;
   margin-bottom: 10px;
 }
@@ -36,4 +36,26 @@
   .modal-dialog { right: 15px; }
 
   table { margin-bottom: 1px; }
+}
+
+#counterparty_resident, .counterparty_resident {
+  width: auto;
+  height: 15px;
+  margin-right: 10px;
+}
+
+#counterparty {
+  h4 { text-align: center; }
+
+  .modal-dialog {
+    width: 1054px;
+    margin-top: 25px;
+    right: -103px;
+  }
+
+  .btn { margin-bottom: 8px; }
+}
+
+#new_counterparty {
+  .select2-choice { height: 32px; }
 }
