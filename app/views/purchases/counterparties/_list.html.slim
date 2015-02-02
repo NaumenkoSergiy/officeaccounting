@@ -20,13 +20,13 @@ table.table
 
   tbody
     - @counterparties.each do |counterparty|
-      tr id="counterparty_#{counterparty.id}" class=counterparty.id
+      tr id="counterparty_#{counterparty.id}"
         td
           = link_to  counterparty.title, '#', data: { name: :title, type: 'textarea', placement: 'bottom', pk: counterparty, model: :counterparty, url: purchases_counterparty_path(counterparty.id), xeditable: true }
         td
           = link_to  counterparty.name, '#', data: { name: :name, type: 'textarea', placement: 'bottom', pk: counterparty, model: :counterparty, url: purchases_counterparty_path(counterparty.id), xeditable: true } 
         td
-          = check_box_tag '', '', counterparty.resident, :class =>'counterparty_resident'
+          = check_box_tag '', '', counterparty.resident, :class =>'counterparty_resident', data: { id: counterparty.id }
         td
           = link_to  counterparty.edrpo, '#', data: { name: :edrpo, placement: 'bottom', pk: counterparty, model: :counterparty, url: purchases_counterparty_path(counterparty.id), xeditable: true }
         td

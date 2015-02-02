@@ -24,16 +24,20 @@
 #add_new_counterparty { margin-bottom: 5px; }
 
 #counterparty {
-  .modal-header { border: none; }
-}
-
-#counterparty {
   .modal-header {
     border: none;
-     padding-bottom: 0px;
+    padding-bottom: 0px;
   }
 
-  .modal-dialog { right: 15px; }
+  .modal-dialog {
+    width: 1054px;
+    margin-top: 25px;
+    right: -103px;
+  }
+
+  h4 { text-align: center; }
+
+  .btn { margin-bottom: 8px; }
 
   table { margin-bottom: 1px; }
 }
@@ -42,18 +46,6 @@
   width: auto;
   height: 15px;
   margin-right: 10px;
-}
-
-#counterparty {
-  h4 { text-align: center; }
-
-  .modal-dialog {
-    width: 1054px;
-    margin-top: 25px;
-    right: -103px;
-  }
-
-  .btn { margin-bottom: 8px; }
 }
 
 #new_counterparty {

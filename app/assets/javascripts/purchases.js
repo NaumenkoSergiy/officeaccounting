@@ -54,13 +54,13 @@ function validCounterparty() {
 
 function openform() {
   $('#add_new_counterparty').click(function() {
-    $(this).parents('.modal-header').next().find('form').toggle();
+    $('form#new_counterparty').toggle();
   });
 }
 
 function checkResident() {
   $('.counterparty_resident').click(function(){
-    id = $(this).parent().parent()[0].className;
+    id = $(this).data('id');
     $.ajax({
       type: 'PUT',
       url: '/purchases/counterparties/' + id,
