@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 20150129153852) do
     t.string "state"
   end
 
+  create_table "contracts", force: true do |t|
+    t.date     "date"
+    t.string   "number"
+    t.string   "contract_type"
+    t.date     "validity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "counterparties", force: true do |t|
     t.string   "name"
     t.boolean  "active"

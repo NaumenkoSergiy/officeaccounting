@@ -125,3 +125,9 @@ String.prototype.translit = (function () {
     return newString;
   };
 })();
+
+function openForm(idform, idbutton) {
+  $("#" + idbutton).click(function() {
+    $("form#" + idform + "").toggle();
+  });
+}

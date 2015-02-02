@@ -1,0 +1,13 @@
+.center
+  = form_for  @contract, method: :post, remote: :true do |f|
+    = f.label 'Дата'
+    = f.text_field :date
+    = f.label 'Номер'
+    = f.text_field :number, class: 'number'
+    = f.label 'Тип'
+    = f.select :contract_type, options_for_select(Contract::CONTRACT_TYPE), class: "contactSelect"
+    = f.label 'Термін дії'
+    = f.text_field :validity
+    = f.label 'Контрагент'
+    / = f.select :validity, options_for_select(@banks.collect {|c| [c[:name], c[:id]]}), class: 'accountSelect'
+    = f.submit 'Додати'
