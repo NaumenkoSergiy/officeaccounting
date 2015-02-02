@@ -1,0 +1,47 @@
+#purchasesNew {
+  h4 { text-align: center; }
+
+  .modal-dialog {
+    width: 630px;
+    margin-top: 70px;
+  }
+
+  .btn { margin-bottom: 8px; }
+}
+
+#counterparty_list {
+  max-height: 282px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
+
+#add_new_counterparty { margin-bottom: 5px; }
+
+#counterparty {
+  .modal-header {
+    border: none;
+    padding-bottom: 0px;
+  }
+
+  .modal-dialog {
+    width: 1054px;
+    margin-top: 25px;
+    right: -103px;
+  }
+
+  h4 { text-align: center; }
+
+  .btn { margin-bottom: 8px; }
+
+  table { margin-bottom: 1px; }
+}
+
+#counterparty_resident, .counterparty_resident {
+  width: auto;
+  height: 15px;
+  margin-right: 10px;
+}
+
+#new_counterparty {
+  .select2-choice { height: 32px; }
+}

@@ -1,0 +1,26 @@
+#purchasesNew.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        .row
+          .col.col-lg-12
+            button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
+        .row
+          .col.col-lg-5
+            h4#myModalLabel.modal-title Документи
+          .col.col-lg-4
+            h4#myModalLabel.modal-title Звіти
+          .col.col-lg-3
+            h4#myModalLabel.modal-title Довідники
+      .modal-body
+        .row
+          .col.col-lg-5
+            = link_to "Рахунки вхідні", '#', class: 'btn  btn-primary btn-modal'
+            = link_to "Довіреність", '#', class: 'btn  btn-primary btn-modal'
+            = link_to "Придбання товарів і послуг", '#', class: 'btn  btn-primary btn-modal'
+            = link_to "Повернення", '#', class: 'btn  btn-primary btn-modal'
+          .col.col-lg-4
+            = link_to "Стан розрахунків", '#', class: 'btn  btn-primary btn-modal'
+          .col.col-lg-3
+            = link_to "Контрагенти", purchases_counterparties_path, remote: true, type: :get, class: 'btn  btn-primary btn-modal'
+            = link_to "Товари і послуги", '#', remote: true, type: :get, class: 'btn  btn-primary btn-modal'

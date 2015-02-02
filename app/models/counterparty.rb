@@ -1,7 +1,7 @@
 class Counterparty < ActiveRecord::Base
-  has_many :registers
-  belongs_to :user
+  belongs_to :company
+  belongs_to :bank
 
-  validates :name, presence: true
-  validates :start_date, presence: true
+  validates :name, :title, :adress, presence: true
+  validates_numericality_of :edrpo, :mfo, :account
 end

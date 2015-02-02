@@ -1,0 +1,8 @@
+- if flash[:error]
+  | $('.notification.error').show().text("#{flash[:error]}");
+- else
+  | $('#counterparty_list').html("#{j render 'purchases/counterparties/list'}");
+  | $('#new_counterparty').hide()[0].reset();
+  | editableStart();
+  | checkResident();
+  | $.unblockUI();

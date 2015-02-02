@@ -1,0 +1,15 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      .row
+        .col.col-lg-12
+          button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
+      .row
+        .col.col-lg-12
+          h4#myModalLabel.modal-title Контрагенти
+          = link_to "Додати новий", '#', class: 'btn btn-primary', id: 'add_new_counterparty'
+    .modal-body
+      .row
+        .col.col-lg-12
+          #counterparty_form
+          #counterparty_list

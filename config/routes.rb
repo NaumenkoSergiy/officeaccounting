@@ -11,12 +11,12 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
   resources :users, only: [:new, :create]
   resources :settings, only: [:index, :show]
-  resources :counterparties
   resources :registers
   resources :password_resets
   resources :money, only: [:index]
   resources :delegates, only: [:create, :destroy, :update]
   resources :sales, only: [:index]
+  resources :purchases, only: [:index]
   
   namespace 'settings' do
     resources :companies, only: [:new, :create, :update]
@@ -34,6 +34,10 @@ Rails.application.routes.draw do
     resources :accounts
     resources :cashiers
     resources :articles
+  end
+
+  namespace 'purchases' do
+    resources :counterparties
   end
 
   get '*path', to: 'application#page_not_found'
