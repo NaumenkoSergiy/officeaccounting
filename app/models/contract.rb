@@ -5,7 +5,7 @@ class Contract < ActiveRecord::Base
   validates :date, :validity, :number, presence: true
   
   CONTRACT_TYPE = {
-    'Товар' => :product,
-    'Послуга'=> :service
+    :product_s => :product,
+    :service_s => :service
   }
 end

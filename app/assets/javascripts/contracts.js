@@ -17,13 +17,13 @@ function validContract() {
     },
     messages: {
       "contract[date]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "contract[number]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "contract[validity]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       }
     }
   });

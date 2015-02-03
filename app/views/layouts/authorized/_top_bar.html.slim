@@ -15,10 +15,10 @@
         li.dropdown
           a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
             i.fa.fa-cog
-            | Налаштування
+            = t('settings')
           ul.dropdown-menu.settings role="menu" aria-labelledby="dropdownMenu1"
             li role="presentation"
-              = link_to "Договори", contracts_path, remote: true, type: :get
+              = link_to t('contract.contracts'), contracts_path, remote: true, type: :get
         li
           = link_to destroy_sessions_path
             i.fa.fa-sign-out

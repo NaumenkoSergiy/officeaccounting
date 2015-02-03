@@ -1,26 +1,26 @@
 = form_for  @contract, method: :post, remote: :true do |f|
   .row
     .col-lg-6
-      = f.label 'Дата'
+      = f.label t('contract.date')
       = f.text_field :date
     .col-lg-6
-      = f.label 'Номер'
+      = f.label t('contract.number')
       = f.text_field :number, class: 'number'
   .row
     .col-lg-6
-      = f.label 'Тип'
-      = f.select :contract_type, options_for_select(Contract::CONTRACT_TYPE), class: "contactSelect"
+      = f.label t('contract.type')
+      = f.select :contract_type, options_for_select(application_present.credit_translate(Contract::CONTRACT_TYPE)), class: "contactSelect"
     .col-lg-6
-      = f.label 'Термін дії'
+      = f.label t('contract.validity')
       = f.text_field :validity
   .row
     .col-lg-6
       - if @counterparties.empty?
-        = link_to 'У вас немає контрагентів натисніть сюди, щоб додати нового!', purchases_counterparties_path(page: "contract"), remote: true, metod: :get
+        = link_to t('contract.counterparty_info'), purchases_counterparties_path(page: "contract"), remote: true, metod: :get
       - else
-        = f.label 'Контрагент'
-        = link_to ' додати нового', purchases_counterparties_path(page: "contract"), remote: true, metod: :get
+        = f.label t('contract.counterparty')
+        = link_to t(' contract.add_new'), purchases_counterparties_path(page: "contract"), remote: true, metod: :get
         = f.select :counterparty_id, options_for_select(@counterparties.collect {|c| [c[:name], c[:id]]}), class: 'accountSelect'
     .col-lg-6
       br
-      = f.submit 'Додати'
+      = f.submit t('buttons.add')

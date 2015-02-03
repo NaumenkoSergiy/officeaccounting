@@ -2,15 +2,15 @@ table.table
   thead
     tr
       th
-        | Дата
+        = t('contract.date')
       th
-        | Номер
+        = t('contract.number')
       th
-        | Тип
+        = t('contract.type')
       th
-        | Термін дії
+        = t('contract.validity')
       th
-        | Контрагент
+        = t('contract.counterparty')
   tbody
     - @contracts.each do |contract|
       tr class='contract_#{ contract.id }'
