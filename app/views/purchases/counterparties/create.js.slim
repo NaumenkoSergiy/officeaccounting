@@ -1,8 +1,13 @@
 - if flash[:error]
   | $('.notification.error').show().text("#{flash[:error]}");
 - else
-  | $('#counterparty_list').html("#{j render 'purchases/counterparties/list'}");
-  | $('#new_counterparty').hide()[0].reset();
-  | editableStart();
-  | checkResident();
-  | $.unblockUI();
+  - if params[:counterparty][:page].nil?
+    | $('#counterparty_list').html("#{j render 'purchases/counterparties/list'}");
+    | $('#new_counterparty').hide()[0].reset();
+    | editableStart();
+    | checkResident();
+    | $.unblockUI();
+  - else
+    | $('#counterparty').modal('hide');
+    | $('#contract_form').html("#{j render 'contracts/form'}");
+    | loadPluginsContract();

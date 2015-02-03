@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :delegates, only: [:create, :destroy, :update]
   resources :sales, only: [:index]
   resources :purchases, only: [:index]
+  resources :contracts
   
   namespace 'settings' do
     resources :companies, only: [:new, :create, :update]

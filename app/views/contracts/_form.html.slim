@@ -1,0 +1,26 @@
+= form_for  @contract, method: :post, remote: :true do |f|
+  .row
+    .col-lg-6
+      = f.label t('contract.date')
+      = f.text_field :date
+    .col-lg-6
+      = f.label t('contract.number')
+      = f.text_field :number, class: 'number'
+  .row
+    .col-lg-6
+      = f.label t('contract.type')
+      = f.select :contract_type, options_for_select(application_present.credit_translate(Contract::CONTRACT_TYPE)), class: "contactSelect"
+    .col-lg-6
+      = f.label t('contract.validity')
+      = f.text_field :validity
+  .row
+    .col-lg-6
+      - if @counterparties.empty?
+        = link_to t('contract.counterparty_info'), purchases_counterparties_path(page: "contract"), remote: true, metod: :get
+      - else
+        = f.label t('contract.counterparty')
+        = link_to t(' contract.add_new'), purchases_counterparties_path(page: "contract"), remote: true, metod: :get
+        = f.select :counterparty_id, options_for_select(@counterparties.collect {|c| [c[:name], c[:id]]}), class: 'accountSelect'
+    .col-lg-6
+      br
+      = f.submit t('buttons.add')

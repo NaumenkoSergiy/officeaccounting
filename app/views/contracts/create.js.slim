@@ -1,0 +1,7 @@
+- if flash[:error]
+  | $('.notification.error').show().text("#{flash[:error]}");
+- else
+  | $('#contract_list').html("#{j render 'contracts/list'}");
+  | $('#new_contract').hide()[0].reset();
+  | editableStart();
+  | $.unblockUI();

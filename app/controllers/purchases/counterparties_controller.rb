@@ -15,6 +15,7 @@ module Purchases
 
     def create
       @banks = Bank.all
+      @contract = Contract.new
       @counterparty = Counterparty.new counterparty_params
       flash[:error] = 'Ви ввели не коректні данні' unless @counterparty.save
       respond_to do |format|

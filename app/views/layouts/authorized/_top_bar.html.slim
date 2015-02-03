@@ -4,7 +4,6 @@
       .navbar-header
         a.navbar-minimalize.minimalize-styl-2.btn.btn-primary href='#'
           i.fa.fa-bars
-
       ul.nav.navbar-top-links.navbar-right
         li
           = link_to '', sessions_set_language_path(locale: 'ua'), class: 'ua-language'
@@ -13,6 +12,13 @@
         li
           span.m-r-sm.text-muted
             = current_user.email
+        li.dropdown
+          a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+            i.fa.fa-cog
+            = t('settings')
+          ul.dropdown-menu.settings role="menu" aria-labelledby="dropdownMenu1"
+            li role="presentation"
+              = link_to t('contract.contracts'), contracts_path, remote: true, type: :get
         li
           = link_to destroy_sessions_path
             i.fa.fa-sign-out
@@ -21,7 +27,9 @@
   .wrapper.wrapper-content.animated.fadeInRight
     .row
       .col-lg-12
-          .ibox.white-bg
-            #error
-            = yield
+        .ibox.white-bg
+          #error
+          = yield
+          #contracts.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
+          #counterparty.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1" 
 

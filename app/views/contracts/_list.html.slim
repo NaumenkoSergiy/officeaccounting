@@ -1,0 +1,28 @@
+table.table
+  thead
+    tr
+      th
+        = t('contract.date')
+      th
+        = t('contract.number')
+      th
+        = t('contract.type')
+      th
+        = t('contract.validity')
+      th
+        = t('contract.counterparty')
+  tbody
+    - @contracts.each do |contract|
+      tr class='contract_#{ contract.id }'
+        td
+          = link_to contract.date, '#', data: { name: :date, type: 'date', placement: 'bottom', pk: contract, model: :contract, url: contract_path(contract.id), xeditable: true }
+        td
+          = link_to contract.number, '#', data: { name: :number, placement: 'bottom', pk: contract, model: :contract, url: contract_path(contract.id), xeditable: true }
+        td
+          = link_to application_present.constant_parse(Contract::CONTRACT_TYPE, contract.contract_type), '#',  data: { name: :contract_type, type: 'select2', pk: contract, value: contract.contract_type, source:application_present.options_for_select2(Contract::CONTRACT_TYPE), placement: 'bottom', model: :contract, url: contract_path(contract.id), xeditable: true }
+        td
+          = link_to contract.validity, '#', data: { name: :validity, type: 'date', placement: 'bottom', pk: contract, model: :contract, url: contract_path(contract.id), xeditable: true }
+        td
+          = link_to contract.counterparty.name,'#', data: { name: :counterparty_id, type: 'select2', pk: contract, value: contract.counterparty.id, source:application_present.options_for_select2(@counterparties.pluck(:name, :id)), placement: 'bottom', model: :contract, url: contract_path(contract.id), xeditable: true }
+        td style='width: 40px;'
+          = application_present.destroy_link contract_path(contract.id)
