@@ -6,10 +6,10 @@ class UserService < BaseService
       if user.valid?
         user if user.save
       else
-        {error: 'Введені неправильні дані'}
+        {error: I18n.t('validation.errors.invalid_data')}
       end
     else
-      {error: 'Користувач існує будь ласка скористуйтеся відновленням паролю!'}
+      {error: I18n.t('validation.errors.user_exists')}
     end
   end
 

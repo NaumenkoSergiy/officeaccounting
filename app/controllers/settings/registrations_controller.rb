@@ -13,7 +13,7 @@ module Settings
       registration = current_user.companies.last.create_registration registration_params
       
       if !(registration.valid? && registration.save)
-        flash[:error] = 'Введені невірні реєстраційні данні!'
+        flash[:error] = t('validation.errors.invalid_data')
       else
         flash[:error] = nil
       end
@@ -29,7 +29,7 @@ module Settings
           if params[:page]
             format.json { render json: @registration.errors, status: :unprocessable_entity }
           else
-            flash[:error] = 'Помилкові дані'
+            flash[:error] = t('validation.errors.invalid_data')
             format.js
           end
         end

@@ -7,8 +7,8 @@
             button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
         .row
           .col.col-lg-12
-            h4#myModalLabel.modal-title Каси
-            = link_to "Додати новий", '#', class: 'btn btn-primary ', id: 'add_new_cashier'
+            h4#myModalLabel.modal-title = t('money.cashiers_title')
+            = link_to t('buttons.add_new'), '#', class: 'btn btn-primary ', id: 'add_new_cashier'
         .row
           .col.col-lg-12
             #cashier_show

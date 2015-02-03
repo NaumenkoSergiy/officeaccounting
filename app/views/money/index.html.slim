@@ -3,7 +3,7 @@
     .row
       = image_tag('charts.jpg')
   .row.links
-    = link_to "Додати новий", '#', data: { toggle: "modal", target: "#moneyNew"}, class: 'btn btn-primary'
+    = link_to t('buttons.add_new'), '#', data: { toggle: "modal", target: "#moneyNew"}, class: 'btn btn-primary'
     = render 'money/addNew'
     = render 'money/currencies/currency'
     = render 'money/currencies/company_currency'

@@ -1,31 +1,31 @@
 div
   h3
-    | Блок3 (інформація про посадових осіб)
+    = t('block_title.block3')
 
 h3
-  | Директор
+  = t('block_title.director')
 
 = form_for [:settings, @official], remote: true do |f|
-  = f.label 'ПІБ'
+  = f.label t('officials.full_name')
   br
-  = f.text_field :name, placeholder: "Введіть ПІБ Директора"
+  = f.text_field :name, placeholder: t('officials.enter_full_name')
 
   br
-  = f.label 'ІПН'
+  = f.label t('officials.tin')
   br
-  = f.text_field :tin, :class => 'number', placeholder: 'Введіть код ІПН', maxlength: 10
+  = f.text_field :tin, :class => 'number', placeholder: t('officials.enter_ipn'), maxlength: 10
 
   br
-  = f.label 'Номер телефону'
+  = f.label t('officials.phone')
   br
   = f.text_field :phone
 
   br
-  = f.label 'Електронна пошта'
+  = f.label t('officials.email')
   br
   = f.text_field :email
   = f.hidden_field :official_type, value: :director
 
   br
   = link_to '', new_settings_registration_path(back: true), :class => 'glyphicon glyphicon-arrow-left back-arrow'
-  = f.submit "Далі"
+  = f.submit t('buttons.forward')

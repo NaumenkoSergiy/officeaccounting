@@ -1,21 +1,21 @@
 .center
   = form_for [:money, @credit], remote: :true do |f|
-    = label_tag 'Назва'
+    = label_tag t('block_title.title')
     br
     = f.text_field :name
 
-    = label_tag 'Тип кредита'
+    = label_tag t('money.credit_type')
     br
-    = f.select :credit_type, options_for_select(Credit::CREDIT_TYPE), {}, { class: 'select2' }
+    = f.select :credit_type, options_for_select(application_present.credit_translate(Credit::CREDIT_TYPE)), {}, { class: 'select2' }
 
     br
-    = label_tag 'Номер рахунку'
+    = label_tag t('money.accounts.account_number')
     br
     = f.text_field :account_number, :class => 'number', maxlength: 8
 
-    = label_tag 'Банк'
+    = label_tag t('money.accounts.bank')
     br
     = f.select :bank_id, options_for_select(Bank.select(:name, :id).collect{|b| [b.name, b.id]}), {}, { class: 'select2' }
     br
     br
-    = f.submit 'Додати'
+    = f.submit t('buttons.add')

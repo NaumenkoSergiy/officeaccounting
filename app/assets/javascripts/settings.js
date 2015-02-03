@@ -1,6 +1,9 @@
 $(document).ready(function() {
   $('#registration_form_of_incorporation, #registration_tax_inspection').select2({width: '970px'});
 
+  I18n.defaultLocale = $.cookie('language');
+  I18n.locale = $.cookie('language');
+
   AjaxGetKoatuu = {
                     url: '/settings/registrations/get_koatuu',
                     dataType: 'json',
@@ -102,22 +105,22 @@ $(document).ready(function() {
     },
     messages: {
       "company[full_name]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank'),
       },
       "company[short_name]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "company[latin_name]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "company[juridical_address]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "company[actual_address]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "company[numbering_format]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       }
     }
   });
@@ -159,31 +162,31 @@ $(document).ready(function() {
     },
     messages: {
       "registration[edrpou]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "registration[nace_codes]": { 
         valueNotEquals: "Please select an item!" 
       },
         "registration[koatuu]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
         "registration[tin]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
         "registration[state_registration_date]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
         "registration[registered_by]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
         "registration[registration_number]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
         "registration[date_registered_in_revenue_commissioners]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
         "registration[number_registered_in_revenue_commissioners]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       }
     }
   });
@@ -233,17 +236,17 @@ $(document).ready(function() {
     },
     messages: {
       "official[name]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "official[tin]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "official[phone]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "official[email]": {
-        required: 'поле не може бути пустим',
-        pattern: 'поле має бути валідним'
+        required: I18n.t('validation.errors.cant_be_blank'),
+        pattern: I18n.t('validation.errors.should_be_valid')
       }
     }
   });
@@ -266,13 +269,13 @@ $(document).ready(function() {
     },
     messages: {
       "bank_account[account]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "bank_account[bank]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "bank_account[mfo]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       }
     }
   });
@@ -290,7 +293,7 @@ $(document).ready(function() {
     },
     messages: {
       email: {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       }
     }
   });
@@ -308,9 +311,9 @@ $(document).ready(function() {
   $('.add_company').on('click', function() {
     $('.add_existing_company, .new_company').toggle();
     if ($('.add_existing_company').is(':hidden')) {
-      $(this).text('Додати існуюче підприємство');
+      $(this).text(I18n.t('add_existing'));
     } else {
-      $(this).text('Додати нове підприємство');
+      $(this).text(I18n.t('add_new_company'));
     }
   });
 

@@ -5,7 +5,7 @@ module Settings
     before_action :set_bank_account, only: [:update, :new]
 
     def create
-      flash[:error] = 'Помилкові дані' unless @bank_account.update_attributes(bank_account_params)
+      flash[:error] = t('validation.errors.invalid_data') unless @bank_account.update_attributes(bank_account_params)
     end
 
     def update

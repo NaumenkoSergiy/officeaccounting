@@ -1,103 +1,105 @@
 .center
   div
     h3
-      | Блок2 (інформація про реєстрацію)
+      = t('block_title.block2')
 
   = form_for [:settings, @registration], remote: true, id: :registration_form do |f|
-    = f.label 'Організаційно-правова форма (код та назва)'
+    = f.label t('registrations.fields.form_of_incorporation')
     br
     = f.select :form_of_incorporation, options_for_select(@incorporation_forms)
     i.info.glyphicon.glyphicon-info-sign  title="Організаці́йно-правова́ фо́рма господарюва́ння — форма здійснювання господарської (зокрема, підприємницької) діяльності з відповідною правовою основою, яка визначає характер відносин між засновниками (учасниками), режим майнової відповідальності по зобов'язаннях підприємства (організації), порядок створення, реорганізації, ліквідації, управління, розподілу одержаних прибутків, можливі джерела фінансування діяльності тощо."
     
     br
-    = f.label 'Код ЄРДПОУ'
+    = f.label t('registrations.fields.edrpou_code')
     br
-    = f.text_field :edrpou, :class => 'number', placeholder: 'Введіть код ЄРДПОУ вашого підприємства', maxlength: 8
+
+    = f.text_field :edrpou, :class => 'number', placeholder: t('registrations.fields.enter_edrpou'), maxlength: 8
     i.info.glyphicon.glyphicon-info-sign  title="Код ЄДРПОУ (Єдиного державного реєстру підприємств та організацій України) — унікальний ідентифікаційний номер юридичної особи в Єдиному державному реєстрі підприємств та організацій України."
 
-    = f.label 'коди КВЕД'
+    = f.label t('registrations.fields.nace_codes')
     br
     .error-registration style='display:none;'
-      | поле не може бути пустим
+      = t('validation.errors.cant_be_blank')
     = f.text_field :nace_codes
     i.info.glyphicon.glyphicon-info-sign  title="«Класифікація видів економічної діяльності» (КВЕД) — складова частина державної системи класифікації і кодування техніко-економічної та соціальної інформації в Україні."
 
     br
-    = f.label 'розташування за КОАТУУ'
+    = f.label t('registrations.fields.koatuu')
     br
     .error-registration style='display:none;'
-      | поле не може бути пустим
-    = f.text_field :koatuu, :class => 'number', placeholder: 'Введіть код розташування за КОАТУУ'
+      = t('validation.errors.cant_be_blank')
+    = f.text_field :koatuu, :class => 'number', placeholder: t('registrations.fields.enter_koatuu')
     i.info.glyphicon.glyphicon-info-sign  title="Державний класифікатор об’єктів адміністративно-територіального устрою України (КОАТУУ)  є складовою частиною єдиної системи класифікації і кодування техніко-економічної та соціальної інформації.КОАТУУ складається з кодів та назв всіх адміністративно-територіальних об’єктів України, які згруповані за ознаками територіальної спільності, історичних, економічних, географічних, етнічних і культурних особливостей. Введіть перші три цифри коду розташування за КОАТУУ"
 
     br
-    = f.label 'клас професійного ризику'
+    = f.label t('registrations.fields.risk_class')
     br
     = f.select :risk_class, (1..67).to_a
     i.info.glyphicon.glyphicon-info-sign  title="Клас професійного ризику виробництва - рівень виробничого травматизму і професійних захворювань за видами економічної діяльності, що визначає ступінь вірогідності втрати професійної працездатності або смерті працівника під час виконання трудових обов’язків, з урахуванням результатів аналізу показників виробничого травматизму і професійних захворювань, а також обсягів видатків Фонду соціального страхування від нещасних випадків на виробництві та професійних захворювань, пов’язаних із забезпеченням загальнообов’язкового державного соціального страхування від нещасного випадку на виробництві та професійного захворювання, які спричинили втрату працездатності"
 
     br
-    = f.label :id => 'label_pdv'
-      | Чи є підприємство платником податку на додану вартість (ПДВ)?
-      = f.check_box :pdv
+
+    = f.label t('registrations.fields.is_pdv'), :id => 'label_pdv'
+    = f.check_box :pdv
 
     br
-    = f.label 'номер свідоцтва ПДВ', :class =>'tin'
+    = f.label t('registrations.fields.pdv_number')
     br
-    = f.text_field :tin, :class => 'number', placeholder: 'Введіть номер свідоцтва ПДВ вашого підприємства', maxlength: 10, style: 'display: none'
+    = f.text_field :tin, :class => 'number', placeholder: t('registrations.fields.enter_pdv'), maxlength: 10, disabled: :disabled
     i.info.glyphicon.glyphicon-info-sign  title="Індивідуальний податковий номер (ІПН) — це номер платника податку на додану вартість в реєстрі платників ПДВ. Індивідуальний податковий номер є єдиним для всього інформаційного простору Україна і зберігається за платником податку на додану вартість до моменту виключення його з Реєстру в зв'язку із вибуттям зі складу платників податку на додану вартість."
 
-    = f.label 'дата державної реєстрації'
+    br
+    = f.label t('registrations.fields.state_registration_date')
     br
     = f.text_field :state_registration_date, :class => 'date_reg'
     i.info.glyphicon.glyphicon-info-sign  title="Моментом прийняття заяви про державну реєстрацію вважається дата та час її реєстрації у базі даних про реєстрацію заяв і запитів."
 
     br
-    = f.label 'номер реєстрації'
+    = f.label t('registrations.fields.registration_number')
     br
-    = f.text_field :registration_number, :class => 'number', placeholder: 'Введіть номер реєстрації вашого підприємства', maxlength: 10
+    = f.text_field :registration_number, :class => 'number', placeholder: t('registrations.fields.enter_registration_number'), maxlength: 10
 
     br
-    = f.label 'ким зареєстровано'
+    = f.label t('registrations.fields.registered_by')
     br
     = f.text_field :registered_by
 
     br
-    = f.label 'реєстрація у податковій'
+    = f.label t('registrations.fields.date_reg_rev_com')
     br
     = f.text_field :date_registered_in_revenue_commissioners, :class => 'date_reg'
     i.info.glyphicon.glyphicon-info-sign  title="Дата реєстрація у податковій"
 
     br
-    = f.label 'місце реєстрації у податковій'
+    = f.label t('registrations.fields.tax_inspection')
     br
     = f.select :tax_inspection, options_for_select(TaxInspection.pluck(:name)), class: 'select2'
 
     br
-    = f.label 'номер реєстрації у податковій'
+    = f.label t('registrations.fields.number_reg_rev_com')
     br
-    = f.text_field :number_registered_in_revenue_commissioners, :class => 'number', placeholder: 'Введіть номер реєстрації у податковій', maxlength: 12
+    = f.text_field :number_registered_in_revenue_commissioners, :class => 'number', placeholder: t('registrations.fields.enter_registration_tax'), maxlength: 12
 
     br
-    = f.label 'дата реєстрації у пенсійному фонді'
+    = f.label t('registrations.fields.registered_in_pension_fund')
     br
     = f.text_field :registered_in_pension_fund, :class => 'date_reg'
 
     br
-    = f.label 'код пенсійного фонду'
+    = f.label t('registrations.fields.code_reg_pens_fund')
     br
-    = f.text_field :code_registered_in_pension_fund, :class => 'number', placeholder: 'Введіть код пенсійного фонду', maxlength: 4
+    = f.text_field :code_registered_in_pension_fund, :class => 'number', placeholder: t('registrations.fields.enter_reg_pens_fund'), maxlength: 4
 
     br
-    = f.label 'система оподаткування'
+    = f.label t('registrations.fields.tax_system')
     br
-    = f.select :tax_system, ['Загальна', 'Спрощена']
-    i.info.glyphicon.glyphicon-info-sign  title="Система оподаткування - це сукупність податків і зборів (обов'язкових платежів), що справляються до бюджетів і державних цільових фондів у встановленому законами України порядку; принципів, форм і методів їхнього встановлення, зміни чи скасування; дій, що забезпечують повну та своєчасну їхню сплату, контроль і відповідальність за порушення податкового законодавства."
+
+    = f.select :tax_system, [t('registrations.fields.general'), t('registrations.fields.simplified')]
+     i.info.glyphicon.glyphicon-info-sign  title="Система оподаткування - це сукупність податків і зборів (обов'язкових платежів), що справляються до бюджетів і державних цільових фондів у встановленому законами України порядку; принципів, форм і методів їхнього встановлення, зміни чи скасування; дій, що забезпечують повну та своєчасну їхню сплату, контроль і відповідальність за порушення податкового законодавства."
 
     br
     = link_to '', new_settings_company_path(back: true), :class => 'glyphicon glyphicon-arrow-left back-arrow'
-
-    = f.submit "Далі"
+    = f.submit t('buttons.forward')
 
   javascript:
     $('#registration_nace_codes').select2({ tags: #{present(@registration).kveds},

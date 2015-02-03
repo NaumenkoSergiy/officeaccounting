@@ -2,18 +2,18 @@ table.table class="credit_show" value="#{@credit.id}"
   tbody
     tr
       th class='credits'
-        | Назва
+        = t('block_title.title')
       th
-        | Тип кредита
+        = t('money.credit_type')
       th
-        | Номер рахунку
+        = t('money.accounts.account_number')
       th
-        | Банк
+        = t('money.accounts.bank')
     tr
       td
         = link_to @credit.name, '#', data: { name: :name, pk: @credit, type: 'textarea', placement: 'bottom', model: 'credit', url: money_credit_path(@credit.id), xeditable: true }
       td
-        = link_to Credit::CREDIT_TYPE.invert[@credit.credit_type.to_sym], '#', data: { name: :credit_type, pk: @credit, model: 'credit', placement: 'bottom', type: 'select2', source: application_present.options_for_select2(Credit::CREDIT_TYPE), value: @credit.credit_type, url: money_credit_path(@credit.id), xeditable: true }, id: 'credit_type_select', style: 'width: 200px;'
+        = link_to t("#{Credit::CREDIT_TYPE.invert[@credit.credit_type.to_sym].to_s}"), '#', data: { name: :credit_type, pk: @credit, model: 'credit', placement: 'bottom', type: 'select2', source: application_present.options_for_select2(application_present.credit_translate(Credit::CREDIT_TYPE)), value: @credit.credit_type, url: money_credit_path(@credit.id), xeditable: true }, id: 'credit_type_select', style: 'width: 200px;'
       td
         = link_to @credit.account_number, '#', data: { name: :account_number, pk: @credit, model: 'credit', placement: 'bottom', url: money_credit_path(@credit.id), xeditable: true }
       td

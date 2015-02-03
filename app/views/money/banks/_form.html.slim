@@ -1,22 +1,22 @@
 .center
   = form_for [:money, @bank], method: :post, remote: :true do |f|
-    = f.label 'Назва'
+    = f.label t('block_title.title')
     br
     = f.text_field :name
 
     br
-    = f.label 'Код за ЄДРПО'
+    = f.label t('registrations.fields.edrpou_code')
     br
     = f.text_field :code_edrpo, :class => 'number', maxlength: 8
 
     br
-    = f.label 'МФО'
+    = f.label t('bank_accounts.mfo')
     br
     = f.text_field :mfo, :class => 'number', maxlength: 8
 
     br
-    = f.label 'Юридична адреса'
+    = f.label t('companies.new.juridical_address')
     br
     = f.text_field :lawyer_adress
     br
-    = f.submit 'Додати'
+    = f.submit t('buttons.add')

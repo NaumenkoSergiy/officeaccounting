@@ -22,7 +22,7 @@ module Money
       if @credit.update_attributes(credit_params)
         @credits.push @credit
       else  
-        flash[:error] = 'Ви ввели не коректні данні'
+        flash[:error] = t('validation.errors.invalid_data')
       end
       respond_to do |format|
         format.js
@@ -49,6 +49,14 @@ module Money
     end
 
     private
+
+    def credit_translate
+      @credit_hash = Hash.new()
+      Credit::CREDIT_TYPE.each do |key, value|
+        @credit_hash[t(key)] = value
+      end
+      @credit_hash
+    end
 
     def credit_params
       params.require(:credit).permit!

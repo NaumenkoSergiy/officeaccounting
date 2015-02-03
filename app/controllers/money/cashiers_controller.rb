@@ -19,7 +19,7 @@ module Money
 
     def create
       cashier = Cashier.new cashier_params
-      flash[:error] = 'Ви ввели не коректні данні' unless cashier.save
+      flash[:error] = t('validation.errors.invalid_data') unless cashier.save
       respond_to do |format|
         format.js
       end

@@ -17,7 +17,10 @@ $(document).ready(function() {
 
   curr_date = new Date();
 
-  $('#moneyCurrency h4').append(' на сьогодні ' + $.datepicker.formatDate('dd.mm.yy', curr_date));
+  I18n.defaultLocale = $.cookie('language');
+  I18n.locale = $.cookie('language');
+
+  $('#moneyCurrency h4').append(I18n.t('for_today') + $.datepicker.formatDate('dd.mm.yy', curr_date));
   
 
   $('.currencySelect, .editable-select').select2({width: '255px'});
@@ -90,10 +93,10 @@ function validAccount () {
     },
     messages: {
       "account[name]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "account[number]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       }
     }
   });
@@ -112,7 +115,7 @@ function validCashier () {
     },
     messages: {
       "cashier[name]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       }
     }
   });
@@ -140,16 +143,16 @@ function validBank () {
     },
     messages: {
       "bank[name]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "bank[code_edrpo]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "bank[mfo]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "bank[lawyer_adress]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       }
     }
   });
@@ -168,7 +171,7 @@ function validArticle () {
     },
     messages: {
       "article[name]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       }
     }
   });
@@ -190,10 +193,10 @@ function validCredit () {
     },
     messages: {
       "credit[name]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "credit[account_number]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       }
     }
   });

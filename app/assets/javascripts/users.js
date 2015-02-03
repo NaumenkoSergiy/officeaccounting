@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  I18n.defaultLocale = $.cookie('language');
+  I18n.locale = $.cookie('language');
   $('#new_user_form').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
@@ -21,17 +23,17 @@ $(document).ready(function() {
     },
     messages: {
       email: {
-        required: 'Поле email не має бути порожнім',
-        pattern:  'Поле email має бути валідним'
+        required: I18n.t('validation.errors.mail_not_blank'),
+        pattern:  I18n.t('validation.errors.mail_should_be valid')
       },
       password: {
-        required:  'Поле password не має бути порожнім',
-        minlength: 'Поле password має бути довшим 8 символів',
-        maxlength: 'Поле password має бути не довшим 32 символів'
+        required:  I18n.t('validation.errors.password_empty'),
+        minlength: I18n.t('validation.errors.password_more8'),
+        maxlength: I18n.t('validation.errors.password_less32')
       },
       confirm_password: {
-        required: 'Поле confirm password не має бути порожнім',
-        equalTo:  'Поле confirm password має бути відповідним до поля password'
+        required: I18n.t('validation.errors.cant_be_blank'),
+        equalTo:  I18n.t('validation.errors.passwords_not_identical')
       }
     }
   });

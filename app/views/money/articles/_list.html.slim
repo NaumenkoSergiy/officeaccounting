@@ -3,7 +3,7 @@ table.table
     thead
       tr
         th
-          | Назва статті
+          = t('money.article_name')
     - @articles.each do |article|
       tr class='articles_#{ article.id }' value='#{ article.id }'
         td id='name'

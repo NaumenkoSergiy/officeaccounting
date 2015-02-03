@@ -10,14 +10,14 @@ class DelegateService < BaseService
         user.user_companies.create(company: company, role: data[:role])
         UserMailer.create_delegate(user, company.full_name).deliver!
       else
-        { error: 'Введений невалідний Email' }
+        { error: I18n.t('validation.errors.mail_should_be_valid') }
       end
     else
       if is_user_delegate_to_company?(data, existing_user)
         existing_user.user_companies.create(company: company, role: data[:role])
         UserMailer.create_delegate_existing_user(existing_user, company).deliver!
       else
-        { error: 'Даний користувач вже добавлений на делегування цієї компанії ви не можете додати його ще раз!' }
+        { error: I18n.t('validation.errors.already_delegated') }
       end
     end
   end

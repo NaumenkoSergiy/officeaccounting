@@ -1,53 +1,53 @@
 - if can? :update, Company
-  = label_tag 'Назва повна'
+  = label_tag t('companies.new.full_name')
   br
   = link_to @company.full_name, '#', data: { placement: 'right', name: :full_name, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
 
   br
-  = label_tag 'Назва коротка'
+  = label_tag t('companies.new.short_name')
   br
   = link_to @company.short_name, '#', data: { placement: 'right', name: :short_name, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
 
   br
-  = label_tag 'Назва латиницею'
+  = label_tag t('companies.new.latin_name')
   br
   = link_to @company.latin_name, '#', data: { placement: 'right', name: :latin_name, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
   br
-  = label_tag 'Юридична адреса'
+  = label_tag t('companies.new.juridical_address')
   br
   = link_to @company.juridical_address, '#', data: { placement: 'right', name: :juridical_address, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
   br
-  = label_tag 'Адреса фактична'
+  = label_tag t('companies.new.actual_address')
   br
   = link_to @company.actual_address, '#', data: { placement: 'right', name: :actual_address, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true, emptytext: 'Не вказано' }
   br
-  = label_tag 'Бажаний формат нумерації документів'
+  = label_tag t('companies.new.numbering_format')
   br
   = link_to @company.numbering_format, '#', data: { placement: 'right', name: :numbering_format, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
   
 - else
-  = label_tag 'Назва повна'
+  = label_tag t('companies.new.full_name')
   br
   = @company.full_name
 
   br
-  = label_tag 'Назва коротка'
+  = label_tag t('companies.new.short_name')
   br
   = @company.short_name
 
   br
-  = label_tag 'Назва латиницею'
+  = label_tag t('companies.new.latin_name')
   br
   = @company.latin_name
   br
-  = label_tag 'Юридична адреса'
+  = label_tag t('companies.new.juridical_address')
   br
   = @company.juridical_address
   br
-  = label_tag 'Адреса фактична'
+  = label_tag t('companies.new.actual_address')
   br
   = @company.actual_address
   br
-  = label_tag 'Бажаний формат нумерації документів'
+  = label_tag t('companies.new.numbering_format')
   br
   = @company.numbering_format

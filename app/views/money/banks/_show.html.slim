@@ -2,13 +2,13 @@ table.table
   tbody
     tr
       th class='banks'
-        | Назва
+        = t('block_title.title')
       th
-        | Код ЄДРПО
+        = t('registrations.fields.edrpou_code')
       th
-        | МФО
+        = t('bank_accounts.mfo')
       th
-        | Юридична адреса
+        = t('companies.new.juridical_address')
     tr
       td
         = link_to @bank.name, '#', data: { name: :name, pk: @bank, type: 'textarea', placement: 'bottom', model: 'bank', url: money_bank_path(@bank.id), xeditable: true }

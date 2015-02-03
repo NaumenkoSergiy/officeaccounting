@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  I18n.defaultLocale = $.cookie('language');
+  I18n.locale = $.cookie('language');
+
   new_session_form = $('#new_session_form');
 
   jQuery.validator.addMethod( "invalidLoginDetails", function(value) {
@@ -19,7 +22,23 @@ $(document).ready(function() {
       error.insertBefore(element);
     },
     rules: {
-      email : { invalidLoginDetails: true }
+      email : { invalidLoginDetails: true },
+      password: {
+        required:  true,
+        minlength: 8,
+        maxlength: 32
+      }
+    },
+    messages: {
+      email: {
+        required: I18n.t('validation.errors.mail_not_blank'),
+        pattern:  I18n.t('validation.errors.mail_should_be_valid')
+      },
+      password: {
+        required:  I18n.t('validation.errors.password_empty'),
+        minlength: I18n.t('validation.errors.password_more8'),
+        maxlength: I18n.t('validation.errors.password_less32')
+      }
     }
   });
 
@@ -41,8 +60,8 @@ $(document).ready(function() {
     },
     messages: {
       email: {
-        required: 'Поле email має бути валідним',
-        email: 'Невірний формат'
+        required: I18n.t('validation.errors.mail_should_be_valid'),
+        email: I18n.t('validation.errors.invalid_format')
       }
     }
   });
@@ -65,12 +84,12 @@ $(document).ready(function() {
     },
     messages: {
       "user[password]": {
-        required: 'Поле пароль не має бути бути порожнім',
-        minlength:  'Поле пароль має бути мінімум 8 символів'
+        required: I18n.t('validation.errors.cant_be_blank'),
+        minlength:  I18n.t('validation.errors.password_more8')
       },
       "user[confirm_password]": {
-        required:  'Поле підтвердження пароля не має бути порожнім',
-        equalTo:  'Паролі не однакові'
+        required:  I18n.t('validation.errors.cant_be_blank'),
+        equalTo:  I18n.t('validation.errors.passwords_not_identical')
       }
     }
   });

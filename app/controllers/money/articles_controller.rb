@@ -21,7 +21,7 @@ module Money
     def create
       article = Article.new article_params
       @articles = Article.all
-      flash[:error] = 'Ви ввели не коректні данні' unless article.save
+      flash[:error] = t('validation.errors.invalid_data') unless article.save
       respond_to do |format|
         format.js
       end

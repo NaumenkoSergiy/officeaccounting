@@ -7,8 +7,8 @@
             button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
         .row
           .col.col-lg-12
-            h4#myModalLabel.modal-title Кредити і позики
-            = link_to "Додати новий", '#', class: 'btn btn-primary ', id: 'add_new_credit'
+            h4#myModalLabel.modal-title = t('buttons.loans_borrowings')
+            = link_to t('buttons.add_new'), '#', class: 'btn btn-primary', id: 'add_new_credit'
         .row
           .col.col-lg-12
             #credit_show

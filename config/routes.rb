@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'users/confirm_registration'
   get 'settings/registrations/get_koatuu'
   post 'settings/companies/change_company'
+  get 'sessions/set_language'
 
   resources :sessions, only: [:new, :create]
   resources :users, only: [:new, :create]
