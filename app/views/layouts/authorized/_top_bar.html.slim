@@ -27,8 +27,9 @@
   .wrapper.wrapper-content.animated.fadeInRight
     .row
       .col-lg-12
-        #contracts
         .ibox.white-bg
           #error
           = yield
+          #contracts.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
+          #counterparty.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1" 
 

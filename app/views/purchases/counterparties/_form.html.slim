@@ -25,6 +25,8 @@
       .col-lg-3
         = f.label "Резидент чи нерезидент?"
         = f.check_box :resident
+        - unless params[:page].nil?
+          =f.hidden_field :page, value: 'contract'
     .row
       .col-lg-3
         = f.submit 'Зберегти'

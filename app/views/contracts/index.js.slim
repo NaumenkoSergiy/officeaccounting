@@ -1,11 +1,7 @@
-| $('#contracts').html("#{j render 'contracts/contracts'}");
-| $('#contracts').modal('show');
+| $('#contracts').html("#{j render 'contracts/contracts'}").modal('show');
 | $('#contract_form').html("#{j render 'contracts/form'}");
-| $('#contract_date, #contract_validity').datepicker({ changeMonth: true, changeYear: true, yearRange: 'c-100:c+1' });
-| $('input.number').numeric({ negative : false, decimal: false });
-| $('#contract_contract_type').select2({ minimumResultsForSearch: -1, 'width' : '100%' });
-| validContract();
+| loadPluginsContract();
 | $('#new_contract').hide();
-/ | $('#counterparty_list').html("#{j render 'purchases/counterparties/list'}");
+| $('#contract_list').html("#{j render 'contracts/list'}");
 | editableStart();
 | openForm("new_contract", "add_new_contract");

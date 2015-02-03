@@ -6,6 +6,7 @@ class CreateContracts < ActiveRecord::Migration
       t.string :contract_type
       t.date :validity
       t.integer :counterparty_id
+      t.integer :company_id
 
       t.timestamps
     end

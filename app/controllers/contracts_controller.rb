@@ -1,7 +1,7 @@
 class ContractsController < ApplicationController
   before_filter :redirect_to_new_session
   before_action :set_contract, only: [:destroy, :update]
-  # before_action :company_contract, only: [:index, :create]
+  before_action :company_contract, only: [:index, :create]
 
   def index
     @contract = Contract.new
@@ -11,7 +11,7 @@ class ContractsController < ApplicationController
   end
 
   def create
-    @contract = Contract.new account_params
+    @contract = Contract.new contract_params
     flash[:error] = 'Ви ввели не коректні данні' unless @contract.save
     respond_to do |format|
       format.js
@@ -29,7 +29,7 @@ class ContractsController < ApplicationController
   end
 
   def destroy
-    contract.destroy
+    @contract.destroy
     respond_to do |format|
       format.js
     end
@@ -45,11 +45,13 @@ class ContractsController < ApplicationController
     params.require(:contract).permit(:date,
                                     :number,
                                     :contract_type,
-                                    :bank_id).merge!(company_id: current_user.current_company.id)
+                                    :validity,
+                                    :counterparty_id).merge!(company_id: current_user.current_company.id)
   end
 
 
-  # def company_contract
-  #   @contracts = current_user.current_company.contracts
-  # end
+  def company_contract
+    @contracts = current_user.current_company.contracts
+    @counterparties = current_user.current_company.counterparties
+  end
 end

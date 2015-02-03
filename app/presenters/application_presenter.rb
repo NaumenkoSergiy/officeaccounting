@@ -13,13 +13,17 @@ class ApplicationPresenter
     data.collect{ |d| {value: d[1], text: d[0]} }
   end
 
-   def credit_translate(hash)
-      @credit_hash = Hash.new()
-      hash.each do |key, value|
-        @credit_hash[t(key)] = value
-      end
-      @credit_hash
+  def credit_translate(hash)
+    @credit_hash = Hash.new()
+    hash.each do |key, value|
+      @credit_hash[t(key)] = value
     end
+    @credit_hash
+  end
+
+  def constant_parse (hash, data)
+    hash.invert[data.to_sym]
+  end
 
   private
 
