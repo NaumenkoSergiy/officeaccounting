@@ -21,7 +21,7 @@ class ApplicationPresenter
     @credit_hash
   end
 
-  def constant_parse (hash, data)
+  def constant_parse(hash, data)
     hash.invert[data.to_sym]
   end
 
@@ -31,7 +31,7 @@ class ApplicationPresenter
     "#{content_tag(:i, nil, class: "fa #{icon}")} #{name}".html_safe
   end
 
-  def money_select (hash)
+  def money_select(hash)
     hash.invert
         .collect do |key, value|
           {

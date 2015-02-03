@@ -128,6 +128,6 @@ String.prototype.translit = (function () {
 
 function openForm(idform, idbutton) {
   $("#" + idbutton).click(function() {
-    $("form#" + idform + "").toggle();
+    $("form#" + idform).toggle();
   });
 }

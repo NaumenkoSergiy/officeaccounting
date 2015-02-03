@@ -49,7 +49,6 @@ class ContractsController < ApplicationController
                                     :counterparty_id).merge!(company_id: current_user.current_company.id)
   end
 
-
   def company_contract
     @contracts = current_user.current_company.contracts
     @counterparties = current_user.current_company.counterparties
