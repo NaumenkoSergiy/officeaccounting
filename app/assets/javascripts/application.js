@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require i18n
+//= require i18n/translations
 //= require_tree .
 //= require jquery-ui
 //= require jquery.validate
@@ -70,6 +72,23 @@ $(document).on('ready', function(){
     });
   });
   $(document).ajaxStop(function () { $.unblockUI(); });
+
+  I18n.defaultLocale = $.cookie('language');
+  I18n.locale = $.cookie('language');
+
+  $('.ua-language').click(function() {
+    I18n.defaultLocale = "ua";
+    I18n.locale = "ua";
+    $.cookie('language', 'ua')
+  })
+
+
+  $('.en-language').click(function() {
+    I18n.defaultLocale = "en";
+    I18n.locale = "en";
+    $.cookie('language', 'en')
+  })
+
 });
 
 String.prototype.translit = (function () {

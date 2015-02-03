@@ -1,20 +1,20 @@
 - if can? :update, Official
-  = label_tag ' Директор (ПІБ)'
+  = label_tag t('block_title.chief')
   br
   = link_to @director.name, '#', data: { placement: 'right', name: :name, pk: @company, model: 'official', url: "officials/#{ @director.id }", xeditable: true }
 
   br
-  = label_tag 'ІПН'
+  = label_tag t('officials.tin')
   br
   = link_to @director.tin, '#', data: { placement: 'right', name: :tin, pk: @company, model: 'official', url: "officials/#{ @director.id }", xeditable: true }
 
   br
-  = label_tag 'Номер телефону'
+  = label_tag t('officials.phone')
   br
   = link_to @director.phone, '#', data: { placement: 'right', name: :phone, pk: @company, model: 'official', url: "officials/#{ @director.id }", xeditable: true }
 
   br
-  = label_tag 'Електронна пошта'
+  = label_tag t('officials.email')
   br
   = link_to @director.email, '#', data: { placement: 'right', name: :email, pk: @company, model: 'official', url: "officials/#{ @director.id }", xeditable: true }
   br
@@ -26,74 +26,74 @@
   - else
     br
     a class= "OpenBookkeeper" onclick='$(".bookkeeper").toggle();'
-      | Додати головного бухгалтера
+      = t('block_title.add_bookkeeper')
     .bookkeeper style='display:none;'
       h3
-        | Додати головного бухгалтера
+        = t('block_title.add_bookkeeper')
       = form_for([:settings, @official ||= Official.new], id: :official_form_bookkeeper, remote: true) do |f|
-        = f.label 'ПІБ'
+        = f.label t('officials.full_name')
         br
-        = f.text_field :name, placeholder: "Введіть ПІБ Головного бухгалтера"
+        = f.text_field :name, placeholder: t('enter_bookkeeper')
 
         br
-        = f.label 'ІПН'
+        = f.label t('officials.tin')
         br
-        = f.text_field :tin, :class => 'number', placeholder: 'Введіть код ІПН', maxlength: 10
+        = f.text_field :tin, :class => 'number', placeholder: t('officials.enter_ipn'), maxlength: 10
 
         br
-        = f.label 'Номер телефону'
+        = f.label t('officials.phone')
         br
         = f.text_field :phone
 
         br
-        = f.label 'Електронна пошта'
+        = f.label t('officials.email')
         br
         = f.text_field :email
         = f.hidden_field :official_type, value: :bookeeper
         = hidden_field_tag :action_show, value: true
         = f.hidden_field :company_id, value: @company.id
         br
-        = f.submit "Додати", id: :bookkeeper
+        = f.submit t('buttons.add'), id: :bookkeeper
 
 - else
-  = label_tag ' Директор (ПІБ)'
+  = label_tag t('block_title.chief')
   br
   = @director.name
 
   br
-  = label_tag 'ІПН'
+  = label_tag t('officials.tin')
   br
   = @director.tin
 
   br
-  = label_tag 'Номер телефону'
+  = label_tag t('officials.phone')
   br
   = @director.phone
 
   br
-  = label_tag 'Електронна пошта'
+  = label_tag t('officials.email')
   br
   = @director.email
   br
 
   - if @bookkeeper
     .bookkeeper
-      = label_tag 'Головний бухгалтер (ПІБ)'
+      = label_tag t('block_title.main_bookkeeper')
       br
       = @bookkeeper.name
 
       br
-      = label_tag 'ІПН'
+      = label_tag t('officials.tin')
       br
       = @bookkeeper.tin      
 
       br
-      = label_tag 'Номер телефону'
+      = label_tag t('officials.phone')
       br
       = @bookkeeper.phone
 
       br
-      = label_tag 'Електронна пошта'
+      = label_tag t('officials.email')
       br
       = @bookkeeper.email
       br

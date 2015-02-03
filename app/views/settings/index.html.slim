@@ -1,7 +1,7 @@
 .center
   h2
-    | Список підприємств
-  = link_to 'Додати нове підприємство', new_settings_company_path, class: 'btn btn-default'
+    = t('block_title.companies_list')
+  = link_to t('buttons.new_company'), new_settings_company_path, class: 'btn btn-default'
 
   - current_user.companies.each do |company|
     h3
@@ -11,4 +11,4 @@
       =company.short_name
       | )
       span class="label label-success active"
-        | Активне
+        = t('labels.active')

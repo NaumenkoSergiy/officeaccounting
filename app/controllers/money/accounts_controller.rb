@@ -22,7 +22,7 @@ module Money
 
     def create
       account = Account.new account_params
-      flash[:error] = 'Ви ввели не коректні данні' unless account.save
+      flash[:error] = t('validation.errors.invalid_data') unless account.save
       respond_to do |format|
         format.js
       end

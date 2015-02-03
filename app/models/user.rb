@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   after_create :send_activation_token
   
   ROLES_TITLES = {
-    'Перегляд' => :view,
-    'Редагування' => :edit
+    :view_symbol => :view,
+    :edit_symbol => :edit
   }
   
   def activated?

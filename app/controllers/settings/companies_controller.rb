@@ -14,7 +14,7 @@ module Settings
       if company.save
         current_user.user_companies.create(company: company, role: 'edit')
       else
-        flash[:error] = 'Помилкові дані'
+        flash[:error] = t('validation.errors.invalid_data')
       end
     end
     
@@ -28,7 +28,7 @@ module Settings
           if params[:page]
             format.json { render json: @company.errors, status: :unprocessable_entity }
           else
-            flash[:error] = 'Помилкові дані'
+            flash[:error] = t('validation.errors.invalid_data')
             format.js
           end
         end

@@ -37,6 +37,7 @@ gem 'cancancan', '~> 1.9'
 gem "bootstrap-switch-rails"
 gem 'bootstrap-select-rails'
 gem "select2-rails"
+gem "i18n-js", ">= 3.0.0.rc8"
 
 group :development, :test do
   gem 'pry'

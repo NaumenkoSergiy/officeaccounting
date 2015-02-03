@@ -1,27 +1,27 @@
 .center
   = form_for  [:money, @account], method: :post, remote: :true do |f|
-    = f.label 'Назва рахунку'
+    = f.label t('money.accounts.account_name')
     br
     = f.text_field :name
 
     br
-    = f.label 'Вид рахунку'
+    = f.label t('money.accounts.account_type')
     br
     = f.select :account_type, options_for_select(Account::ACCOUNT), class: 'accountSelect'
     br
-    = f.label 'Номер рахунку'
+    = f.label t('money.accounts.account_number')
     br
     = f.text_field :number, :class => 'number', maxlength: 8
 
     br
-    = f.label 'Валюта'
+    = f.label t('money.currency')
     br
     = f.select :currency, options_for_select(Currency::CURRENCY), class: "accountSelect"
     br
 
     br
-    = f.label 'Банк'
+    = f.label t('money.accounts.bank')
     br
     = f.select :bank_id, options_for_select(@banks.collect {|c| [c[:name], c[:id]]}), class: 'accountSelect'
     br
-    = f.submit 'Додати'
+    = f.submit t('buttons.add_new')

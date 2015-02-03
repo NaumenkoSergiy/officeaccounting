@@ -7,8 +7,8 @@
             button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
         .row
           .col.col-lg-12
-            h4#myModalLabel.modal-title Рахунки
-            = link_to "Додати новий", '#', class: 'btn btn-primary ', id: 'add_new_account'
+            h4#myModalLabel.modal-title = t('money.accounts_title')
+            = link_to t('buttons.add_new'), '#', class: 'btn btn-success ', id: 'add_new_account'
         .row
           .col.col-lg-12
             #account_show

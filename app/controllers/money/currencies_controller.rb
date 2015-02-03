@@ -5,7 +5,7 @@ module Money
 
     def create
       currency = current_user.current_company.currencies.new currency_params
-      flash[:error] = 'Більше немає валют для вибору' unless currency.save
+      flash[:error] = t('validation.errors.invalid_data') unless currency.save
       @currencies = current_user.current_company.currencies
       respond_to do |format|
         format.js

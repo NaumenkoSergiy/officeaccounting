@@ -2,11 +2,11 @@ table.table
   tbody
     tr
       th
-        | Валюта
+        = t('money.currency')
       th
-        | Купівля
+        = t('money.purchase')
       th
-        | Продаж
+        = t('money.sale')
     - @currencies.each do |currency|
       tr class='currency_#{currency.id}'
         td class='currency_rates' value=currency.name

@@ -1,31 +1,31 @@
 h3
-  | Банківські реквізити
+  = t('block_title.bank_details')
 - if can? :update, BankAccount
-  = label_tag 'Номер рахунку'
+  = label_tag t('money.accounts.account_number')
   br
   = link_to @company.bank_account.account, '#', data: { placement: 'right', name: :account, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }", xeditable: true }
 
   br
-  = label_tag 'Банк'
+  = label_tag t('money.accounts.bank')
   br
   = link_to @company.bank_account.bank, '#', data: { placement: 'right', name: :bank, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }", xeditable: true }
 
   br
-  = label_tag 'МФО'
+  = label_tag t('bank_accounts.mfo')
   br
   = link_to @company.bank_account.mfo, '#', data: { placement: 'right', name: :mfo, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }", xeditable: true }
 
 - else
-  = label_tag 'Номер рахунку'
+  = label_tag t('money.accounts.account_number')
   br
   = @company.bank_account.account
 
   br
-  = label_tag 'Банк'
+  = label_tag t('money.accounts.bank')
   br
   = @company.bank_account.bank
 
   br
-  = label_tag 'МФО'
+  = label_tag t('bank_accounts.mfo')
   br
   = @company.bank_account.mfo

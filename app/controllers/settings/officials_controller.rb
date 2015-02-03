@@ -13,7 +13,7 @@ module Settings
       if @official.update_attributes(officials_params)
         @bookkeeper = @official
       else
-        flash[:error] = 'Помилкові дані'
+        flash[:error] = t('validation.errors.invalid_data')
       end
     end
 
@@ -27,7 +27,7 @@ module Settings
           if params[:page]
             format.json { render json: @official.errors, status: :unprocessable_entity }
           else
-            flash[:error] = 'Помилкові дані'
+            flash[:error] = t('validation.errors.invalid_data')
             format.js
           end
         end

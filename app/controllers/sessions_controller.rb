@@ -12,12 +12,15 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    cookies[:language] = I18n.default_locale
     redirect_to new_session_path
   end
 
   def set_language
-    session[:user_language] = params[:language]
-    I18n.locale = session[:user_language]
+    if params[:locale]
+      cookies[:language] = params[:locale]
+    end
+    I18n.locale = cookies[:language]
     redirect_to root_path
   end
 
