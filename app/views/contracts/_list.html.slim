@@ -19,7 +19,7 @@ table.table
         td
           = link_to contract.number, '#', data: { name: :number, placement: 'bottom', pk: contract, model: :contract, url: contract_path(contract.id), xeditable: true }
         td
-          = link_to application_present.constant_parse(Contract::CONTRACT_TYPE, contract.contract_type), '#',  data: { name: :contract_type, type: 'select2', pk: contract, value: contract.contract_type, source:application_present.options_for_select2(Contract::CONTRACT_TYPE), placement: 'bottom', model: :contract, url: contract_path(contract.id), xeditable: true }
+          = link_to t(Contract::CONTRACT_TYPE.invert[contract.contract_type.to_sym]), '#',  data: { name: :contract_type, type: 'select2', pk: contract, value: contract.contract_type, source:application_present.options_for_select2(application_present.credit_translate(Contract::CONTRACT_TYPE)), placement: 'bottom', model: :contract, url: contract_path(contract.id), xeditable: true }
         td
           = link_to contract.validity, '#', data: { name: :validity, type: 'date', placement: 'bottom', pk: contract, model: :contract, url: contract_path(contract.id), xeditable: true }
         td
