@@ -1,6 +1,6 @@
 .container-fluid
   .row.links
-    = link_to "Додати новий", '#', data: { toggle: "modal", target: "#salesNew"}, class: 'btn btn-primary'
+    = link_to t('buttons.add_new'), '#', data: { toggle: "modal", target: "#salesNew"}, class: 'btn btn-primary'
     = render 'sales/add_new_modal'
   .row
     |Тут буде таблиця!

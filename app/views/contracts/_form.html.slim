@@ -19,7 +19,7 @@
         = link_to t('contract.counterparty_info'), purchases_counterparties_path(page: "contract"), remote: true, metod: :get
       - else
         = f.label t('contract.counterparty')
-        = link_to t(' contract.add_new'), purchases_counterparties_path(page: "contract"), remote: true, metod: :get
+        = link_to t('contract.add_new'), purchases_counterparties_path(page: "contract"), remote: true, metod: :get
         = f.select :counterparty_id, options_for_select(@counterparties.collect {|c| [c[:name], c[:id]]}), class: 'accountSelect'
     .col-lg-6
       br

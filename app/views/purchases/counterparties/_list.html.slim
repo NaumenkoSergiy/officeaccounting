@@ -2,21 +2,21 @@ table.table
   thead
     tr
       th
-        | Назва
+        = t('block_title.title')
       th
-        | Ім'я
+        = t('counterparty.name')
       th
-        | Резидент
+        = t('counterparty.resident')
       th
-        | ЄДРПО
+        = t('counterparty.edrpo')
       th
-        | МФО
+        = t('bank_accounts.mfo')
       th
-        | Рахунок
+        = t('counterparty.account')
       th
-        | Банк
+        = t('money.accounts.bank')
       th
-        | Адреса
+        = t('counterparty.address')
 
   tbody
     - @counterparties.each do |counterparty|

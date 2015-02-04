@@ -65,7 +65,8 @@ $(document).ready(function() {
 
   $('input.number').numeric({ negative : false, decimal: false });
 
-  $.datepicker.setDefaults( $.datepicker.regional["uk"] );
+  $.datepicker.setDefaults( $.datepicker.regional[ I18n.t('datePickerLocal')] );
+
   $('.date_reg').datepicker({ maxDate: 0,
                               changeMonth: true,
                               changeYear: true,

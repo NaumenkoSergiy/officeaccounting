@@ -7,22 +7,22 @@
             button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
         .row
           .col.col-lg-4
-            h4#myModalLabel.modal-title Документи
+            h4#myModalLabel.modal-title = t('money.documents')
           .col.col-lg-5
-            h4#myModalLabel.modal-title Звіти
+            h4#myModalLabel.modal-title = t('money.reports')
           .col.col-lg-3
-            h4#myModalLabel.modal-title Довідники
+            h4#myModalLabel.modal-title = t('money.references')
       .modal-body
         .row
           .col.col-lg-4
-            = link_to "Замовлення покупців", '#', class: 'btn  btn-primary btn-modal'
-            = link_to "Рахунки виставлені", '#', class: 'btn  btn-primary btn-modal'
-            = link_to "Продаж товарів і послуг", '#', class: 'btn  btn-primary btn-modal'
-            = link_to "Повернення від покупців", '#', class: 'btn  btn-primary btn-modal'
+            = link_to t('sales.customer_orders'), '#', class: 'btn  btn-primary btn-modal'
+            = link_to t('sales.accounts_exhibited'), '#', class: 'btn  btn-primary btn-modal'
+            = link_to t('sales.sales_of_goods'), '#', class: 'btn  btn-primary btn-modal'
+            = link_to t('sales.return_from_buyers'), '#', class: 'btn  btn-primary btn-modal'
           .col.col-lg-5
-            = link_to "Взаєморозрахунки з покупцями", '#', class: 'btn  btn-primary btn-modal'
-            = link_to "Продажі", '#', class: 'btn  btn-primary btn-modal'
+            = link_to t('sales.settlements_with_buyers'), '#', class: 'btn  btn-primary btn-modal'
+            = link_to t('sales.sale'), '#', class: 'btn  btn-primary btn-modal'
           .col.col-lg-3
-            = link_to "Товари і послуги", '#', remote: true, type: :get, class: 'btn  btn-primary btn-modal'
-            = link_to "Форми оплати", '#', remote: true, type: :get, class: 'btn  btn-primary btn-modal'
-            = link_to "Категорії цін", '#', remote: true, type: :get, class: 'btn  btn-primary btn-modal'
+            = link_to t('purchases.products_services'), '#', remote: true, type: :get, class: 'btn  btn-primary btn-modal'
+            = link_to t('sales.forms_of_payment'), '#', remote: true, type: :get, class: 'btn  btn-primary btn-modal'
+            = link_to t('sales.categories_prices'), '#', remote: true, type: :get, class: 'btn  btn-primary btn-modal'

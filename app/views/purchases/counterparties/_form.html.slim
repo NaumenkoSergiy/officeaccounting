@@ -1,32 +1,32 @@
   = form_for [:purchases, @counterparty], method: :post, remote: :true do |f|
     .row
       .col-lg-3
-        = f.label "Назва"
+        = f.label t('block_title.title')
         = f.text_field :title
       .col-lg-3
-        = f.label "Ім'я представника"
+        = f.label t('counterparty.name')
         = f.text_field :name
       .col-lg-3
-        = f.label "Адреса"
+        = f.label t('counterparty.address')
         = f.text_field :adress
       .col-lg-3
-        = f.label "ЄДРПО"
+        = f.label t('counterparty.edrpo')
         = f.text_field :edrpo, :class => 'number', maxlength: 8
     .row
       .col-lg-3
-        = f.label "Рахунок"
+        = f.label t('counterparty.account')
         = f.text_field :account, :class => 'number'
       .col-lg-3
-        = f.label "Банк"
+        = f.label t('money.accounts.bank')
         = f.select :bank_id, options_for_select(@banks.collect {|c| [c[:name], c[:id]]}), class: 'accountSelect'
       .col-lg-3
-        = f.label "МФО"
+        = f.label t('bank_accounts.mfo')
         = f.text_field :mfo, :class => 'number', maxlength: 8
       .col-lg-3
-        = f.label "Резидент чи нерезидент?"
+        = f.label t('counterparty.resident_n')
         = f.check_box :resident
         - unless params[:page].nil?
           =f.hidden_field :page, value: 'contract'
     .row
       .col-lg-3
-        = f.submit 'Зберегти'
+        = f.submit t('buttons.add')

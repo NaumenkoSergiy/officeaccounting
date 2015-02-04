@@ -26,22 +26,22 @@ function validCounterparty() {
     },
     messages: {
       "counterparty[title]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "counterparty[name]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "counterparty[edrpo]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "counterparty[adress]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "counterparty[account]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       },
       "counterparty[mfo]": {
-        required: 'поле не може бути пустим'
+        required: I18n.t('validation.errors.cant_be_blank')
       }
     }
   });
