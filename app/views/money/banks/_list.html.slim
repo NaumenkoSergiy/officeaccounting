@@ -5,9 +5,9 @@ table.table
         th
           = t('money.bank_name')
         th
-          | МФО
+          = t('bank_accounts.mfo')
         th
-          | Код ЄДРПО
+          = t('egistrations.fields.edrpou_code')
         th
     - @banks.each do |bank|
       tr class='bank_#{ bank.id }' value='#{ bank.id }'

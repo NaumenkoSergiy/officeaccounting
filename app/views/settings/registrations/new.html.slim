@@ -45,7 +45,7 @@
     br
     = f.label t('registrations.fields.pdv_number')
     br
-    = f.text_field :tin, :class => 'number', placeholder: t('registrations.fields.enter_pdv'), maxlength: 10, disabled: :disabled
+    = f.text_field :tin, :class => 'number', placeholder: t('registrations.fields.enter_pdv'), maxlength: 10
     i.info.glyphicon.glyphicon-info-sign  title="Індивідуальний податковий номер (ІПН) — це номер платника податку на додану вартість в реєстрі платників ПДВ. Індивідуальний податковий номер є єдиним для всього інформаційного простору Україна і зберігається за платником податку на додану вартість до моменту виключення його з Реєстру в зв'язку із вибуттям зі складу платників податку на додану вартість."
 
     br
@@ -95,13 +95,14 @@
     br
 
     = f.select :tax_system, [t('registrations.fields.general'), t('registrations.fields.simplified')]
-     i.info.glyphicon.glyphicon-info-sign  title="Система оподаткування - це сукупність податків і зборів (обов'язкових платежів), що справляються до бюджетів і державних цільових фондів у встановленому законами України порядку; принципів, форм і методів їхнього встановлення, зміни чи скасування; дій, що забезпечують повну та своєчасну їхню сплату, контроль і відповідальність за порушення податкового законодавства."
+    i.info.glyphicon.glyphicon-info-sign  title="Система оподаткування - це сукупність податків і зборів (обов'язкових платежів), що справляються до бюджетів і державних цільових фондів у встановленому законами України порядку; принципів, форм і методів їхнього встановлення, зміни чи скасування; дій, що забезпечують повну та своєчасну їхню сплату, контроль і відповідальність за порушення податкового законодавства."
 
     br
     = link_to '', new_settings_company_path(back: true), :class => 'glyphicon glyphicon-arrow-left back-arrow'
     = f.submit t('buttons.forward')
 
   javascript:
+    I18n.locale = $.cookie('language')
     $('#registration_nace_codes').select2({ tags: #{present(@registration).kveds},
-                               placeholder: "Додати код",
+                               placeholder: I18n.t('add_code'),
                                width: 'calc(80% - 22px)'});

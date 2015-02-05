@@ -13,7 +13,11 @@ class ApplicationPresenter
     data.collect{ |d| {value: d[1], text: d[0]} }
   end
 
-  def credit_translate(hash)
+  def translate_select2_hash data
+    data.collect{ |d| {value: d[1], text: t(d[0])} }
+  end
+
+  def translate_hash(hash)
     @credit_hash = Hash.new()
     hash.each do |key, value|
       @credit_hash[t(key)] = value
@@ -22,7 +26,7 @@ class ApplicationPresenter
   end
 
   def constant_parse(hash, data)
-    hash.invert[data.to_sym]
+    t(hash.invert[data.to_sym])
   end
 
   private

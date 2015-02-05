@@ -353,8 +353,7 @@ $(document).ready(function() {
       success: numberPdv
     });
   });
-
-  $(".companyChoose").bootstrapSwitch({ 'size':'small','offColor':'danger', 'onText':'Вкл', 'offText':'Вик' });
+  $(".companyChoose").bootstrapSwitch({ 'size':'small','offColor':'danger', 'onText':I18n.t('on_switch'), 'offText':I18n.t('off_switch') });
   
   $('.bootstrap-switch-on').next().next().css({ 'font-size':'13px', 'margin-left':'10px' }).show();
 

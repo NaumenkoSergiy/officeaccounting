@@ -6,7 +6,7 @@
 
     = label_tag t('money.credit_type')
     br
-    = f.select :credit_type, options_for_select(application_present.credit_translate(Credit::CREDIT_TYPE)), {}, { class: 'select2' }
+    = f.select :credit_type, options_for_select(application_present.translate_hash(Credit::CREDIT_TYPE)), {}, { class: 'select2' }
 
     br
     = label_tag t('money.accounts.account_number')

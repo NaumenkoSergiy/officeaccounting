@@ -20,6 +20,37 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    errors:
+      models:
+        contract:
+          attributes:
+            number:
+              blank: "Can't be blank"
+        cashier:
+          attributes:
+            name:
+              blank: "Can't be blank"
+        account:
+          attributes:
+            name:
+              blank: "Can't be blank"
+        article:
+          attributes:
+            name:
+              blank: "Can't be blank"
+        bank:
+          attributes:
+            code_edrpo:
+              not_a_number: "Should be a number"
+            mfo:
+              not_a_number: "Should be a number"
+            lawyer_adress:
+              blank: "Can't be blank"
+            name:
+              blank: "Can't be blank"
+  on_switch: "On"
+  off_switch: "Off"
   short_symbol: "short-term"
   long_symbol: "long-term"
   for_today: " for today "
@@ -32,6 +63,34 @@ en:
   simplified: "Simplified"
   view_symbol: "View"
   edit_symbol: "Edit"
+  add_code: "Add code"
+  UAH_s: "UAH - ukrainian hryvnia"
+  USD_s: "USD - US dollar"
+  EUR_s: "EUR - euro"
+  RUB_s: "RUB - russian ruble"
+  GBP_s: "GBP - british pound"
+  AUD_s: "AUD - australian dollar"
+  AZN_s: "AZN - azerbaijani manat"
+  BYR_s: "BYR - belarusian ruble"
+  DKK_s: "DKK - danish krone"
+  ISK_s: "ISK - icelandic krone"
+  KZT_s: "KZT - kazakhstan tenge"
+  CAD_s: "CAD - canadian dollar"
+  MDL_s: "MDL - moldovan lei"
+  NOK_s: "NOK - norwegian krone"
+  PLN_s: "PLN - polish zloty"
+  SGD_s: "SGD - singapore dollar"
+  HUF_s: "HUF - hungarian forint"
+  TMT_s: "TMT - turkmenistan manat"
+  UZS_s: "UZS - uzbekistan sum"
+  CZK_s: "CZK - czech krone"
+  SEK_s: "SEK - swedish krona"
+  CHF_s: "CHF - swiss franc"
+  CNY_s: "CNY - renminbi (China)"
+  JPY_s: "JPY - japanese yen"
+  date:
+    formats:
+      default: ! "%d-%m-%Y"
   navigation:
     main: "Main"
     money: "Money"

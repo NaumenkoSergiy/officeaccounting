@@ -14,7 +14,7 @@
           | В базі данних немає жодного підприємства.
       - else
         = select_tag 'company', options_for_select(@companies)
-        = submit_tag 'Додати', class: 'btn btn-primary add_company_btn'
+        = submit_tag t('buttons.add'), class: 'btn btn-primary add_company_btn'
 
   .new_company
     = form_for [:settings, @company], id: :company_form, remote: true do |f|

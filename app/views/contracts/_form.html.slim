@@ -9,7 +9,7 @@
   .row
     .col-lg-6
       = f.label t('contract.type')
-      = f.select :contract_type, options_for_select(application_present.credit_translate(Contract::CONTRACT_TYPE)), class: "contactSelect"
+      = f.select :contract_type, options_for_select(application_present.translate_hash(Contract::CONTRACT_TYPE)), class: "contactSelect"
     .col-lg-6
       = f.label t('contract.validity')
       = f.text_field :validity

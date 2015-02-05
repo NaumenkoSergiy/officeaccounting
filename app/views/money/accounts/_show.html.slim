@@ -8,9 +8,9 @@ table.table
       th
         = t('money.accounts.account_number')
       th
-        | Валюта
+        = t('money.accounts.currency')
       th
-        | Банк
+        = t('money.accounts.bank')
     tr
       td
         = link_to @account.name, '#', data: { name: :name, pk: @account, placement: 'bottom', model: 'account', url: money_account_path(@account.id), xeditable: true }
@@ -19,6 +19,6 @@ table.table
       td
         = link_to @account.number, '#', data: { name: :number, pk: @account, placement: 'bottom', model: 'account', url: money_account_path(@account.id), xeditable: true }
       td
-        = link_to Currency::CURRENCY.invert[@account.currency.to_sym], '#', data: { name: :currency, pk: @account, placement: 'bottom', type: 'select2', source: application_present.options_for_select2(Currency::CURRENCY), value: @account.currency, model: 'account', url: money_account_path(@account.id), xeditable: true }
+        = link_to t(Currency::CURRENCY.invert[@account.currency.to_sym]), '#', data: { name: :currency, pk: @account, placement: 'bottom', type: 'select2', source: application_present.translate_select2_hash(Currency::CURRENCY), value: @account.currency, model: 'account', url: money_account_path(@account.id), xeditable: true }
       td
         = link_to @account.bank.name, '#', data: { name: :bank_id, type: 'select2', pk: @account, value: @account.bank_id, source: @banks.collect{|f| {value: f.id, text: f.name}}.to_json, placement: 'bottom', model: 'account', url: money_account_path(@account.id), xeditable: true }

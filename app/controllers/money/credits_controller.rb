@@ -50,14 +50,6 @@ module Money
 
     private
 
-    def credit_translate
-      @credit_hash = Hash.new()
-      Credit::CREDIT_TYPE.each do |key, value|
-        @credit_hash[t(key)] = value
-      end
-      @credit_hash
-    end
-
     def credit_params
       params.require(:credit).permit!
     end

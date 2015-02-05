@@ -8,6 +8,6 @@ table.table
     - @currencies.each do |currency|
       tr class='currencyRates_#{currency.id}'
         td class='currency' value=currency.name
-          = Currency::CURRENCY.invert[currency.name.to_sym]
+          = t(Currency::CURRENCY.invert[currency.name.to_sym])
         td
           span class='glyphicon glyphicon-trash currencyRemove' onclick='currencyRemove(#{currency.id});'

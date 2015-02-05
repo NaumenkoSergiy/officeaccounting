@@ -1,4 +1,35 @@
 ua:
+  activerecord:
+      errors:
+        models:
+          contract:
+            attributes:
+              number:
+                blank: "Поле не може бути пустим"
+          cashier:
+            attributes:
+              name:
+                blank: "Поле не може бути пустим"
+          account:
+            attributes:
+              name:
+                blank: "Поле не може бути пустим"
+          article:
+            attributes:
+              name:
+                blank: "Поле не може бути пустим"
+          bank:
+            attributes:
+              code_edrpo:
+                not_a_number: "Має бути номером"
+              mfo:
+                not_a_number: "Має бути номером"
+              lawyer_adress:
+                blank: "Поле не може бути пустим"
+              name:
+                blank: "Поле не може бути пустим"
+  on_switch: "Вкл"
+  off_switch: "Вик"
   short_symbol: "Короткостроковий"
   long_symbol: "Довгостроковий"
   for_today: " на сьогодні "
@@ -11,6 +42,34 @@ ua:
   simplified: "Спрощена"
   view_symbol: "Перегляд"
   edit_symbol: "Редагування"
+  add_code: "Додати код"
+  UAH_s: "UAH - українська гривня"
+  USD_s: "USD - доллар США"
+  EUR_s: "EUR - Евро"
+  RUB_s: "RUB - российский рубль"
+  GBP_s: "GBP - англійський фунт стерлінг"
+  AUD_s: "AUD - австралійський долар"
+  AZN_s: "AZN - Азербайджанський манат"
+  BYR_s: "BYR - білоруський рубль"
+  DKK_s: "DKK - датських крон"
+  ISK_s: "ISK - ісландський крон"
+  KZT_s: "KZT - казахстанський тенге"
+  CAD_s: "CAD - канадський долар"
+  MDL_s: "MDL - молдовський леїв"
+  NOK_s: "NOK - норвезький крон"
+  PLN_s: "PLN - польський злот"
+  SGD_s: "SGD - сінгапурський долар"
+  HUF_s: "HUF - угорський форинт"
+  TMT_s: "TMT - Туркменський манат"
+  UZS_s: "UZS - узбецький сум"
+  CZK_s: "CZK - чеський крон"
+  SEK_s: "SEK - шведський крон"
+  CHF_s: "CHF - швейцарський франк"
+  CNY_s: "CNY - юань женьміньбі (Китай)"
+  JPY_s: "JPY - японський єн"
+  date:
+    formats:
+      default: ! "%d-%m-%Y"
   navigation:
     main: "Головна"
     money: "Гроші"

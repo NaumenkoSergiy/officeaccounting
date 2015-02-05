@@ -20,7 +20,7 @@
   = link_to @company.registration.koatuu, '#', class: 'registration_koatuu', data: { placement: 'bottom', value: @company.registration.koatuu, type: 'select2', name: :koatuu, pk: @company.registration, model: 'registration', url: "registrations/#{ @company.registration.id }" }
 
   br
-  = label_tag t('registrations.field.risk_class')
+  = label_tag t('registrations.fields.risk_class')
   br
   =link_to @company.registration.risk_class, '#', data: { placement: 'bottom', value: @company.registration.risk_class, type: 'select', source: (1..67).step(1), pk: @company, model: "registration", url: "registrations/#{ @company.registration.id }", xeditable: true, name: :risk_class }
 
@@ -36,7 +36,7 @@
     br
   = label_tag t('registrations.fields.state_registration_date')
   br
-  = link_to @company.registration.state_registration_date, '#', data: { type: 'date', placement: 'right', name: :state_registration_date, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
+  = link_to l(@company.registration.state_registration_date, format: :default), '#', data: { type: 'date', format: 'dd-mm-yyyy', placement: 'right', name: :state_registration_date, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
 
   br
   = label_tag t('registrations.fields.registration_number')
@@ -51,7 +51,7 @@
   br
   = label_tag t('registrations.fields.date_reg_rev_com')
   br
-  = link_to @company.registration.date_registered_in_revenue_commissioners, '#', data: { type: 'date', placement: 'right', name: :date_registered_in_revenue_commissioners, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
+  = link_to l(@company.registration.date_registered_in_revenue_commissioners, format: :default), '#', data: { type: 'date', format: 'dd-mm-yyyy', placement: 'right', name: :date_registered_in_revenue_commissioners, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
 
   br
   = label_tag t('registrations.fields.tax_inspection')
@@ -67,7 +67,7 @@
   br
   = label_tag t('registrations.fields.registered_in_pension_fund')
   br
-  = link_to @company.registration.registered_in_pension_fund, '#', data: { type: 'date', placement: 'right', name: :registered_in_pension_fund, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
+  = link_to l(@company.registration.registered_in_pension_fund, format: :default), '#', data: { type: 'date', format: 'dd-mm-yyyy', placement: 'right', name: :registered_in_pension_fund, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
 
   br
   = label_tag t('registrations.fields.code_reg_pens_fund')
@@ -108,7 +108,7 @@
   br
   = label_tag t('registrations.fields.state_registration_date')
   br
-  = @company.registration.state_registration_date
+  = l @company.registration.state_registration_date, format: :default
 
   br
   = label_tag t('registrations.fields.registration_number')
@@ -123,7 +123,7 @@
   br
   = label_tag t('registrations.fields.date_reg_rev_com')
   br
-  = @company.registration.date_registered_in_revenue_commissioners
+  = l @company.registration.date_registered_in_revenue_commissioners, format: :default
 
   br
   = label_tag t('registrations.fields.number_reg_rev_com')
@@ -133,7 +133,7 @@
   br
   = label_tag t('registrations.fields.registered_in_pension_fund')
   br
-  = @company.registration.registered_in_pension_fund
+  = l @company.registration.registered_in_pension_fund, format: :default
 
   br
   = label_tag t('registrations.fields.code_reg_pens_fund')
@@ -141,6 +141,7 @@
   = @company.registration.code_registered_in_pension_fund
 
 javascript:
+  I18n.locale = $.cookie('language')
   $('.nace_codes').editable({
     ajaxOptions: {
       type: "PUT",
@@ -155,6 +156,6 @@ javascript:
       return railsParams;
     },
     select2: { tags: #{present(@company.registration).kveds},
-                               placeholder: "Додати код",
+                               placeholder: I18n.t('add_code'),
                                width: '450px' }
                                });

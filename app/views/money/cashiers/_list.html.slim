@@ -5,13 +5,13 @@ table.table
         th
           = t('money.cashiers_name')
         th
-          | Валюта
+          = t('money.currency')
         th
     - @cashiers.each do |cashier|
       tr class='cashier_#{ cashier.id }' value="#{ cashier.id }"
         td id='name'
           = link_to cashier.name, money_cashier_path(cashier), remote: true
         td id='currency'
-          = link_to Currency::CURRENCY.invert[cashier.currency.to_sym], money_cashier_path(cashier), remote: true
+          = link_to t(Currency::CURRENCY.invert[cashier.currency.to_sym]), money_cashier_path(cashier), remote: true
         td style='width: 40px;'
           = application_present.destroy_link money_cashier_path(cashier)

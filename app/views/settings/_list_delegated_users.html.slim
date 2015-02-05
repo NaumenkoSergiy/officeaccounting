@@ -14,6 +14,6 @@
           td style='width: 200px;'
             = user_in_company.user.email
           td
-            = link_to t(User::ROLES_TITLES.invert[user_in_company.role.to_sym].to_s), '#', data: { name: :role, type: 'select2', pk: user_in_company, value: user_in_company.role, source:  application_present.options_for_select2(application_present.credit_translate(User::ROLES_TITLES)), placement: 'bottom', model: 'user_company', url: "/delegates/#{ user_in_company.user_id  }?company_id=#{user_in_company.company_id}", xeditable: true }
+            = link_to t(User::ROLES_TITLES.invert[user_in_company.role.to_sym].to_s), '#', data: { name: :role, type: 'select2', pk: user_in_company, value: user_in_company.role, source:  application_present.options_for_select2(application_present.translate_hash(User::ROLES_TITLES)), placement: 'bottom', model: 'user_company', url: "/delegates/#{ user_in_company.user_id  }?company_id=#{user_in_company.company_id}", xeditable: true }
           td
             = application_present.destroy_link delegate_path(id: user_in_company.user_id, company_id: user_in_company.company_id)
