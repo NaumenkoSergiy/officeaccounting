@@ -1,5 +1,5 @@
 .bookkeeper
-  = label_tag t('block_title.main_bookkepeer')
+  = label_tag t('block_title.main_bookkeeper')
   br
   = link_to @bookkeeper.name, '#', data: { placement: 'right', name: :name, pk: @company, model: 'official', url: "officials/#{ @bookkeeper.id }", xeditable: true }
 

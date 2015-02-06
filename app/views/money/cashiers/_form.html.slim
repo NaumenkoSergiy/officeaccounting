@@ -7,6 +7,6 @@
     br
     = f.label t('money.currency')
     br
-    = f.select :currency, options_for_select(Currency::CURRENCY)
+    = f.select :currency, options_for_select(application_present.translate_array_for_select_options(Currency::AVAILABLE_CURRENCIES))
     br
     = f.submit t('buttons.add')

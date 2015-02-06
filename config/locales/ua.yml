@@ -1,4 +1,35 @@
 ua:
+  activerecord:
+      errors:
+        models:
+          contract:
+            attributes:
+              number:
+                blank: "Поле не може бути пустим"
+          cashier:
+            attributes:
+              name:
+                blank: "Поле не може бути пустим"
+          account:
+            attributes:
+              name:
+                blank: "Поле не може бути пустим"
+          article:
+            attributes:
+              name:
+                blank: "Поле не може бути пустим"
+          bank:
+            attributes:
+              code_edrpo:
+                not_a_number: "Має бути номером"
+              mfo:
+                not_a_number: "Має бути номером"
+              lawyer_adress:
+                blank: "Поле не може бути пустим"
+              name:
+                blank: "Поле не може бути пустим"
+  on_switch: "Вкл"
+  off_switch: "Вик"
   short_symbol: "Короткостроковий"
   long_symbol: "Довгостроковий"
   for_today: " на сьогодні "
@@ -11,6 +42,34 @@ ua:
   simplified: "Спрощена"
   view_symbol: "Перегляд"
   edit_symbol: "Редагування"
+  add_code: "Додати код"
+  UAH: "UAH - українська гривня"
+  USD: "USD - доллар США"
+  EUR: "EUR - Евро"
+  RUB: "RUB - российский рубль"
+  GBP: "GBP - англійський фунт стерлінг"
+  AUD: "AUD - австралійський долар"
+  AZN: "AZN - Азербайджанський манат"
+  BYR: "BYR - білоруський рубль"
+  DKK: "DKK - датських крон"
+  ISK: "ISK - ісландський крон"
+  KZT: "KZT - казахстанський тенге"
+  CAD: "CAD - канадський долар"
+  MDL: "MDL - молдовський леїв"
+  NOK: "NOK - норвезький крон"
+  PLN: "PLN - польський злот"
+  SGD: "SGD - сінгапурський долар"
+  HUF: "HUF - угорський форинт"
+  TMT: "TMT - Туркменський манат"
+  UZS: "UZS - узбецький сум"
+  CZK: "CZK - чеський крон"
+  SEK: "SEK - шведський крон"
+  CHF: "CHF - швейцарський франк"
+  CNY: "CNY - юань женьміньбі (Китай)"
+  JPY: "JPY - японський єн"
+  date:
+    formats:
+      default: ! "%d-%m-%Y"
   navigation:
     main: "Головна"
     money: "Гроші"

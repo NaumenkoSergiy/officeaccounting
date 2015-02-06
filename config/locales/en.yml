@@ -20,6 +20,37 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    errors:
+      models:
+        contract:
+          attributes:
+            number:
+              blank: "Can't be blank"
+        cashier:
+          attributes:
+            name:
+              blank: "Can't be blank"
+        account:
+          attributes:
+            name:
+              blank: "Can't be blank"
+        article:
+          attributes:
+            name:
+              blank: "Can't be blank"
+        bank:
+          attributes:
+            code_edrpo:
+              not_a_number: "Should be a number"
+            mfo:
+              not_a_number: "Should be a number"
+            lawyer_adress:
+              blank: "Can't be blank"
+            name:
+              blank: "Can't be blank"
+  on_switch: "On"
+  off_switch: "Off"
   short_symbol: "short-term"
   long_symbol: "long-term"
   for_today: " for today "
@@ -32,6 +63,34 @@ en:
   simplified: "Simplified"
   view_symbol: "View"
   edit_symbol: "Edit"
+  add_code: "Add code"
+  UAH: "UAH - ukrainian hryvnia"
+  USD: "USD - US dollar"
+  EUR: "EUR - euro"
+  RUB: "RUB - russian ruble"
+  GBP: "GBP - british pound"
+  AUD: "AUD - australian dollar"
+  AZN: "AZN - azerbaijani manat"
+  BYR: "BYR - belarusian ruble"
+  DKK: "DKK - danish krone"
+  ISK: "ISK - icelandic krone"
+  KZT: "KZT - kazakhstan tenge"
+  CAD: "CAD - canadian dollar"
+  MDL: "MDL - moldovan lei"
+  NOK: "NOK - norwegian krone"
+  PLN: "PLN - polish zloty"
+  SGD: "SGD - singapore dollar"
+  HUF: "HUF - hungarian forint"
+  TMT: "TMT - turkmenistan manat"
+  UZS: "UZS - uzbekistan sum"
+  CZK: "CZK - czech krone"
+  SEK: "SEK - swedish krona"
+  CHF: "CHF - swiss franc"
+  CNY: "CNY - renminbi (China)"
+  JPY: "JPY - japanese yen"
+  date:
+    formats:
+      default: ! "%d-%m-%Y"
   navigation:
     main: "Main"
     money: "Money"

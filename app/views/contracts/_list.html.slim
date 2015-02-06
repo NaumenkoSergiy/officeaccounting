@@ -15,13 +15,13 @@ table.table
     - @contracts.each do |contract|
       tr class='contract_#{ contract.id }'
         td
-          = link_to contract.date, '#', data: { name: :date, type: 'date', placement: 'bottom', pk: contract, model: :contract, url: contract_path(contract.id), xeditable: true }
+          = link_to l(contract.date, format: :default), '#', data: { name: :date, type: 'date', format: 'dd-mm-yyyy', placement: 'bottom', pk: contract, model: :contract, url: contract_path(contract.id), xeditable: true }
         td
           = link_to contract.number, '#', data: { name: :number, placement: 'bottom', pk: contract, model: :contract, url: contract_path(contract.id), xeditable: true }
         td
-          = link_to t(Contract::CONTRACT_TYPE.invert[contract.contract_type.to_sym]), '#',  data: { name: :contract_type, type: 'select2', pk: contract, value: contract.contract_type, source:application_present.options_for_select2(application_present.credit_translate(Contract::CONTRACT_TYPE)), placement: 'bottom', model: :contract, url: contract_path(contract.id), xeditable: true }
+          = link_to application_present.constant_parse(Contract::CONTRACT_TYPE, contract.contract_type), '#',  data: { name: :contract_type, type: 'select2', pk: contract, value: contract.contract_type, source:application_present.translate_select2_hash(Contract::CONTRACT_TYPE), placement: 'bottom', model: :contract, url: contract_path(contract.id), xeditable: true }
         td
-          = link_to contract.validity, '#', data: { name: :validity, type: 'date', placement: 'bottom', pk: contract, model: :contract, url: contract_path(contract.id), xeditable: true }
+          = link_to l(contract.validity, format: :default), '#', data: { name: :validity, type: 'date', format: 'dd-mm-yyyy', placement: 'bottom', pk: contract, model: :contract, url: contract_path(contract.id), xeditable: true }
         td
           = link_to contract.counterparty.name,'#', data: { name: :counterparty_id, type: 'select2', pk: contract, value: contract.counterparty.id, source:application_present.options_for_select2(@counterparties.pluck(:name, :id)), placement: 'bottom', model: :contract, url: contract_path(contract.id), xeditable: true }
         td style='width: 40px;'
