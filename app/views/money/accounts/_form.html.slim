@@ -24,4 +24,6 @@
     br
     = f.select :bank_id, options_for_select(@banks.collect {|c| [c[:name], c[:id]]}), class: 'accountSelect'
     br
+    - unless params[:page].nil?
+      =f.hidden_field :page, value: params[:page]
     = f.submit t('buttons.add_new')

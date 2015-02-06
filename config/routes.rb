@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'settings/registrations/get_koatuu'
   post 'settings/companies/change_company'
   get 'sessions/set_language'
+  get 'money/registers/get_all_contract'
 
   resources :sessions, only: [:new, :create]
   resources :users, only: [:new, :create]
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
     resources :accounts
     resources :cashiers
     resources :articles
+    resources :registers
   end
 
   namespace 'purchases' do

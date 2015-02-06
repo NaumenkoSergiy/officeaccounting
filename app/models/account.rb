@@ -1,9 +1,17 @@
 class Account < ActiveRecord::Base
+
+  acts_as_paranoid
+
   belongs_to :company
   belongs_to :bank
+  has_many :money_registers
   
   validates :name, presence: true
   validates_numericality_of :number
+
+  scope :account_one_record, -> (id) {
+    with_deleted.find(id)
+  }
 
   ACCOUNT = {
     'Поточний рахунок' => :current,

@@ -7,6 +7,7 @@
       .row
         .col.col-lg-12
           h4#myModalLabel.modal-title =t('contract.contracts')
+          .notification.error style='display:none;'
           = link_to t('buttons.add_new'), '#', class: 'btn btn-primary', id: 'add_new_contract'
     .modal-body
       .row

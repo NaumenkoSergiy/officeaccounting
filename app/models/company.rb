@@ -17,6 +17,7 @@ class Company < ActiveRecord::Base
   has_many :cashiers
   has_many :counterparties
   has_many :contracts
+  has_many :money_registers
 
   after_create { set_registration }
 

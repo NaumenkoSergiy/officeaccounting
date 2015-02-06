@@ -141,6 +141,8 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    paranoia (2.1.0)
+      activerecord (~> 4.0)
     passenger (4.0.53)
       daemon_controller (>= 1.2.0)
       rack
@@ -286,6 +288,7 @@ DEPENDENCIES
   mandrill_mailer
   minitest
   mysql2
+  paranoia
   passenger
   pry
   rails (= 4.1.1)

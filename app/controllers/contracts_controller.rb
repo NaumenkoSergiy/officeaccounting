@@ -11,6 +11,9 @@ class ContractsController < ApplicationController
   end
 
   def create
+    @articles = Article.all
+    @accounts ||= current_user.current_company.try(:accounts)
+    @register = MoneyRegister.new
     @contract = Contract.new contract_params
     flash[:error] = 'Ви ввели не коректні данні' unless @contract.save
     respond_to do |format|

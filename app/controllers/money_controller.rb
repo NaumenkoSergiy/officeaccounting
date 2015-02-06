@@ -6,5 +6,6 @@ class MoneyController < ApplicationController
     @currency = Currency.new
     @currencies = current_user.current_company.try(:currencies) || {}
     @banks = Bank.all
+    @registers = current_user.current_company.money_registers.order('money_registers.created_at DESC').limit(7)
   end
 end

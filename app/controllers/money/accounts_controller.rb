@@ -61,11 +61,15 @@ module Money
     end
 
     def define_account
+      @register ||= MoneyRegister.new
       @account ||= Account.new
     end
 
     def company_account
+      @articles = Article.all
+      @counterparties = current_user.current_company.try(:counterparties)
       @accounts = current_user.current_company.accounts
+      @contracts = @counterparties.empty? ? {} : Contract.contracts_for_conterparty(@counterparties.first.id)
     end
   end
 end

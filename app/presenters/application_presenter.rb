@@ -37,6 +37,10 @@ class ApplicationPresenter
     t(hash.invert[data.to_sym])
   end
 
+  def find_one_record(model, id, number)
+    model.with_deleted.find(id).number
+  end
+
   private
 
   def i_name icon, name=nil

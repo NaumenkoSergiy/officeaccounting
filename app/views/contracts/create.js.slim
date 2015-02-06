@@ -4,4 +4,12 @@
   | $('#contract_list').html("#{j render 'contracts/list'}");
   | $('#new_contract').hide()[0].reset();
   | editableStart();
+  - if params[:contract][:page] == 'costs'
+    | $('#contracts').html("#{j render 'contracts/contracts'}").modal('hide');
+    | $('#costs_form').html("#{j render 'money/registers/form'}");
+    | $('#money_register_type_money').val("#{params[:contract][:page]}");
+    | $(".select2").select2({ 'width':'100%' });
+    | loadContract();
+    | $('#money_register_total').numeric();
+    | validRegister();
   | $.unblockUI();

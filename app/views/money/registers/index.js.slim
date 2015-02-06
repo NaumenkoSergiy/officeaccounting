@@ -1,0 +1,8 @@
+| $('#costs').html("#{j render 'money/registers/registers'}").modal('show');
+| $('#costs_form').html("#{j render 'money/registers/form'}");
+| $(".select2").select2({ 'width':'100%' });
+| loadContract();
+| $('#money_register_total').numeric();
+| validRegister();
+/ | $('#costs_list').html("#{j render 'money/costs/list'}");
+/ | editableStart();

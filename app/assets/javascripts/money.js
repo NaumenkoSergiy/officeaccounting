@@ -27,12 +27,12 @@ $(document).ready(function() {
 
   $('#moneyCurrency .currencyRemove').remove();
 
-  $('#add_new_bank, #add_new_account, #add_new_cashier, #add_new_article, #add_new_credit').click(function () {
+  $('#add_new_bank, #add_new_cashier, #add_new_article, #add_new_credit').click(function () {
     $(this).parents('.modal-header').next().find('form').toggle();
   });
 });
 
-function ratesLoad () {
+function ratesLoad() {
   currencyRate = $.ajax({
     type: 'GET',
     url: 'https://query.yahooapis.com/v1/public/yql?q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDUAH,EURUAH,AUDUAH,AZNUAH,GBPUAH,BYRUAH,DKKUAH,ISKUAH,KZTUAH,CADUAH,MDLUAH,NOKUAH,PLNUAH,SGDUAH,HUFUAH,TMTUAH,UZSUAH,CZKUAH,SEKUAH,CHFUAH,CNYUAH,JPYUAH,RUBUAH%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=',
@@ -41,7 +41,7 @@ function ratesLoad () {
   return currencyRate.response;
 }
 
-function RemoveOptionsCurrensy () {
+function RemoveOptionsCurrensy() {
   $('.currency').each(function(){
     currency = $(this).last().text();
     selector = "select option:contains(" + currency + ")";
@@ -62,7 +62,7 @@ function RemoveOptionsCurrensy () {
   }
 };
 
-function currencyRemove (id) {
+function currencyRemove(id) {
   $.ajax({
     type: 'DELETE',
     url: '/money/currencies/' + id,
@@ -77,7 +77,7 @@ function currencyRemove (id) {
   });
 };
 
-function validAccount () {
+function validAccount() {
   $('#new_account').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
@@ -102,7 +102,7 @@ function validAccount () {
   });
 }
 
-function validCashier () {
+function validCashier() {
   $('#new_cashier').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
@@ -121,7 +121,7 @@ function validCashier () {
   });
 }
 
-function validBank () {
+function validBank() {
   $('#new_bank').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
@@ -158,7 +158,7 @@ function validBank () {
   });
 }
 
-function validArticle () {
+function validArticle() {
   $('#new_article').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
@@ -177,7 +177,7 @@ function validArticle () {
   });
 }
 
-function validCredit () {
+function validCredit() {
   $('#new_credit').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
@@ -196,6 +196,64 @@ function validCredit () {
         required: I18n.t('validation.errors.cant_be_blank')
       },
       "credit[account_number]": {
+        required: I18n.t('validation.errors.cant_be_blank')
+      }
+    }
+  });
+}
+
+function loadContract() {
+  $('#money_register_counterparty_id').change(function() {
+    id = $(this).val();
+    $.ajax({
+    type: 'GET',
+    url: '/money/registers/get_all_contract',
+    data: { counterparty_id: id }
+    });
+  });
+}
+
+function validRegister() {
+  $('#money_register_date').datepicker({ changeMonth: true, changeYear: true, yearRange: 'c-100:c+1' }).change('changeDate', function() {
+    $(this).valid();
+  });;
+  $('#new_money_register').validate({
+    errorElement: "div",
+    errorPlacement: function(error, element) {
+      error.insertBefore(element);
+    },
+    ignore: "",
+    rules: {
+      "money_register[date]": {
+        required: true
+      },
+      "money_register[total]": {
+        required: true
+      },
+      "money_register[counterparty_id]": {
+        required: true
+      },
+      "money_register[contract_id]": {
+        required: true
+      },
+      "money_register[account_id]": {
+        required: true
+      }
+    },
+    messages: {
+      "money_register[date]": {
+        required: I18n.t('validation.errors.cant_be_blank')
+      },
+      "money_register[total]": {
+        required: I18n.t('validation.errors.cant_be_blank')
+      },
+      "money_register[counterparty_id]": {
+        required: I18n.t('validation.errors.cant_be_blank')
+      },
+      "money_register[contract_id]": {
+        required: I18n.t('validation.errors.cant_be_blank')
+      },
+      "money_register[account_id]": {
         required: I18n.t('validation.errors.cant_be_blank')
       }
     }

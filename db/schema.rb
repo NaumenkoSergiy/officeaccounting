@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202082434) do
+ActiveRecord::Schema.define(version: 20150206121633) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(version: 20150202082434) do
     t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
+
+  add_index "accounts", ["deleted_at"], name: "index_accounts_on_deleted_at", using: :btree
 
   create_table "articles", force: true do |t|
     t.integer "code"
@@ -70,7 +73,10 @@ ActiveRecord::Schema.define(version: 20150202082434) do
     t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
+
+  add_index "contracts", ["deleted_at"], name: "index_contracts_on_deleted_at", using: :btree
 
   create_table "counterparties", force: true do |t|
     t.string   "name"
@@ -82,11 +88,13 @@ ActiveRecord::Schema.define(version: 20150202082434) do
     t.boolean  "resident"
     t.string   "edrpo"
     t.string   "adress"
-    t.string   "contract_id"
     t.string   "account"
     t.integer  "bank_id"
     t.integer  "mfo"
+    t.datetime "deleted_at"
   end
+
+  add_index "counterparties", ["deleted_at"], name: "index_counterparties_on_deleted_at", using: :btree
 
   create_table "credits", force: true do |t|
     t.string  "name"
@@ -125,6 +133,20 @@ ActiveRecord::Schema.define(version: 20150202082434) do
     t.string "section"
     t.string "number"
     t.string "name"
+  end
+
+  create_table "money_registers", force: true do |t|
+    t.date     "date"
+    t.string   "type_document"
+    t.integer  "counterparty_id"
+    t.integer  "contract_id"
+    t.integer  "account_id"
+    t.float    "total"
+    t.integer  "article_id"
+    t.integer  "company_id"
+    t.string   "type_money"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "officials", force: true do |t|

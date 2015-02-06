@@ -8,6 +8,15 @@
     | checkResident();
     | $.unblockUI();
   - else
+    - if params[:counterparty][:page] == "costs"
+      | $('#costs_form').html("#{j render 'money/registers/form'}");
+      | $('#money_register_type_money').val("#{params[:counterparty][:page]}");
+      | $('#counterparty_select a:first').attr('href', "#{purchases_counterparties_path(page: params[:counterparty][:page])}");
+      | $(".select2").select2({ 'width':'100%' });
+      | loadContract();
+      | $('#money_register_total').numeric();
+      | validRegister();
+    - else
+      | $('#contract_form').html("#{j render 'contracts/form'}");
+      | loadPluginsContract();
     | $('#counterparty').modal('hide');
-    | $('#contract_form').html("#{j render 'contracts/form'}");
-    | loadPluginsContract();

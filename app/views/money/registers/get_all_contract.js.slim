@@ -1,0 +1,7 @@
+- if @contracts.empty?
+  | $("#contract_id")[0].innerHTML = '#{link_to t('contract.contract_info'), contracts_path(page: :costs), remote: true, metod: :get}';
+  | $('#lable_contract')[0].innerHTML ='';
+- else
+  | $('#lable_contract')[0].innerHTML ='#{label_tag t('money.costs.contract')} #{link_to t('contract.add_new'), contracts_path(page: :costs), remote: true, metod: :get}';
+  | $("#contract_id")[0].innerHTML = '#{select_tag 'money_register[contract_id]', options_for_select(@contracts.pluck(:number, :id))}';
+  | $('#money_register_contract_id').select2({'width':'100%'});

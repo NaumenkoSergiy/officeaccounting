@@ -1,0 +1,43 @@
+table.table
+  thead
+    tr style='background-color: #F2F1F0;'
+      th
+        = t('money.costs.date')
+      th
+        = t('money.costs.type_of_document')
+      th
+        = t('money.costs.bank_account_c')
+      th
+        = t('money.costs.article')
+      th
+        = t('contract.counterparty')
+      th
+        = t('money.costs.contract')
+      th
+        = t('money.costs.total')
+      th
+        | Тип
+      th
+
+  tbody
+    - @registers.each do |register|
+      tr class='register_#{ register.id } #{register.type_money}'
+        td style='width: 84px;'
+          = register.date
+        td
+          = t("#{register.type_document}")
+        td
+          = Account.account_one_record(register.account_id).number
+        td
+          = register.article.name
+        td
+          = Counterparty.counterparty_one_record(register.counterparty_id)
+        td
+          = Contract.contract_one_record(register.contract_id)
+        td
+          = register.total
+        td
+          = t(register.type_money)
+        td style='width:40px;'
+          = application_present.destroy_link money_register_path(register)
+
