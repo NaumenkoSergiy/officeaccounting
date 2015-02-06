@@ -16,7 +16,7 @@
     br
     = f.label t('money.currency')
     br
-    = f.select :currency, options_for_select(application_present.translate_hash(Currency::CURRENCY)), class: "accountSelect"
+    = f.select :currency, options_for_select(application_present.translate_array_for_select_options(Currency::AVAILABLE_CURRENCIES)), class: "accountSelect"
     br
 
     br

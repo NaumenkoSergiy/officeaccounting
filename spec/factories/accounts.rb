@@ -5,7 +5,7 @@ FactoryGirl.define do
     name { Faker::Name.name }
     account_type { Account::ACCOUNT.to_a[rand(8)][1] }
     number { Faker::Number.number(8) }
-    currency { Currency::CURRENCY.to_a[rand(22)][1] }
+    currency { Currency::AVAILABLE_CURRENCIES[rand(22)] }
     bank_id { Faker::Number.number(2) }
   end
 end

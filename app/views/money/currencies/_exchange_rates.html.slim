@@ -10,7 +10,7 @@ table.table
     - @currencies.each do |currency|
       tr class='currency_#{currency.id}'
         td class='currency_rates' value=currency.name
-          = t(Currency::CURRENCY.invert[currency.name.to_sym])
+          = t(currency.name)
 javascript:
   $('.currency_rates[value=UAH]').hide();
 

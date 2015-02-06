@@ -16,7 +16,7 @@ table.table
         td id='name'
           = link_to credit.name, money_credit_path(credit), remote: true
         td id='credit_type'
-          = link_to t(Credit::CREDIT_TYPE.invert[credit.credit_type.to_sym]), money_credit_path(credit), remote: true
+          = link_to t(Credit::CREDIT_TYPE.invert[credit.credit_type.to_sym].to_s), money_credit_path(credit), remote: true
         td id='account_number'
           = link_to credit.account_number, money_credit_path(credit), remote: true
         td style='width: 40px'

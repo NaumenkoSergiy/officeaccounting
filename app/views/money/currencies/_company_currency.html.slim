@@ -8,7 +8,7 @@
         h4 = t('buttons.add_currency')
         .center
           = form_tag '', method: :post, remote: :true do
-            = select_tag :name, options_for_select(application_present.translate_hash(Currency::CURRENCY)), class: "currencySelect"
+            = select_tag :name, options_for_select(application_present.translate_array_for_select_options(Currency::AVAILABLE_CURRENCIES)), class: "currencySelect"
             = submit_tag t('buttons.add'), type: :button, id: :currency_form, class: "btn btn-primary"
         .row
       .modal-body

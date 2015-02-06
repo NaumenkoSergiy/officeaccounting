@@ -17,12 +17,20 @@ class ApplicationPresenter
     data.collect{ |d| {value: d[1], text: t(d[0])} }
   end
 
-  def translate_hash(hash)
-    @credit_hash = Hash.new()
+  def translate_array_select2_options data
+    data.map{ |d| {value: d, text: t(d)} }
+  end
+
+  def translate_array_for_select_options array
+    array.map { |a| [t(a), a] }
+  end
+
+  def translate_hash hash
+    t_hash = {}
     hash.each do |key, value|
-      @credit_hash[t(key)] = value
+      t_hash[t(key)] = value
     end
-    @credit_hash
+    t_hash
   end
 
   def constant_parse(hash, data)
