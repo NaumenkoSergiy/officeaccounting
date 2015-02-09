@@ -248,8 +248,8 @@ en:
   counterparty:
     name_r: "The name of the representative"
     name: "Name"
+    is_resident?: "Is resident?"
     resident: "Resident"
-    resident_n: "Resident or non-resident?"
     edrpo: "EDRPO"
     account: "Account"
     address: "Address"

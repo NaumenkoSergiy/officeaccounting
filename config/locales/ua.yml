@@ -227,8 +227,8 @@ ua:
   counterparty:
     name_r: "Ім'я представника"
     name: "Ім'я"
+    is_resident?: "Резидент?"
     resident: "Резидент"
-    resident_n: "Резидент чи нерезидент?"
     edrpo: "ЄДРПО"
     account: "Рахунок"
     address: "Адреса"
