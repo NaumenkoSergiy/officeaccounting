@@ -16,7 +16,7 @@ namespace :activebooks do
     data_hash = JSON.parse(file)
 
     data_hash.each do |kved|
-      if (kved['КВЕД'].present?)
+      if kved['КВЕД'].present?
         name = kved['Наименование']
         Kved.create(
           section: kved['Секция'],
