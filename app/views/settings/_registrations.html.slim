@@ -157,5 +157,7 @@ javascript:
     },
     select2: { tags: #{present(@company.registration).kveds},
                                placeholder: I18n.t('add_code'),
+                               separator: ";",
+                               tokenSeparators: [";"],
                                width: '450px' }
                                });
