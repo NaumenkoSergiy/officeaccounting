@@ -1,9 +1,6 @@
 $(document).ready(function() {
   $('#registration_form_of_incorporation, #registration_tax_inspection').select2({width: '970px'});
 
-  I18n.defaultLocale = $.cookie('language');
-  I18n.locale = $.cookie('language');
-
   AjaxGetKoatuu = {
                     url: '/settings/registrations/get_koatuu',
                     dataType: 'json',

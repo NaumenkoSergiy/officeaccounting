@@ -68,6 +68,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = params[:locale] || cookies[:language] || I18n.default_locale
+    I18n.locale = params[:locale] || session[:language] || I18n.default_locale
   end
 end

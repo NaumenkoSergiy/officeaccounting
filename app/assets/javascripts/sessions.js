@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  I18n.defaultLocale = $.cookie('language');
-  I18n.locale = $.cookie('language');
 
   new_session_form = $('#new_session_form');
 

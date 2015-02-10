@@ -17,9 +17,6 @@ $(document).ready(function() {
 
   curr_date = new Date();
 
-  I18n.defaultLocale = $.cookie('language');
-  I18n.locale = $.cookie('language');
-
   $('#moneyCurrency h4').append(I18n.t('for_today') + $.datepicker.formatDate('dd.mm.yy', curr_date));
   
 
