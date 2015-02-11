@@ -4,41 +4,20 @@
     = f.text_field :date
     = f.label t('money.costs.type_of_document')
     = f.select :type_document, application_present.translate_array_for_select_options(MoneyRegister::DOCUMENT_TYPE), {}, { class: 'select2' }
-    - if @accounts.empty?
-      = f.label t('money.costs.bank_account_c')
-      br
-      = link_to t('money.accounts.accounts_info'), money_accounts_path(page: params[:page]), remote: true, type: :get
-      = f.text_field :account_id, style: 'display:none;'
-      br
-    -else
-      = f.label t('money.costs.bank_account_c')
-      = link_to t('contract.add_new'), money_accounts_path(page: params[:page]), remote: true, type: :get
-      = f.select :account_id, options_for_select(@accounts.pluck(:number, :id)), {}, { class: 'select2' }
-    = f.label t('money.costs.article')
-    = f.select :article_id, options_for_select(@articles.pluck(:name, :id)), {}, { class: 'select2' }
-    #counterparty_select
-      - if @counterparties.empty?
-        = f.label t('contract.counterparty')
+    = f.label t('money.costs.bank_account_c')
+    #select_account
+      - if @accounts.empty?
+        = link_to t('money.accounts.accounts_info'), money_accounts_path(page: params[:page]), remote: true, type: :get
         br
-        = f.text_field :counterparty_id, style: 'display:none;'
-        = link_to t('contract.counterparty_info'), purchases_counterparties_path(page: :costs), remote: true, metod: :get
-      - else
-        = f.label t('contract.counterparty')
-        = link_to t('contract.counterparty_add'), purchases_counterparties_path(page: :costs), remote: true, metod: :get
-        #counterparty_id
-          = f.select :counterparty_id, options_for_select(@counterparties.pluck(:name, :id)), {}, { class: 'select2' }
-    - unless @counterparties.empty?
-      #lable_contract
-        = f.label t('money.costs.contract')
-        - unless @contracts.empty?
-          = link_to t('contract.add_new'), contracts_path(page: :costs), remote: true, metod: :get
-      #contract_id
-        - if @contracts.empty?
-          = f.text_field :contract_id, style: 'display:none;'
-          = link_to t('contract.contract_info'), contracts_path(page: :costs), remote: true, metod: :get
-        - else
-          = f.select :contract_id,  options_for_select(@contracts.pluck(:number, :id)), {}, { class: 'select2' }
-    br
+        = f.text_field :account_id, style: 'display:none;'
+      -else
+        = link_to t('contract.add_new'), money_accounts_path(page: params[:page]), remote: true, type: :get
+        = f.select :account_id, options_for_select(@accounts.pluck(:number, :id)), {}, { class: 'select2' }
+      = f.label t('money.costs.article')
+      = f.select :article_id, options_for_select(@articles.pluck(:name, :id)), {}, { class: 'select2' }
+    = f.label t('contract.counterparty')
+    #cost_select
+      = render 'money/registers/register_select'
     = f.label t('money.costs.total')
     = f.text_field :total, :class => 'number', maxlength: 8
     = f.hidden_field :type_money, value: params[:page]

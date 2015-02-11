@@ -6,7 +6,7 @@ branch = ENV['BRANCH'] || 'master'
 
 application = 'active-books'
 
-server '178.62.87.227', user: user, password: 'deploy', roles: [:app, :web, :db], primary: true
+server '104.131.236.185', user: user, password: 'activebridge', roles: [:app, :web, :db], primary: true
 set :user, user
 
 # Default deploy_to directory is /var/www/my_app

@@ -4,12 +4,14 @@
   | $('#contract_list').html("#{j render 'contracts/list'}");
   | $('#new_contract').hide()[0].reset();
   | editableStart();
-  - if params[:contract][:page] == 'costs'
-    | $('#contracts').html("#{j render 'contracts/contracts'}").modal('hide');
-    | $('#costs_form').html("#{j render 'money/registers/form'}");
+  - if params[:contract][:page] == 'costs' || params[:contract][:page] == 'income'
+    | $('#contracts').modal('hide');
+    | $('#cost_select').html("#{j render 'money/registers/register_select'}");
+    | $("#counterparty_select a[href^='/purchases/counterparties']").attr('href', "#{purchases_counterparties_path(page: params[:contract][:page])}");
+    | $("#contract_select a[href^='/contracts']").attr('href', "#{contracts_path(page: params[:contract][:page])}");
+    | $('#contract_id').select2({ 'width':'100%' });
+    | $('#money_register_counterparty_id').attr('data-type', "#{params[:contract][:page]}");
+    | $('#money_register_counterparty_id, #money_register_contract_id').select2({ 'width':'100%' });
     | $('#money_register_type_money').val("#{params[:contract][:page]}");
-    | $(".select2").select2({ 'width':'100%' });
     | loadContract();
-    | $('#money_register_total').numeric();
-    | validRegister();
   | $.unblockUI();

@@ -253,8 +253,8 @@ en:
     add_new: "Add new"
     counterparty_info: "You have no counterparty Click here to add new one!"
     contract_info: "You have no contract Click here to add new!"
-  product_s: "Product"
-  service_s: "Service"
+  product: "Product"
+  service: "Service"
   settings: "Settings"
   purchases:
     account_inbox: "Account Inbox"

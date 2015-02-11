@@ -16,24 +16,24 @@ table.table
       th
         = t('money.costs.total')
       th
-        | Тип
+        = t('contract.type')
       th
 
   tbody
     - @registers.each do |register|
       tr class='register_#{ register.id } #{register.type_money}'
         td style='width: 84px;'
-          = register.date
+          = l(register.date, format: :default)
         td
           = t("#{register.type_document}")
         td
-          = Account.account_one_record(register.account_id).number
+          = register.account_including_deleted.number
         td
           = register.article.name
         td
-          = Counterparty.counterparty_one_record(register.counterparty_id)
+          = register.counterparty_including_deleted.name
         td
-          = Contract.contract_one_record(register.contract_id)
+          = register.contract_including_deleted.number
         td
           = register.total
         td

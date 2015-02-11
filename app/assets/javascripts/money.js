@@ -205,10 +205,11 @@ function validCredit() {
 function loadContract() {
   $('#money_register_counterparty_id').change(function() {
     id = $(this).val();
+    type = $(this).data('type');
     $.ajax({
-    type: 'GET',
-    url: '/money/registers/get_all_contract',
-    data: { counterparty_id: id }
+      type: 'GET',
+      url: '/money/registers/get_all_contract',
+      data: { counterparty_id: id, page: type }
     });
   });
 }
@@ -258,4 +259,12 @@ function validRegister() {
       }
     }
   });
+}
+
+function hideContract() {
+  if ($("#counterparty_info").length) {
+    $('#contract_select').hide();
+  } else {
+    $('#contract_select').show();
+  }
 }

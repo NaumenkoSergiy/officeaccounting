@@ -17,7 +17,7 @@ module Purchases
       @banks = Bank.all
       @contract = Contract.new
       @register = MoneyRegister.new
-      @contracts = @counterparties.empty? ? {} : Contract.contracts_for_conterparty(@counterparties.first.id)
+      @contracts_counterparty = @counterparties.empty? ? {} : Contract.contracts_for_conterparty(@counterparties.first.id)
       @counterparty = Counterparty.new counterparty_params
       flash[:error] = 'Ви ввели не коректні данні' unless @counterparty.save
       respond_to do |format|
@@ -68,7 +68,7 @@ module Purchases
       @accounts ||= current_user.current_company.try(:accounts)
       @articles = Article.all
       @registers = current_user.current_company.money_registers
-      @counterparties ||= current_user.current_company.try(:counterparties)
+      @counterparties ||= current_user.current_company.counterparties.order('counterparties.created_at DESC')
     end
   end
 end

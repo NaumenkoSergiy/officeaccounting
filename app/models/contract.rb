@@ -3,6 +3,7 @@ class Contract < ActiveRecord::Base
 
   belongs_to :company
   belongs_to :counterparty
+  belongs_to :counterparty_including_deleted, class_name: 'Counterparty', foreign_key: 'counterparty_id', with_deleted: true
   has_many :money_registers
 
   validates :date, :counterparty_id, :validity, :number, presence: true
@@ -11,12 +12,8 @@ class Contract < ActiveRecord::Base
     where(counterparty_id: id)
   }
 
-  scope :contract_one_record, -> (id) {
-    Contract.with_deleted.find(id).number
-  }
-  
-  CONTRACT_TYPE = {
-    :product_s => :product,
-    :service_s => :service
-  }
+  CONTRACT_TYPE = [
+    :product,
+    :service
+  ]
 end

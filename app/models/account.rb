@@ -9,10 +9,6 @@ class Account < ActiveRecord::Base
   validates :name, presence: true
   validates_numericality_of :number
 
-  scope :account_one_record, -> (id) {
-    with_deleted.find(id)
-  }
-
   ACCOUNT = {
     'Поточний рахунок' => :current,
     'Вкладний (депозитний) рахунок' => :deposit,

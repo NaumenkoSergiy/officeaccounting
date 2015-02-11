@@ -7,7 +7,7 @@ module Money
     before_action :get_all_register, only: [:index, :create]
 
     def index
-      @contracts = @counterparties.empty? ? {} : Contract.contracts_for_conterparty(@counterparties.first.id)
+      @contracts_counterparty = @counterparties.empty? ? {} : Contract.contracts_for_conterparty(@counterparties.first.id)
       respond_to do |format|
         format.js
       end
@@ -24,10 +24,10 @@ module Money
 
     def update
       respond_to do |format|
-        if @counterparty.update(counterparty_params)
+        if @register.update(register_params)
           format.json { head :no_content }
         else
-          format.json { render json: @counterparty.errors, status: :unprocessable_entity }
+          format.json { render json: @register.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -70,8 +70,8 @@ module Money
     def get_all_register
       @articles = Article.all
       @banks = Bank.all
-      @accounts ||= current_user.current_company.try(:accounts)
-      @counterparties ||= current_user.current_company.try(:counterparties)
+      @accounts ||= current_user.current_company.accounts.order('accounts.created_at DESC')
+      @counterparties ||= current_user.current_company.counterparties.order('counterparties.created_at DESC')
       @registers = current_user.current_company.money_registers.order('money_registers.created_at DESC').limit(7)
     end
   end

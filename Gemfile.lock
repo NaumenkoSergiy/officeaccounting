@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ActsAsParanoid/acts_as_paranoid.git
+  revision: ddcd1915179c73f74985af6bc8935321ca2fe08d
+  specs:
+    acts_as_paranoid (0.5.0.beta1)
+      activerecord (~> 4.0)
+      activesupport (~> 4.0)
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: e4f8dbbbb8046b719e100fddf83319b9e6cb8796
   specs:
@@ -141,8 +149,6 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
-    paranoia (2.1.0)
-      activerecord (~> 4.0)
     passenger (4.0.53)
       daemon_controller (>= 1.2.0)
       rack
@@ -269,6 +275,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  acts_as_paranoid!
   bootstrap-sass
   bootstrap-select-rails
   bootstrap-switch-rails
@@ -288,7 +295,6 @@ DEPENDENCIES
   mandrill_mailer
   minitest
   mysql2
-  paranoia
   passenger
   pry
   rails (= 4.1.1)

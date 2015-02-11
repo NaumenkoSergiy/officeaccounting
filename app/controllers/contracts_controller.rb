@@ -53,7 +53,8 @@ class ContractsController < ApplicationController
   end
 
   def company_contract
-    @contracts = current_user.current_company.contracts
-    @counterparties = current_user.current_company.counterparties
+    @contracts = current_user.current_company.contracts.order('contracts.created_at DESC')
+    @counterparties = current_user.current_company.counterparties.order('counterparties.created_at DESC')
+    @contracts_counterparty = @counterparties.empty? ? {} : Contract.contracts_for_conterparty(@counterparties.first.id)
   end
 end

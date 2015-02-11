@@ -8,8 +8,4 @@ class Counterparty < ActiveRecord::Base
 
   validates :name, :title, :adress, presence: true
   validates_numericality_of :edrpo, :mfo, :account
-
-  scope :counterparty_one_record, -> (id) {
-    Counterparty.with_deleted.find(id).name
-  }
 end

@@ -68,7 +68,7 @@ module Money
     def company_account
       @articles = Article.all
       @counterparties = current_user.current_company.try(:counterparties)
-      @accounts = current_user.current_company.accounts
+      @accounts = current_user.current_company.accounts.order('accounts.created_at DESC')
       @contracts = @counterparties.empty? ? {} : Contract.contracts_for_conterparty(@counterparties.first.id)
     end
   end

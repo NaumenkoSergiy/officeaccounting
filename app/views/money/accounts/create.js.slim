@@ -5,9 +5,10 @@
     | $('#account_list').html("#{j render 'money/accounts/list'}");
     | $('#new_account').hide()[0].reset();
   - else
-    | $('#costs_form').html("#{j render 'money/registers/form'}");
+    | $('#select_account').html("#{j link_to t('contract.add_new'), money_accounts_path(page: params[:account][:page]), remote: true, type: :get}#{j select_tag 'money_register[account_id]', options_for_select(@accounts.pluck(:number, :id))}");
+    |$('#money_register_account_id').select2({ 'width':'100%' });
     | $('#money_register_type_money').val("#{params[:account][:page]}");
-    | $('#companyAccount').html("#{j render 'money/accounts/company_account'}").modal('hide');
+    | $('#companyAccount').modal('hide');
     | $(".select2").select2({ 'width':'100%' });
     | loadContract();
     | $('#money_register_total').numeric();
