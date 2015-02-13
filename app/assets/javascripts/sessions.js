@@ -15,34 +15,23 @@ $(document).ready(function() {
   );
 
   new_session_form.validate({
+    onkeyup: false,
+    onclick: false,
     errorElement: "div",
+    errorClass: "invalid",
     errorPlacement: function(error, element) {
-      error.insertBefore(element);
+      error.insertBefore("#email");
     },
     rules: {
-      email : { invalidLoginDetails: true },
-      password: {
-        required:  true,
-        minlength: 8,
-        maxlength: 32
-      }
+      password : { invalidLoginDetails: true },
     },
-    messages: {
-      email: {
-        required: I18n.t('validation.errors.mail_not_blank'),
-        pattern:  I18n.t('validation.errors.mail_should_be_valid')
-      },
-      password: {
-        required:  I18n.t('validation.errors.password_empty'),
-        minlength: I18n.t('validation.errors.password_more8'),
-        maxlength: I18n.t('validation.errors.password_less32')
-      }
-    }
   });
-
-  $('#new_session_form').on('blur focusout change keyup', function(){
-    $(this).validate();
-  });
+  new_session_form.find('input').keypress(function(){
+    $('div.invalid').remove();
+  })
+  $('#new_session_form').submit(function() {
+    new_session_form.validate();
+  })
 
   $('#password_resets').validate({
     errorElement: "div",

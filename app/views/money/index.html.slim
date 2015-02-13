@@ -5,8 +5,6 @@
   .row.links
     = link_to t('buttons.add_new'), '#', data: { toggle: "modal", target: "#moneyNew"}, class: 'btn btn-primary'
     = render 'money/addNew'
-    = render 'money/currencies/currency'
-    = render 'money/currencies/company_currency'
     = render 'money/banks/company_banks'
     = render 'money/credits/company_credits'
     = render 'money/cashiers/company_cashier'
@@ -16,7 +14,3 @@
   .row
     #registers_list
       = render 'money/registers/list'
- 
-javascript:
-  ratesLoad();
-  RemoveOptionsCurrensy();
