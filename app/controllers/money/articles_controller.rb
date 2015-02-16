@@ -5,9 +5,14 @@ module Money
     before_action :define_article, only: [:index, :create]
     
     def index
-      @articles = Article.all
-      respond_to do |format|
-        format.js
+      if params[:page]
+        acticles = Article.all
+        render json: { data: acticles }
+      else
+        @articles = Article.all
+        respond_to do |format|
+          format.js
+        end
       end
     end
 
@@ -38,8 +43,7 @@ module Money
     end
 
     def destroy
-      article = Article.find(params[:id])
-      article.destroy
+      @article.destroy
       respond_to do |format|
         format.js
       end

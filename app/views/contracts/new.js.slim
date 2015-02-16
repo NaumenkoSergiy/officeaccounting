@@ -1,0 +1,12 @@
+| $('#contracts').html("#{j render 'contracts/contracts'}").modal('show');
+| $('#contract_form').html("#{j render 'contracts/form'}");
+- if params[:page] == 'costs' || params[:page] == 'income'
+  | $('#add_new_contract').remove();
+-else
+  | $('#new_contract').hide();
+  | $('#contract_list').html("#{j render 'contracts/list'}");
+  | editableStart();
+  | openForm("new_contract", "add_new_contract");
+| loadPluginsContract();
+| validContract();
+

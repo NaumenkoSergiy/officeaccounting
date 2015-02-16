@@ -1,6 +1,0 @@
-- if @contracts.empty?
-  | $("#contract_select").html("#{j label_tag t('money.costs.contract')}#{j hidden_field_tag 'money_register[contract_id]'}#{ j link_to t('contract.contract_info'), contracts_path(page: params[:page]), remote: true, metod: :get}");
-- else
-  | $("#contract_select").html("#{j label_tag t('money.costs.contract')} <br> #{j link_to t('contract.add_new'), contracts_path(page: params[:page]), remote: true, metod: :get}#{j select_tag 'money_register[contract_id]', options_for_select(@contracts.pluck(:number, :id))}");
-  | $('#money_register_contract_id').select2({'width':'100%'});
-  | loadContract();

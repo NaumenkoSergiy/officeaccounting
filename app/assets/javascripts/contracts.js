@@ -29,12 +29,43 @@ function validContract() {
   });
 }
 
+function loadContract() {
+  $('#money_register_counterparty_id').change(function() {
+    id = $(this).val();
+    page = $(this).data('page');
+    $('.contract_select')[0].innerHTML = '<select class="counterparty_contracts" data-id="' +
+    id + '" data-page="' + page + '" id="money_register_contract_id" name="money_register[contract_id]"></select>';
+  });
+}
+
 function loadPluginsContract() {
   $('#contract_date, #contract_validity').datepicker({ changeMonth: true, changeYear: true, yearRange: 'c-100:c+1' }).change('changeDate', function() {
     $(this).valid();
   });;
   $('input.number').numeric({ negative : false, decimal: false });
-  $('#contract_contract_type').select2({ minimumResultsForSearch: -1, 'width' : '100%' });
-  $('#contract_counterparty_id').select2({ minimumResultsForSearch: 5, 'width' : '100%' });
+  $('#contract_contract_type').select2({ minimumResultsForSearch: -1 });
   validContract();
+}
+
+function getAllCounterpartyContracts() {
+  id = $('#money_register_counterparty_id').val();
+  page = $('#money_register_counterparty_id').data('page');
+
+  $.ajax({
+    type: 'GET',
+    url: '/contracts/',
+    data: { id: id },
+    success: function(r) {
+      if (r.data.length == 0 ){
+        $('.contract_select')[0].innerHTML = "<a data-remote='true' href='/contracts/new?page=" + page + "' type='get'>" + I18n.t('contract.counterparty_info') + "</a>";
+      } else {
+        $.each(r.data, function(i, data) {
+          v = r.data[i];
+          $('.counterparty_contracts').append('<option value=' + v.id + '>' + v.number + '</option>');
+        });
+         $('.contract_select').prepend("<a data-remote='true' href='/contracts/new?page=" + page + "' type='get'>" + I18n.t('contract.counterparty_add') + "</a>");
+        $('.counterparty_contracts').select2();
+      }
+    }
+  });
 }

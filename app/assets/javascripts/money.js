@@ -202,18 +202,6 @@ function validCredit() {
   });
 }
 
-function loadContract() {
-  $('#money_register_counterparty_id').change(function() {
-    id = $(this).val();
-    type = $(this).data('type');
-    $.ajax({
-      type: 'GET',
-      url: '/money/registers/get_all_contract',
-      data: { counterparty_id: id, page: type }
-    });
-  });
-}
-
 function validRegister() {
   $('#money_register_date').datepicker({ changeMonth: true, changeYear: true, yearRange: 'c-100:c+1' }).change('changeDate', function() {
     $(this).valid();

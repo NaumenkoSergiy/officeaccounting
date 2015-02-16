@@ -1,12 +1,17 @@
 module Purchases
   class CounterpartiesController < ApplicationController
-    before_filter :redirect_to_new_session
-    before_filter :has_company?, only: [:index]
+    before_action :redirect_to_new_session
+    before_action :has_company?, only: :new
     before_action :set_counterparty, only: [:update, :destroy]
-    before_action :define_counterparty, only: [:index, :create]
-    before_action :get_all_counterparties, only: [:index, :create]
+    before_action :define_counterparty, only: [:new, :create]
+    before_action :all_counterparties, only: [:new, :create]
 
     def index
+      counterparties = Counterparty.where(company_id: params[:id])
+      render json: { data: counterparties.order('counterparties.created_at DESC') }
+    end
+
+    def new
       @banks = Bank.all
       respond_to do |format|
         format.js
@@ -16,8 +21,6 @@ module Purchases
     def create
       @banks = Bank.all
       @contract = Contract.new
-      @register = MoneyRegister.new
-      @contracts_counterparty = @counterparties.empty? ? {} : Contract.contracts_for_conterparty(@counterparties.first.id)
       @counterparty = Counterparty.new counterparty_params
       flash[:error] = 'Ви ввели не коректні данні' unless @counterparty.save
       respond_to do |format|
@@ -64,11 +67,8 @@ module Purchases
       @counterparty ||= current_user.current_company.counterparties.new
     end
 
-    def get_all_counterparties
-      @accounts ||= current_user.current_company.try(:accounts)
-      @articles = Article.all
-      @registers = current_user.current_company.money_registers
-      @counterparties ||= current_user.current_company.counterparties.order('counterparties.created_at DESC')
+    def all_counterparties
+      @counterparties ||= current_user.counterparties.order('counterparties.created_at DESC')
     end
   end
 end

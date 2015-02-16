@@ -23,12 +23,14 @@
 //= require bootstrap-switch
 //= require bootstrap-select
 //= require select2
+//= require observer
 
 LEFT_BAR_HIDE = 45;
 LEFT_BAR_SHOW = 220;
 
 $(document).on('ready', function(){
-
+  //observer dom change
+  setObserver();
   // left bar toggle
   $('.navbar-minimalize').click(function () {
     if ($('#page-wrapper').css('margin-left')==LEFT_BAR_HIDE+'px') {
@@ -130,4 +132,35 @@ function openForm(idform, idbutton) {
   $("#" + idbutton).click(function() {
     $("form#" + idform).toggle();
   });
+}
+
+//observer dom change
+function setObserver() {
+  var callback = function() {
+    mo.disconnect();
+    switch (true) {
+      case ($(".company_accounts").length && $(".company_accounts  > option").length == 0):
+        getAllAccounts();
+        break;
+      case ($(".articles").length && $(".articles  > option").length == 0):
+        getAllArticles();
+        break;
+      case ($('#money_register_counterparty_id').length && $("#money_register_counterparty_id > option").length == 0):
+        getAllCounterparties('#money_register_counterparty_id');
+        break;
+      case ($('#contract_counterparty_id').length && $("#contract_counterparty_id > option").length == 0):
+        getAllCounterparties('#contract_counterparty_id');
+        break;
+      case ($('.counterparty_contracts').length && $(".counterparty_contracts  > option").length == 0):
+        getAllCounterpartyContracts();
+        break;
+    }
+    setObserver();
+  }
+  mo = new MutationObserver(callback),
+  options = {
+      'childList': true,
+      'subtree': true
+  }
+  mo.observe(document.body, options);
 }

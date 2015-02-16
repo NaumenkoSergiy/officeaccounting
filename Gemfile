@@ -60,3 +60,5 @@ group :development do
   gem 'capistrano-rvm'
   gem 'passenger'
 end
+source 'https://rails-assets.org'
+  gem 'rails-assets-observer'

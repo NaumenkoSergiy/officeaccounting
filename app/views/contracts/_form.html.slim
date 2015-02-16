@@ -15,13 +15,9 @@
       = f.text_field :validity
   .row
     .col-lg-6
-      - if @counterparties.empty?
-        = link_to t('contract.counterparty_info'), purchases_counterparties_path(page: :contract), remote: true, metod: :get
-        = hidden_field_tag "contract[counterparty]"
-      - else
-        = f.label t('contract.counterparty')
-        = link_to t('contract.add_new'), purchases_counterparties_path(page: :contract), remote: true, metod: :get
-        = f.select :counterparty_id, options_for_select(@counterparties.collect {|c| [c[:name], c[:id]]}), class: 'accountSelect'
+      = f.label t('contract.counterparty')
+      .counterparty_select
+        = select_tag 'contract[counterparty_id]', '', data: { id: current_user.current_company.id, page: params[:page] }
     .col-lg-6
       br
       - unless params[:page].nil?

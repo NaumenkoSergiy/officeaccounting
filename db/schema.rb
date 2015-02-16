@@ -158,18 +158,6 @@ ActiveRecord::Schema.define(version: 20150206121633) do
     t.string  "email"
   end
 
-  create_table "registers", force: true do |t|
-    t.date     "date"
-    t.integer  "counterparty_id"
-    t.string   "operations"
-    t.integer  "value"
-    t.boolean  "holding"
-    t.text     "notes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
   create_table "registrations", force: true do |t|
     t.integer "company_id"
     t.string  "form_of_incorporation"

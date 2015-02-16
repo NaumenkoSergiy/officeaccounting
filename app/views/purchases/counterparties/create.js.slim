@@ -9,13 +9,9 @@
     | $.unblockUI();
   - else
     - if params[:counterparty][:page] == "costs" || params[:counterparty][:page] == "income"
-      | $('#cost_select').html("#{j render 'money/registers/register_select'}");
-      | $("#counterparty_select a[href^='/purchases/counterparties']").attr('href', "#{purchases_counterparties_path(page: params[:counterparty][:page])}");
-      | $("#contract_select a[href^='/contracts']").attr('href', "#{contracts_path(page: params[:counterparty][:page])}");
-      | $('#money_register_counterparty_id').attr('data-type', "#{params[:counterparty][:page]}").select2({ 'width':'100%' });
-      | $('#money_register_type_money').val("#{params[:counterparty][:page]}");
+      | $('.counterparty_select').html("#{j select_tag 'money_register[counterparty_id]', '', data: { id: current_user.current_company.id, page: params[:counterparty][:page]}}");
+      | $('.contract_select').html("#{j select_tag 'money_register[contract_id]', '', class: 'counterparty_contracts' , data: { page: params[:page] }}");
       | hideContract();
-      | loadContract();
     - else
       | $('#contract_form').html("#{j render 'contracts/form'}");
       | loadPluginsContract();

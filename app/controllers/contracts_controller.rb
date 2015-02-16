@@ -1,9 +1,14 @@
 class ContractsController < ApplicationController
   before_filter :redirect_to_new_session
   before_action :set_contract, only: [:destroy, :update]
-  before_action :company_contract, only: [:index, :create]
+  before_action :company_contract, only: [:new, :create]
 
   def index
+    counterparty_contracts = Contract.contracts_for_conterparty(params[:id])
+    render json: { data: counterparty_contracts.order('contracts.created_at DESC') }
+  end
+
+  def new
     @contract = Contract.new
     respond_to do |format|
       format.js
@@ -11,8 +16,6 @@ class ContractsController < ApplicationController
   end
 
   def create
-    @articles = Article.all
-    @accounts ||= current_user.current_company.try(:accounts)
     @register = MoneyRegister.new
     @contract = Contract.new contract_params
     flash[:error] = 'Ви ввели не коректні данні' unless @contract.save
@@ -53,8 +56,7 @@ class ContractsController < ApplicationController
   end
 
   def company_contract
-    @contracts = current_user.current_company.contracts.order('contracts.created_at DESC')
-    @counterparties = current_user.current_company.counterparties.order('counterparties.created_at DESC')
-    @contracts_counterparty = @counterparties.empty? ? {} : Contract.contracts_for_conterparty(@counterparties.first.id)
+    @contracts = current_user.contracts.order('contracts.created_at DESC')
+    @counterparties = current_user.counterparties.order('counterparties.created_at DESC')
   end
 end

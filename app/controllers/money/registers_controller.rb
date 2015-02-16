@@ -1,13 +1,10 @@
 module Money  
   class RegistersController < ApplicationController
     before_filter :redirect_to_new_session
-    before_action :define_cost, only: [:index, :create]
     before_action :set_register, only: [:update, :destroy]
-    before_filter :has_company?, only: [:index]
-    before_action :get_all_register, only: [:index, :create]
 
-    def index
-      @contracts_counterparty = @counterparties.empty? ? {} : Contract.contracts_for_conterparty(@counterparties.first.id)
+    def new
+      @register = MoneyRegister.new
       respond_to do |format|
         format.js
       end
@@ -16,7 +13,8 @@ module Money
     def create
       @contract = Contract.new
       @register = MoneyRegister.new register_params
-      flash[:error] = 'Ви ввели не коректні данні' unless @register.save
+      @registers = current_user.money_registers.order('money_registers.created_at DESC')
+      flash.now[:error] = t('validation.errors.all_fields') unless @register.save
       respond_to do |format|
         format.js
       end
@@ -39,21 +37,10 @@ module Money
       end
     end
 
-    def get_all_contract
-      @contracts = Contract.contracts_for_conterparty(params[:counterparty_id])
-      respond_to do |format|
-        format.js
-      end
-    end
-
     private
 
     def set_register
       @register = MoneyRegister.find(params[:id])
-    end
-
-    def define_cost
-      @register = MoneyRegister.new
     end
 
     def register_params
@@ -65,14 +52,6 @@ module Money
                                              :contract_id,
                                              :article_id,
                                              :type_money).merge!(company_id: current_user.current_company.id)
-    end
-    
-    def get_all_register
-      @articles = Article.all
-      @banks = Bank.all
-      @accounts ||= current_user.current_company.accounts.order('accounts.created_at DESC')
-      @counterparties ||= current_user.current_company.counterparties.order('counterparties.created_at DESC')
-      @registers = current_user.current_company.money_registers.order('money_registers.created_at DESC').limit(7)
     end
   end
 end

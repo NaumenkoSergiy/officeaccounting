@@ -12,8 +12,5 @@ class Contract < ActiveRecord::Base
     where(counterparty_id: id)
   }
 
-  CONTRACT_TYPE = [
-    :product,
-    :service
-  ]
+  CONTRACT_TYPE = [:product, :service]
 end

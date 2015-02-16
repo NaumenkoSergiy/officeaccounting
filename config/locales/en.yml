@@ -238,6 +238,7 @@ en:
       invalid_data: "Invalid data"
       user_exists: "User exists please use the password recovery"
       already_delegated: "This user is already added to the delegation of the company, you can not add it again!"
+      all_fields: "All fields are mandatory!"
   labels:
     active: "Active"
     user: "User"

@@ -2,10 +2,22 @@ module Money
   class AccountsController < ApplicationController
     before_filter :redirect_to_new_session
     before_action :set_account, only: [:destroy, :update]
-    before_action :define_account, only: [:index, :create]
+    before_action :define_account, only: [:index, :new, :create]
     before_action :company_account, only: [:index, :create]
 
     def index
+      if params[:id]
+        accounts = Account.where(company_id: params[:id])
+        render json: { data: accounts.order('accounts.created_at DESC') }
+      else
+        @banks = Bank.all
+        respond_to do |format|
+          format.js
+        end
+      end
+    end
+
+    def new
       @banks = Bank.all
       respond_to do |format|
         format.js
@@ -66,10 +78,7 @@ module Money
     end
 
     def company_account
-      @articles = Article.all
-      @counterparties = current_user.current_company.try(:counterparties)
-      @accounts = current_user.current_company.accounts.order('accounts.created_at DESC')
-      @contracts = @counterparties.empty? ? {} : Contract.contracts_for_conterparty(@counterparties.first.id)
+      @accounts = current_user.accounts.order('accounts.created_at DESC')
     end
   end
 end

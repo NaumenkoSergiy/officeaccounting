@@ -1,5 +1,5 @@
 - if flash[:error]
-  | $('.notification.error').show().text("#{flash[:error]}");
+  | $('.notification.error').show().text("#{flash[:error]}").fadeOut(5000);
 - else
   | $('#registers_list').html("#{j render 'money/registers/list'}");
   | $('#new_money_register')[0].reset();
