@@ -56,8 +56,8 @@ function getAllCounterpartyContracts() {
     url: '/contracts/',
     data: { id: id },
     success: function(r) {
-      if (r.data.length == 0 ){
-        $('.contract_select')[0].innerHTML = "<a data-remote='true' href='/contracts/new?page=" + page + "' type='get'>" + I18n.t('contract.counterparty_info') + "</a>";
+      if (r.data.length == 0 ) {
+        $('.contract_select')[0].innerHTML = "<a data-remote='true' href='/contracts/new?page=" + page + "' type='get'>" + I18n.t('contract.contract_info') + "</a>";
       } else {
         $.each(r.data, function(i, data) {
           v = r.data[i];

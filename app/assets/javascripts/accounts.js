@@ -6,7 +6,7 @@ function getAllAccounts() {
     url: '/money/accounts/',
     data: { id: id },
     success: function(r) {
-      if (r.data.length == 0 ){
+      if (r.data.length == 0 ) {
         $('#select_account')[0].innerHTML = "<a data-remote='true' href='/money/accounts/new?page=" + page + "' type='get'>" + I18n.t('money.accounts.accounts_info') + "</a>";
       } else {
         $.each(r.data, function(i, data) {

@@ -202,6 +202,7 @@ en:
       payments_a: "Payments on account"
       calculation_t: "Calculation of taxes"
       write_offs: "Other write-offs"
+    article_info: "You do not download article!"
   buttons:
     add: "Add"
     forward: "Forward"
