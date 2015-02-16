@@ -1,18 +1,18 @@
 - if flash[:error]
-  | $('.notification.error').show().text("#{flash[:error]}");
+  | $('#counterparty .notification.error').show().text("#{flash[:error]}").fadeOut(5000);
 - else
   - if params[:counterparty][:page].nil?
     | $('#counterparty_list').html("#{j render 'purchases/counterparties/list'}");
     | $('#new_counterparty').hide()[0].reset();
     | editableStart();
-    | checkResident();
+    | Counterparties.checkResident();
     | $.unblockUI();
   - else
     - if params[:counterparty][:page] == "costs" || params[:counterparty][:page] == "income"
       | $('.counterparty_select').html("#{j select_tag 'money_register[counterparty_id]', '', data: { id: current_user.current_company.id, page: params[:counterparty][:page]}}");
       | $('.contract_select').html("#{j select_tag 'money_register[contract_id]', '', class: 'counterparty_contracts' , data: { page: params[:page] }}");
-      | hideContract();
+      | Contracts.hideContract();
     - else
       | $('#contract_form').html("#{j render 'contracts/form'}");
-      | loadPluginsContract();
+      | Contracts.loadPluginsContract();
     | $('#counterparty').modal('hide');

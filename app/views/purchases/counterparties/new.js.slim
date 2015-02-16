@@ -2,11 +2,11 @@
   | $('#counterparty').html("#{j render 'purchases/counterparties/counterparties'}").modal('show');
   | $('#counterparty_form').html("#{j render 'purchases/counterparties/form'}");
   | $('#new_counterparty').hide();
-  | openform();
+  | openForm('new_counterparty', 'add_new_counterparty');
   | $('#counterparty_list').html("#{j render 'purchases/counterparties/list'}");
   | editableStart();
-  | checkResident();
+  | Counterparties.checkResident();
 -else
   | $('#counterparty').html("#{j render 'purchases/counterparties/counterparties'}").modal('show');
   | $('#counterparty_form').html("#{j render 'purchases/counterparties/form'}");
-| LoadPluginsCounterparty();
+| Counterparties.loadPluginsCounterparty();

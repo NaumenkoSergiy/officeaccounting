@@ -140,19 +140,19 @@ function setObserver() {
     mo.disconnect();
     switch (true) {
       case ($(".company_accounts").length && $(".company_accounts  > option").length == 0):
-        getAllAccounts();
+        Accounts.getAllAccounts();
         break;
       case ($(".articles").length && $(".articles  > option").length == 0):
-        getAllArticles();
+        Articles.getAllArticles();
         break;
       case ($('#money_register_counterparty_id').length && $("#money_register_counterparty_id > option").length == 0):
-        getAllCounterparties('#money_register_counterparty_id');
+        Counterparties.getAllCounterparties('#money_register_counterparty_id');
         break;
       case ($('#contract_counterparty_id').length && $("#contract_counterparty_id > option").length == 0):
-        getAllCounterparties('#contract_counterparty_id');
+        Counterparties.getAllCounterparties('#contract_counterparty_id');
         break;
       case ($('.counterparty_contracts').length && $(".counterparty_contracts  > option").length == 0):
-        getAllCounterpartyContracts();
+        Contracts.getAllCounterpartyContracts();
         break;
     }
     setObserver();
@@ -164,3 +164,37 @@ function setObserver() {
   }
   mo.observe(document.body, options);
 }
+
+function editableStart () {
+  return $("[data-xeditable=true]").each(function() {
+    var name;
+    var valueNew = null;
+    var id = 0;
+    return $(this).editable({
+      ajaxOptions: {
+        type: "PUT",
+        dataType: "json"
+      },
+      params: function(params) {
+        var railsParams;
+        id = params.pk.id;
+        name = params.name;
+        if ($(this).data().source) {
+          $.map( $(this).data().source, function( val, i ) {
+            if (val['id']==params.value){
+              valueNew = val['text'];
+            }
+          });
+        }
+        railsParams = {};
+        railsParams[$(this).data("model")] = {};
+        railsParams[$(this).data("model")][params.name] = params.value;
+        railsParams['page'] = 'show';
+        return railsParams;
+      },
+      success: function(response, newValue) {
+        $("table tr[value='" + id + "'] td#"+name).find('a').text(valueNew || newValue);
+      }
+    });
+  });
+};

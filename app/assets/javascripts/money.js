@@ -77,31 +77,6 @@ function currencyRemove(id) {
   });
 };
 
-function validAccount() {
-  $('#new_account').validate({
-    errorElement: "div",
-    errorPlacement: function(error, element) {
-      error.insertBefore(element);
-    },
-    rules: {
-      "account[name]": {
-        required: true
-      },
-      "account[number]": {
-        required: true
-      }
-    },
-    messages: {
-      "account[name]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      },
-      "account[number]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      }
-    }
-  });
-}
-
 function validCashier() {
   $('#new_cashier').validate({
     errorElement: "div",
@@ -152,25 +127,6 @@ function validBank() {
         required: I18n.t('validation.errors.cant_be_blank')
       },
       "bank[lawyer_adress]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      }
-    }
-  });
-}
-
-function validArticle() {
-  $('#new_article').validate({
-    errorElement: "div",
-    errorPlacement: function(error, element) {
-      error.insertBefore(element);
-    },
-    rules: {
-      "article[name]": {
-        required: true
-      }
-    },
-    messages: {
-      "article[name]": {
         required: I18n.t('validation.errors.cant_be_blank')
       }
     }
@@ -247,12 +203,4 @@ function validRegister() {
       }
     }
   });
-}
-
-function hideContract() {
-  if ($("#counterparty_info").length) {
-    $('#contract_select').hide();
-  } else {
-    $('#contract_select').show();
-  }
 }
