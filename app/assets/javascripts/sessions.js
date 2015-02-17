@@ -26,7 +26,7 @@ $(document).ready(function() {
       password : { invalidLoginDetails: true },
     },
   });
-  new_session_form.find('input').keypress(function(){
+  new_session_form.find('input').keypress(function() {
     $('div.invalid').remove();
   })
   $('#new_session_form').submit(function() {

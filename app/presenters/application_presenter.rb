@@ -25,12 +25,9 @@ class ApplicationPresenter
     array.map { |a| [t(a), a] }
   end
 
-  def current_company_currency_select(company_curenncies)
-    current_curenncies_array = []
-    company_curenncies.each do |c|
-      current_curenncies_array << c.name.to_sym
-    end
-    (Currency::AVAILABLE_CURRENCIES - current_curenncies_array).map { |a| [t(a), a] }
+  def current_company_currency_select(company_currencies)
+    current_currencies = company_currencies.map { |c| c.name.to_sym }
+    (Currency::AVAILABLE_CURRENCIES - current_currencies).map { |a| [t(a), a] }
   end
 
   def translate_hash hash

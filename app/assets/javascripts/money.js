@@ -31,7 +31,7 @@ function addCurrency() {
     selected = $('.currencySelect :selected');
     data = {
       currency: {
-        name: $('.currencySelect :selected').val()
+        name: selected.val()
       }
     };
     $.ajax({
@@ -61,7 +61,7 @@ function addRates() {
   });
 };
 
-function RemoveOptionsCurrensy (selected) {
+function RemoveOptionsCurrensy(selected) {
   selected.remove();
   $('#companyCurrency .select2-chosen').text($('#companyCurrency select option:first').text());
   if ($('.currencySelect option').length == 0) {
