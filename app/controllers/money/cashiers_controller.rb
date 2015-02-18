@@ -3,7 +3,7 @@ module Money
     before_filter :redirect_to_new_session
     before_action :set_cashier, only: [:destroy, :update, :show]
     before_action :define_cashier, only: [:index, :create]
-    before_action :company_cashier, only: [:index, :create]
+    before_action :company_cashiers, only: [:index, :create]
 
     def index
       respond_to do |format|
@@ -56,8 +56,8 @@ module Money
       @cashier ||= Cashier.new
     end
 
-    def company_cashier
-      @cashiers = current_user.current_company.cashiers
+    def company_cashiers
+      @cashiers = current_user.cashiers
     end
   end
 end

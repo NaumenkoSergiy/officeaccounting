@@ -17,4 +17,4 @@ table.table class="credit_show" value="#{@credit.id}"
       td
         = link_to @credit.account_number, '#', data: { name: :account_number, pk: @credit, model: 'credit', placement: 'bottom', url: money_credit_path(@credit.id), xeditable: true }
       td
-        = link_to @credit.bank.name, '#', data: { name: :bank_id, type: 'textarea', placement: 'bottom', value: @credit.bank_id, pk: @credit, type: 'select2', source: application_present.options_for_select2(Bank.pluck(:name, :id)), model: 'credit', url: money_credit_path(@credit.id), xeditable: true }, class: 'editable-select'
+        = link_to @credit.bank.name, '#', data: { name: :bank_id, placement: 'bottom', value: @credit.bank_id, pk: @credit, model: 'credit', url: money_credit_path(@credit.id)}, class: 'change_bank'

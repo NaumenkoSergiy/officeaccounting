@@ -21,4 +21,4 @@ table.table
       td
         = link_to t(@account.currency), '#', data: { name: :currency, pk: @account, placement: 'bottom', type: 'select2', source: application_present.translate_array_select2_options(Currency::AVAILABLE_CURRENCIES), value: @account.currency, model: 'account', url: money_account_path(@account.id), xeditable: true }
       td
-        = link_to @account.bank.name, '#', data: { name: :bank_id, type: 'select2', pk: @account, value: @account.bank_id, source: @banks.collect{|f| {value: f.id, text: f.name}}.to_json, placement: 'bottom', model: 'account', url: money_account_path(@account.id), xeditable: true }
+        = link_to @account.bank.name, '#', data: { name: :bank_id, pk: @account, value: @account.bank_id, placement: 'bottom', model: 'account', url: money_account_path(@account.id) }, class: 'change_bank'

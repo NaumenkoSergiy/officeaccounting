@@ -1,7 +1,7 @@
 module Money  
   class CreditsController < ApplicationController
     before_filter :redirect_to_new_session
-    before_action :set_credit, only: [:destroy, :update]
+    before_action :set_credit, only: [:destroy, :update, :show]
     before_action :define_credit, only: [:index, :create]
     before_action :get_all_credits, only: [:index, :create]
 
@@ -12,7 +12,6 @@ module Money
     end
 
     def show
-      @credit = Credit.find(params[:id])
       respond_to do |format|
         format.js
       end
@@ -63,7 +62,7 @@ module Money
     end
 
     def get_all_credits
-      @credits ||= current_user.current_company.try(:credits) || []
+      @credits ||= current_user.try(:credits) || []
     end
   end
 end

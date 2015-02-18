@@ -6,11 +6,10 @@ module Money
     before_action :company_account, only: [:index, :create]
 
     def index
-      if params[:id]
-        accounts = Account.where(company_id: params[:id])
-        render json: { data: accounts.order('accounts.created_at DESC') }
+      if params[:company_id]
+        accounts = Account.where(company_id: params[:company_id])
+        render json: accounts.order('accounts.created_at DESC'), status: 200
       else
-        @banks = Bank.all
         respond_to do |format|
           format.js
         end
@@ -18,14 +17,12 @@ module Money
     end
 
     def new
-      @banks = Bank.all
       respond_to do |format|
         format.js
       end
     end
 
     def show
-      @banks = Bank.all
       @account = Account.find(params[:id])
       respond_to do |format|
         format.js
@@ -51,8 +48,7 @@ module Money
     end
 
     def destroy
-      account = Account.find(params[:id])
-      account.destroy
+      @account.destroy
       respond_to do |format|
         format.js
       end
@@ -73,7 +69,6 @@ module Money
     end
 
     def define_account
-      @register ||= MoneyRegister.new
       @account ||= Account.new
     end
 

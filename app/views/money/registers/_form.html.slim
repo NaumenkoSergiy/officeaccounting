@@ -10,7 +10,7 @@
       .col-lg-4
         = f.label t('money.costs.bank_account_c')
         #select_account
-          = f.select :account_id, {}, {}, { class: 'company_accounts', data: { id: current_user.current_company.id, page: params[:page] }}
+          = f.select :account_id, {}, {}, { class: 'company_accounts', data: { path: new_money_account_path, id: current_user.current_company.id, page: params[:page] }}
     .row
       .col-lg-4
         = f.label t('money.costs.article')
@@ -19,11 +19,11 @@
       .col-lg-4
         = f.label t('contract.counterparty')
         .counterparty_select
-          = select_tag 'money_register[counterparty_id]', '', data: { id: current_user.current_company.id, page: params[:page] }
+          = select_tag 'money_register[counterparty_id]', '', class: 'company_counterparties', data: { type: 'new', path: new_purchases_counterparty_path, id: current_user.current_company.id, page: params[:page] }
       .col-lg-4
         = label_tag t('money.costs.contract')
         .contract_select
-          = select_tag 'money_register[contract_id]', '', class: 'counterparty_contracts' , data: { page: params[:page] }
+          = select_tag 'money_register[contract_id]', '', class: 'counterparty_contracts' , data: { path: new_contract_path, page: params[:page] }
     .row
       .col-lg-4
         = f.label t('money.costs.total')

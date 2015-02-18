@@ -77,91 +77,42 @@ function currencyRemove(id) {
   });
 };
 
-function validCashier() {
+function validateFormForNewCashier() {
   $('#new_cashier').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
       error.insertBefore(element);
     },
     rules: {
-      "cashier[name]": {
-        required: true
-      }
+      "cashier[name]": { required: true }
     },
     messages: {
-      "cashier[name]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      }
+      "cashier[name]": { required: I18n.t('validation.errors.cant_be_blank') }
     }
   });
 }
 
-function validBank() {
-  $('#new_bank').validate({
-    errorElement: "div",
-    errorPlacement: function(error, element) {
-      error.insertBefore(element);
-    },
-    rules: {
-      "bank[name]": {
-        required: true
-      },
-      "bank[code_edrpo]": {
-        required: true
-      },
-      "bank[mfo]": {
-        required: true
-      },
-      "bank[lawyer_adress]": {
-        required: true
-      }
-    },
-    messages: {
-      "bank[name]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      },
-      "bank[code_edrpo]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      },
-      "bank[mfo]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      },
-      "bank[lawyer_adress]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      }
-    }
-  });
-}
-
-function validCredit() {
+function validateFormForNewCredit() {
   $('#new_credit').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
       error.insertBefore(element);
     },
     rules: {
-      "credit[name]": {
-        required: true
-      },
-      "credit[account_number]": {
-        required: true
-      }
+      "credit[name]": { required: true },
+      "credit[account_number]": { required: true }
     },
     messages: {
-      "credit[name]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      },
-      "credit[account_number]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      }
+      "credit[name]": { required: I18n.t('validation.errors.cant_be_blank') },
+      "credit[account_number]": { required: I18n.t('validation.errors.cant_be_blank') }
     }
   });
 }
 
-function validRegister() {
+function validateFormForNewRegister() {
   $('#money_register_date').datepicker({ changeMonth: true, changeYear: true, yearRange: 'c-100:c+1' }).change('changeDate', function() {
     $(this).valid();
-  });;
+  });
   $('#new_money_register').validate({
     errorElement: "div",
     errorPlacement: function(error, element) {
@@ -169,38 +120,18 @@ function validRegister() {
     },
     ignore: "",
     rules: {
-      "money_register[date]": {
-        required: true
-      },
-      "money_register[total]": {
-        required: true
-      },
-      "money_register[counterparty_id]": {
-        required: true
-      },
-      "money_register[contract_id]": {
-        required: true
-      },
-      "money_register[account_id]": {
-        required: true
-      }
+      "money_register[date]": { required: true },
+      "money_register[total]": { required: true },
+      "money_register[counterparty_id]": { required: true },
+      "money_register[contract_id]": { required: true },
+      "money_register[account_id]": { required: true }
     },
     messages: {
-      "money_register[date]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      },
-      "money_register[total]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      },
-      "money_register[counterparty_id]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      },
-      "money_register[contract_id]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      },
-      "money_register[account_id]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      }
+      "money_register[date]": { required: I18n.t('validation.errors.cant_be_blank') },
+      "money_register[total]": { required: I18n.t('validation.errors.cant_be_blank') },
+      "money_register[counterparty_id]": { required: I18n.t('validation.errors.cant_be_blank') },
+      "money_register[contract_id]": { required: I18n.t('validation.errors.cant_be_blank') },
+      "money_register[account_id]": { required: I18n.t('validation.errors.cant_be_blank') }
     }
   });
 }

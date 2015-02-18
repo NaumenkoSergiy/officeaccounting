@@ -1,15 +1,15 @@
 module Money
   class ArticlesController < ApplicationController
     before_filter :redirect_to_new_session
-    before_action :set_article, only: [:destroy, :update]
+    before_action :set_article, only: [:destroy, :update, :show]
     before_action :define_article, only: [:index, :create]
+    before_action :all_articles, only: [:index, :create]
     
     def index
       if params[:page]
         acticles = Article.all
-        render json: { data: acticles }
+        render json: acticles, status: 200
       else
-        @articles = Article.all
         respond_to do |format|
           format.js
         end
@@ -17,7 +17,6 @@ module Money
     end
 
     def show
-      @article = Article.find(params[:id])
       respond_to do |format|
         format.js
       end
@@ -25,7 +24,6 @@ module Money
 
     def create
       article = Article.new article_params
-      @articles = Article.all
       flash[:error] = t('validation.errors.invalid_data') unless article.save
       respond_to do |format|
         format.js
@@ -61,6 +59,10 @@ module Money
 
     def define_article
       @article ||= Article.new
+    end
+
+    def all_articles
+      @articles = Article.all
     end
   end
 end

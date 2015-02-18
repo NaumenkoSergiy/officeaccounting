@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   delegate :counterparties, to: :current_company
   delegate :money_registers, to: :current_company
   delegate :currencies, to: :current_company
+  delegate :cashiers, to: :current_company
+  delegate :credits, to: :current_company
   
   after_create :send_activation_token
   

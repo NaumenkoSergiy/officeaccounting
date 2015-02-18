@@ -34,7 +34,7 @@ table.table
         td
           = link_to  counterparty.account, '#', data: { name: :account, placement: 'bottom', pk: counterparty, model: :counterparty, url: purchases_counterparty_path(counterparty.id), xeditable: true }
         td
-          = link_to counterparty.bank.name, '#', data: { name: :bank_id, type: 'select2', pk: counterparty, value: counterparty.bank_id, source: @banks.collect{|f| {value: f.id, text: f.name}}.to_json, placement: 'bottom', model: :counterparty, url:  purchases_counterparty_path(counterparty.id), xeditable: true }
+          = link_to counterparty.bank.name, '#', data: { name: :bank_id, pk: counterparty, value: counterparty.bank_id, placement: 'bottom', model: :counterparty, url:  purchases_counterparty_path(counterparty.id) }, class: 'change_bank'
         td
           = link_to  counterparty.adress, '#', data: { name: :adress, type: 'textarea', placement: 'bottom', pk: counterparty, model: :counterparty, url: purchases_counterparty_path(counterparty.id), xeditable: true }
         td style='width:40px;' 

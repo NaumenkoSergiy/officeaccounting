@@ -17,7 +17,7 @@
     .col-lg-6
       = f.label t('contract.counterparty')
       .counterparty_select
-        = select_tag 'contract[counterparty_id]', '', data: { id: current_user.current_company.id, page: params[:page] }
+        = select_tag 'contract[counterparty_id]', '', class: 'company_counterparties', data: { type: 'new', path: new_purchases_counterparty_path, id: current_user.current_company.id, page: params[:page] }
     .col-lg-6
       br
       - unless params[:page].nil?

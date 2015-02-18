@@ -8,19 +8,16 @@ module Purchases
 
     def index
       counterparties = Counterparty.where(company_id: params[:id])
-      render json: { data: counterparties.order('counterparties.created_at DESC') }
+      render json: counterparties.order('counterparties.created_at DESC'), status: 200
     end
 
     def new
-      @banks = Bank.all
       respond_to do |format|
         format.js
       end
     end
 
     def create
-      @banks = Bank.all
-      @contract = Contract.new
       @counterparty = Counterparty.new counterparty_params
       flash[:error] = 'Ви ввели не коректні данні' unless @counterparty.save
       respond_to do |format|

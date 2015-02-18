@@ -138,23 +138,26 @@ function openForm(idform, idbutton) {
 function setObserver() {
   var callback = function() {
     mo.disconnect();
-    switch (true) {
-      case ($(".company_accounts").length && $(".company_accounts  > option").length == 0):
-        Accounts.getAllAccounts();
-        break;
-      case ($(".articles").length && $(".articles  > option").length == 0):
-        Articles.getAllArticles();
-        break;
-      case ($('#money_register_counterparty_id').length && $("#money_register_counterparty_id > option").length == 0):
-        Counterparties.getAllCounterparties('#money_register_counterparty_id');
-        break;
-      case ($('#contract_counterparty_id').length && $("#contract_counterparty_id > option").length == 0):
-        Counterparties.getAllCounterparties('#contract_counterparty_id');
-        break;
-      case ($('.counterparty_contracts').length && $(".counterparty_contracts  > option").length == 0):
-        Contracts.getAllCounterpartyContracts();
-        break;
+
+    if ($('.company_accounts').length && $('.company_accounts  > option').length == 0) {
+      Accounts.load();
     }
+    else if ($('.articles').length && $('.articles  > option').length == 0) {
+      Articles.loadArticles();
+    }
+    else if ($('.company_counterparties').length > 0 && $('.company_counterparties[data-type=new]').length) {
+      Counterparties.loadOption();
+    }
+    else if ($('.counterparty_contracts').length && $('.counterparty_contracts  > option').length == 0) {
+      Contracts.loadContractsForCounterparty();
+    }
+    else if ($('.banks').length > 0 && $('.banks[data-type=new]').length) {
+      Banks.loadOption();
+    }
+    else if ($('.change_bank').length > 0 && !($( '.change_bank' ).length == $( '.change_bank.editable-click' ).length)) {
+      Banks.xeditableBanks();
+    }
+
     setObserver();
   }
   mo = new MutationObserver(callback),
@@ -165,36 +168,38 @@ function setObserver() {
   mo.observe(document.body, options);
 }
 
-function editableStart () {
+function editableStart() {
   return $("[data-xeditable=true]").each(function() {
     var name;
-    var valueNew = null;
+    var valueNew;
     var id = 0;
     return $(this).editable({
       ajaxOptions: {
         type: "PUT",
         dataType: "json"
       },
-      params: function(params) {
-        var railsParams;
-        id = params.pk.id;
-        name = params.name;
-        if ($(this).data().source) {
-          $.map( $(this).data().source, function( val, i ) {
-            if (val['id']==params.value){
-              valueNew = val['text'];
-            }
-          });
-        }
-        railsParams = {};
-        railsParams[$(this).data("model")] = {};
-        railsParams[$(this).data("model")][params.name] = params.value;
-        railsParams['page'] = 'show';
-        return railsParams;
-      },
+      params: xeditableParams,
       success: function(response, newValue) {
         $("table tr[value='" + id + "'] td#"+name).find('a').text(valueNew || newValue);
       }
     });
   });
 };
+
+xeditableParams = function(params) {
+  var railsParams;
+  id = params.pk.id;
+  name = params.name;
+  if ($(this).data().source) {
+    $.map( $(this).data().source, function( val, i ) {
+      if (val['id'] == params.value){
+        valueNew = val['text'];
+      }
+    });
+  }
+  railsParams = {};
+  railsParams[$(this).data("model")] = {};
+  railsParams[$(this).data("model")][params.name] = params.value;
+  railsParams['page'] = 'show';
+  return railsParams;
+}

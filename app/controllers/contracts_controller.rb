@@ -5,7 +5,7 @@ class ContractsController < ApplicationController
 
   def index
     counterparty_contracts = Contract.contracts_for_conterparty(params[:id])
-    render json: { data: counterparty_contracts.order('contracts.created_at DESC') }
+    render json: counterparty_contracts.order('contracts.created_at DESC'), status: 200
   end
 
   def new
@@ -16,7 +16,6 @@ class ContractsController < ApplicationController
   end
 
   def create
-    @register = MoneyRegister.new
     @contract = Contract.new contract_params
     flash[:error] = 'Ви ввели не коректні данні' unless @contract.save
     respond_to do |format|
