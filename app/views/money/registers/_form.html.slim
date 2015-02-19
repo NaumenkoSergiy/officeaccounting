@@ -6,7 +6,7 @@
         = f.text_field :date
       .col-lg-4
         = f.label t('money.costs.type_of_document')
-        = f.select :type_document, application_present.translate_array_for_select_options(document_type), {}, { class: 'select2' }
+        = f.select :type_document, application_present.translate_array_for_select_options(document_type(params[:page])), {}, { class: 'select2' }
       .col-lg-4
         = f.label t('money.costs.bank_account_c')
         #select_account
