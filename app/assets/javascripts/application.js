@@ -20,7 +20,6 @@
 //= require jquery.validate.additional-methods
 //= require bootstrap
 //= require bootstrap3-editable/bootstrap-editable
-//= require bootstrap-switch
 //= require bootstrap-select
 //= require select2
 //= require observer

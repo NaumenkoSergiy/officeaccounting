@@ -30,8 +30,6 @@ ua:
                 blank: "Поле не може бути пустим"
               name:
                 blank: "Поле не може бути пустим"
-  on_switch: "Вкл"
-  off_switch: "Вик"
   short_symbol: "Короткостроковий"
   long_symbol: "Довгостроковий"
   for_today: " на сьогодні "
@@ -40,6 +38,7 @@ ua:
   enter_bookkeeper: "Введіть головного ПІБ головного бухгалтера"
   customize_company: "Налаштування компанії"
   customize_delegetion: "Налаштування делегування компанією"
+  current_company: "Поточне підриємство"
   general: "Загальна"
   simplified: "Спрощена"
   view_symbol: "Перегляд"

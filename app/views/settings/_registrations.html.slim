@@ -67,7 +67,7 @@
   br
   = label_tag t('registrations.fields.registered_in_pension_fund')
   br
-  = link_to l(@company.registration.registered_in_pension_fund, format: :default), '#', data: { type: 'date', format: 'dd-mm-yyyy', placement: 'right', name: :registered_in_pension_fund, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
+   = link_to ldate(@company.registration.registered_in_pension_fund, format: :default), '#', data: { type: 'date', format: 'dd-mm-yyyy', placement: 'right', name: :registered_in_pension_fund, pk: @company, model: 'registration', url: "registrations/#{ @company.registration.id }", xeditable: true }
 
   br
   = label_tag t('registrations.fields.code_reg_pens_fund')

@@ -51,8 +51,6 @@ en:
               blank: "Can't be blank"
             name:
               blank: "Can't be blank"
-  on_switch: "On"
-  off_switch: "Off"
   short_symbol: "short-term"
   long_symbol: "long-term"
   for_today: " for today "
@@ -61,6 +59,7 @@ en:
   enter_bookkeeper: "Enter full name chief bookkeeper"
   customize_company: "Customize company"
   customize_delegetion: "Customize delegation a company"
+  current_company: "Current company"
   general: "General"
   simplified: "Simplified"
   view_symbol: "View"

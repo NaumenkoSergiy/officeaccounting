@@ -34,7 +34,6 @@ gem 'bootstrap-sass'
 gem 'bootstrap-x-editable-rails'
 gem 'state_machine'
 gem 'cancancan', '~> 1.9'
-gem "bootstrap-switch-rails"
 gem 'bootstrap-select-rails'
 gem "select2-rails"
 gem "i18n-js", ">= 3.0.0.rc8"

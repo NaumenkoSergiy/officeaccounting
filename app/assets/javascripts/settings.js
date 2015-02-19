@@ -315,22 +315,7 @@ $(document).ready(function() {
     }
   });
 
-  $('a[href="' + this.location.pathname + '"]').parent().addClass('current');
-
-  $('.companyChoose').on('switchChange.bootstrapSwitch', function() {
-    companyId = $(this).val();
-    $('.bootstrap-switch-on').next().next().show().css({ 'font-size':'12px', 'margin-left':'10px' });
-    $('.bootstrap-switch-off').next().next().hide();
-
-    $.ajax({
-      type: 'POST',
-      url: '/settings/companies/change_company/',
-      data: { company_id: companyId },
-      success: function(results) {
-        $('.navbar-top-links li .current-company-name').text(results.company_name);
-      }
-    });
-  });
+  $('#side-menu a[href="' + this.location.pathname + '"]').parent().addClass('current');
 
   $('.role').selectpicker({'width':'210px'});
 
@@ -350,13 +335,20 @@ $(document).ready(function() {
       success: numberPdv
     });
   });
-  $(".companyChoose").bootstrapSwitch({ 'size':'small','offColor':'danger', 'onText':I18n.t('on_switch'), 'offText':I18n.t('off_switch') });
   
-  $('.bootstrap-switch-on').next().next().css({ 'font-size':'13px', 'margin-left':'10px' }).show();
-
   $('.info').tooltipster({ theme: 'tooltipster-shadow', position: 'right', maxWidth: '240' });
 
   $('#registration_risk_class').selectpicker({'width':'474', 'margin-bottom':'10px'});
 
   $('#registration_tax_system').selectpicker({'width':'150'});
+
+  $('#company-short-name').on('save', function(e, params) {
+    company_id = $(this).data("pk").id
+    $('#company-select').find("[data-id='" + company_id + "']").text(params.newValue);
+  });
+
+  $('#company-full-name').on('save', function(e, params) {
+    $('#label-full-name').text(params.newValue);
+  });
+
 });
