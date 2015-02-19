@@ -17,8 +17,9 @@
             i.fa.fa-cog
             = t('settings')
           ul.dropdown-menu.settings role="menu" aria-labelledby="dropdownMenu1"
-            li role="presentation"
-              = link_to t('contract.contracts'), new_contract_path, remote: true, type: :get
+            - if current_user.current_company
+              li role="presentation"
+                = link_to t('contract.contracts'), new_contract_path, remote: true, type: :get
         li
           = link_to destroy_sessions_path
             i.fa.fa-sign-out
