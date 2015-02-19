@@ -24,10 +24,11 @@ Reference a ticket in every commit you make.
 If there is no ticket for what you're working on, create a ticket for it.
 
 #### Commits
-Commit message should consist of title(or summary) and url to the user story.
-
-firs line: the "summary" must be no more than 70-75 characters
-next line: the url to your feature on Trello
+Commit message should consist of title(or summary) and url to a user story.
+```sh
+  first line: the "summary" must be no more than 70-75 characters;
+  next line:  the url to your feature on Trello
+```
 
 #### Pull requests
 Push your code to github and make a PR early so that you can get feedback quickly.
