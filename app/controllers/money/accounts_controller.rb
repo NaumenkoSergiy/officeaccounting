@@ -1,28 +1,36 @@
 module Money
   class AccountsController < ApplicationController
     before_filter :redirect_to_new_session
-    before_action :set_account, only: [:destroy, :update]
-    before_action :define_account, only: [:index, :create]
+    before_action :set_account, only: [:destroy, :update, :show]
+    before_action :define_account, only: [:index, :new]
     before_action :company_account, only: [:index, :create]
 
     def index
-      @banks = Bank.all
+      if params[:company_id]
+        accounts = Account.where(company_id: params[:company_id])
+        render json: accounts.order('accounts.created_at DESC'), status: 200
+      else
+        respond_to do |format|
+          format.js
+        end
+      end
+    end
+
+    def new
       respond_to do |format|
         format.js
       end
     end
 
     def show
-      @banks = Bank.all
-      @account = Account.find(params[:id])
       respond_to do |format|
         format.js
       end
     end
 
     def create
-      account = Account.new account_params
-      flash[:error] = t('validation.errors.invalid_data') unless account.save
+      @account = Account.new account_params
+      flash[:error] = t('validation.errors.invalid_data') unless @account.save
       respond_to do |format|
         format.js
       end
@@ -39,8 +47,7 @@ module Money
     end
 
     def destroy
-      account = Account.find(params[:id])
-      account.destroy
+      @account.destroy
       respond_to do |format|
         format.js
       end
@@ -65,7 +72,7 @@ module Money
     end
 
     def company_account
-      @accounts = current_user.current_company.accounts
+      @accounts = current_user.accounts.order('accounts.created_at DESC')
     end
   end
 end

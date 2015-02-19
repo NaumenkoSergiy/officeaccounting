@@ -1,27 +1,30 @@
 module Money
   class ArticlesController < ApplicationController
     before_filter :redirect_to_new_session
-    before_action :set_article, only: [:destroy, :update]
-    before_action :define_article, only: [:index, :create]
+    before_action :set_article, only: [:destroy, :update, :show]
+    before_action :define_article, only: :index
+    before_action :all_articles, only: [:index, :create]
     
     def index
-      @articles = Article.all
-      respond_to do |format|
-        format.js
+      if params[:page]
+        acticles = Article.all
+        render json: acticles, status: 200
+      else
+        respond_to do |format|
+          format.js
+        end
       end
     end
 
     def show
-      @article = Article.find(params[:id])
       respond_to do |format|
         format.js
       end
     end
 
     def create
-      article = Article.new article_params
-      @articles = Article.all
-      flash[:error] = t('validation.errors.invalid_data') unless article.save
+      @article = Article.new article_params
+      flash[:error] = t('validation.errors.invalid_data') unless @article.save
       respond_to do |format|
         format.js
       end
@@ -38,8 +41,7 @@ module Money
     end
 
     def destroy
-      article = Article.find(params[:id])
-      article.destroy
+      @article.destroy
       respond_to do |format|
         format.js
       end
@@ -57,6 +59,10 @@ module Money
 
     def define_article
       @article ||= Article.new
+    end
+
+    def all_articles
+      @articles = Article.all
     end
   end
 end

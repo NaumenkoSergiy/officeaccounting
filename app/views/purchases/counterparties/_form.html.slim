@@ -18,7 +18,7 @@
         = f.text_field :account, :class => 'number'
       .col-lg-3
         = f.label t('money.accounts.bank')
-        = f.select :bank_id, options_for_select(@banks.collect {|c| [c[:name], c[:id]]}), class: 'accountSelect'
+        = select_tag 'counterparty[bank_id]', '', class: 'banks', data: { type: 'new'}
       .col-lg-3
         = f.label t('bank_accounts.mfo')
         = f.text_field :mfo, :class => 'number', maxlength: 8
@@ -26,7 +26,7 @@
         = f.label t('counterparty.is_resident?'), class: 'resident_label'
         = f.check_box :resident
         - unless params[:page].nil?
-          =f.hidden_field :page, value: 'contract'
+          =f.hidden_field :page, value: params[:page]
     .row
       .col-lg-3
         = f.submit t('buttons.add')

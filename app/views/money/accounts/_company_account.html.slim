@@ -1,19 +1,18 @@
-#companyAccount.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1" 
-  .modal-dialog
-    .modal-content
-      .modal-header
-        .row
-          .col.col-lg-12
-            button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
-        .row
-          .col.col-lg-12
-            h4#myModalLabel.modal-title = t('money.accounts_title')
-            = link_to t('buttons.add_new'), '#', class: 'btn btn-primary ', id: 'add_new_account'
-        .row
-          .col.col-lg-12
-            #account_show
-      .modal-body
-        .row
-          .col.col-lg-12
-            #account_form
-            #account_list
+.modal-dialog
+  .modal-content
+    .modal-header
+      .row
+        .col.col-lg-12
+          button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
+      .row
+        .col.col-lg-12
+          h4#myModalLabel.modal-title = t('money.accounts_title')
+          = link_to t('buttons.add_new'), '#', class: 'btn btn-primary ', id: 'add_new_account'
+      .row
+        .col.col-lg-12
+          #account_show
+    .modal-body
+      .row
+        .col.col-lg-12
+          #account_form
+          #account_list

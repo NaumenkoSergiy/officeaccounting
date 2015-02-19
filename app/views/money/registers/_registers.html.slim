@@ -1,0 +1,19 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      .row
+        .col.col-lg-12
+          button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
+      .row
+        .col.col-lg-12
+          h4#myModalLabel.modal-title
+            - if params[:page] =='costs'
+              = t('buttons.spending')
+            - else
+              = t('buttons.income')
+            .notification.error style='display:none;'
+            .success style='display:none;'
+    .modal-body
+      .row
+        .col.col-lg-12
+          #costs_form

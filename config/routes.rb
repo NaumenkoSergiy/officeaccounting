@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
   resources :users, only: [:new, :create]
   resources :settings, only: [:index, :show]
-  resources :registers
   resources :password_resets
   resources :money, only: [:index]
   resources :delegates, only: [:create, :destroy, :update]
@@ -36,6 +35,7 @@ Rails.application.routes.draw do
     resources :accounts
     resources :cashiers
     resources :articles
+    resources :registers
   end
 
   namespace 'purchases' do

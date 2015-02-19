@@ -1,28 +1,30 @@
 module Money
   class BanksController < ApplicationController
     before_filter :redirect_to_new_session
-    before_action :set_bank, only: [:destroy, :update]
-    before_action :define_bank, only: [:index, :create]
+    before_action :set_bank, only: [:destroy, :update, :show]
+    before_action :define_bank, only: :index
+    before_action :all_banks, only: [:index, :create]
 
     def index
-      @banks = Bank.all
-      respond_to do |format|
-        format.js
+      if params[:page]
+        respond_to do |format|
+          format.js
+        end
+      else
+        banks = application_present.options_for_select2(Bank.pluck(:name, :id))
+        render json: banks, status: 200
       end
     end
 
     def show
-      @bank = Bank.find(params[:id])
-      @banks = Bank.all
       respond_to do |format|
         format.js
       end
     end
 
     def create
-      bank = Bank.new bank_params
-      @banks = Bank.all
-      flash[:error] = t('validation.errors.invalid_data') unless bank.save
+      @bank = Bank.new bank_params
+      flash[:error] = t('validation.errors.invalid_data') unless @bank.save
       respond_to do |format|
         format.js
       end
@@ -39,8 +41,7 @@ module Money
     end
 
     def destroy
-      bank = Bank.find(params[:id])
-      bank.destroy
+      @bank.destroy
       respond_to do |format|
         format.js
       end
@@ -58,6 +59,10 @@ module Money
 
     def define_bank
       @bank ||= Bank.new
+    end
+
+    def all_banks
+      @banks = Bank.all
     end
   end
 end

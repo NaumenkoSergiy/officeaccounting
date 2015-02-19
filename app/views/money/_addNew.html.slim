@@ -15,8 +15,8 @@
       .modal-body
         .row
           .col.col-lg-4
-            = link_to t('buttons.income'), '#', class: 'btn  btn-primary btn-modal'
-            = link_to t('buttons.spending'), '#', class: 'btn  btn-primary btn-modal'
+            = link_to t('buttons.income'), new_money_register_path(page: :income), remote: true, class: 'btn  btn-primary btn-modal'
+            = link_to t('buttons.spending'), new_money_register_path(page: :costs), remote: true, class: 'btn  btn-primary btn-modal'
             = link_to t('buttons.expense_reports'), '#', class: 'btn  btn-primary btn-modal'
             = link_to t('buttons.buy_currency'), '#', class: 'btn  btn-primary btn-modal'
             = link_to t('buttons.currency_sale'), '#', class: 'btn  btn-primary btn-modal'
@@ -24,9 +24,9 @@
             = link_to t('buttons.balances'), '#', class: 'btn  btn-primary btn-modal'
             = link_to t('buttons.statement_under_report'), '#', class: 'btn  btn-primary btn-modal'
           .col.col-lg-4
-            = link_to t('buttons.accounts'), "money/accounts", remote: true, type: :get, class: 'btn  btn-primary btn-modal'
+            = link_to t('buttons.accounts'), money_accounts_path, remote: true, type: :get, class: 'btn  btn-primary btn-modal'
             = link_to t('buttons.сashier'), "money/cashiers", remote: true, type: :get, class: 'btn  btn-primary btn-modal'
-            = link_to t('buttons.banks'), "money/banks", remote: true, type: :get, class: 'btn  btn-primary btn-modal'
+            = link_to t('buttons.banks'), money_banks_path(page: :banks), remote: true, class: 'btn  btn-primary btn-modal'
             = link_to t('buttons.currency'), '#', class: 'btn  btn-primary btn-modal', data: { toggle: "modal", target: "#companyCurrency"}
             = link_to t('buttons.exchange_rates'), '#',  data: { toggle: "modal", target: "#moneyCurrency"}, class: 'btn  btn-primary btn-modal'
             = link_to t('buttons.loans_borrowings'), money_credits_path, class: 'btn btn-primary btn-modal', remote: true

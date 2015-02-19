@@ -19,10 +19,10 @@ table.table
         td
           = link_to contract.number, '#', data: { name: :number, placement: 'bottom', pk: contract, model: :contract, url: contract_path(contract.id), xeditable: true }
         td
-          = link_to application_present.constant_parse(Contract::CONTRACT_TYPE, contract.contract_type), '#',  data: { name: :contract_type, type: 'select2', pk: contract, value: contract.contract_type, source:application_present.translate_select2_hash(Contract::CONTRACT_TYPE), placement: 'bottom', model: :contract, url: contract_path(contract.id), xeditable: true }
+          = link_to t(contract.contract_type), '#',  data: { name: :contract_type, type: 'select2', pk: contract, value: contract.contract_type, source:application_present.translate_array_select2_options(Contract::CONTRACT_TYPE), placement: 'bottom', model: :contract, url: contract_path(contract.id), xeditable: true }
         td
           = link_to l(contract.validity, format: :default), '#', data: { name: :validity, type: 'date', format: 'dd-mm-yyyy', placement: 'bottom', pk: contract, model: :contract, url: contract_path(contract.id), xeditable: true }
         td
-          = link_to contract.counterparty.name,'#', data: { name: :counterparty_id, type: 'select2', pk: contract, value: contract.counterparty.id, source:application_present.options_for_select2(@counterparties.pluck(:name, :id)), placement: 'bottom', model: :contract, url: contract_path(contract.id), xeditable: true }
+          = link_to contract.counterparty_including_deleted.name, '#', data: { name: :counterparty_id, type: 'select2', pk: contract, value: contract.counterparty_including_deleted.id, source:application_present.options_for_select2(@counterparties.pluck(:name, :id)), placement: 'bottom', model: :contract, url: contract_path(contract.id), xeditable: true }
         td style='width: 40px;'
           = application_present.destroy_link contract_path(contract.id)

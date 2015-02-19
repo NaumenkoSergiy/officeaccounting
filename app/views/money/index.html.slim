@@ -8,12 +8,14 @@
     = render 'money/currencies/currency'
     = render 'money/currencies/company_currency'
     = render 'money/banks/company_banks'
-    = render 'money/accounts/company_account'
     = render 'money/credits/company_credits'
     = render 'money/cashiers/company_cashier'
     = render 'money/articles/article_cash'
+    #costs.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
+    #companyAccount.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1" 
   .row
-    |Тут буде таблиця! 
+    #registers_list
+      = render 'money/registers/list'
  
 javascript:
   ratesLoad();

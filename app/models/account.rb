@@ -1,6 +1,10 @@
 class Account < ActiveRecord::Base
+
+  acts_as_paranoid
+
   belongs_to :company
   belongs_to :bank
+  has_many :money_registers
   
   validates :name, presence: true
   validates_numericality_of :number

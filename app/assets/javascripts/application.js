@@ -23,12 +23,14 @@
 //= require bootstrap-switch
 //= require bootstrap-select
 //= require select2
+//= require observer
 
 LEFT_BAR_HIDE = 45;
 LEFT_BAR_SHOW = 220;
 
 $(document).on('ready', function(){
-
+  //observer dom change
+  setObserver();
   // left bar toggle
   $('.navbar-minimalize').click(function () {
     if ($('#page-wrapper').css('margin-left')==LEFT_BAR_HIDE+'px') {
@@ -113,4 +115,74 @@ function openForm(idform, idbutton) {
   $("#" + idbutton).click(function() {
     $("form#" + idform).toggle();
   });
+}
+
+//observer dom change
+function setObserver() {
+  var callback = function() {
+    mo.disconnect();
+
+    if ($('.company_accounts').length && $('.company_accounts  > option').length == 0) {
+      Accounts.load();
+    }
+    else if ($('.articles').length && $('.articles  > option').length == 0) {
+      Articles.load();
+    }
+    else if ($('.company_counterparties').length > 0 && $('.company_counterparties[data-type=new]').length) {
+      Counterparties.loadOption();
+    }
+    else if ($('.counterparty_contracts').length && $('.counterparty_contracts  > option').length == 0) {
+      Contracts.loadContractsForCounterparty();
+    }
+    else if ($('.banks').length > 0 && $('.banks[data-type=new]').length) {
+      Banks.loadOption();
+    }
+    else if ($('.change_bank').length > 0 && !($( '.change_bank' ).length == $( '.change_bank.editable-click' ).length)) {
+      Banks.xeditableBanks();
+    }
+
+    setObserver();
+  }
+  mo = new MutationObserver(callback),
+  options = {
+      'childList': true,
+      'subtree': true
+  }
+  mo.observe(document.body, options);
+}
+
+function editableStart() {
+  return $("[data-xeditable=true]").each(function() {
+    var name;
+    var valueNew;
+    var id = 0;
+    return $(this).editable({
+      ajaxOptions: {
+        type: "PUT",
+        dataType: "json"
+      },
+      params: xeditableParams,
+      success: function(response, newValue) {
+        $("table tr[value='" + id + "'] td#"+name).find('a').text(valueNew || newValue);
+      }
+    });
+  });
+};
+
+xeditableParams = function(params) {
+  var railsParams;
+  id = params.pk.id;
+  name = params.name;
+  if ($(this).data().source) {
+    $.map( $(this).data().source, function( val, i ) {
+      if (val['id'] == params.value){
+        valueNew = val['text'];
+      }
+    });
+  }
+  railsParams = {};
+  railsParams[$(this).data("model")] = {};
+  railsParams[$(this).data("model")][params.name] = params.value;
+  railsParams['page'] = 'show';
+  return railsParams;
 }

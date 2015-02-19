@@ -6,9 +6,16 @@ class User < ActiveRecord::Base
 
   has_many :user_companies
   has_many :companies, through: :user_companies
-  has_many :registers
   has_one :user_company, -> { where(current_company: true) }
   has_one :current_company, through: :user_company, source: :company
+
+  delegate :accounts, to: :current_company
+  delegate :contracts, to: :current_company
+  delegate :counterparties, to: :current_company
+  delegate :money_registers, to: :current_company
+  delegate :currencies, to: :current_company
+  delegate :cashiers, to: :current_company
+  delegate :credits, to: :current_company
   
   after_create :send_activation_token
   

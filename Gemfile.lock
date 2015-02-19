@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ActsAsParanoid/acts_as_paranoid.git
+  revision: ddcd1915179c73f74985af6bc8935321ca2fe08d
+  specs:
+    acts_as_paranoid (0.5.0.beta1)
+      activerecord (~> 4.0)
+      activesupport (~> 4.0)
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: e4f8dbbbb8046b719e100fddf83319b9e6cb8796
   specs:
@@ -18,6 +26,7 @@ GIT
 
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.1.1)
       actionpack (= 4.1.1)
@@ -165,6 +174,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.1)
       sprockets-rails (~> 2.0)
+    rails-assets-jquery (2.1.3)
+    rails-assets-observer (1.0.9)
+      rails-assets-jquery
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -267,6 +279,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  acts_as_paranoid!
   bootstrap-sass
   bootstrap-select-rails
   bootstrap-switch-rails
@@ -289,6 +302,7 @@ DEPENDENCIES
   passenger
   pry
   rails (= 4.1.1)
+  rails-assets-observer
   rails_12factor
   rspec
   rspec-collection_matchers

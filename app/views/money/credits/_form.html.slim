@@ -15,7 +15,7 @@
 
     = label_tag t('money.accounts.bank')
     br
-    = f.select :bank_id, options_for_select(Bank.select(:name, :id).collect{|b| [b.name, b.id]}), {}, { class: 'select2' }
+    = select_tag 'credit[bank_id]', '', class: 'banks', data: { type: 'new'}
     br
     br
     = f.submit t('buttons.add')

@@ -4,7 +4,7 @@ class MoneyController < ApplicationController
 
   def index
     @currency = Currency.new
-    @currencies = current_user.current_company.try(:currencies) || {}
-    @banks = Bank.all
+    @currencies = current_user.try(:currencies) || {}
+    @registers = current_user.money_registers.order('money_registers.created_at DESC').limit(7)
   end
 end

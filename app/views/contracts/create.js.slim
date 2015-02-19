@@ -1,7 +1,11 @@
 - if flash[:error]
-  | $('.notification.error').show().text("#{flash[:error]}");
+  | $('#contracts .notification.error').show().text("#{flash[:error]}").fadeOut(5000);
 - else
   | $('#contract_list').html("#{j render 'contracts/list'}");
   | $('#new_contract').hide()[0].reset();
   | editableStart();
+  - if params[:contract][:page] == 'costs' || params[:contract][:page] == 'income'
+    | $('.contract_select').html("#{j select_tag 'money_register[contract_id]', '', class: 'counterparty_contracts' , data: { path: new_contract_path, page: params[:contract][:page] }}");
+    | $('#contracts').modal('hide');
+  | Contracts.loadContract();
   | $.unblockUI();

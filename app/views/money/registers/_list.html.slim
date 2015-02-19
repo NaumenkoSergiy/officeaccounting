@@ -1,0 +1,43 @@
+table.table
+  thead
+    tr style='background-color: #F2F1F0;'
+      th
+        = t('money.costs.date')
+      th
+        = t('money.costs.type_of_document')
+      th
+        = t('money.costs.bank_account_c')
+      th
+        = t('money.costs.article')
+      th
+        = t('contract.counterparty')
+      th
+        = t('money.costs.contract')
+      th
+        = t('money.costs.total')
+      th
+        = t('contract.type')
+      th
+
+  tbody
+    - @registers.each do |register|
+      tr class='register_#{ register.id } #{register.type_money}'
+        td style='width: 84px;'
+          = l(register.date, format: :default)
+        td
+          = t("#{register.type_document}")
+        td
+          = register.account_including_deleted.number
+        td
+          = register.article.name
+        td
+          = register.counterparty_including_deleted.name
+        td
+          = register.contract_including_deleted.number
+        td
+          = register.total
+        td
+          = t(register.type_money)
+        td style='width:40px;'
+          = application_present.destroy_link money_register_path(register)
+

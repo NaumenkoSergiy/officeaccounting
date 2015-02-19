@@ -91,3 +91,14 @@
 }
 
 #cashier_list #name { width: 260px; }
+
+#costs {
+  .modal-dialog {
+    margin-top: 70px;
+    width: 880px;
+  }
+}
+
+.income { background-color:  rgb(132, 255, 84); }
+
+.costs { background-color: rgb(242, 135, 135); }
