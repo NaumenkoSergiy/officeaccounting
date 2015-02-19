@@ -1,8 +1,8 @@
 module Money
   class AccountsController < ApplicationController
     before_filter :redirect_to_new_session
-    before_action :set_account, only: [:destroy, :update]
-    before_action :define_account, only: [:index, :new, :create]
+    before_action :set_account, only: [:destroy, :update, :show]
+    before_action :define_account, only: [:index, :new]
     before_action :company_account, only: [:index, :create]
 
     def index
@@ -23,15 +23,14 @@ module Money
     end
 
     def show
-      @account = Account.find(params[:id])
       respond_to do |format|
         format.js
       end
     end
 
     def create
-      account = Account.new account_params
-      flash[:error] = t('validation.errors.invalid_data') unless account.save
+      @account = Account.new account_params
+      flash[:error] = t('validation.errors.invalid_data') unless @account.save
       respond_to do |format|
         format.js
       end

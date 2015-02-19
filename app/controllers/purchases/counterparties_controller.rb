@@ -19,7 +19,7 @@ module Purchases
 
     def create
       @counterparty = Counterparty.new counterparty_params
-      flash[:error] = 'Ви ввели не коректні данні' unless @counterparty.save
+      flash.now[:error] = t('validation.errors.all_fields') unless @counterparty.save
       respond_to do |format|
         format.js
       end
@@ -37,7 +37,6 @@ module Purchases
 
     def destroy
       @counterparty.destroy
-      @counterparty_id = params[:id]
       respond_to do |format|
         format.js
       end
@@ -61,7 +60,7 @@ module Purchases
     end
     
     def define_counterparty
-      @counterparty ||= current_user.current_company.counterparties.new
+      @counterparty ||= Counterparty.new
     end
 
     def all_counterparties

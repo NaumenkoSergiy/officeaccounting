@@ -2,7 +2,7 @@ module Money
   class CashiersController < ApplicationController
     before_filter :redirect_to_new_session
     before_action :set_cashier, only: [:destroy, :update, :show]
-    before_action :define_cashier, only: [:index, :create]
+    before_action :define_cashier, only: :index
     before_action :company_cashiers, only: [:index, :create]
 
     def index
@@ -18,8 +18,8 @@ module Money
     end
 
     def create
-      cashier = Cashier.new cashier_params
-      flash[:error] = t('validation.errors.invalid_data') unless cashier.save
+      @cashier = Cashier.new cashier_params
+      flash[:error] = t('validation.errors.invalid_data') unless @cashier.save
       respond_to do |format|
         format.js
       end

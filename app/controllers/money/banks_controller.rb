@@ -2,7 +2,7 @@ module Money
   class BanksController < ApplicationController
     before_filter :redirect_to_new_session
     before_action :set_bank, only: [:destroy, :update, :show]
-    before_action :define_bank, only: [:index, :create]
+    before_action :define_bank, only: :index
     before_action :all_banks, only: [:index, :create]
 
     def index
@@ -23,8 +23,8 @@ module Money
     end
 
     def create
-      bank = Bank.new bank_params
-      flash[:error] = t('validation.errors.invalid_data') unless bank.save
+      @bank = Bank.new bank_params
+      flash[:error] = t('validation.errors.invalid_data') unless @bank.save
       respond_to do |format|
         format.js
       end

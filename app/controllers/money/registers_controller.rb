@@ -11,7 +11,6 @@ module Money
     end
 
     def create
-      @contract = Contract.new
       @register = MoneyRegister.new register_params
       @registers = current_user.money_registers.order('money_registers.created_at DESC')
       flash.now[:error] = t('validation.errors.all_fields') unless @register.save

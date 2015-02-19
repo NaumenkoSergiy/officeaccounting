@@ -3,7 +3,7 @@ module Money
     before_filter :redirect_to_new_session
     before_action :set_credit, only: [:destroy, :update, :show]
     before_action :define_credit, only: [:index, :create]
-    before_action :get_all_credits, only: [:index, :create]
+    before_action :all_credits, only: [:index, :create]
 
     def index
       respond_to do |format|
@@ -40,8 +40,7 @@ module Money
     end
 
     def destroy
-      credit = Credit.find(params[:id])
-      credit.destroy
+      @credit.destroy
       respond_to do |format|
         format.js
       end
@@ -58,10 +57,10 @@ module Money
     end
 
     def define_credit
-      @credit ||= current_user.current_company.credits.new
+      @credit ||= current_user.credits.new
     end
 
-    def get_all_credits
+    def all_credits
       @credits ||= current_user.try(:credits) || []
     end
   end
