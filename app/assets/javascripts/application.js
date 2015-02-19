@@ -28,7 +28,9 @@
 LEFT_BAR_HIDE = 45;
 LEFT_BAR_SHOW = 220;
 
-$(document).on('ready', function(){
+$(document).on('ready', function() {
+  //set xeditable
+  editableStart();
   //observer dom change
   setObserver();
   // left bar toggle
