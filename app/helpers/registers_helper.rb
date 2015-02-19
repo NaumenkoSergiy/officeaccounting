@@ -1,5 +1,5 @@
 module RegistersHelper
-  def document_type(page)
+  def document_type(page = '')
     if page == 'costs'
       MoneyRegister::DOCUMENT_TYPE_COST
     else
