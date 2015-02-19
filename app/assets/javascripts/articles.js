@@ -1,5 +1,5 @@
 var Articles = {
-  loadArticles: function() {
+  load: function() {
     page = $('.articles').data('page');
     $.ajax({
       type: 'GET',

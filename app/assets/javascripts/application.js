@@ -143,7 +143,7 @@ function setObserver() {
       Accounts.load();
     }
     else if ($('.articles').length && $('.articles  > option').length == 0) {
-      Articles.loadArticles();
+      Articles.load();
     }
     else if ($('.company_counterparties').length > 0 && $('.company_counterparties[data-type=new]').length) {
       Counterparties.loadOption();
