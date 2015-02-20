@@ -343,7 +343,7 @@ $(document).ready(function() {
   $('#registration_tax_system').selectpicker({'width':'150'});
 
   $('#company-short-name').on('save', function(e, params) {
-    company_id = $(this).data("pk").id
+    company_id = $(this).data("pk").id;
     $('#company-select').find("[data-id='" + company_id + "']").text(params.newValue);
   });
 
