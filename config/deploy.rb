@@ -35,7 +35,7 @@ set :use_sudo, false
 set :scm, :git
 
 desc "Run rake task on server"
- 
+
 task :sake do
   on roles(:app), in: :sequence, wait: 5 do
     within release_path do
