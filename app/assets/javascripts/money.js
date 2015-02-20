@@ -1,26 +1,11 @@
 $(document).ready(function() {
-  $('#currency_form').click(function () {
-    data = {
-      currency: {
-        name: $('.currencySelect :selected').val()
-      }
-    };
-    
-    $.ajax({
-      type: 'POST',
-      url: '/money/currencies',
-      data: data,
-      success: RemoveOptionsCurrensy
-
-    });
-  });
 
   curr_date = new Date();
 
   $('#moneyCurrency h4').append(I18n.t('for_today') + $.datepicker.formatDate('dd.mm.yy', curr_date));
   
 
-  $('.currencySelect, .editable-select').select2({width: '255px'});
+  $('.editable-select').select2({width: '255px'});
 
   $('#moneyCurrency .currencyRemove').remove();
 
@@ -38,22 +23,47 @@ function ratesLoad() {
   return currencyRate.response;
 }
 
-function RemoveOptionsCurrensy() {
-  $('.currency').each(function(){
-    currency = $(this).last().text();
-    selector = "select option:contains(" + currency + ")";
-    $(selector).remove();
-    $('.select2-chosen').text($('select option:first').text());
-    currencyShort = currency.slice(0,3);
-    $('.currency_rates[value=' + currencyShort + '], .currency[value=' + currencyShort + ']').prepend('<div class="flag ' + currencyShort + '"></div>');
-
-    $.each(currencyRate.responseJSON.query.results.rate, function(i, v) {
-      v = currencyRate.responseJSON.query.results.rate[i];
-      if (v.id == currencyShort + "UAH") {
-        $('.currency_rates[value=' + currencyShort + ']').after('<td>' + v.Bid + ' грн.</td><td>' + v.Ask + ' грн.</td>');
+function addCurrency() {
+  if ($('.currencySelect option').length == 0) {
+    $('#currency_form').hide();
+  }
+  $('#currency_form').click(function () {
+    selected = $('.currencySelect :selected');
+    data = {
+      currency: {
+        name: selected.val()
       }
+    };
+    $.ajax({
+      type: 'POST',
+      url: '/money/currencies',
+      data: data,
+      success: RemoveOptionsCurrensy(selected)
     });
   });
+}
+
+function addFlags() {
+  $('.currency').each(function() {
+    value = $(this).attr("value")
+    $(this).prepend('<div class="flag ' + value + '"></div>')
+  })
+}
+
+function addRates() {
+  $.each(currencyRate.responseJSON.query.results.rate, function(i, v) {
+    currency =  v.id.slice(0,3);
+    element = $('.currency_rates[value=' + currency + ']');
+    //Add rates
+    element.after('<td>' + v.Bid + ' грн.</td><td>' + v.Ask + ' грн.</td>');
+    //Add flag images before currency
+    element.prepend('<div class="flag ' + currency + '"></div>');
+  });
+};
+
+function RemoveOptionsCurrensy(selected) {
+  selected.remove();
+  $('#companyCurrency .select2-chosen').text($('#companyCurrency select option:first').text());
   if ($('.currencySelect option').length == 0) {
     $('#currency_form').hide();
   }
@@ -63,13 +73,14 @@ function currencyRemove(id) {
   $.ajax({
     type: 'DELETE',
     url: '/money/currencies/' + id,
+    async: false,
     success: function(){
-      currencies = $('.currency_' + id + ' td:first').text();
-      $('.currency_' + id).remove();
+      currencies = $('.currencyRates_' + id + ' td:first').text();
       $('.currencyRates_' + id).remove();
       value = currencies.slice(0,3);
       $('select').append('<option value=' + value + '>' + currencies + '</option>');
       $('#currency_form').show();
+      $('#companyCurrency .select2-chosen').text($('#companyCurrency select option:first').text());
     }
   });
 };

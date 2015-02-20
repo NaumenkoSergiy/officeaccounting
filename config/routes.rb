@@ -29,13 +29,14 @@ Rails.application.routes.draw do
   end
 
   namespace 'money' do
-    resources :currencies, only: [:create, :destroy]
+    resources :currencies
     resources :banks
     resources :credits
     resources :accounts
     resources :cashiers
     resources :articles
     resources :registers
+    resources :exchange_rates
   end
 
   namespace 'purchases' do

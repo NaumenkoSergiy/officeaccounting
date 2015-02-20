@@ -1,0 +1,3 @@
+= form_tag '', method: :post, remote: :true do
+            = select_tag :name, options_for_select(application_present.current_company_currency_select(@currencies)), class: "currencySelect"
+            = submit_tag t('buttons.add'), type: :button, id: :currency_form, class: "btn btn-primary"
