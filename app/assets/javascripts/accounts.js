@@ -1,27 +1,30 @@
 var Accounts = {
-  load: function() {
-    var companyAccount = $('.company_accounts');
-    var id = companyAccount.data('id');
-    var page = companyAccount.data('page');
-    var path = companyAccount.data('path');
-
+  load: function(callback) {
     $.ajax({
       type: 'GET',
       url: '/money/accounts/',
-      data: { company_id: id },
-      success: function(r) {
-        if (r.length == 0 ) {
-          $('#select_account').html("<a data-remote='true' href=" + path + "?page=" + page +
-            " type='get'>" + I18n.t('money.accounts.accounts_info') + "</a>");
-        } else {
-          $.each(r, function(i) {
-            v = r[i];
-            $('.company_accounts').append('<option value=' + v.id + '>' + v.number + '</option>');
-          });
-          $('#select_account').prepend("<a data-remote='true' href=" + path + "?page=" + page +
-            " type='get'>" + I18n.t('contract.add_new') + "</a>");
-          $('.company_accounts').select2();
-        }
+      data: { company_id: 1 },
+      success: callback
+    });
+  },
+
+  loadOption: function() {
+    Accounts.load(function(r) {
+      var companyAccount = $('.company_accounts');
+      var id = companyAccount.data('id');
+      var page = companyAccount.data('page');
+      var path = companyAccount.data('path');
+      if (r.length == 0 ) {
+        $('#select_account').html("<a data-remote='true' href=" + path + "?page=" + page +
+          " type='get'>" + I18n.t('money.accounts.accounts_info') + "</a>");
+      } else {
+        $.each(r, function(i) {
+          v = r[i];
+          $('.company_accounts').append('<option value=' + v.value + '>' + v.text + '</option>');
+        });
+        $('#select_account').prepend("<a data-remote='true' href=" + path + "?page=" + page +
+          " type='get'>" + I18n.t('contract.add_new') + "</a>");
+        $('.company_accounts').select2();
       }
     });
   },
@@ -48,5 +51,22 @@ var Accounts = {
     $('input.number').numeric({ negative : false, decimal: false });
     $('#new_account').hide();
     Accounts.validateFormForNewAccount();
+  },
+
+  xeditableLoadSource: function() {
+     Accounts.load(function(r) {
+      $('.change_account[data-status=new]').each(function() {
+        $(this).editable({
+          type: 'select2',
+          source: r,
+          ajaxOptions: {
+            type: "PUT",
+            dataType: "json"
+          },
+          params: xeditableParams
+        });
+      $(this).attr('data-status', 'old');
+      });
+    });
   }
 };

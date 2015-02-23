@@ -30,8 +30,22 @@ LEFT_BAR_SHOW = 220;
 $(document).on('ready', function() {
   //set xeditable
   editableStart();
+
   //observer dom change
   setObserver();
+
+  //set article xeditable
+  Articles.xeditable();
+
+  //set account xeditable
+  Accounts.xeditableLoadSource();
+
+  // set counterparty xeditable
+  Counterparties.xeditable();
+
+  // ser contract xeditable
+  Contracts.xeditable();
+
   // left bar toggle
   $('.navbar-minimalize').click(function () {
     if ($('#page-wrapper').css('margin-left')==LEFT_BAR_HIDE+'px') {
@@ -124,22 +138,43 @@ function setObserver() {
     mo.disconnect();
 
     if ($('.company_accounts').length && $('.company_accounts  > option').length == 0) {
-      Accounts.load();
+      Accounts.loadOption();
+    }
+    else if ($('.change_account').length && $('.change_account[data-status=new]').length) {
+      Accounts.xeditableLoadSource();
     }
     else if ($('.articles').length && $('.articles  > option').length == 0) {
-      Articles.load();
+      Articles.loadOption();
+    }
+    else if ($('.change_article[data-status=new]').length) {
+      Articles.xeditable();
     }
     else if ($('.company_counterparties').length > 0 && $('.company_counterparties[data-type=new]').length) {
       Counterparties.loadOption();
     }
+    else if ($('.change_counterparty[data-status=new]').length) {
+      Counterparties.xeditable();
+    }
     else if ($('.counterparty_contracts').length && $('.counterparty_contracts  > option').length == 0) {
-      Contracts.loadContractsForCounterparty();
+      Contracts.ForCounterparty();
+    }
+    else if ($('.counterparty_reg[data-type=new]').length) {
+      Counterparties.forRegister();
+    }
+    else if ($('.change_contract[data-status=new]').length) {
+      Contracts.xeditable();
+    }
+    else if ($('.contract_reg[data-status=new]').length) {
+      Contracts.ForRegisterTable();
     }
     else if ($('.banks').length > 0 && $('.banks[data-type=new]').length) {
       Banks.loadOption();
     }
     else if ($('.change_bank').length > 0 && !($( '.change_bank' ).length == $( '.change_bank.editable-click' ).length)) {
       Banks.xeditableBanks();
+    }
+    else if ($('.counterparty-cancel').length) {
+      setEditCounterparty();
     }
 
     setObserver();

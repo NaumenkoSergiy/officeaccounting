@@ -7,7 +7,7 @@ module Money
     
     def index
       if params[:page]
-        acticles = Article.all
+        acticles = articles_for_select2
         render json: acticles, status: 200
       else
         respond_to do |format|
@@ -63,6 +63,13 @@ module Money
 
     def all_articles
       @articles = Article.all
+    end
+
+    def articles_for_select2
+      Article.pluck(:id, :name)
+             .collect do |key, value|
+               { value: "#{key}", text:  "#{value}" }
+            end
     end
   end
 end

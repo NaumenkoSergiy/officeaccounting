@@ -4,8 +4,8 @@ class ContractsController < ApplicationController
   before_action :company_contract, only: [:new, :create]
 
   def index
-    counterparty_contracts = Contract.contracts_for_conterparty(params[:id])
-    render json: counterparty_contracts.order('contracts.created_at DESC'), status: 200
+    counterparty_contracts = Contract.contracts_for_conterparty(params[:counterparty])
+    render json: counterparty_contracts, status: 200
   end
 
   def new

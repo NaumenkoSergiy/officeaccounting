@@ -11,7 +11,7 @@ module Money
           format.js
         end
       else
-        banks = application_present.options_for_select2(Bank.pluck(:name, :id))
+        banks = banks_for_select2
         render json: banks, status: 200
       end
     end
@@ -63,6 +63,13 @@ module Money
 
     def all_banks
       @banks = Bank.all
+    end
+
+    def banks_for_select2
+      Bank.pluck(:id, :name)
+          .collect do |key, value|
+            { value: "#{key}", text:  "#{value}" }
+          end
     end
   end
 end

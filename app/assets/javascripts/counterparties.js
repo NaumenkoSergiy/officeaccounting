@@ -4,35 +4,55 @@ var Counterparties = {
     Counterparties.validateFormForNewCounterparty();
   },
 
-  loadOption: function() {
-    selector = $('.company_counterparties[data-type=new]')
-    var id = selector.data('id');
-    var page = selector.data('page');
-    var path = selector.data('path');
-
+  load: function(callback) {
     $.ajax({
       type: 'GET',
       url: '/purchases/counterparties/',
-      data: { id: id },
-      success: function(r) {
-        if (r.length == 0) {
-           selector.parent().html("<a data-remote='true' href=" + path + "?page=" + page +
-             " type='get'>" + I18n.t('contract.counterparty_info') + "</a>");
-        } else {
-          $.each(r, function(i, data) {
-            v = r[i];
-            selector.append('<option value=' + v.id + '>' + v.name + '</option>');
-          });
-          selector.before("<a data-remote='true' href=" + path + "?page=" + page +
-              " type='get'>" + I18n.t('contract.counterparty_add') + "</a>");
-          if($("#contracts").length && $('#costs').hasClass('fade in')) { 
-            $('#contracts a[data-remote]').remove();
-          }
-          selector.attr('data-type', 'old');
-          $('.company_counterparties[data-type=old]').select2();
-          Contracts.loadContract();
+      data: { id: 1 },
+      success: callback
+    });
+  },
+
+  loadOption: function() {
+    Counterparties.load(function(r) {
+      var selector = $('.company_counterparties[data-type=new]')
+      var id = selector.data('id');
+      var page = selector.data('page');
+      var path = selector.data('path');
+      if (r.length == 0) {
+         selector.parent().html("<a data-remote='true' href=" + path + "?page=" + page +
+           " type='get'>" + I18n.t('contract.counterparty_info') + "</a>");
+      } else {
+        $.each(r, function(i) {
+          v = r[i];
+          selector.append('<option value=' + v.value + '>' + v.text + '</option>');
+        });
+        selector.before("<a data-remote='true' href=" + path + "?page=" + page +
+            " type='get'>" + I18n.t('contract.counterparty_add') + "</a>");
+        if($("#contracts").length && $('#costs').hasClass('fade in')) {
+          $('#contracts a[data-remote]').remove();
         }
+        selector.attr('data-type', 'old');
+        $('.company_counterparties[data-type=old]').select2();
+        Contracts.loadContract();
       }
+    });
+  },
+
+  xeditable: function() {
+    Counterparties.load(function(r) {
+      $('.change_counterparty[data-status=new]').each(function() {
+        $(this).editable({
+          type: 'select2',
+          source: r,
+          ajaxOptions: {
+            type: "PUT",
+            dataType: "json"
+          },
+          params: xeditableParams
+        });
+      $(this).attr('data-status', 'old');
+      });
     });
   },
 
@@ -70,5 +90,19 @@ var Counterparties = {
         data: { counterparty: { resident: $(this).is(':checked') } },
       });
     })
+  },
+
+  forRegister: function() {
+    Counterparties.load(function(r) {
+      var id = $('.counterparty_reg[data-type=new]').data('id');
+      var selector = $('.counterparty_reg[data-type=new]');
+      $.each(r, function(i) {
+        v = r[i];
+        selector.append('<option value=' + v.value + '>' + v.text + '</option>');
+      });
+      selector.attr('data-type', 'old');
+      $('.counterparty_reg[data-type=old]').select2();
+      $('.counterparty_reg[data-type=old]').select2('val', id);
+    });
   }
 };

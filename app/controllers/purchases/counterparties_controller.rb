@@ -7,8 +7,8 @@ module Purchases
     before_action :all_counterparties, only: [:new, :create]
 
     def index
-      counterparties = Counterparty.where(company_id: params[:id])
-      render json: counterparties.order('counterparties.created_at DESC'), status: 200
+      counterparties = Counterparty.company_counterparties(params[:id])
+      render json: counterparties, status: 200
     end
 
     def new

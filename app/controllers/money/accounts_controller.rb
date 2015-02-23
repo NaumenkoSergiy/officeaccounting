@@ -7,8 +7,8 @@ module Money
 
     def index
       if params[:company_id]
-        accounts = Account.where(company_id: params[:company_id])
-        render json: accounts.order('accounts.created_at DESC'), status: 200
+        accounts = Account.company_accounts(params[:company_id])
+        render json: accounts, status: 200
       else
         respond_to do |format|
           format.js

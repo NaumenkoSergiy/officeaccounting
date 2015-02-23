@@ -1,4 +1,32 @@
 $(document).ready(function() {
+  $('.conterparty_popover').click(function() {
+   idCounterparty = $(this).data('value');
+   idContract = $(this).data('contract');
+   idRegister = $(this).data('register');
+    $(this).popover({
+      html: true,
+      placement: 'bottom',
+      content: function() {
+        return '<form id="counterparty" data-contract=' + idContract + ' data-id=' + idRegister + ' action="" role="form"><div class="form-group"><lable>' +I18n.t('contract.counterparty') + '</lable><br><select class="counterparty_reg" data-type="new" data-id=' + idCounterparty + '></select><br><lable>' +I18n.t('money.costs.contract') + '</lable><br><div class="register_contract"><select class="contract_reg" data-status="new"></select></div><div class="editable-buttons"><button class="btn btn-primary btn-sm editable-submit" type="submit"><i class="glyphicon glyphicon-ok"></i></button><button class="btn btn-default btn-sm counterparty-cancel" type="button"><i class="glyphicon glyphicon-remove"></i></button></div></form>';
+      }
+    });
+  });
+
+  $('#currency_form').click(function () {
+    data = {
+      currency: {
+        name: $('.currencySelect :selected').val()
+      }
+    };
+    
+    $.ajax({
+      type: 'POST',
+      url: '/money/currencies',
+      data: data,
+      success: RemoveOptionsCurrensy
+
+    });
+  });
 
   curr_date = new Date();
 
@@ -143,3 +171,28 @@ function validateFormForNewRegister() {
     }
   });
 }
+
+function setEditCounterparty() {
+  $('.counterparty-cancel').click(function() {
+    $('.popover').remove();
+  });
+
+  $('form#counterparty').submit(function() {
+    registerId = $(this).data('id');
+    counterpartyId = $('select.counterparty_reg').val();
+    contractId = $('select.contract_reg').val();
+    $.ajax({
+      type: 'PUT',
+      url: '/money/registers/' + registerId,
+      data: { money_register: { counterparty_id: counterpartyId, contract_id: contractId } },
+      success: function() {
+        $('.popover').remove();
+      }
+
+    });
+  })
+
+  $('.counterparty_reg').change(function() {
+    $('.contract_reg').html('<select class="contract_reg" data-status="new"></select>');
+  });
+};
