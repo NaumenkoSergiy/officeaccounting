@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'destroy/sessions' => 'sessions#destroy'
   get 'users/confirm_registration'
   get 'settings/registrations/get_koatuu'
-  post 'settings/companies/change_company'
+  get 'settings/companies/change_company'
   get 'sessions/set_language'
 
   resources :sessions, only: [:new, :create]

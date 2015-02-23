@@ -1,12 +1,12 @@
 - if can? :update, Company
   = label_tag t('companies.new.full_name')
   br
-  = link_to @company.full_name, '#', data: { placement: 'right', name: :full_name, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
+  = link_to @company.full_name, '#', data: { placement: 'right', name: :full_name, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }, id: 'company-full-name'
 
   br
   = label_tag t('companies.new.short_name')
   br
-  = link_to @company.short_name, '#', data: { placement: 'right', name: :short_name, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
+  = link_to @company.short_name, '#', data: { placement: 'right', name: :short_name, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }, id: 'company-short-name'
 
   br
   = label_tag t('companies.new.latin_name')
