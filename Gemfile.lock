@@ -60,7 +60,6 @@ GEM
     bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
     bootstrap-select-rails (1.6.3)
-    bootstrap-switch-rails (3.3.1)
     bootstrap-x-editable-rails (1.5.1.1)
       railties (>= 3.0)
     bourbon (3.2.3)
@@ -282,7 +281,6 @@ DEPENDENCIES
   acts_as_paranoid!
   bootstrap-sass
   bootstrap-select-rails
-  bootstrap-switch-rails
   bootstrap-x-editable-rails
   cancancan (~> 1.9)
   capistrano (~> 3.2.1)
