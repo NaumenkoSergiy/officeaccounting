@@ -17,13 +17,13 @@ RSpec.describe Settings::BankAccountsController, :type => :controller do
   describe '#create' do
     it 'create new bank_account for company' do
       expect {
-        post :create, bank_account_attributes
+        post :create, { bank_account: bank_account_attributes }.merge!(format: :js)
       }.to change(BankAccount, :count).by(1)
     end
 
     it 'not create new bank account for company with unvalid datas' do
       expect {
-        post :create, unvalid_bank_account_attributes
+        post :create, { bank_account: unvalid_bank_account_attributes }.merge!(format: :js)
       }.to_not change(BankAccount, :count)
     end
 
@@ -32,7 +32,7 @@ RSpec.describe Settings::BankAccountsController, :type => :controller do
 
       it 'not create new bank account for company without current_user' do
         expect {
-          post :create, bank_account_attributes
+          post :create, { bank_account: bank_account_attributes }.merge!(format: :js)
         }.to_not change(BankAccount, :count)
       end
     end

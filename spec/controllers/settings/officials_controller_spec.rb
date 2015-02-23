@@ -16,13 +16,13 @@ RSpec.describe Settings::OfficialsController, :type => :controller do
   describe '#create' do
     it 'create new officials for company' do
       expect {
-        post :create, official_attributes
+        post :create, { official: official_attributes }.merge!(format: :js)
       }.to change(Official, :count).by(1)
     end
 
     it 'not create new official for company with unvalid datas' do
       expect {
-        post :create, unvalid_official_attributes
+        post :create, { official: unvalid_official_attributes }.merge!(format: :js)
       }.to_not change(Official, :count)
     end
 

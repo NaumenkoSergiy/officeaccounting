@@ -11,7 +11,7 @@ module Settings
 
     def create
       registration = current_user.companies.last.create_registration registration_params
-      
+
       if !(registration.valid? && registration.save)
         flash[:error] = t('validation.errors.invalid_data')
       else

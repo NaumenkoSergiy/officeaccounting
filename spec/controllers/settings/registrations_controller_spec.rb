@@ -16,13 +16,13 @@ RSpec.describe Settings::RegistrationsController, :type => :controller do
   describe '#create' do
     it 'create new registration for company' do
       expect {
-        post :create, registration_attributes.merge!(format: :js)
+        post :create, { registration: registration_attributes }.merge!(format: :js)
       }.to change(Registration, :count).by(1)
     end
 
     it 'not create new registration for company with unvalid datas' do
       expect {
-        post :create, unvalid_registration_attributes.merge!(format: :js)
+        post :create, { registration: unvalid_registration_attributes }.merge!(format: :js)
       }.to_not change(Registration, :count)
     end
 

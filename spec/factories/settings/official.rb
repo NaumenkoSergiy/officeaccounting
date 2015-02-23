@@ -9,5 +9,13 @@ FactoryGirl.define do
     email { Faker::Internet.email         }
   end
 
-  factory :unvalid_official, class: Official do; end
+  factory :unvalid_official, class: Official do
+    official_type do
+      ['Директор', 'Бухгалтер'][rand(2)]
+    end
+    name  { nil }
+    tin   { nil }
+    phone { nil }
+    email { nil }
+  end
 end

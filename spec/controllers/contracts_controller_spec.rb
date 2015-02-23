@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe ContractsController, :type => :controller do
   let(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let(:company) { FactoryGirl.create(:company) }
-  let(:contract_attributes) { FactoryGirl.attributes_for(:contract) }
+  let(:counterparty) { FactoryGirl.create(:counterparty) }
+  let(:contract_attributes) { FactoryGirl.attributes_for(:contract, counterparty_id: counterparty.id) }
   let(:unvalid_contract_attributes) { FactoryGirl.attributes_for(:contract, date:'',
                                                                             number:'',
                                                                             contract_type: '',
                                                                             validity: ''
                                                                             )}
-  let(:counterparty) { FactoryGirl.create(:counterparty) }
   let!(:contract) { FactoryGirl.create(:contract, company_id: company.id, counterparty_id: counterparty.id) }
 
   before(:each) do |test|

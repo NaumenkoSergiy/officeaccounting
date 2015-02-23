@@ -25,6 +25,8 @@ en:
       models:
         contract:
           attributes:
+            counterparty_id:
+              blank: "Can't be blank"
             number:
               blank: "Can't be blank"
         cashier:

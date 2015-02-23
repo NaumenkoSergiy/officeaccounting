@@ -5,5 +5,9 @@ FactoryGirl.define do
     bank    { Faker::Commerce.product_name }
   end
 
-  factory :unvalid_bank_account, class: BankAccount do; end
+  factory :unvalid_bank_account, class: BankAccount do
+    account { nil }
+    mfo     { nil }
+    bank    { nil }
+  end
 end
