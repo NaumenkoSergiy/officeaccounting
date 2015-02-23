@@ -4,6 +4,8 @@ ua:
         models:
           contract:
             attributes:
+              counterparty_id:
+                blank: "Поле не може бути пустим"
               number:
                 blank: "Поле не може бути пустим"
           cashier:

@@ -16,5 +16,20 @@ FactoryGirl.define do
     tax_system { ['Загальна', 'Спрощена'][rand(2)] }
   end
 
-  factory :unvalid_registration, class: Registration do; end
+  factory :unvalid_registration, class: Registration do
+    form_of_incorporation { nil }
+    edrpou { Faker::Name.name }
+    nace_codes { Faker::Name.name }
+    koatuu { Faker::Name.name }
+    risk_class { Faker::Name.name }
+    tin { Faker::Name.name }
+    state_registration_date { nil }
+    registration_number { nil }
+    registered_by { nil }
+    date_registered_in_revenue_commissioners { nil }
+    number_registered_in_revenue_commissioners { nil }
+    registered_in_pension_fund { nil }
+    code_registered_in_pension_fund { nil }
+    tax_system { nil }
+  end
 end

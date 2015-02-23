@@ -29,11 +29,11 @@ RSpec.describe Money::CreditsController, :type => :controller do
 
   describe '#update' do
     before do
-      put :update, { id: credit.id, credit: credit_attributes }.merge!(format: :js)
+      put :update, { id: credit.id, credit: credit_attributes }.merge!(format: :json)
       credit.reload
     end
     it { expect(credit.name).to eql(credit_attributes[:name]) }
-    it { expect(credit.credit_type).to eql(credit_attributes[:credit_type]) }
+    it { expect(credit.credit_type.to_sym).to eql(credit_attributes[:credit_type]) }
     it { expect(credit.account_number).to eql(credit_attributes[:account_number]) }
   end
 

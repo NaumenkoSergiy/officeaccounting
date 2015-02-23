@@ -7,5 +7,11 @@ FactoryGirl.define do
     numbering_format  { Faker::Number.number(3)       }
   end
 
-  factory :unvalid_company, class: Company do; end
+  factory :unvalid_company, class: Company do
+    full_name         { nil }
+    short_name        { nil }
+    latin_name        { nil }
+    juridical_address { nil }
+    numbering_format  { nil }
+  end
 end

@@ -13,13 +13,13 @@ RSpec.describe Settings::CompaniesController, :type => :controller do
 
     it 'create new company' do
       expect {
-        post :create, company_attributes
+        post :create, { company: company_attributes }.merge!(format: :js)
       }.to change(Company, :count).by(1)
     end
 
     it 'not create new company with unvalid data' do
       expect {
-        post :create, unvalid_company_attributes
+        post :create, { company: unvalid_company_attributes }.merge!(format: :js)
       }.to_not change(Company, :count)
     end
 
@@ -52,7 +52,7 @@ RSpec.describe Settings::CompaniesController, :type => :controller do
 
     context 'not add current_user company for current_user' do
       before do
-        post :create, company_attributes
+        post :create, { company: company_attributes }.merge!(format: :js)
         @company = Company.last
       end
 
@@ -66,16 +66,13 @@ RSpec.describe Settings::CompaniesController, :type => :controller do
     let(:old_current_company) { FactoryGirl.create(:company) }
     let(:new_current_company) { FactoryGirl.create(:company) }
 
-    before(:each) do
-      FactoryGirl.create(company: old_current_company,
-                         user: user,
-                         current_company: true)
-      FactoryGirl.create(company: old_current_company, user: user)
+    before do
+      FactoryGirl.create(:user_company, company: old_current_company,  user: user, current_company: true)
+      FactoryGirl.create(:user_company, company: new_current_company, user: user)
+      post :change_company, company_id: new_current_company.id
+      user.reload
     end
 
-    it 'change current company' do
-      post :change_company, company_id: new_current_company.id
-      user.current_company.to eq(new_current_company)
-    end
+    it { expect(user.current_company).to eql(new_current_company) }
   end
 end
