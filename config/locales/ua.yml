@@ -118,6 +118,7 @@ ua:
   officials:
     full_name: "ПІБ"
     enter_full_name: "Введіть ПІБ директора"
+    enter_full_name_bookkeeper: "Введіть ПІБ бухгалтера"
     tin: "ІПН"
     enter_ipn: "Введіть ІПН"
     phone: "Номер телефону"
