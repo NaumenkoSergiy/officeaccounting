@@ -5,7 +5,7 @@
 = form_for [:settings, @official], remote: true do |f|
   = f.label t('officials.full_name')
   br
-  = f.text_field :name, placeholder: t('officials.enter_full_name')
+  = f.text_field :name, placeholder: t('officials.enter_full_name_bookkeeper')
 
   br
   = f.label t('officials.tin')
@@ -22,7 +22,7 @@
   br
   = f.text_field :email
   = f.hidden_field :official_type, value: :bookeeper
-    
+
   br
   = link_to '', new_settings_official_path(back: true), :class => 'glyphicon glyphicon-arrow-left back-arrow'
   = f.submit t('buttons.forward')

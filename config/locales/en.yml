@@ -139,6 +139,7 @@ en:
   officials:
     full_name: "Full Name"
     enter_full_name: "Enter the full name of Director"
+    enter_full_name_bookkeeper: "Enter the full name of Bookkeeper"
     tin: "TIN"
     enter_ipn: "Enter TIN(tax identification number)"
     phone: "Phone number"
