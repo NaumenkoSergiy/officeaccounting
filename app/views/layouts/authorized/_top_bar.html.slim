@@ -4,21 +4,16 @@
       .navbar-header
         a.navbar-minimalize.minimalize-styl-2.btn.btn-primary href='#'
           i.fa.fa-bars
-        i.fa.
-          = t('current_company')
         - if current_user.companies.count > 1
+          i.fa
+              = t('current_company')
           .btn-group role="group" id="company-select"
             button.btn.btn-default.dropdown-toggle  type="button"  data-toggle="dropdown" aria-expanded="false"
-              span data-id= current_user.current_company.id
-                = current_user.current_company.short_name
+              span data-id= current_user.current_company_id
+                = current_user.current_company_short_name
               span.caret
             ul.dropdown-menu role="menu"
-              - current_user.companies.each do |company|
-                - unless company.id == current_user.current_company.id
-                  li
-                    = link_to company.short_name, settings_companies_change_company_path(company_id: company.id),
-                    :'data-id' => company.id
-                li.divider role="presentation"
+              = render partial: 'layouts/authorized/companies_list', collection: current_user.companies, as: :company
       ul.nav.navbar-top-links.navbar-right
         li
           = link_to '', sessions_set_language_path(locale: 'ua'), class: 'ua-language'
@@ -32,11 +27,11 @@
             i.fa.fa-cog
             = t('settings')
           ul.dropdown-menu.settings role="menu" aria-labelledby="dropdownMenu1"
-            - if current_user.companies
+            - if current_user.current_company
               li role="presentation"
                 = link_to t('contract.contracts'), new_contract_path, remote: true, type: :get
               li role="presentation"
-                = link_to t('settings'), setting_path(current_user.current_company.id)
+                = link_to t('settings'), setting_path(current_user.current_company_id)
         li
           = link_to destroy_sessions_path
             i.fa.fa-sign-out
@@ -49,6 +44,6 @@
           #error
           = yield
           #contracts.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
-          #counterparty.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1" 
+          #counterparty.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
           #companyCurrency.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
           #moneyCurrency.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"

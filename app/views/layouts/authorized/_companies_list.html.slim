@@ -1,0 +1,5 @@
+- unless company.id == current_user.current_company_id
+  li
+    = link_to company.short_name, settings_companies_change_company_path(company_id: company.id),
+    :'data-id' => company.id
+  li.divider role="presentation"

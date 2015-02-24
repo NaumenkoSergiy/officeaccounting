@@ -16,14 +16,15 @@ class User < ActiveRecord::Base
   delegate :currencies, to: :current_company
   delegate :cashiers, to: :current_company
   delegate :credits, to: :current_company
-  
+  delegate :id, :short_name, to: :current_company, prefix: true
+
   after_create :send_activation_token
-  
+
   ROLES_TITLES = {
     :view_symbol => :view,
     :edit_symbol => :edit
   }
-  
+
   def activated?
     activate_token.blank?
   end
@@ -50,7 +51,7 @@ class User < ActiveRecord::Base
   def send_activation_token
     UserMailer.welcome_email(self).deliver! unless self.activated?
   end
-  
+
   def is_valid_confirm_password?
     unless self.password == self.confirm_password
       errors.add(:confirm_password, "Пароль підтвердження не є таким як пароль")
