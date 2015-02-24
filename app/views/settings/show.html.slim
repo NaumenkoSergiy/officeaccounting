@@ -23,7 +23,7 @@
       = label_tag t('registrations.fields.tax_system')
       br
       - if can? :update, Company && @company_parent_user
-        = link_to @company.registration.tax_system, '#', data: { placement: 'bottom', value: @company.registration.tax_system, type: 'select', source: [t('general'), t('simmplified')], pk: @company, model: "registration", url: "registrations/#{ @company.registration.id }", xeditable: true, name: :tax_system }
+        = link_to @company.registration.tax_system, '#', data: { placement: 'bottom', value: @company.registration.tax_system, type: 'select', source: [t('registrations.fields.general'), t('registrations.fields.simplified')], pk: @company, model: "registration", url: "registrations/#{ @company.registration.id }", xeditable: true, name: :tax_system }
       - else
         = @company.registration.tax_system
       h3
