@@ -66,10 +66,9 @@ module Money
     end
 
     def banks_for_select2
-      Bank.pluck(:id, :name)
-          .collect do |key, value|
-            { value: "#{key}", text:  "#{value}" }
-          end
+      Bank.all.map do |bank|
+        { value: "#{bank.id}", text: "#{bank.name}" }
+      end
     end
   end
 end

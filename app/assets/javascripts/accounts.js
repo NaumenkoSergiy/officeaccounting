@@ -9,18 +9,18 @@ var Accounts = {
   },
 
   loadOption: function() {
-    Accounts.load(function(r) {
+    Accounts.load(function(accounts) {
       var companyAccount = $('.company_accounts');
       var id = companyAccount.data('id');
       var page = companyAccount.data('page');
       var path = companyAccount.data('path');
-      if (r.length == 0 ) {
+      if (accounts.length == 0 ) {
         $('#select_account').html("<a data-remote='true' href=" + path + "?page=" + page +
           " type='get'>" + I18n.t('money.accounts.accounts_info') + "</a>");
       } else {
-        $.each(r, function(i) {
-          v = r[i];
-          $('.company_accounts').append('<option value=' + v.value + '>' + v.text + '</option>');
+        $.each(accounts, function(i) {
+          account = accounts[i];
+          $('.company_accounts').append('<option value=' + account.value + '>' + account.text + '</option>');
         });
         $('#select_account').prepend("<a data-remote='true' href=" + path + "?page=" + page +
           " type='get'>" + I18n.t('contract.add_new') + "</a>");
@@ -54,11 +54,11 @@ var Accounts = {
   },
 
   xeditableLoadSource: function() {
-     Accounts.load(function(r) {
+     Accounts.load(function(accounts) {
       $('.change_account[data-status=new]').each(function() {
         $(this).editable({
           type: 'select2',
-          source: r,
+          source: accounts,
           ajaxOptions: {
             type: "PUT",
             dataType: "json"

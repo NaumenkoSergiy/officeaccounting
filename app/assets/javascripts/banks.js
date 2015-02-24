@@ -9,10 +9,10 @@ var Banks = {
 
   loadOption: function() {
     $('.banks[data-type=new]').attr('data-type', 'old');
-    Banks.loadBanks(function(r) {
-      $.each(r, function(i) {
-        v = r[i];
-        $('.banks').append('<option value=' + v.value + '>' + v.text + '</option>');
+    Banks.loadBanks(function(banks) {
+      $.each(banks, function(i) {
+        bank = banks[i];
+        $('.banks').append('<option value=' + bank.value + '>' + bank.text + '</option>');
       });
       $('.banks[data-type=old]').select2();  
     });
@@ -40,10 +40,10 @@ var Banks = {
   },
 
   xeditableBanks: function() {
-    Banks.loadBanks(function(r) {
+    Banks.loadBanks(function(banks) {
       $('.change_bank').editable({
         type: 'select2',
-        source: r,
+        source: banks,
         ajaxOptions: {
           type: "PUT",
           dataType: "json"

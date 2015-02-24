@@ -30,17 +30,17 @@ var Contracts = {
   ForCounterparty: function() {
       var CounterpartyContracts = $('#money_register_counterparty_id');
       var id = CounterpartyContracts.val();
-    Contracts.load(function(r) {
+    Contracts.load(function(contracts) {
       var page = CounterpartyContracts.data('page');
       var path = $('#money_register_contract_id').data('path');
 
-      if (r.length == 0 ) {
+      if (contracts.length == 0 ) {
         $('.contract_select').html("<a data-remote='true' href=" + path + "?page=" + page + " type='get'>" +
           I18n.t('contract.contract_info') + "</a>");
       } else {
-        $.each(r, function(i, data) {
-          v = r[i];
-          $('.counterparty_contracts').append('<option value=' + v.value + '>' + v.text + '</option>');
+        $.each(contracts, function(i) {
+          contract = contracts[i];
+          $('.counterparty_contracts').append('<option value=' + contract.value + '>' + contract.text + '</option>');
         });
         $('.contract_select').prepend("<a data-remote='true' href=" + path + "?page=" + page +
           " type='get'>" + I18n.t('contract.counterparty_add') + "</a>");
@@ -54,10 +54,10 @@ var Contracts = {
       var id = $(this).attr('data-counterparty');
       var element = $(this);
 
-      Contracts.load(function(r) {
+      Contracts.load(function(contracts) {
         element.editable({
           type: 'select2',
-          source: r,
+          source: contracts,
           ajaxOptions: {
             type: "PUT",
             dataType: "json"
@@ -75,14 +75,14 @@ var Contracts = {
     var id = $('select.counterparty_reg').val();
     var path = $('.conterparty_popover').data('path');
 
-    Contracts.load(function(r) {
+    Contracts.load(function(contracts) {
 
-      if (r.length == 0 ) {
+      if (contracts.length == 0 ) {
         $('.register_contract').html(I18n.t('contract.contract_empty')).css({'color':'red'});
       } else {
-        $.each(r, function(i, data) {
-          v = r[i];
-          $('.contract_reg[data-status=new]').append('<option value=' + v.value + '>' + v.text + '</option>');
+        $.each(contracts, function(i) {
+          contract = contracts[i];
+          $('.contract_reg[data-status=new]').append('<option value=' + contract.value + '>' + contract.text + '</option>');
         });
         $('.contract_reg[data-status=new]').attr('data-status', 'old')
         $('.contract_reg[data-status=old]').select2({'width': '130px'});

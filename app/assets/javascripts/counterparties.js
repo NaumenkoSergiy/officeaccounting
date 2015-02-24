@@ -14,18 +14,18 @@ var Counterparties = {
   },
 
   loadOption: function() {
-    Counterparties.load(function(r) {
+    Counterparties.load(function(counterparties) {
       var selector = $('.company_counterparties[data-type=new]')
       var id = selector.data('id');
       var page = selector.data('page');
       var path = selector.data('path');
-      if (r.length == 0) {
+      if (counterparties.length == 0) {
          selector.parent().html("<a data-remote='true' href=" + path + "?page=" + page +
            " type='get'>" + I18n.t('contract.counterparty_info') + "</a>");
       } else {
-        $.each(r, function(i) {
-          v = r[i];
-          selector.append('<option value=' + v.value + '>' + v.text + '</option>');
+        $.each(counterparties, function(i) {
+          counterparty = counterparties[i];
+          selector.append('<option value=' + counterparty.value + '>' + counterparty.text + '</option>');
         });
         selector.before("<a data-remote='true' href=" + path + "?page=" + page +
             " type='get'>" + I18n.t('contract.counterparty_add') + "</a>");
@@ -40,11 +40,11 @@ var Counterparties = {
   },
 
   xeditable: function() {
-    Counterparties.load(function(r) {
+    Counterparties.load(function(counterparties) {
       $('.change_counterparty[data-status=new]').each(function() {
         $(this).editable({
           type: 'select2',
-          source: r,
+          source: counterparties,
           ajaxOptions: {
             type: "PUT",
             dataType: "json"
@@ -93,12 +93,12 @@ var Counterparties = {
   },
 
   forRegister: function() {
-    Counterparties.load(function(r) {
+    Counterparties.load(function(counterparties) {
       var id = $('.counterparty_reg[data-type=new]').data('id');
       var selector = $('.counterparty_reg[data-type=new]');
-      $.each(r, function(i) {
-        v = r[i];
-        selector.append('<option value=' + v.value + '>' + v.text + '</option>');
+      $.each(counterparties, function(i) {
+        counterparty = counterparties[i];
+        selector.append('<option value=' + counterparty.value + '>' + counterparty.text + '</option>');
       });
       selector.attr('data-type', 'old');
       $('.counterparty_reg[data-type=old]').select2({'width': '130px'});

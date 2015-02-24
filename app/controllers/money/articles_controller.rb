@@ -66,10 +66,9 @@ module Money
     end
 
     def articles_for_select2
-      Article.pluck(:id, :name)
-             .collect do |key, value|
-               { value: "#{key}", text:  "#{value}" }
-            end
+      Article.all.map do |article|
+        { value: "#{article.id}", text: "#{article.name}" }
+      end
     end
   end
 end
