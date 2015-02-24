@@ -51,7 +51,7 @@ var Contracts = {
 
   xeditable: function() {
     $('.change_contract[data-status=new]').each(function() {
-      var id = $(this).data('counterparty');
+      var id = $(this).attr('data-counterparty');
       var element = $(this);
 
       Contracts.load(function(r) {
@@ -70,23 +70,25 @@ var Contracts = {
   },
 
   ForRegisterTable: function() {
-    var contractDefault = $('form#counterparty').data('contract');
+    var registerId = $('form#counterparty').data('id')
+    var contractDefault = $('#contract_' + registerId).data('value');
     var id = $('select.counterparty_reg').val();
-    console.log(contractDefault);
-    console.log(id);
+    var path = $('.conterparty_popover').data('path');
 
     Contracts.load(function(r) {
 
       if (r.length == 0 ) {
-        $('.register_contract').html(I18n.t('contract.contract_info'));
+        $('.register_contract').html(I18n.t('contract.contract_empty')).css({'color':'red'});
       } else {
         $.each(r, function(i, data) {
           v = r[i];
           $('.contract_reg[data-status=new]').append('<option value=' + v.value + '>' + v.text + '</option>');
         });
         $('.contract_reg[data-status=new]').attr('data-status', 'old')
-        $('.contract_reg[data-status=old]').select2();
-        $('.contract_reg').select2('val', contractDefault);
+        $('.contract_reg[data-status=old]').select2({'width': '130px'});
+        if(!$('.contract_reg[data-status=old]').hasClass('change')) {
+          $('.contract_reg').select2('val', contractDefault);
+        }
       }
     }, id);
   },

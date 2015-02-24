@@ -105,4 +105,15 @@
 
 .currencySelect { width: 255px; }
 
-.conterparty_popover { border-bottom: 1px dashed #0088cc; }
+.conterparty_popover {
+  border-bottom: 1px dashed #0088cc;
+  cursor: pointer;
+  font-weight: normal;
+  color: #0088cc;
+}
+
+.contractPopover {
+  .arrow { left: 146px !important; }
+
+  .counterparty-cancel { margin-left: 15px; }
+}

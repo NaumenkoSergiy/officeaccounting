@@ -2,6 +2,8 @@
   .row.border-bottom
     .nav.navbar-static-top role='navigation' style='margin-bottom: 0;'
       .navbar-header
+        - if current_user.companies.count > 0
+          #company data-id=current_user.current_company.id
         a.navbar-minimalize.minimalize-styl-2.btn.btn-primary href='#'
           i.fa.fa-bars
         - if current_user.companies.count > 1

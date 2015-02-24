@@ -3,7 +3,7 @@ var Accounts = {
     $.ajax({
       type: 'GET',
       url: '/money/accounts/',
-      data: { company_id: 1 },
+      data: { company_id: $('#company').data('id') },
       success: callback
     });
   },

@@ -8,7 +8,7 @@ var Counterparties = {
     $.ajax({
       type: 'GET',
       url: '/purchases/counterparties/',
-      data: { id: 1 },
+      data: { id: $('#company').data('id') },
       success: callback
     });
   },
@@ -101,8 +101,25 @@ var Counterparties = {
         selector.append('<option value=' + v.value + '>' + v.text + '</option>');
       });
       selector.attr('data-type', 'old');
-      $('.counterparty_reg[data-type=old]').select2();
+      $('.counterparty_reg[data-type=old]').select2({'width': '130px'});
       $('.counterparty_reg[data-type=old]').select2('val', id);
+    });
+  },
+
+  clickEditable: function() {
+    $('.conterparty_popover').click(function() {
+      idCounterparty = $(this).data('value');
+      idContract = $(this).data('contract');
+      idRegister = $(this).data('register');
+
+      $('.conterparty_popover').popover({
+        html: true,
+        placement: 'bottom',
+        content: function() {
+          return ('<form id="counterparty" data-counterparty=' + idCounterparty + ' data-contract=' +
+                idContract + ' data-id=' + idRegister + ' action="" role="form"><div class="form-group"><div class="row"><div class="col-lg-4"><lable>' +I18n.t('contract.counterparty') + '</lable></div><div class="col-lg-4"><lable>' +I18n.t('money.costs.contract') + '</lable></div></div><div class="row"><div class="col-lg-4"><select class="counterparty_reg" data-type="new" data-id=' + idCounterparty + '></select></div><div class="col-lg-4"><div class="register_contract"><select class="contract_reg" data-status="new"></select></div></div><div class="col-lg-4"><div class="editable-buttons"><button class="btn btn-primary btn-sm editable-submit" type="submit"><i class="glyphicon glyphicon-ok"></i></button><button class="btn btn-default btn-sm counterparty-cancel" type="button"><i class="glyphicon glyphicon-remove"></i></button></div></form>');
+        }
+      });
     });
   }
 };
