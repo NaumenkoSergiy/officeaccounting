@@ -28,10 +28,10 @@ var Contracts = {
   },
 
   ForCounterparty: function() {
-      var CounterpartyContracts = $('#money_register_counterparty_id');
-      var id = CounterpartyContracts.val();
+      $counterpartyContracts = $('#money_register_counterparty_id');
+      var id = $counterpartyContracts.val();
     Contracts.load(function(contracts) {
-      var page = CounterpartyContracts.data('page');
+      var page = $counterpartyContracts.data('page');
       var path = $('#money_register_contract_id').data('path');
 
       if (contracts.length == 0 ) {
