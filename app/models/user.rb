@@ -16,8 +16,7 @@ class User < ActiveRecord::Base
   delegate :currencies, to: :current_company
   delegate :cashiers, to: :current_company
   delegate :credits, to: :current_company
-  delegate :id, to: :current_company, prefix: true
-  delegate :short_name, to: :current_company, prefix: true
+  delegate :id, :short_name, to: :current_company, prefix: true
 
   after_create :send_activation_token
 
