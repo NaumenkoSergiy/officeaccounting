@@ -12,7 +12,7 @@
       - if @company_parent_user
         h3
           = t('customize_delegetion')
-        span.add_delegate.glyphicon.glyphicon-plus-sign
+        span.add_delegate.add_new.glyphicon.glyphicon-plus-sign
         = form_tag delegates_path, method: :post, id: :delegate_form, remote: true do
           = select_tag :role, options_for_select(application_present.translate_hash(User::ROLES_TITLES)), class: "role"
           = text_field_tag :company_id, @company.id, type: :hidden
