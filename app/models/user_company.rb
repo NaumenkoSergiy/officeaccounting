@@ -10,9 +10,9 @@ class UserCompany < ActiveRecord::Base
     where(company_id: company_id).where.not(user_id: current_user)
   }
 
-  scope :user_permission, -> (company_id, current_user_id) {
+  def self.user_permission(company_id, current_user_id)
     find_by(company_id: company_id, user_id: current_user_id)
-  }
+  end
 
   after_create :check_current_company
 

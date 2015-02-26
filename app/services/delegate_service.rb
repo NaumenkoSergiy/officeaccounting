@@ -13,7 +13,7 @@ class DelegateService < BaseService
         { error: I18n.t('validation.errors.mail_should_be_valid') }
       end
     else
-      if is_user_delegate_to_company?(data, existing_user)
+      unless is_user_delegate_to_company?(data, existing_user)
         existing_user.user_companies.create(company: company, role: data[:role])
         UserMailer.create_delegate_existing_user(existing_user, company).deliver!
       else
@@ -35,6 +35,6 @@ class DelegateService < BaseService
   end
 
   def is_user_delegate_to_company?(data, user)
-    UserCompany.user_permission(data[:company_id], user.id).nil?
+    UserCompany.user_permission(data[:company_id], user.id)
   end
 end
