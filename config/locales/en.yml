@@ -20,6 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  ransack:
+    attributes:
+      money_register:
+        type_document: Type of document
+        type_money: Type
   activerecord:
     errors:
       models:

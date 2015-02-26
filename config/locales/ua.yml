@@ -1,4 +1,11 @@
 ua:
+  ransack:
+    attributes:
+      money_register:
+        date: Дата
+        type_document: Тип документу
+        type_money: Тип
+        total: Сумма
   activerecord:
       errors:
         models:

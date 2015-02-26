@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create]
     resources :settings, only: [:index, :show]
     resources :password_resets
-    resources :money, only: [:index]
+    resources :money, only: [:index] do
+      collection { post :search, to: 'money#index' }
+    end
     resources :delegates, only: [:create, :destroy, :update]
     resources :sales, only: [:index]
     resources :purchases, only: [:index]

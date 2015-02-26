@@ -3,8 +3,17 @@ class MoneyController < ApplicationController
   before_filter :has_company?, only: [:index]
 
   def index
-    @currency = Currency.new
-    @currencies = current_user.try(:currencies) || {}
-    @registers = current_user.money_registers.order('money_registers.created_at DESC').limit(7)
+    @search = current_user.money_registers.search params[:q]
+    @registers = @search.result.limit(7)
+    @search.build_condition if @search.conditions.empty?
+    @search.build_sort if @search.sorts.empty?
+
+    respond_to do |format|
+      format.html {
+        @currency = Currency.new
+        @currencies = current_user.currencies
+      }
+      format.js
+    end
   end
 end

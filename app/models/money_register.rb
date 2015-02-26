@@ -8,6 +8,11 @@ class MoneyRegister < ActiveRecord::Base
   belongs_to :contract
   belongs_to :contract_including_deleted, class_name: 'Contract', foreign_key: 'contract_id', with_deleted: true
 
+  delegate :name, to: :article, prefix: true
+  delegate :name, to: :counterparty_including_deleted, prefix: true
+  delegate :number, to: :account_including_deleted, prefix: true
+  delegate :number, to: :contract_including_deleted, prefix: true
+
   validates :total, :type_document, :contract_id, :counterparty_id, presence: true
 
   delegate :name, to: :article, prefix: true
@@ -25,4 +30,9 @@ class MoneyRegister < ActiveRecord::Base
       sum(case when money_registers.type_money = 'costs' then total else 0 end) as costs, '#FF0F00' as color2"
     ).group("month(date)").sort_by(&:month)
   }
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w(date type_document total type_money) + _ransackers.keys
+  end
+
 end

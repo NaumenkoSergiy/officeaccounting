@@ -1,0 +1,12 @@
+.field
+  .row
+    .col.col-lg-2
+      = f.attribute_fields do |a|
+        = a.attribute_select
+    .col.col-lg-2
+      = f.predicate_select only: %i(cont not_cont eq not_eq blank null less_than)
+    .col.col-lg-2
+      = f.value_fields do |v|
+        = v.text_field :value
+    .col.col-lg-1
+      = link_to 'remove', '#', class: 'remove_fields'
