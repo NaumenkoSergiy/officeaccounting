@@ -1,5 +1,6 @@
-| $('#companyBanks').modal('show');
+| $('#companyBanks').html("#{j render 'money/banks/company_banks'}").modal('show');
 | $('#bank_form').html("#{j render 'money/banks/form'}");
+| openForm("new_bank", "add_new_bank");
 | $('input.number').numeric({ negative : false, decimal: false });
 | $('#bank_list').html("#{j render 'money/banks/list'}");
 | $('#new_bank').hide();

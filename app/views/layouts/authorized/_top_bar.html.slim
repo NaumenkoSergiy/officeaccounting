@@ -29,9 +29,22 @@
           ul.dropdown-menu.settings role="menu" aria-labelledby="dropdownMenu1"
             - if current_user.current_company
               li role="presentation"
-                = link_to t('contract.contracts'), new_contract_path, remote: true, type: :get
-              li role="presentation"
                 = link_to t('settings'), setting_path(current_user.current_company_id)
+              li.divider
+              li.dropdown-submenu
+                a tabindex="-1" href="#"
+                  = t('money.references')
+                ul.dropdown-menu
+                  li
+                    = link_to t('buttons.currency'), money_currencies_path, remote: true, type: :get
+                  li
+                    = link_to t('buttons.exchange_rates'), money_exchange_rates_path, remote: true, type: :get
+                  li
+                    = link_to t('buttons.banks'), money_banks_path(page: :banks), remote: true
+                  li
+                    = link_to t('purchases.counterparties'), new_purchases_counterparty_path, remote: true, type: :get
+                  li
+                    = link_to t('contract.contracts'), new_contract_path, remote: true, type: :get
         li
           = link_to destroy_sessions_path
             i.fa.fa-sign-out
@@ -47,3 +60,4 @@
           #counterparty.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
           #companyCurrency.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
           #moneyCurrency.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
+          #companyBanks.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
