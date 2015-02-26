@@ -303,3 +303,6 @@ en:
   return_s: "Return with subreport"
   income: "Income"
   success: "Successfully added!"
+  radius: "Top Radius"
+  angle: "Angle"
+  depth: "Depth"
