@@ -9,7 +9,7 @@ $(document).ready(function() {
 
   $('#moneyCurrency .currencyRemove').remove();
 
-  $('#add_new_cashier, #add_new_article, #add_new_credit').click(function () {
+  $('a[data-form-toggle]').click(function () {
     $(this).parents('.modal-header').next().find('form').toggle();
   });
 });

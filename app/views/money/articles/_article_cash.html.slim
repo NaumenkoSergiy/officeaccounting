@@ -1,4 +1,4 @@
-#article_cash.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1" 
+#article_cash.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
   .modal-dialog
     .modal-content
       .modal-header
@@ -8,7 +8,7 @@
         .row
           .col.col-lg-12
             h4#myModalLabel.modal-title = t('buttons.money_movement')
-            = link_to '', '#', class: 'add_new glyphicon glyphicon-plus-sign', id: 'add_new_article'
+            = link_to '', '#', class: 'add_new glyphicon glyphicon-plus-sign', id: 'add_new_article', :'data-form-toggle' => true
         .row
           .col.col-lg-12
             #article_show
