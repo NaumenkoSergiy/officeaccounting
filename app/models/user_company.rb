@@ -10,10 +10,6 @@ class UserCompany < ActiveRecord::Base
     where(company_id: company_id).where.not(user_id: current_user)
   }
 
-  scope :for_company, -> (company_id) {
-    where(company_id: company_id)
-  }
-
   after_create :check_current_company
 
   def update_current value
@@ -24,7 +20,7 @@ class UserCompany < ActiveRecord::Base
     update_current(true) unless user.current_company
   end
 
-  def self.user_permission(company_id, current_user_id)
-     find_by(company_id: company_id, user_id: current_user_id)
+  def self.user_permission(company, current_user)
+     find_by(company: company, user: current_user)
   end
 end

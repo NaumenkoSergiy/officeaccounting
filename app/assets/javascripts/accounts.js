@@ -10,21 +10,21 @@ var Accounts = {
 
   loadOption: function() {
     Accounts.load(function(accounts) {
-      var companyAccount = $('.company_accounts');
-      var id = companyAccount.data('id');
-      var page = companyAccount.data('page');
-      var path = companyAccount.data('path');
+      $companyAccount = $('.company_accounts');
+      var id = $companyAccount.data('id');
+      var page = $companyAccount.data('page');
+      var path = $companyAccount.data('path');
       if (accounts.length == 0 ) {
         $('#select_account').html("<a data-remote='true' href=" + path + "?page=" + page +
           " type='get'>" + I18n.t('money.accounts.accounts_info') + "</a>");
       } else {
         $.each(accounts, function(i) {
           account = accounts[i];
-          $('.company_accounts').append('<option value=' + account.value + '>' + account.text + '</option>');
+          $companyAccount.append('<option value=' + account.value + '>' + account.text + '</option>');
         });
         $('#select_account').prepend("<a data-remote='true' href=" + path + "?page=" + page +
           " type='get'>" + I18n.t('contract.add_new') + "</a>");
-        $('.company_accounts').select2();
+        $companyAccount.select2();
       }
     });
   },

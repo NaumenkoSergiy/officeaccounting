@@ -9,11 +9,8 @@ class Account < ActiveRecord::Base
   validates :name, presence: true
   validates_numericality_of :number
 
-  scope :company_accounts, -> (company_id) {
-    where(company_id: company_id).pluck(:id, :number)
-                                 .collect do |key, value|
-                                   { value: "#{key}", text:  "#{value}" }
-                                 end
+  scope :company_accounts, -> (company) {
+    where(company: company).map { |account| { value: "#{account.id}", text: "#{account.number}" } }
   }
 
   ACCOUNT = {

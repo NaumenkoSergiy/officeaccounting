@@ -9,10 +9,7 @@ class Contract < ActiveRecord::Base
   validates :date, :counterparty_id, :validity, :number, presence: true
 
   scope :contracts_for_conterparty, -> (id) {
-    where(counterparty_id: id).pluck(:id, :number)
-                              .collect do |key, value|
-                                { value: "#{key}", text:  "#{value}" }
-                              end
+    where(counterparty_id: id).map { |contract| { value: "#{contract.id}", text: "#{contract.number}" } }
   }
 
   CONTRACT_TYPE = [:product, :service]
