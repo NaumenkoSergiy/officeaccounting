@@ -2,6 +2,12 @@ module Money
   class RegistersController < ApplicationController
     before_filter :redirect_to_new_session
     before_action :set_register, only: [:update, :destroy]
+    before_action :all_registers, only: [:index, :create]
+
+    def index
+      chart_data = @registers.group_by_month
+      render json: chart_data, status: 200
+    end
 
     def new
       @register = MoneyRegister.new
@@ -12,7 +18,6 @@ module Money
 
     def create
       @register = MoneyRegister.new register_params
-      @registers = current_user.money_registers.order('money_registers.created_at DESC')
       flash.now[:error] = t('validation.errors.all_fields') unless @register.save
       respond_to do |format|
         format.js
@@ -51,6 +56,10 @@ module Money
                                              :contract_id,
                                              :article_id,
                                              :type_money).merge!(company_id: current_user.current_company.id)
+    end
+
+    def all_registers
+      @registers = current_user.money_registers.order('money_registers.created_at DESC')
     end
   end
 end
