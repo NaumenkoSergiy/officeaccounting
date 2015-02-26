@@ -3,13 +3,13 @@ $(document).ready(function() {
   curr_date = new Date();
 
   $('#moneyCurrency h4').append(I18n.t('for_today') + $.datepicker.formatDate('dd.mm.yy', curr_date));
-  
+
 
   $('.editable-select').select2({width: '255px'});
 
   $('#moneyCurrency .currencyRemove').remove();
 
-  $('#add_new_bank, #add_new_cashier, #add_new_article, #add_new_credit').click(function () {
+  $('#add_new_cashier, #add_new_article, #add_new_credit').click(function () {
     $(this).parents('.modal-header').next().find('form').toggle();
   });
 });
