@@ -2,7 +2,7 @@ var Articles = {
   load: function(callback) {
     $.ajax({
       type: 'GET',
-      url: '/money/articles/',
+      url: $('#path').data('articles'),
       data: { page: '' },
       success: callback
     });
@@ -13,9 +13,8 @@ var Articles = {
       if (articles.length == 0 ) {
         $('#select_article').html(I18n.t('money.article_info'));
       } else {
-        $.each(articles, function(i) {
-          article = articles[i];
-          $('.articles').append('<option value=' + article.value + '>' + article.text + '</option>');
+        $.each(articles, function() {
+          $('.articles').append('<option value=' + this.value + '>' + this.text + '</option>');
         });
         $('.articles').select2();
       }

@@ -1,19 +1,4 @@
 $(document).ready(function() {
-  $('#currency_form').click(function () {
-    data = {
-      currency: {
-        name: $('.currencySelect :selected').val()
-      }
-    };
-    
-    $.ajax({
-      type: 'POST',
-      url: '/money/currencies',
-      data: data,
-      success: RemoveOptionsCurrensy
-
-    });
-  });
 
   curr_date = new Date();
 
@@ -42,16 +27,17 @@ function addCurrency() {
   if ($('.currencySelect option').length == 0) {
     $('#currency_form').hide();
   }
-  $('#currency_form').click(function () {
+  $('#currencies_form a').click(function () {
     selected = $('.currencySelect :selected');
     data = {
       currency: {
         name: selected.val()
       }
     };
+
     $.ajax({
       type: 'POST',
-      url: '/money/currencies',
+      url: $('#path').data('currensies'),
       data: data,
       success: RemoveOptionsCurrensy(selected)
     });
@@ -87,9 +73,9 @@ function RemoveOptionsCurrensy(selected) {
 function currencyRemove(id) {
   $.ajax({
     type: 'DELETE',
-    url: '/money/currencies/' + id,
+    url: $('#path').data('currensies') + '/' + id,
     async: false,
-    success: function(){
+    success: function() {
       currencies = $('.currencyRates_' + id + ' td:first').text();
       $('.currencyRates_' + id).remove();
       value = currencies.slice(0,3);
@@ -182,11 +168,11 @@ function setEditCounterparty() {
     } else {
       $.ajax({
         type: 'PUT',
-        url: '/money/registers/' + registerId,
+        url: $('#path').data('registers') + '/' + registerId,
         async: false,
         data: { money_register: { counterparty_id: counterpartyId, contract_id: contractId } },
         success: function() {
-          $('#contract_' + registerId).text(contractText).attr('data-value', contractId).attr('data-counterparty', counterpartyId);
+          $('#contract_' + registerId).text(contractText).attr('data-value', contractId);
           $('#conterparty_' + registerId ).attr('data-value', counterpartyId).text(counterpartyText);
           $('.popover').remove();
           $('#contract_' + registerId).attr('data-status', 'new');
@@ -194,5 +180,4 @@ function setEditCounterparty() {
       });
     }
   })
-
 };

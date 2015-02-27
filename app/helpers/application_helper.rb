@@ -5,8 +5,4 @@ module ApplicationHelper
     yield presenter if block_given?
     presenter
   end
-
-  def current_company
-    current_user.companies.count > 0
-  end
 end

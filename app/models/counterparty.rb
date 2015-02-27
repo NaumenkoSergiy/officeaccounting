@@ -8,9 +8,4 @@ class Counterparty < ActiveRecord::Base
 
   validates :name, :title, :adress, presence: true
   validates_numericality_of :edrpo, :mfo, :account
-
-  scope :company_counterparties, -> (company_id) {
-    where(company_id: company_id).order('counterparties.created_at DESC')
-                                 .map { |counterparty| { value: "#{counterparty.id}", text: "#{counterparty.name}" } }
-  }
 end

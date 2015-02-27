@@ -2,8 +2,7 @@
   .row.border-bottom
     .nav.navbar-static-top role='navigation' style='margin-bottom: 0;'
       .navbar-header
-        - if current_company
-          #company data-id=current_user.current_company.id
+        = content_tag :div, '', id: "path", data: { accounts: money_accounts_path, articles: money_articles_path, banks: money_banks_path, contracts: contracts_path, counterparties: purchases_counterparties_path, registers: money_registers_path, currensies: money_currencies_path }
         a.navbar-minimalize.minimalize-styl-2.btn.btn-primary href='#'
           i.fa.fa-bars
         - if current_user.companies.count > 1

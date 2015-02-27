@@ -67,7 +67,7 @@ module Money
 
     def banks_for_select2
       Bank.all.map do |bank|
-        { value: "#{bank.id}", text: "#{bank.name}" }
+        { value: bank.id, text: bank.name }
       end
     end
   end

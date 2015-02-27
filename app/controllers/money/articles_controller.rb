@@ -67,7 +67,7 @@ module Money
 
     def articles_for_select2
       Article.all.map do |article|
-        { value: "#{article.id}", text: "#{article.name}" }
+        { value: article.id, text: article.name }
       end
     end
   end

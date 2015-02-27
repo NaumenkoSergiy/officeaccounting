@@ -9,10 +9,6 @@ class Account < ActiveRecord::Base
   validates :name, presence: true
   validates_numericality_of :number
 
-  scope :company_accounts, -> (company) {
-    where(company: company).map { |account| { value: "#{account.id}", text: "#{account.number}" } }
-  }
-
   ACCOUNT = {
     'Поточний рахунок' => :current,
     'Вкладний (депозитний) рахунок' => :deposit,

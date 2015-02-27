@@ -14,4 +14,3 @@
 //= require radar
 //= require serial
 //= require xy
-//= require jquery-ui/jquery.webui-popover

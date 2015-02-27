@@ -2,7 +2,7 @@ var Banks = {
   loadBanks: function(callback) {
     $.ajax({
       type: 'GET',
-      url: '/money/banks/',
+      url: $('#path').data('banks'),
       success: callback
     });
   },
@@ -10,9 +10,8 @@ var Banks = {
   loadOption: function() {
     $('.banks[data-type=new]').attr('data-type', 'old');
     Banks.loadBanks(function(banks) {
-      $.each(banks, function(i) {
-        bank = banks[i];
-        $('.banks').append('<option value=' + bank.value + '>' + bank.text + '</option>');
+      $.each(banks, function() {
+        $('.banks').append('<option value=' + this.value + '>' + this.text + '</option>');
       });
       $('.banks[data-type=old]').select2();  
     });

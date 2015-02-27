@@ -6,8 +6,8 @@ module Money
     before_action :company_account, only: [:index, :create]
 
     def index
-      if params[:company_id]
-        accounts = Account.company_accounts(params[:company_id])
+      if params[:page]
+        accounts = @accounts.map { |account| { value: account.id, text: account.number.to_s } }
         render json: accounts, status: 200
       else
         respond_to do |format|

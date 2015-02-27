@@ -2,8 +2,8 @@ var Accounts = {
   load: function(callback) {
     $.ajax({
       type: 'GET',
-      url: '/money/accounts/',
-      data: { company_id: $('#company').data('id') },
+      url: $('#path').data('accounts'),
+      data: { page: '' },
       success: callback
     });
   },
@@ -18,9 +18,8 @@ var Accounts = {
         $('#select_account').html("<a data-remote='true' href=" + path + "?page=" + page +
           " type='get'>" + I18n.t('money.accounts.accounts_info') + "</a>");
       } else {
-        $.each(accounts, function(i) {
-          account = accounts[i];
-          $companyAccount.append('<option value=' + account.value + '>' + account.text + '</option>');
+        $.each(accounts, function() {
+          $companyAccount.append('<option value=' + this.value + '>' + this.text + '</option>');
         });
         $('#select_account').prepend("<a data-remote='true' href=" + path + "?page=" + page +
           " type='get'>" + I18n.t('contract.add_new') + "</a>");

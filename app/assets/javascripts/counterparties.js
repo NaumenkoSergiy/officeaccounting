@@ -7,8 +7,7 @@ var Counterparties = {
   load: function(callback) {
     $.ajax({
       type: 'GET',
-      url: '/purchases/counterparties/',
-      data: { id: $('#company').data('id') },
+      url: $('#path').data('counterparties'),
       success: callback
     });
   },
@@ -23,9 +22,8 @@ var Counterparties = {
          selector.parent().html("<a data-remote='true' href=" + path + "?page=" + page +
            " type='get'>" + I18n.t('contract.counterparty_info') + "</a>");
       } else {
-        $.each(counterparties, function(i) {
-          counterparty = counterparties[i];
-          selector.append('<option value=' + counterparty.value + '>' + counterparty.text + '</option>');
+        $.each(counterparties, function() {
+          selector.append('<option value=' + this.value + '>' + this.text + '</option>');
         });
         selector.before("<a data-remote='true' href=" + path + "?page=" + page +
             " type='get'>" + I18n.t('contract.counterparty_add') + "</a>");
@@ -86,7 +84,7 @@ var Counterparties = {
       id = $(this).data('id');
       $.ajax({
         type: 'PUT',
-        url: '/purchases/counterparties/' + id,
+        url: $('#path').data('counterparties') + '/' + id,
         data: { counterparty: { resident: $(this).is(':checked') } },
       });
     })
@@ -95,31 +93,41 @@ var Counterparties = {
   forRegister: function() {
     Counterparties.load(function(counterparties) {
       var id = $('.counterparty_reg[data-type=new]').data('id');
-      var selector = $('.counterparty_reg[data-type=new]');
-      $.each(counterparties, function(i) {
-        counterparty = counterparties[i];
-        selector.append('<option value=' + counterparty.value + '>' + counterparty.text + '</option>');
+      var $selector = $('.counterparty_reg[data-type=new]');
+      $.each(counterparties, function() {
+        $selector.append('<option value=' + this.value + '>' + this.text + '</option>');
       });
-      selector.attr('data-type', 'old');
+      $selector.attr('data-type', 'old');
       $('.counterparty_reg[data-type=old]').select2({'width': '130px'});
       $('.counterparty_reg[data-type=old]').select2('val', id);
     });
   },
 
   clickEditable: function() {
-    $('.conterparty_popover').click(function() {
+    $('.conterparty_popover').popover({
+      html: true,
+      placement: 'bottom',
+      trigger: 'manual',
+      content: function() {
+        return ('<form id="counterparty" data-counterparty=' + idCounterparty + ' data-contract=' +
+          idContract + ' data-id=' + idRegister + ' action="" role="form"><div class="form-group"><div class="row"><div class="col-lg-4"><lable>' +
+          I18n.t('contract.counterparty') + '</lable></div><div class="col-lg-4"><lable>' +
+          I18n.t('money.costs.contract') + '</lable></div></div><div class="row"><div class="col-lg-4"><select class="counterparty_reg" data-type="new" data-id=' +
+          idCounterparty + '></select></div><div class="col-lg-4"><div class="register_contract"><select class="contract_reg" data-status="new"></select></div></div><div class="col-lg-4"><div class="editable-buttons"><button class="btn btn-primary btn-sm editable-submit" type="submit"><i class="glyphicon glyphicon-ok"></i></button><button class="btn btn-default btn-sm counterparty-cancel" type="button"><i class="glyphicon glyphicon-remove"></i></button></div></form>');
+      }
+    }).click(function(e) {
+      $('.conterparty_popover').not(this).popover('hide');
       idCounterparty = $(this).data('value');
       idContract = $(this).data('contract');
       idRegister = $(this).data('register');
+      $(this).attr('data-status', 'old')
+      $(this).popover('toggle');
+    });
 
-      $('.conterparty_popover').popover({
-        html: true,
-        placement: 'bottom',
-        content: function() {
-          return ('<form id="counterparty" data-counterparty=' + idCounterparty + ' data-contract=' +
-                idContract + ' data-id=' + idRegister + ' action="" role="form"><div class="form-group"><div class="row"><div class="col-lg-4"><lable>' +I18n.t('contract.counterparty') + '</lable></div><div class="col-lg-4"><lable>' +I18n.t('money.costs.contract') + '</lable></div></div><div class="row"><div class="col-lg-4"><select class="counterparty_reg" data-type="new" data-id=' + idCounterparty + '></select></div><div class="col-lg-4"><div class="register_contract"><select class="contract_reg" data-status="new"></select></div></div><div class="col-lg-4"><div class="editable-buttons"><button class="btn btn-primary btn-sm editable-submit" type="submit"><i class="glyphicon glyphicon-ok"></i></button><button class="btn btn-default btn-sm counterparty-cancel" type="button"><i class="glyphicon glyphicon-remove"></i></button></div></form>');
-        }
-      });
+    $(document).click(function(e) {
+      if (!$(e.target).is('.conterparty_popover, .popover-content')) {
+        $('.conterparty_popover').popover('hide');
+      }
     });
   }
 };
