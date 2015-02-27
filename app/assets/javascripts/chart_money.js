@@ -6,7 +6,6 @@ function setCharts() {
     async: false,
     dataType: 'json',
     success: function(data) {
-      var monthNames = I18n.t('months_all').split(',')
       var chart = AmCharts.makeChart("chart_money", {
         "theme": "light",
         "type": "serial",
@@ -70,7 +69,7 @@ function setCharts() {
       },0);
 
       $('.chart-input').off().on('input change',function() {
-        var property  = jQuery(this).data('property');
+        var property  = $(this).data('property');
         var target    = chart;
         var target1    = chart;
         chart.startDuration = 0;

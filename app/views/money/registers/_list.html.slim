@@ -26,9 +26,9 @@ table.table
             td style='width: 84px;'
               = link_to l(register.date, format: :default), '#', data: { type: 'date', format: 'dd-mm-yyyy', placement: 'right', name: :date, pk: @registers, model: 'money_register', url: money_register_path(register.id), xeditable: true }
             td class='contractPopover'
-              = label_tag nil, register.counterparty_including_deleted.name, data: { register: register.id, value: register.counterparty_including_deleted.id, status: :new, contract:  register.contract_including_deleted.id}, class: 'conterparty_popover', id: "conterparty_#{register.id}"
+              = label_tag nil, register.counterparty_including_deleted.name, data: { value: register.counterparty_including_deleted.id, status: :new, contract:  register.contract_including_deleted.id}, class: 'conterparty_popover', id: "conterparty_#{register.id}"
             td
-              = link_to register.contract_including_deleted.number, '#', data: { name: :contract_id, pk: @registers, value: register.contract_including_deleted.id, placement: 'bottom', model: 'money_register', url: money_register_path(register.id), status: :new, counterparty: register.counterparty_including_deleted.id }, class: 'change_contract', id: "contract_#{register.id}"
+              = link_to register.contract_including_deleted.number, '#', data: { register: register.id, name: :contract_id, pk: @registers, value: register.contract_including_deleted.id, placement: 'bottom', model: 'money_register', url: money_register_path(register.id), status: :new, counterparty: register.counterparty_including_deleted.id }, class: 'change_contract', id: "contract_#{register.id}"
             td
               = link_to register.account_including_deleted.number, '#', data: { name: :number, pk: @registers, value: register.account_including_deleted.id, placement: 'bottom', model: 'money_register', url: money_register_path(register.id), status: :new }, class: 'change_account'
             td
@@ -36,7 +36,7 @@ table.table
             td
               = link_to register.article.name, '#', data: { name: :article_id, pk: @registers, value: register.article.id, placement: 'bottom', model: 'money_register', url: money_register_path(register.id), status: :new }, class: 'change_article'
             td
-              = link_to register.total, '#', data: { placement: 'bottom', name: :total, pk: @registers, model: 'money_register', url: money_register_path(register.id), xeditable: true }
+              = link_to register.total, '#', data: { placement: 'bottom', name: :total, pk: @registers, model: 'money_register', url: money_register_path(register.id), xeditable: true }, class: 'total'
             td
               = t(register.type_money)
             td style='width:40px;'
@@ -62,3 +62,6 @@ table.table
             td style='width:40px;'
 javascript:
   Counterparties.clickEditable();
+  $('.total').on('save', function(e, params) {
+    setCharts();
+  });
