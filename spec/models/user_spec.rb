@@ -58,30 +58,30 @@ RSpec.describe User, :type => :model do
   context 'password' do
     let(:user) { FactoryGirl.create(:user) }
 
-    it 'has unvalid password' do 
+    it 'has unvalid password' do
       user.password = Faker::Internet.password(33)
       expect(user).to be_invalid
     end
 
-    it 'has unvalid password' do 
+    it 'has unvalid password' do
       user.password = Faker::Internet.password(5)
       expect(user).to be_invalid
     end
 
-    it 'has valid password' do 
+    it 'has valid password' do
       user.password = Faker::Internet.password(6,32)
       expect(user).to be_invalid
     end
 
-    it 'has confirm password not equal to password and unvalid user' do 
+    it 'has confirm password not equal to password and unvalid user' do
       user.password = Faker::Internet.password
-      user.confirm_password = Faker::Internet.password
+      user.password_confirmation = Faker::Internet.password
       expect(user).to be_invalid
     end
 
-    it 'has confirm password equal to password and valid user' do 
+    it 'has confirm password equal to password and valid user' do
       user.password = Faker::Internet.password
-      user.confirm_password = user.password
+      user.password_confirmation = user.password
       expect(user).to be_valid
     end
   end

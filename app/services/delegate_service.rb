@@ -28,7 +28,7 @@ class DelegateService < BaseService
     {
       email: data[:email],
       password: 'empty_password',
-      confirm_password: 'empty_password',
+      password_confirmation: 'empty_password',
       activate_token: nil,
       password_reset_sent_at: Time.zone.now
     }

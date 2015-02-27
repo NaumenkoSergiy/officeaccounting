@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe DelegatesController, :type => :controller do
   ROLE = ['edit', 'view']
-  
+
   describe '#create_delegete' do
     let!(:user) { FactoryGirl.create(:user) }
     let!(:user_delegate) { FactoryGirl.attributes_for(:user) }
@@ -15,7 +15,7 @@ RSpec.describe DelegatesController, :type => :controller do
 
     it 'create delegete a new user' do
       role = ROLE[rand(2)]
-      expect { 
+      expect {
         post :create, email: user_delegate[:email],
                       company_id: company.id,
                       role: role,
@@ -26,7 +26,7 @@ RSpec.describe DelegatesController, :type => :controller do
 
     it 'not create delegete user from none autorizate user', :skip_before do
       role = ROLE[rand(2)]
-      expect { 
+      expect {
         post :create, email: user_delegate[:email],
                       company_id: company.id
       }.to_not change(User, :count)
@@ -35,7 +35,7 @@ RSpec.describe DelegatesController, :type => :controller do
 
     it 'not valid email' do
       role = ROLE[rand(2)]
-      expect { 
+      expect {
         post :create, email: "viktor.com",
                       company_id: company.id,
                       format: :js
