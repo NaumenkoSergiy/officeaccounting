@@ -15,7 +15,7 @@
 
     = label_tag t('money.accounts.bank')
     br
-    = select_tag 'credit[bank_id]', '', class: 'banks', data: { type: 'new'}
+    = select_tag 'credit[bank_id]', '', class: 'banks', data: { select: false, type: 'new'}
     br
     br
     = f.submit t('buttons.add')

@@ -6,13 +6,10 @@ module Money
     before_action :all_banks, only: [:index, :create]
 
     def index
-      if params[:page]
-        respond_to do |format|
-          format.js
-        end
-      else
-        banks = banks_for_select2
-        render json: banks, status: 200
+      banks = banks_for_select2
+      respond_to do |format|
+        format.js
+        format.json { render json: banks, status: 200 }
       end
     end
 

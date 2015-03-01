@@ -1,10 +1,11 @@
 class ContractsController < ApplicationController
   before_filter :redirect_to_new_session
   before_action :set_contract, only: [:destroy, :update]
-  before_action :company_contract, only: [:new, :create]
+  before_action :company_contract, only: [:index, :new, :create]
 
   def index
-    counterparty_contracts = Contract.contracts_for_conterparty(params[:counterparty])
+    counterparty_contracts = @contracts.where(contract_params)
+                                       .map { |contract| { value: contract.id, text: contract.number } }
     render json: counterparty_contracts, status: 200
   end
 
@@ -17,7 +18,7 @@ class ContractsController < ApplicationController
 
   def create
     @contract = Contract.new contract_params
-    flash[:error] = 'Ви ввели не коректні данні' unless @contract.save
+    flash[:error] = t('validation.errors.all_fields') unless @contract.save
     respond_to do |format|
       format.js
     end

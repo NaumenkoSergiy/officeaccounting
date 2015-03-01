@@ -18,7 +18,7 @@
         = f.text_field :account, :class => 'number'
       .col-lg-3
         = f.label t('money.accounts.bank')
-        = select_tag 'counterparty[bank_id]', '', class: 'banks', data: { type: 'new'}
+        = select_tag 'counterparty[bank_id]', '', class: 'banks', data: { select: false, type: 'new'}
       .col-lg-3
         = f.label t('bank_accounts.mfo')
         = f.text_field :mfo, :class => 'number', maxlength: 8

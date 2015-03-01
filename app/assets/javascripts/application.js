@@ -34,18 +34,6 @@ $(document).on('ready', function() {
   //observer dom change
   setObserver();
 
-  //set article xeditable
-  Articles.xeditable();
-
-  //set account xeditable
-  Accounts.xeditableLoadSource();
-
-  // set counterparty xeditable
-  Counterparties.xeditable();
-
-  // ser contract xeditable
-  Contracts.xeditable();
-
   // left bar toggle
   $('.navbar-minimalize').click(function () {
     if ($('#page-wrapper').css('margin-left')==LEFT_BAR_HIDE+'px') {
@@ -151,17 +139,11 @@ function setObserver() {
     else if ($('.company_counterparties').length > 0 && $('.company_counterparties[data-type=new]').length) {
       Counterparties.loadOption();
     }
-    else if ($('.change_counterparty[data-status=new]').length) {
-      Counterparties.xeditable();
-    }
     else if ($('.counterparty_contracts').length && $('.counterparty_contracts  > option').length == 0) {
       Contracts.ForCounterparty();
     }
     else if ($('.counterparty_reg[data-type=new]').length) {
       Counterparties.forRegister();
-    }
-    else if ($('.change_contract[data-status=new]').length) {
-      Contracts.xeditable();
     }
     else if ($('.contract_reg[data-status=new]').length) {
       Contracts.ForRegisterTable();
@@ -172,8 +154,8 @@ function setObserver() {
     else if ($('.change_bank').length > 0 && !($( '.change_bank' ).length == $( '.change_bank.editable-click' ).length)) {
       Banks.xeditableBanks();
     }
-    else if ($('.counterparty-cancel').length) {
-      setEditCounterparty();
+    else if ($('[data-select2=false]')) {
+      setSelect2();
     }
 
     setObserver();
@@ -220,4 +202,10 @@ xeditableParams = function(params) {
   railsParams[$(this).data("model")][params.name] = params.value;
   railsParams['page'] = 'show';
   return railsParams;
+}
+
+function setSelect2() {
+  $("[data-select=false]").each(function() {
+    $(this).attr('data-select', true).select2();
+  });
 }

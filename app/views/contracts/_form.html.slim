@@ -9,7 +9,7 @@
   .row
     .col-lg-6
       = f.label t('contract.type')
-      = f.select :contract_type, application_present.translate_array_for_select_options(Contract::CONTRACT_TYPE), class: "contactSelect"
+      = f.select :contract_type, application_present.translate_array_for_select_options(Contract::CONTRACT_TYPE)
     .col-lg-6
       = f.label t('contract.validity')
       = f.text_field :validity
@@ -17,7 +17,7 @@
     .col-lg-6
       = f.label t('contract.counterparty')
       .counterparty_select
-        = select_tag 'contract[counterparty_id]', '', class: 'company_counterparties', data: { type: 'new', path: new_purchases_counterparty_path, id: current_user.current_company.id, page: params[:page] }
+        = select_tag 'contract[counterparty_id]', '', class: 'company_counterparties', data: { select: false, type: 'new', path: new_purchases_counterparty_path, id: current_user.current_company.id, page: params[:page] }
     .col-lg-6
       br
       - unless params[:page].nil?

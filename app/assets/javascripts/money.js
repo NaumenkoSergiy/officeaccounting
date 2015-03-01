@@ -1,9 +1,12 @@
 $(document).ready(function() {
 
+  updateMoneyChart();
+
+  Counterparties.clickEditable();
+
   curr_date = new Date();
 
   $('#moneyCurrency h4').append(I18n.t('for_today') + $.datepicker.formatDate('dd.mm.yy', curr_date));
-
 
   $('.editable-select').select2({width: '255px'});
 
@@ -146,18 +149,16 @@ function validateFormForNewRegister() {
 }
 
 function setEditCounterparty() {
-  $('.counterparty_reg').change(function() {
-    $('.register_contract').html('<select class="contract_reg change" data-status="new"></select>');
+  $('.counterparty_reg').on('change', function() {
+    $('.register_contract').html('<select class="contract_reg change" data-status="new" data-select="false"></select>');
   });
 
-  $('.counterparty-cancel').click(function() {
+  $('.counterparty-cancel').on('click', function() {
     $('.popover').remove();
   });
 
-  $('form#counterparty').submit(function() {
+  $('form#contract_popover').submit(function() {
     var registerId = $(this).data('id');
-    var parentCounterpartyId = $(this).data('counterparty');
-    var parentContractId = $(this).data('contract');
     var counterpartyId = $('select.counterparty_reg').val();
     var contractId = $('select.contract_reg').val();
     var counterpartyText = $('select.counterparty_reg :selected').text();
@@ -172,12 +173,17 @@ function setEditCounterparty() {
         async: false,
         data: { money_register: { counterparty_id: counterpartyId, contract_id: contractId } },
         success: function() {
-          $('#contract_' + registerId).text(contractText).attr('data-value', contractId);
-          $('#conterparty_' + registerId ).attr('data-value', counterpartyId).text(counterpartyText);
+          $('#contract_' + registerId).text(contractText).attr({'data-value': counterpartyId, 'data-contract': contractId});
+          $('#conterparty_' + registerId ).text(counterpartyText).attr({'data-value': counterpartyId, 'data-contract': contractId});
           $('.popover').remove();
-          $('#contract_' + registerId).attr('data-status', 'new');
         }
       });
     }
   })
 };
+
+function updateMoneyChart (argument) {
+  $('.total').on('save', function(e, params) {
+    setCharts();
+  });
+}
