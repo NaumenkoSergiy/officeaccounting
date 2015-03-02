@@ -34,6 +34,16 @@ $(document).on('ready', function() {
   //observer dom change
   setObserver();
 
+  if ($('.banks[data-type=new]').length) {
+    Banks.loadOption();
+  }
+
+  setSelect2();
+
+  if (!($( '.change_bank' ).length == $( '.change_bank.editable-click' ).length)) {
+    Banks.xeditableBanks();
+  }
+
   // left bar toggle
   $('.navbar-minimalize').click(function () {
     if ($('#page-wrapper').css('margin-left')==LEFT_BAR_HIDE+'px') {
@@ -148,10 +158,10 @@ function setObserver() {
     else if ($('.contract_reg[data-status=new]').length) {
       Contracts.ForRegisterTable();
     }
-    else if ($('.banks').length > 0 && $('.banks[data-type=new]').length) {
+    else if ($('.banks[data-type=new]').length) {
       Banks.loadOption();
     }
-    else if ($('.change_bank').length > 0 && !($( '.change_bank' ).length == $( '.change_bank.editable-click' ).length)) {
+    else if (!($( '.change_bank' ).length == $( '.change_bank.editable-click' ).length)) {
       Banks.xeditableBanks();
     }
     else if ($('[data-select=false]')) {

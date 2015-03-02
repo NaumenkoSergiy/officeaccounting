@@ -11,8 +11,8 @@ window.Contracts =
   loadContract: ->
     $('#money_register_counterparty_id').change ->
       page = $('#money_register_contract_id').data('page')
-      path = $('#money_register_contract_id').data('path')
-      $('.contract_select').html '<select class="counterparty_contracts" data-path=' + path + ' data-page="'+
+      path = $('#path').data('contracts')
+      $('.contract_select').html '<select class="counterparty_contracts" data-path=' + path + 'new/' +' data-page="'+
         page + '" data-select="false" id="money_register_contract_id" name="money_register[contract_id]"></select>'
       return
     return
@@ -35,11 +35,11 @@ window.Contracts =
     $counterpartyContracts = $('#money_register_counterparty_id')
     id = $counterpartyContracts.val()
     page = $counterpartyContracts.data('page')
-    path = $('#money_register_contract_id').data('path')
+    path = $('#path').data('contracts')
     if id
       Contracts.load ((contracts) ->
         if $.isEmptyObject(contracts)
-          $('.contract_select').html '<a data-remote=\'true\' href=' + path + '?page=' + page + ' type=\'get\'>' + I18n.t('contract.contract_info') + '</a>'
+          $('.contract_select').html '<a data-remote=\'true\' href=' + path + '/new' + '?page=' + page + ' type=\'get\'>' + I18n.t('contract.contract_info') + '</a>'
         else
           $.each contracts, ->
             $('.counterparty_contracts').append '<option value=' + @value + '>' + @text + '</option>'

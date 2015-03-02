@@ -11,7 +11,7 @@
       br
       = f.label t('bank_accounts.bank')
       br
-      = f.text_field :bank, placeholder: t('bank_accounts.enter_bank')
+      = select_tag 'bank_account[bank_id]', '', class: 'banks', data: { select: false, type: 'new'}
 
       br
       = f.label t('bank_accounts.mfo')

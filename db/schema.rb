@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20150302090917) do
   create_table "bank_accounts", force: true do |t|
     t.integer "company_id"
     t.string  "account"
-    t.text    "bank"
     t.string  "mfo"
+    t.integer "bank_id"
   end
 
   create_table "banks", force: true do |t|
