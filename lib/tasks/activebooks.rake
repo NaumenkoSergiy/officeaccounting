@@ -4,7 +4,7 @@ namespace :activebooks do
       IncorporationForm.create(number: form[0..2], name: form[5..-1])
     end
   end
-  
+
   task add_form_of_invoice: :environment do
     Constants_invoice::FORMS_OF_INVOICE.each do |form|
       InvoiceForm.create({account_number: form[:account_number], name: form[:name], invoice_type: form[:type], subcount1: form[:subcount1], subcount2: form[:subcount2] })
@@ -45,6 +45,13 @@ namespace :activebooks do
   task add_form_of_article: :environment do
     Constants::FORMS_OF_ARTICLE.each do |form|
       Article.create({code: form[:code], name: form[:name]})
+    end
+  end
+
+  task encrypt_user_password: :environment do
+    User.all.each do |user|
+      user.password = user.confirm_password
+      user.save
     end
   end
 
