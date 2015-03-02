@@ -1,5 +1,5 @@
 tr class='register_#{ register.id } #{register.type_money}'
-  td style='width: 84px;'
+  td class='width-84'
     = l(register.date, format: :default)
   td
     = t("#{register.type_document}")
@@ -15,4 +15,4 @@ tr class='register_#{ register.id } #{register.type_money}'
     = register.total
   td
     = t(register.type_money)
-  td style='width:40px;'
+  td class='width-40'

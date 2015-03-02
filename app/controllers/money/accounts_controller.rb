@@ -8,7 +8,10 @@ module Money
     def index
       respond_to do |format|
         format.js
-        format.json { render json: @accounts.map { |account| { value: account.id, text: account.number.to_s } }, status: 200 }
+        format.json do
+          accounts = @accounts.map { |account| { value: account.id, text: account.number.to_s } }
+          render json: accounts, status: 200
+        end
       end
     end
 

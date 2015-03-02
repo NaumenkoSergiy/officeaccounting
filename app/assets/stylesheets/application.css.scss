@@ -104,3 +104,9 @@ a.btn-success {
   max-width: 600px;
   width: auto;
 }
+
+@for $i from 1 through 300 {
+  .width-#{$i} {
+    width: $i*1px;
+  }
+}

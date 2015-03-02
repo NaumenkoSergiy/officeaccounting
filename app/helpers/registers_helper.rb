@@ -7,11 +7,11 @@ module RegistersHelper
     end
   end
 
-  def registers_permissions
+  def render_registers_list(registers)
     if can? :update, MoneyRegister
-      render partial: "money/registers/edit_list" , collection: @registers, as: :register
+      render partial: "money/registers/edit_list" , collection: registers, as: :register
     else
-      render partial: "money/registers/view_list", collection: @registers, as: :register
+      render partial: "money/registers/view_list", collection: registers, as: :register
     end
   end
 end
