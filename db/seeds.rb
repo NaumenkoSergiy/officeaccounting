@@ -8,7 +8,7 @@
 
 user = User.create(email: 'admin@example.com',
 						password: 'password',
-						confirm_password: 'password',
+            password_confirmation: 'password',
 						is_admin: true,
 						activate_token: nil)
 user.update_column(:activate_token, nil)
