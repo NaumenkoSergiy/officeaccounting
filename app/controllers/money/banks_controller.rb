@@ -6,10 +6,9 @@ module Money
     before_action :all_banks, only: [:index, :create]
 
     def index
-      banks = banks_for_select2
       respond_to do |format|
         format.js
-        format.json { render json: banks, status: 200 }
+        format.json { render json: banks_for_select2, status: 200 }
       end
     end
 

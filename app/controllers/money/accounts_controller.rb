@@ -6,10 +6,9 @@ module Money
     before_action :company_account, only: [:index, :create]
 
     def index
-      accounts = @accounts.map { |account| { value: account.id, text: account.number.to_s } }
       respond_to do |format|
         format.js
-        format.json { render json: accounts, status: 200 }
+        format.json { render json: @accounts.map { |account| { value: account.id, text: account.number.to_s } }, status: 200 }
       end
     end
 

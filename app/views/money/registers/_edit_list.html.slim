@@ -1,0 +1,19 @@
+tr class='register_#{ register.id } #{register.type_money}'
+  td style='width: 84px;'
+    = link_to l(register.date, format: :default), '#', data: { type: 'date', format: 'dd-mm-yyyy', placement: 'right', name: :date, pk: @registers, model: 'money_register', url: money_register_path(register.id), xeditable: true }
+  td
+    = label_tag nil, register.counterparty_including_deleted.name, data: { id: register.id, value: register.counterparty_including_deleted.id, status: :new, contract:  register.contract_including_deleted.id}, class: 'conterparty_popover', id: "conterparty_#{register.id}"
+  td
+    = label_tag nil, register.contract_including_deleted.number, data: { id: register.id, value: register.counterparty_including_deleted.id, status: :new, contract:  register.contract_including_deleted.id}, class: 'conterparty_popover', id: "contract_#{register.id}"
+  td
+    = link_to register.account_including_deleted.number, '#', data: { name: :number, pk: @registers, value: register.account_including_deleted.id, placement: 'bottom', model: 'money_register', url: money_register_path(register.id), status: :new }, class: 'change_account'
+  td
+    = link_to t("#{register.type_document}"), '#', data: { name: :type_document, type: 'select2', pk: @registers, value: register.type_document, source: application_present.translate_array_select2_options(document_type(register.type_money)), placement: 'bottom', model: 'money_register', url: money_register_path(register.id), xeditable: true }
+  td
+    = link_to register.article.name, '#', data: { name: :article_id, pk: @registers, value: register.article.id, placement: 'bottom', model: 'money_register', url: money_register_path(register.id), status: :new }, class: 'change_article'
+  td
+    = link_to register.total, '#', data: { placement: 'bottom', name: :total, pk: @registers, model: 'money_register', url: money_register_path(register.id), xeditable: true }, class: 'total'
+  td
+    = t(register.type_money)
+  td style='width:40px;'
+    = application_present.destroy_link money_register_path(register)

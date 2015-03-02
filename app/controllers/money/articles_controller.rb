@@ -6,10 +6,9 @@ module Money
     before_action :all_articles, only: [:index, :create]
     
     def index
-      acticles = articles_for_select2
       respond_to do |format|
         format.js
-        format.json { render json: acticles, status: 200 }
+        format.json { render json: articles_for_select2, status: 200 }
       end
     end
 
