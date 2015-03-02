@@ -38,9 +38,7 @@ $(document).on('ready', function() {
     Banks.loadOption();
   }
 
-  if ($('[data-select=false]')) {
-    setSelect2();
-  }
+  setSelect2();
 
   if (!($( '.change_bank' ).length == $( '.change_bank.editable-click' ).length)) {
     Banks.xeditableBanks();

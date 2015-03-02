@@ -11,6 +11,7 @@ class Company < ActiveRecord::Base
   has_one :registration
   has_many :officials
   has_one :bank_account
+  has_one :bank, through: :bank_account
   has_many :currencies
   has_many :credits
   has_many :accounts
@@ -18,6 +19,10 @@ class Company < ActiveRecord::Base
   has_many :counterparties
   has_many :contracts
   has_many :money_registers
+
+  delegate :name, to: :bank, prefix: true
+  delegate :account, to: :bank_account, prefix: true
+  delegate :mfo, to: :bank_account, prefix: true
 
   after_create { set_registration }
 

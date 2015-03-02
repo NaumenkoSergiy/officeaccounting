@@ -3,29 +3,29 @@ h3
 - if can? :update, BankAccount
   = label_tag t('money.accounts.account_number')
   br
-  = link_to @company.bank_account.account, '#', data: { placement: 'right', name: :account, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }", xeditable: true }
+  = link_to current_company.bank_account_account, '#', data: { placement: 'right', name: :account, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }", xeditable: true }
 
   br
   = label_tag t('money.accounts.bank')
   br
-  = link_to @company.bank_account.bank.name, '#', data: { value: @company.bank_account.bank.id, placement: 'bottom', name: :bank_id, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }"}, class: 'change_bank'
+  = link_to current_company.bank_name, '#', data: { value: @company.bank_account.bank.id, placement: 'bottom', name: :bank_id, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }"}, class: 'change_bank'
 
   br
   = label_tag t('bank_accounts.mfo')
   br
-  = link_to @company.bank_account.mfo, '#', data: { placement: 'right', name: :mfo, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }", xeditable: true }
+  = link_to current_company.bank_account_mfo, '#', data: { placement: 'right', name: :mfo, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }", xeditable: true }
 
 - else
   = label_tag t('money.accounts.account_number')
   br
-  = @company.bank_account.bank.name
+  = current_company.bank_account_account
 
   br
   = label_tag t('money.accounts.bank')
   br
-  = @company.bank_account.bank
+  = current_company.bank_name
 
   br
   = label_tag t('bank_accounts.mfo')
   br
-  = @company.bank_account.mfo
+  = current_company.bank_account_mfo
