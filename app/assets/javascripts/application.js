@@ -154,7 +154,7 @@ function setObserver() {
     else if ($('.change_bank').length > 0 && !($( '.change_bank' ).length == $( '.change_bank.editable-click' ).length)) {
       Banks.xeditableBanks();
     }
-    else if ($('[data-select2=false]')) {
+    else if ($('[data-select=false]')) {
       setSelect2();
     }
 

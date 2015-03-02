@@ -12,7 +12,6 @@ module RegistersHelper
       render partial: "money/registers/edit_list" , collection: @registers, as: :register
     else
       render partial: "money/registers/view_list", collection: @registers, as: :register
-
     end
   end
 end
