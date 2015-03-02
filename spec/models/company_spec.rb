@@ -15,4 +15,7 @@ RSpec.describe Company, type: :model do
   it { should have_many(:counterparties) }
   it { should have_many(:contracts) }
   it { should have_many(:money_registers) }
+  it { should delegate_method(:name).to(:bank).with_prefix(true) }
+  it { should delegate_method(:account).to(:bank_account).with_prefix(true) }
+  it { should delegate_method(:mfo).to(:bank_account).with_prefix(true) }
 end
