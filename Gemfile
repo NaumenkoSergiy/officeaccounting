@@ -38,6 +38,7 @@ gem 'bootstrap-select-rails'
 gem "select2-rails"
 gem "i18n-js", ">= 3.0.0.rc8"
 gem "acts_as_paranoid", github: 'ActsAsParanoid/acts_as_paranoid'
+gem 'bcrypt', '~> 3.1.5'
 
 group :development, :test do
   gem 'pry'
