@@ -9,7 +9,7 @@ module Money
       respond_to do |format|
         format.js
         format.json do
-          accounts = @accounts.map { |account| { value: account.id, text: account.number.to_s } }
+          accounts = @accounts.map { |account| { value: account.id, text: account.name } }
           render json: accounts, status: 200
         end
       end

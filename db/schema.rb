@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206121633) do
+ActiveRecord::Schema.define(version: 20150302090917) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -192,12 +192,11 @@ ActiveRecord::Schema.define(version: 20150206121633) do
 
   create_table "users", force: true do |t|
     t.string   "email"
-    t.string   "password"
-    t.string   "confirm_password"
     t.string   "activate_token"
     t.boolean  "is_admin",               default: false
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "password_digest"
   end
 
 end

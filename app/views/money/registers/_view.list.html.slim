@@ -4,13 +4,13 @@ tr class='register_#{ register.id } #{register.type_money}'
   td
     = t("#{register.type_document}")
   td
-    = register.counterparty_including_deleted.name
+    = register.counterparty_including_deleted_name
   td
     = register.contract_including_deleted.number
   td
-    = register.account_including_deleted.number
+    = register.account_including_deleted_name
   td
-    = register.article.name
+    = register.article_name
   td
     = register.total
   td
