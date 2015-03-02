@@ -34,19 +34,22 @@ window.Contracts =
   ForCounterparty: ->
     $counterpartyContracts = $('#money_register_counterparty_id')
     id = $counterpartyContracts.val()
-    Contracts.load ((contracts) ->
-      page = $counterpartyContracts.data('page')
-      path = $('#money_register_contract_id').data('path')
-      if $.isEmptyObject(contracts)
-        $('.contract_select').html '<a data-remote=\'true\' href=' + path + '?page=' + page + ' type=\'get\'>' + I18n.t('contract.contract_info') + '</a>'
-      else
-        $.each contracts, ->
-          $('.counterparty_contracts').append '<option value=' + @value + '>' + @text + '</option>'
-          return
-        $('.contract_select').prepend '<a data-remote=\'true\' href=' + path + '?page=' + page + ' type=\'get\'>' + I18n.t('contract.counterparty_add') + '</a>'
-      return
-    ), id
-    return
+    page = $counterpartyContracts.data('page')
+    path = $('#money_register_contract_id').data('path')
+    if id
+      Contracts.load ((contracts) ->
+        if $.isEmptyObject(contracts)
+          $('.contract_select').html '<a data-remote=\'true\' href=' + path + '?page=' + page + ' type=\'get\'>' + I18n.t('contract.contract_info') + '</a>'
+        else
+          $.each contracts, ->
+            $('.counterparty_contracts').append '<option value=' + @value + '>' + @text + '</option>'
+            return
+          $('.contract_select').prepend '<a data-remote=\'true\' href=' + path + '?page=' + page + ' type=\'get\'>' + I18n.t('contract.counterparty_add') + '</a>'
+        return
+      ), id
+    else
+      $('.contract_select').html '<a data-remote=\'true\' href=' + path + '?page=' + page + ' type=\'get\'>' + I18n.t('contract.contract_info') + '</a>'
+      setSelect2();
 
   ForRegisterTable: ->
     registerId = $('form#contract_popover').attr('data-id')
