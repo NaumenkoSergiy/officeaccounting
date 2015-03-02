@@ -21,8 +21,7 @@ class Company < ActiveRecord::Base
   has_many :money_registers
 
   delegate :name, to: :bank, prefix: true
-  delegate :account, to: :bank_account, prefix: true
-  delegate :mfo, to: :bank_account, prefix: true
+  delegate :account, :mfo, to: :bank_account, prefix: true
 
   after_create { set_registration }
 
