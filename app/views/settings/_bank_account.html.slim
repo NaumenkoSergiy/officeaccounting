@@ -8,7 +8,7 @@ h3
   br
   = label_tag t('money.accounts.bank')
   br
-  = link_to @company.bank_account.bank, '#', data: { placement: 'right', name: :bank, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }", xeditable: true }
+  = link_to @company.bank_account.bank.name, '#', data: { value: @company.bank_account.bank.id, placement: 'bottom', name: :bank_id, pk: @company.bank_account, model: 'bank_account', url: "bank_accounts/#{ @company.bank_account.id }"}, class: 'change_bank'
 
   br
   = label_tag t('bank_accounts.mfo')
@@ -18,7 +18,7 @@ h3
 - else
   = label_tag t('money.accounts.account_number')
   br
-  = @company.bank_account.account
+  = @company.bank_account.bank.name
 
   br
   = label_tag t('money.accounts.bank')

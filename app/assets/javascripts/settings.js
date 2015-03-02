@@ -258,18 +258,12 @@ $(document).ready(function() {
       "bank_account[account]": {
         required: true
       },
-      "bank_account[bank]": {
-        required: true
-      },
       "bank_account[mfo]": {
         required: true
       }
     },
     messages: {
       "bank_account[account]": {
-        required: I18n.t('validation.errors.cant_be_blank')
-      },
-      "bank_account[bank]": {
         required: I18n.t('validation.errors.cant_be_blank')
       },
       "bank_account[mfo]": {
