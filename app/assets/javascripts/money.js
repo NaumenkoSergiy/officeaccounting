@@ -1,9 +1,12 @@
 $(document).ready(function() {
 
+  updateMoneyChart();
+
+  Counterparties.clickEditable();
+
   curr_date = new Date();
 
   $('#moneyCurrency h4').append(I18n.t('for_today') + $.datepicker.formatDate('dd.mm.yy', curr_date));
-
 
   $('.editable-select').select2({width: '255px'});
 
@@ -27,16 +30,17 @@ function addCurrency() {
   if ($('.currencySelect option').length == 0) {
     $('#currency_form').hide();
   }
-  $('#currency_form').click(function () {
+  $('#currencies_form a').click(function () {
     selected = $('.currencySelect :selected');
     data = {
       currency: {
         name: selected.val()
       }
     };
+
     $.ajax({
       type: 'POST',
-      url: '/money/currencies',
+      url: $('#path').data('currensies'),
       data: data,
       success: RemoveOptionsCurrensy(selected)
     });
@@ -72,9 +76,9 @@ function RemoveOptionsCurrensy(selected) {
 function currencyRemove(id) {
   $.ajax({
     type: 'DELETE',
-    url: '/money/currencies/' + id,
+    url: $('#path').data('currensies') + '/' + id,
     async: false,
-    success: function(){
+    success: function() {
       currencies = $('.currencyRates_' + id + ' td:first').text();
       $('.currencyRates_' + id).remove();
       value = currencies.slice(0,3);
@@ -141,5 +145,45 @@ function validateFormForNewRegister() {
       "money_register[contract_id]": { required: I18n.t('validation.errors.cant_be_blank') },
       "money_register[account_id]": { required: I18n.t('validation.errors.cant_be_blank') }
     }
+  });
+}
+
+function setEditCounterparty() {
+  $('.counterparty_reg').on('change', function() {
+    $('.register_contract').html('<select class="contract_reg change" data-status="new" data-select="false"></select>');
+  });
+
+  $('.counterparty-cancel').on('click', function() {
+    $('.popover').remove();
+  });
+
+  $('form#contract_popover').submit(function() {
+    var registerId = $(this).data('id');
+    var counterpartyId = $('select.counterparty_reg').val();
+    var contractId = $('select.contract_reg').val();
+    var counterpartyText = $('select.counterparty_reg :selected').text();
+    var contractText = $('select.contract_reg :selected').text();
+
+    if(contractId == null) {
+      return false;
+    } else {
+      $.ajax({
+        type: 'PUT',
+        url: $('#path').data('registers') + '/' + registerId,
+        async: false,
+        data: { money_register: { counterparty_id: counterpartyId, contract_id: contractId } },
+        success: function() {
+          $('#contract_' + registerId).text(contractText).attr({'data-value': counterpartyId, 'data-contract': contractId});
+          $('#conterparty_' + registerId ).text(counterpartyText).attr({'data-value': counterpartyId, 'data-contract': contractId});
+          $('.popover').remove();
+        }
+      });
+    }
+  })
+};
+
+function updateMoneyChart (argument) {
+  $('.total').on('save', function(e, params) {
+    setCharts();
   });
 }

@@ -6,13 +6,9 @@ module Money
     before_action :all_articles, only: [:index, :create]
     
     def index
-      if params[:page]
-        acticles = Article.all
-        render json: acticles, status: 200
-      else
-        respond_to do |format|
-          format.js
-        end
+      respond_to do |format|
+        format.js
+        format.json { render json: articles_for_select2, status: 200 }
       end
     end
 
@@ -63,6 +59,12 @@ module Money
 
     def all_articles
       @articles = Article.all
+    end
+
+    def articles_for_select2
+      Article.all.map do |article|
+        { value: article.id, text: article.name }
+      end
     end
   end
 end

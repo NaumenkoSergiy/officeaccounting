@@ -9,4 +9,5 @@
 -else
   | $('#counterparty').html("#{j render 'purchases/counterparties/counterparties'}").modal('show');
   | $('#counterparty_form').html("#{j render 'purchases/counterparties/form'}");
+  | $('#add_new_counterparty').remove();
 | Counterparties.loadPluginsCounterparty();

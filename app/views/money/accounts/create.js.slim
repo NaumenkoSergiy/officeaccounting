@@ -5,5 +5,5 @@
     | $('#account_list').html("#{j render 'money/accounts/list'}");
     | $('#new_account').hide()[0].reset();
   - else
-    | $('#select_account').html("#{ j select_tag 'money_register[account_id]', '', class: 'company_accounts', data: { path: new_money_account_path, id: current_user.current_company.id, page: params[:account][:page] }}");
+    | $('#select_account').html("#{ j select_tag 'money_register[account_id]', '', class: 'company_accounts', data: { path: new_money_account_path, select: false, id: current_user.current_company.id, page: params[:account][:page] }}");
     | $('#companyAccount').modal('hide');

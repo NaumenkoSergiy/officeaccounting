@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   skip_before_filter :verify_authenticity_token
 
-  helper_method :current_user, :is_admin?, :application_present
+  helper_method :current_user, :is_admin?, :application_present, :current_company
   before_filter :set_locale
 
   def current_user
@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_company
-    @current_company ||= current_user.user_companies.where(current_company: true).first.company
+    @current_company ||= current_user.current_company
   end
 
   def application_present

@@ -8,9 +8,5 @@ class Contract < ActiveRecord::Base
 
   validates :date, :counterparty_id, :validity, :number, presence: true
 
-  scope :contracts_for_conterparty, -> (id) {
-    where(counterparty_id: id)
-  }
-
   CONTRACT_TYPE = [:product, :service]
 end

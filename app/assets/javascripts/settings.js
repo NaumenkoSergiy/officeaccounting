@@ -350,5 +350,4 @@ $(document).ready(function() {
   $('#company-full-name').on('save', function(e, params) {
     $('#label-full-name').text(params.newValue);
   });
-
 });

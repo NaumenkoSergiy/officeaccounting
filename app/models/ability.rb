@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
   
   def initialize(current_user, params)
-    if UserCompany.user_permission(params[:id], current_user.id).role  == 'edit'
+    if current_user.user_companies.find_by(company: current_user.current_company).role == "edit"
       can :manage, :all
     else
       can :read, :all

@@ -1,0 +1,18 @@
+tr class='register_#{ register.id } #{register.type_money}'
+  td class='width-84'
+    = l(register.date, format: :default)
+  td
+    = t("#{register.type_document}")
+  td
+    = register.counterparty_including_deleted.name
+  td
+    = register.contract_including_deleted.number
+  td
+    = register.account_including_deleted.number
+  td
+    = register.article.name
+  td
+    = register.total
+  td
+    = t(register.type_money)
+  td class='width-40'

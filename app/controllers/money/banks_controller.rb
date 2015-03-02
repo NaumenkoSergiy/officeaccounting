@@ -6,13 +6,9 @@ module Money
     before_action :all_banks, only: [:index, :create]
 
     def index
-      if params[:page]
-        respond_to do |format|
-          format.js
-        end
-      else
-        banks = application_present.options_for_select2(Bank.pluck(:name, :id))
-        render json: banks, status: 200
+      respond_to do |format|
+        format.js
+        format.json { render json: banks_for_select2, status: 200 }
       end
     end
 
@@ -63,6 +59,12 @@ module Money
 
     def all_banks
       @banks = Bank.all
+    end
+
+    def banks_for_select2
+      Bank.all.map do |bank|
+        { value: bank.id, text: bank.name }
+      end
     end
   end
 end

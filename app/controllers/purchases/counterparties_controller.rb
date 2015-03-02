@@ -4,11 +4,11 @@ module Purchases
     before_action :has_company?, only: :new
     before_action :set_counterparty, only: [:update, :destroy]
     before_action :define_counterparty, only: [:new, :create]
-    before_action :all_counterparties, only: [:new, :create]
+    before_action :all_counterparties, only: [ :index, :new, :create]
 
     def index
-      counterparties = Counterparty.where(company_id: params[:id])
-      render json: counterparties.order('counterparties.created_at DESC'), status: 200
+      counterparties = @counterparties.map { |counterparty| { value: counterparty.id, text: counterparty.name } }
+      render json: counterparties, status: 200
     end
 
     def new

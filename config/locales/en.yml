@@ -257,6 +257,7 @@ en:
     add_new: "Add new"
     counterparty_info: "You have no counterparty Click here to add new one!"
     contract_info: "You have no contract Click here to add new!"
+    contract_empty: "You do not have contracts with counterparty go to the directory and add a new contract !"
   product: "Product"
   service: "Service"
   settings: "Settings"

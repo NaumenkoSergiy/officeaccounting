@@ -7,7 +7,7 @@
     br
     = f.label t('money.accounts.account_type')
     br
-    = f.select :account_type, options_for_select(Account::ACCOUNT), class: 'accountSelect'
+    = f.select :account_type, options_for_select(Account::ACCOUNT), {}, data: { select: false }
     br
     = f.label t('money.accounts.account_number')
     br
@@ -16,13 +16,13 @@
     br
     = f.label t('money.currency')
     br
-    = f.select :currency, options_for_select(application_present.translate_array_for_select_options(Currency::AVAILABLE_CURRENCIES)), class: "accountSelect"
+    = f.select :currency, options_for_select(application_present.translate_array_for_select_options(Currency::AVAILABLE_CURRENCIES)), {}, data: { select: false}
     br
 
     br
     = f.label t('money.accounts.bank')
     br
-    = select_tag 'account[bank_id]', '', class: 'banks', data: { type: 'new'}
+    = select_tag 'account[bank_id]', '', class: 'banks', data: { select: false, type: 'new'}
     br
     - unless params[:page].nil?
       = f.hidden_field :page, value: params[:page]

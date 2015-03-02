@@ -6,12 +6,11 @@ module Money
     before_action :company_account, only: [:index, :create]
 
     def index
-      if params[:company_id]
-        accounts = Account.where(company_id: params[:company_id])
-        render json: accounts.order('accounts.created_at DESC'), status: 200
-      else
-        respond_to do |format|
-          format.js
+      respond_to do |format|
+        format.js
+        format.json do
+          accounts = @accounts.map { |account| { value: account.id, text: account.number.to_s } }
+          render json: accounts, status: 200
         end
       end
     end
