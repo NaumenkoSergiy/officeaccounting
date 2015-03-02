@@ -44,7 +44,7 @@ window.Contracts =
           $.each contracts, ->
             $('.counterparty_contracts').append '<option value=' + @value + '>' + @text + '</option>'
             return
-          $('.contract_select').prepend '<a data-remote=\'true\' href=' + path + '?page=' + page + ' type=\'get\'>' + I18n.t('contract.counterparty_add') + '</a>'
+          $('.contract_select').prepend '<a data-remote=\'true\' href=' + path + '/new' + '?page=' + page + ' type=\'get\'>' + I18n.t('contract.counterparty_add') + '</a>'
         return
       ), id
     else
