@@ -21,7 +21,9 @@ class SessionsController < ApplicationController
       session[:language] = params[:locale]
     end
     I18n.locale = session[:language]
-    redirect_to root_path
+    url_hash = Rails.application.routes.recognize_path URI(request.referer).path
+    url_hash[:locale] = params[:locale]
+    redirect_to url_hash
   end
 
   private
