@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     user = @user_service.create_user params
     unless user[:error]
       redirect_to new_session_path,
-                  flash: { :notice => "На вашу електронну адресу відправленений лист з активацією." }
+                  flash: { :notice => I18n.t('session.notific_mail') }
     else
       redirect_to new_user_path, flash: { error: user[:error] }
     end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def confirm_registration
     user = User.find_by_activate_token(params[:token])
     user.activate!
-    redirect_to new_session_path, flash: { :notice => "Аккаунт активований" }
+    redirect_to new_session_path, flash: { :notice => I18n.t('session.account_act') }
   end
 
   private

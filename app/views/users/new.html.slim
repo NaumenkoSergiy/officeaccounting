@@ -1,12 +1,12 @@
 .margin-top-20
 = form_tag users_path, method: :post, id: 'new_user_form' do
-  = text_field_tag :email, '', placeholder: 'Електронна пошта'
+  = text_field_tag :email, '', placeholder: t('session.email')
 
-  = text_field_tag :password, '', placeholder: 'Пароль', type: :password
+  = text_field_tag :password, '', placeholder: t('session.pass'), type: :password
 
-  = text_field_tag :confirm_password, '', placeholder: 'Підтвердження пароля', type: :password
+  = text_field_tag :confirm_password, '', placeholder: t('session.confirm_password'), type: :password
 
-  = submit_tag "Створити профіль", class: 'create_profile'
+  = submit_tag t('session.create_an_account'), class: 'create_profile'
 
   .margin-top-20
-    = link_to 'Логін', new_session_path, class: 'btn btn-sm btn-white btn-block'
+    = link_to t('session.login'), new_session_path, class: 'btn btn-sm btn-white btn-block'

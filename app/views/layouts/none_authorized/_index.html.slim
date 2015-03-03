@@ -1,5 +1,11 @@
 = content_for :none_authorized do
   body.gray-bg
+    .locale
+      ul.nav.navbar-top-links.navbar-right
+        li
+          = link_to '', sessions_set_language_path(locale: 'ua'), class: 'ua-language'
+        li
+          = link_to '', sessions_set_language_path(locale: 'en'), class: 'en-language'
     = render 'layouts/notification'
     .middle-box.text-center.loginscreen.animated.fadeInDown
       h1.logo-name
