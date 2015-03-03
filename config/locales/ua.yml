@@ -185,7 +185,6 @@ ua:
     add_new: "Додати новий"
     income: "Надходження"
     spending: "Витрати"
-    expense_reports: "Авансові звіти"
     buy_currency: "Покупка валюти"
     currency_sale: "Продаж валюти"
     balances: "Залишки на рахунках"
