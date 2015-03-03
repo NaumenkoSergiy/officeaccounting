@@ -10,7 +10,7 @@
   right: 0px;
 }
 
-.hed_company { 
+.hed_company {
 
   #email {
     width: 210px;
@@ -82,4 +82,21 @@
 .bookkeeper_submit {
   float: left;
   margin-right: 10px;
+}
+
+#s2id_registration_risk_class {
+  width: 474px;
+  margin-bottom: 10px
+}
+
+#s2id_registration_tax_system.select2-container { width: 150px !important; }
+
+.select2-container.select2-container-multi .select2-choices {
+    background-image: none;
+    border-color: #ccc;
+  }
+
+.select2-container a.select2-choice {
+  border-color: #ccc;
+  .select2-arrow { border-left: 1px solid #ccc; }
 }
