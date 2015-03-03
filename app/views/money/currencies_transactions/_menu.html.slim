@@ -14,9 +14,9 @@
     .modal-body
       .row
         .col.col-lg-4
-          = type_of_order(params[:page])
+          = render_type_of_order_link(params[:page])
           = link_to t('money.currences_tran.payment_order_out'), '#', class: 'btn  btn-primary btn-modal'
-          = type_of_transaction(params[:page])
+          = render_type_of_transaction_link(params[:page])
           = link_to t('money.currences_tran.payment_orders_in'), '#', class: 'btn  btn-primary btn-modal'
         .col.col-lg-4
           = link_to t('money.currences_tran.turnover_balance'), '#', class: 'btn  btn-primary btn-modal'
