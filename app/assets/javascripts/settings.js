@@ -73,7 +73,7 @@ $(document).ready(function() {
   $('#company_full_name').on('keyup', function() {
     $('#company_latin_name').val($('#company_full_name').val().translit());
   });
-  
+
   $('#phone').inputmask('+(380)-99-9999999');
 
   $('#new_company').validate({
@@ -162,8 +162,8 @@ $(document).ready(function() {
       "registration[edrpou]": {
         required: I18n.t('validation.errors.cant_be_blank')
       },
-      "registration[nace_codes]": { 
-        valueNotEquals: "Please select an item!" 
+      "registration[nace_codes]": {
+        valueNotEquals: "Please select an item!"
       },
         "registration[koatuu]": {
         required: I18n.t('validation.errors.cant_be_blank')
@@ -321,7 +321,7 @@ $(document).ready(function() {
 
   $('.checkPdv').click(function(){
     id = $('#registration_id').val();
-    
+
     $.ajax({
       type: 'PUT',
       url: '/settings/registrations/' + id,
@@ -329,12 +329,10 @@ $(document).ready(function() {
       success: numberPdv
     });
   });
-  
+
   $('.info').tooltipster({ theme: 'tooltipster-shadow', position: 'right', maxWidth: '240' });
 
-  $('#registration_risk_class').selectpicker({'width':'474', 'margin-bottom':'10px'});
-
-  $('#registration_tax_system').selectpicker({'width':'150'});
+  $('#registration_risk_class, #registration_tax_system').select2({ minimumResultsForSearch: -1 });
 
   $('#company-short-name').on('save', function(e, params) {
     company_id = $(this).data("pk").id;
