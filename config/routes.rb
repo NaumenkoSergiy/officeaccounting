@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     resources :articles
     resources :registers
     resources :exchange_rates
+    resources :currencies_transactions
   end
 
   namespace 'purchases' do

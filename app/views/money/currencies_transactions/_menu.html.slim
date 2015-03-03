@@ -1,0 +1,26 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      .row
+        .col.col-lg-12
+          button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
+      .row
+        .col.col-lg-4
+          h4#myModalLabel.modal-title = t('money.documents')
+        .col.col-lg-4
+          h4#myModalLabel.modal-title = t('money.reports')
+        .col.col-lg-4
+          h4#myModalLabel.modal-title = t('money.references')
+    .modal-body
+      .row
+        .col.col-lg-4
+          = type_of_order(params[:page])
+          = link_to t('money.currences_tran.payment_order_out'), '#', class: 'btn  btn-primary btn-modal'
+          = type_of_transaction(params[:page])
+          = link_to t('money.currences_tran.payment_orders_in'), '#', class: 'btn  btn-primary btn-modal'
+        .col.col-lg-4
+          = link_to t('money.currences_tran.turnover_balance'), '#', class: 'btn  btn-primary btn-modal'
+          = link_to t('money.currences_tran.card_number'), '#', class: 'btn  btn-primary btn-modal'
+        .col.col-lg-4
+          = link_to t('buttons.currency'), money_currencies_path, remote: true, type: :get, class: 'btn  btn-primary btn-modal'
+          = link_to t('buttons.exchange_rates'), money_exchange_rates_path, remote: true, type: :get, class: 'btn  btn-primary btn-modal'
