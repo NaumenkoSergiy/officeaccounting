@@ -332,9 +332,7 @@ $(document).ready(function() {
 
   $('.info').tooltipster({ theme: 'tooltipster-shadow', position: 'right', maxWidth: '240' });
 
-  $('#registration_risk_class').select2({ minimumResultsForSearch: -1 });
-
-  $('#registration_tax_system').select2({ minimumResultsForSearch: -1 });
+  $('#registration_risk_class, #registration_tax_system').select2({ minimumResultsForSearch: -1 });
 
   $('#company-short-name').on('save', function(e, params) {
     company_id = $(this).data("pk").id;
