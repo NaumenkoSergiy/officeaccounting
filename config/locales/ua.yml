@@ -176,6 +176,13 @@ ua:
       total: "Сума"
       article: "Стаття руху грошових коштів"
     article_info: "У вас не завантаженні статті!"
+    currences_tran:
+      turnover_balance: "Оборотно сальдова відомість"
+      card_number: "Карточка рахунку"
+      payment_orders_in: "Платіжне доручення вхідне"
+      payment_order_out: "Платіжне доручення вихідне"
+      order_p_f_currency: "Заявка на покупку валюти"
+      order_s_f_currency: "Заявка на продаж валюти"
   buttons:
     add: "Додати"
     forward: "Далі"

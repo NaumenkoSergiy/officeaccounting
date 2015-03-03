@@ -205,6 +205,13 @@ en:
       calculation_t: "Calculation of taxes"
       write_offs: "Other write-offs"
     article_info: "You do not download article!"
+    currences_tran:
+      turnover_balance: "Working capital balance sheet"
+      card_number: "Account card"
+      payment_orders_in: "Payment order incoming"
+      payment_order_out: "Payment order outgoing"
+      order_p_f_currency: "Order to purchase foreign currency"
+      order_s_f_currency: "Order form for sale of foreign currency"
   buttons:
     add: "Add"
     forward: "Forward"
