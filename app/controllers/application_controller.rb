@@ -38,7 +38,9 @@ class ApplicationController < ActionController::Base
       }
 
       state = @company.state.to_sym
-      redirect_to redirect_path[state] unless redirect_path[state].match(/\/.{1,}\/.{1,}\//).to_s == "/#{params['controller']}/"
+      unless redirect_path[state].match(/\/.{1,}\/.{1,}\//).to_s == "/#{params[:locale]}/#{params['controller']}/"
+        redirect_to redirect_path[state]
+      end
     end
   end
 
@@ -63,11 +65,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
   def current_ability
     @current_ability ||= Ability.new(current_user, params)
   end
 
   def set_locale
     I18n.locale = params[:locale] || session[:language] || I18n.default_locale
+  end
+
+  def default_url_options(options={})
+    { locale: I18n.locale }
   end
 end
