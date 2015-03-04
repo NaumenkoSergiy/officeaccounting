@@ -28,6 +28,8 @@
             i.fa.fa-cog
             = t('settings')
           ul.dropdown-menu.settings role="menu" aria-labelledby="dropdownMenu1"
+            li
+              = link_to t('buttons.new_company'), new_settings_company_path
             - if current_user.current_company
               li role="presentation"
                 = link_to t('settings'), setting_path(current_user.current_company_id)
