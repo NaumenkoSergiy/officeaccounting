@@ -296,6 +296,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-validation-rails
+  kaminari
   mandrill_mailer
   minitest
   mysql2

@@ -8,11 +8,6 @@ class MoneyRegister < ActiveRecord::Base
   belongs_to :contract
   belongs_to :contract_including_deleted, class_name: 'Contract', foreign_key: 'contract_id', with_deleted: true
 
-  delegate :name, to: :article, prefix: true
-  delegate :name, to: :counterparty_including_deleted, prefix: true
-  delegate :number, to: :account_including_deleted, prefix: true
-  delegate :number, to: :contract_including_deleted, prefix: true
-
   validates :total, :type_document, :contract_id, :counterparty_id, presence: true
 
   delegate :name, to: :article, prefix: true

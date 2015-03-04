@@ -13,8 +13,12 @@ RSpec.describe MoneyController, :type => :controller do
     it 'return currencies for current_company' do
       2.times{ FactoryGirl.create(:currency) }
       get :index
-      expect(response).to be_success
       expect(assigns(:currencies)).to be
+      expect(assigns(:search)).to be
+      expect(assigns(:registers)).to be
+
+      expect(response).to be_success
+      expect(response).to render_template(:index)
     end
   end
 end

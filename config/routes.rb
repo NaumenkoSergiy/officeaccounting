@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :settings, only: [:index, :show]
     resources :password_resets
     resources :money, only: [:index] do
-      collection { post :search, to: 'money#index' }
+      collection { get :search, to: 'money#index' }
     end
     resources :delegates, only: [:create, :destroy, :update]
     resources :sales, only: [:index]

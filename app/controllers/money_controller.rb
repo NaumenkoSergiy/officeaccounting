@@ -4,7 +4,7 @@ class MoneyController < ApplicationController
 
   def index
     @search = current_user.money_registers.search params[:q]
-    @registers = @search.result.limit(7)
+    @registers = @search.result.page(params[:page])
     @search.build_condition if @search.conditions.empty?
     @search.build_sort if @search.sorts.empty?
 

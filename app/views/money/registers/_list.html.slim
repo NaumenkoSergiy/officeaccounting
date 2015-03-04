@@ -2,7 +2,7 @@ table.table
   thead
     tr style='background-color: #F2F1F0;'
       th
-        = sort_link @search, :date, t('money.costs.date'), {}, { remote: true, method: :post }
+        = sort_link @search, :date, t('money.costs.date'), {}, { remote: true }
       th
         = t('contract.counterparty')
       th
@@ -14,10 +14,12 @@ table.table
       th
         = t('money.costs.article')
       th
-        = sort_link @search, :total, t('money.costs.total'), {}, { remote: true, method: :post }
+        = sort_link @search, :total, t('money.costs.total'), {}, { remote: true }
       th
-        = sort_link @search, :type_money, t('contract.type'), {}, { remote: true, method: :post }
+        = sort_link @search, :type_money, t('contract.type'), {}, { remote: true }
       th
 
   tbody
     = render partial: 'money/registers/registers_list'
+
+= paginate @registers, remote: true

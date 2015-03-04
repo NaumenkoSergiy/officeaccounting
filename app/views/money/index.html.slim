@@ -15,7 +15,7 @@
             input.chart-input data-property="depth3D" max="120" min="1" step="1" type="range" value="40" /
 
   .row
-    = search_form_for @search, url: search_money_index_path, method: :post do |f|
+    = search_form_for @search, url: search_money_index_path do |f|
       = f.condition_fields do |c|
         = render 'condition_fields', f: c
       p= link_to_add_fields 'Add Conditions', f, :condition
