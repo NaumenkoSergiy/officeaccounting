@@ -1,4 +1,4 @@
 = form_tag password_resets_path, method: :post, id: :password_resets do
-	.margin-top-20
-   	= text_field_tag :email, params[:email], placeholder: t('session.email')
+  .margin-top-20
+    = text_field_tag :email, params[:email], placeholder: t('session.email')
     = submit_tag t('session.change_password'), class: 'change_password'
