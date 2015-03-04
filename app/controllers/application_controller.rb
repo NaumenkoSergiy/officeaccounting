@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
       }
 
       state = @company.state.to_sym
-      redirect_to redirect_path[state] unless redirect_path[state].match(/\/.{1,}\/.{1,}\//).to_s == "/#{params['controller']}/"
+      redirect_to redirect_path[state] unless redirect_path[state].match(/\/.{1,}\/.{1,}\//).to_s == "/#{params[:locale]}/#{params['controller']}/"
     end
   end
 
