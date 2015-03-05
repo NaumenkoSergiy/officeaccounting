@@ -34,7 +34,7 @@ window.Contracts =
   ForCounterparty: ->
     $counterpartyContracts = $('#money_register_counterparty_id')
     id = $counterpartyContracts.val()
-    page = $counterpartyContracts.data('page')
+    page = $('#money_register_contract_id').data('page')
     path = $('#path').data('contracts')
     if id
       Contracts.load ((contracts) ->
@@ -48,7 +48,7 @@ window.Contracts =
         return
       ), id
     else
-      $('.contract_select').html '<a data-remote=\'true\' href=' + path + '?page=' + page + ' type=\'get\'>' + I18n.t('contract.contract_info') + '</a>'
+      $('.contract_select').html '<a data-remote=\'true\' href=' + path + '/new?page=' + page + ' type=\'get\'>' + I18n.t('contract.contract_info') + '</a>'
       setSelect2();
 
   ForRegisterTable: ->
