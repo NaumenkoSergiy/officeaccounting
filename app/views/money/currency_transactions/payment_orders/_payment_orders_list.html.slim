@@ -1,0 +1,15 @@
+tr class="payment_order_#{payment_order.id}"
+  td
+    = payment_order.date
+  td
+    = payment_order.invoice_form_account_number
+  td
+    = payment_order.account_name
+  td
+    = payment_order.counterparty_name
+  td
+    = payment_order.article_name
+  td
+    = payment_order.total
+  td class='width-40'
+    = application_present.destroy_link money_currency_transactions_payment_order_path(payment_order)
