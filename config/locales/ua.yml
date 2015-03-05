@@ -1,4 +1,20 @@
 ua:
+  views:
+    pagination:
+      first: "&laquo; Перша"
+      last: "Остання &raquo;"
+      previous: "&lsaquo; Попередня"
+      next: "Наступна &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "Не знайдено %{entry_name}"
+          one: "Відображається <b>1</b> %{entry_name}"
+          other: "Відображаються <b>всі %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Відображаються %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>"
   ransack:
     attributes:
       money_register:
