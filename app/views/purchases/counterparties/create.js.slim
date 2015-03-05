@@ -10,7 +10,7 @@
   - else
     - if params[:counterparty][:page] == "costs" || params[:counterparty][:page] == "income"
       | $('.counterparty_select').html("#{j select_tag 'money_register[counterparty_id]', '', class: 'company_counterparties', data: { select: false, type: 'new',path: new_purchases_counterparty_path, id: current_user.current_company.id, select: false, page: params[:counterparty][:page]}}");
-      | $('.contract_select').html("#{j select_tag 'money_register[contract_id]', '', class: 'counterparty_contracts' , data: { select: false, path: new_contract_path, page: params[:page] }}");
+      | $('.contract_select').html("#{j select_tag 'money_register[contract_id]', '', class: 'counterparty_contracts' , data: { select: false, path: new_contract_path, page: params[:counterparty][:page] }}");
       | Contracts.hideContract();
     -elsif params[:counterparty][:page] == "null"
       | $('.counterparty_select').html("#{j select_tag 'contract[counterparty_id]', '', class: 'company_counterparties', data: { select: false, type: 'new', path: new_purchases_counterparty_path, id: current_user.current_company.id, page: params[:counterparty][:page]}}");

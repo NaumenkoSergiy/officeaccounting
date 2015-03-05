@@ -134,4 +134,3 @@ window.Counterparties =
         $('.conterparty_popover').popover 'hide'
       return
     return
-    
