@@ -1,7 +1,21 @@
 #currensies_operations {
   text-align: center;
-  
+
   .modal-dialog { width: 804px; }
 
   .btn { margin-bottom: 8px; }
+}
+
+#payment_orders {
+  .modal-dialog {
+    margin-top: 25px;
+    right: -18px;
+    width: 920px;
+  }
+
+  #payment_orders_table {
+    max-height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+  }
 }

@@ -86,4 +86,16 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  it { should have_many(:user_companies) }
+  it { should have_many(:companies) }
+  it { should delegate_method(:accounts).to(:current_company) }
+  it { should delegate_method(:contracts).to(:current_company) }
+  it { should delegate_method(:counterparties).to(:current_company) }
+  it { should delegate_method(:money_registers).to(:current_company) }
+  it { should delegate_method(:currencies).to(:current_company) }
+  it { should delegate_method(:cashiers).to(:current_company) }
+  it { should delegate_method(:credits).to(:current_company) }
+  it { should delegate_method(:payment_orders).to(:current_company) }
+  it { should delegate_method(:id).to(:current_company).with_prefix(true) }
+  it { should delegate_method(:short_name).to(:current_company).with_prefix(true) }
 end

@@ -5,6 +5,7 @@ class Counterparty < ActiveRecord::Base
   belongs_to :bank
   has_many :contracts
   has_many :money_registers
+  has_many :payment_orders
 
   validates :name, :title, :adress, presence: true
   validates_numericality_of :edrpo, :mfo, :account

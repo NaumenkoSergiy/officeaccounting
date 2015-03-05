@@ -19,6 +19,7 @@ class Company < ActiveRecord::Base
   has_many :counterparties
   has_many :contracts
   has_many :money_registers
+  has_many :payment_orders
 
   delegate :name, to: :bank, prefix: true
   delegate :account, :mfo, to: :bank_account, prefix: true
