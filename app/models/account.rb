@@ -5,7 +5,8 @@ class Account < ActiveRecord::Base
   belongs_to :company
   belongs_to :bank
   has_many :money_registers
-  
+  has_many :payment_orders
+
   validates :name, presence: true
   validates_numericality_of :number
 

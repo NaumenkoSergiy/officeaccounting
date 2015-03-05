@@ -158,6 +158,19 @@ ActiveRecord::Schema.define(version: 20150302122744) do
     t.string  "email"
   end
 
+  create_table "payment_orders", force: true do |t|
+    t.datetime "date"
+    t.integer  "invoice_form_id"
+    t.integer  "account_id"
+    t.integer  "counterparty_id"
+    t.float    "total"
+    t.integer  "article_id"
+    t.string   "type_order"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "registrations", force: true do |t|
     t.integer "company_id"
     t.string  "form_of_incorporation"

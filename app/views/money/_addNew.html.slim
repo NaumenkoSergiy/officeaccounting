@@ -17,8 +17,8 @@
           .col.col-lg-4
             = link_to t('buttons.income'), new_money_register_path(page: :income), remote: true, class: 'btn  btn-primary btn-modal'
             = link_to t('buttons.spending'), new_money_register_path(page: :costs), remote: true, class: 'btn  btn-primary btn-modal'
-            = link_to t('buttons.buy_currency'), money_currencies_transactions_path(page: :purchase), remote: true, class: 'btn  btn-primary btn-modal'
-            = link_to t('buttons.currency_sale'),  money_currencies_transactions_path(page: :sale), remote: true, class: 'btn  btn-primary btn-modal'
+            = link_to t('buttons.buy_currency'), money_currency_transactions_path(page: :purchase), remote: true, class: 'btn  btn-primary btn-modal'
+            = link_to t('buttons.currency_sale'),  money_currency_transactions_path(page: :sale), remote: true, class: 'btn  btn-primary btn-modal'
           .col.col-lg-4
             = link_to t('buttons.balances'), '#', class: 'btn  btn-primary btn-modal'
             = link_to t('buttons.statement_under_report'), '#', class: 'btn  btn-primary btn-modal'

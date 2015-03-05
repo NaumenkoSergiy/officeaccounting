@@ -1,5 +1,5 @@
 module Money
-  class CurrenciesTransactionsController < ApplicationController
+  class CurrencyTransactionsController < ApplicationController
     before_filter :redirect_to_new_session
 
     def index

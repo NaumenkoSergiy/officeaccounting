@@ -1,0 +1,5 @@
+- if flash[:error]
+  | $('.notification.error').show().text("#{flash[:error]}").fadeOut(5000);
+- else
+  | $('#payment_orders_table').html("#{j render 'money/currency_transactions/payment_orders/table'}");
+  | $('#new_payment_order').hide()[0].reset();
