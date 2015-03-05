@@ -38,7 +38,7 @@ namespace :activebooks do
   task add_tax_inspection: :environment do
     file = File.open('lib/CodesNalogovixInspekciyUkraine.txt')
     file.each do |line|
-      TaxInspection.create(name: line[15..-2])
+      TaxInspection.create(name: line[15..-2].strip)
     end
   end
 
