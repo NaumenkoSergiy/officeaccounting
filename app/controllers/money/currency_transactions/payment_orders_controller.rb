@@ -47,6 +47,7 @@ class Money::CurrencyTransactions::PaymentOrdersController < ApplicationControll
   end
 
   def all_payment_orders
-    @payment_orders = current_user.payment_orders.order('payment_orders.created_at DESC')
+    company_payment_orders = current_user.payment_orders.order('payment_orders.created_at DESC')
+    @payment_orders = company_payment_orders.payment_orders(params[:type_order] || params[:payment_order][:type_order])
   end
 end

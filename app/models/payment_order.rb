@@ -12,4 +12,8 @@ class PaymentOrder < ActiveRecord::Base
   delegate :name, to: :article, prefix: true
   delegate :name, to: :counterparty_including_deleted, prefix: true
   delegate :name, to: :account_including_deleted, prefix: true
+
+  scope :payment_orders, -> (type_order){
+    where(type_order: type_order)
+  }
 end
