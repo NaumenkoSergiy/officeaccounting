@@ -1,4 +1,4 @@
-window.Articles = 
+window.Articles =
   load: (callback) ->
     $.ajax
       type: 'GET'
@@ -14,8 +14,9 @@ window.Articles =
         $('#select_article').html I18n.t('money.article_info')
       else
         $.each articles, ->
-          $('.articles').append '<option value=' + @value + '>' + @text + '</option>'
+          $('.articles[data-status=new]').append '<option value=' + @value + '>' + @text + '</option>'
           return
+        $('.articles[data-status=new]').attr 'data-status', 'old'
       return
     return
 
@@ -34,7 +35,7 @@ window.Articles =
         return
       return
     return
-    
+
   validateFormForNewArticle: ->
     $('#new_article').validate
       errorElement: 'div'

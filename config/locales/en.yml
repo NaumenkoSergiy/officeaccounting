@@ -217,6 +217,7 @@ en:
       payment_order_out: "Payment order outgoing"
       order_p_f_currency: "Order to purchase foreign currency"
       order_s_f_currency: "Order form for sale of foreign currency"
+      number: "Number"
   buttons:
     add: "Add"
     forward: "Forward"

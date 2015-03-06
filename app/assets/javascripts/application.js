@@ -134,22 +134,22 @@ function setObserver() {
   var callback = function() {
     mo.disconnect();
 
-    if ($('.company_accounts').length && $('.company_accounts  > option').length == 0) {
+    if ($('.company_accounts[data-status=new]').length) {
       Accounts.loadOption();
     }
-    else if ($('.change_account').length && $('.change_account[data-status=new]').length) {
+    else if ($('.change_account[data-status=new]').length) {
       Accounts.xeditableLoadSource();
     }
-    else if ($('.articles').length && $('.articles  > option').length == 0) {
+    else if ($('.articles[data-status=new]').length) {
       Articles.loadOption();
     }
     else if ($('.change_article[data-status=new]').length) {
       Articles.xeditable();
     }
-    else if ($('.company_counterparties').length > 0 && $('.company_counterparties[data-type=new]').length) {
+    else if ($('.company_counterparties[data-type=new]').length) {
       Counterparties.loadOption();
     }
-    else if ($('.counterparty_contracts').length && $('.counterparty_contracts  > option').length == 0) {
+    else if ($('.counterparty_contracts[data-status=new]').length) {
       Contracts.ForCounterparty();
     }
     else if ($('.counterparty_reg[data-type=new]').length) {

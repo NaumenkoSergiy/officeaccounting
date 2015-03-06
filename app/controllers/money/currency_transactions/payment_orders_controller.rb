@@ -12,6 +12,7 @@ class Money::CurrencyTransactions::PaymentOrdersController < ApplicationControll
 
   def create
     @payment_order.update_attributes payment_order_params
+    flash.now[:error] = t('validation.errors.all_fields') unless @payment_order.save
     respond_to do |format|
       format.js
     end
@@ -36,10 +37,12 @@ class Money::CurrencyTransactions::PaymentOrdersController < ApplicationControll
 
   def payment_order_params
     params.require(:payment_order).permit(:date,
-                                          :invoice_form_id,
                                           :account_id,
                                           :counterparty_id,
-                                          :total, :article_id,
+                                          :total,
+                                          :article_id,
+                                          :currency,
+                                          :number,
                                           :type_order).merge!(company_id: current_company.id)
   end
 

@@ -5,7 +5,7 @@
   | $('#new_contract').hide()[0].reset();
   | editableStart();
   - if params[:contract][:page] == 'costs' || params[:contract][:page] == 'income'
-    | $('.contract_select').html("#{j select_tag 'money_register[contract_id]', '', class: 'counterparty_contracts' , data: { select: false, page: params[:contract][:page] }}");
+    | $('.contract_select').html("#{j select_tag 'money_register[contract_id]', '', class: 'counterparty_contracts' , data: { status: :new, select: false, page: params[:contract][:page] }}");
     | $('#contracts').modal('hide');
   | Contracts.loadContract();
   | $.unblockUI();
