@@ -7,6 +7,7 @@
       .row
         .col-lg-12
           h4#myModalLabel.modal-title = render_payment_order_title(params[:page])
+          .notification.error style='display:none;'
           = link_to '', '#', class: 'add_new glyphicon glyphicon-plus-sign', id: 'add_new_payment_orders'
     .modal-body
       .row

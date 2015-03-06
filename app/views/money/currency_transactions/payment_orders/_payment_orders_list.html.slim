@@ -1,12 +1,14 @@
 tr class="payment_order_#{payment_order.id}"
   td
+    = payment_order.id
+  td
     = payment_order.date
   td
-    = payment_order.invoice_form_account_number
+    = payment_order.account_including_deleted_name
   td
-    = payment_order.account_name
+    = payment_order.counterparty_including_deleted_name
   td
-    = payment_order.counterparty_name
+    = t(payment_order.currency)
   td
     = payment_order.article_name
   td

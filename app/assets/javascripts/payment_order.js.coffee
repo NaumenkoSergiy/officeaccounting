@@ -16,9 +16,13 @@ window.PaymentOrder =
 
   LoadPlugins: ->
     $('#new_payment_order').hide();
-    $('#payment_order_date').datetimepicker();
     $('input.number').numeric
       negative: false
       decimal: false
     PaymentOrder.validateFormForNewPaymentOrder();
-    openForm("new_payment_order", "add_new_payment_orders");
+    openForm("new_payment_order", "add_new_payment_orders")
+    PaymentOrder.AutoDateTime()
+
+  AutoDateTime: ->
+    curr_date = new Date()
+    $('#payment_order_date').val $.datepicker.formatDate('dd.mm.yy.' + curr_date.getHours() + ':' + curr_date.getMinutes(), curr_date)

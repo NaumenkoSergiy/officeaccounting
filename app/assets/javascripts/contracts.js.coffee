@@ -1,4 +1,4 @@
-window.Contracts = 
+window.Contracts =
   load: (callback, id) ->
     $.ajax
       type: 'GET'
@@ -12,7 +12,7 @@ window.Contracts =
     $('#money_register_counterparty_id').change ->
       page = $('#money_register_contract_id').data('page')
       path = $('#path').data('contracts')
-      $('.contract_select').html '<select class="counterparty_contracts" data-path=' + path + 'new/' +' data-page="'+
+      $('.contract_select').html '<select class="counterparty_contracts" data-status="new" data-path=' + path + 'new/' +' data-page="'+
         page + '" data-select="false" id="money_register_contract_id" name="money_register[contract_id]"></select>'
       return
     return
@@ -44,6 +44,7 @@ window.Contracts =
           $.each contracts, ->
             $('.counterparty_contracts').append '<option value=' + @value + '>' + @text + '</option>'
             return
+          $('.counterparty_contracts').attr 'data-status', 'old'
           $('.contract_select').prepend '<a data-remote=\'true\' href=' + path + '/new' + '?page=' + page + ' type=\'get\'>' + I18n.t('contract.counterparty_add') + '</a>'
         return
       ), id

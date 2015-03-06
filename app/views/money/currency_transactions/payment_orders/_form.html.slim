@@ -4,24 +4,24 @@
       = f.label t('money.costs.date')
       = f.text_field :date
     .col-lg-3
-      = f.label t('counterparty.account')
-      = f.select :invoice_form_id, options_for_select(load_account_namber), {}, { data: { select: false } }
-    .col-lg-3
       = f.label t('money.costs.bank_account_c')
       #select_account
-        = f.select :account_id, {}, {}, { class: 'company_accounts', data: { path: new_money_account_path, select: false, id: current_company.id, page: params[:page] }}
+        = f.select :account_id, {}, {}, { class: 'company_accounts', data: { status: :new, path: new_money_account_path, select: false, id: current_company.id, page: params[:page] }}
     .col-lg-3
       = f.label t('money.costs.article')
       #select_article
-        = f.select :article_id, {}, {}, { class: 'articles' , data: { page: params[:page], select:false }}
-  .row
+        = f.select :article_id, {}, {}, { class: 'articles' , data: { status: :new, page: params[:page], select:false }}
     .col-lg-3
       = f.label t('contract.counterparty')
       .counterparty_select
         = f.select :counterparty_id, {}, {}, { class: 'company_counterparties', data: { select: false, type: 'new', path: new_purchases_counterparty_path, id: current_user.current_company.id, page: params[:page] }}
+  .row
     .col-lg-3
       = f.label t('money.costs.total')
       = f.text_field :total, :class => 'number', maxlength: 8
+    .col-lg-3
+      = f.label t('money.currency')
+      = f.select :currency, options_for_select(application_present.translate_array_for_select_options(Currency::AVAILABLE_CURRENCIES)), {}, data: { select: false}
     .col-lg-3
       = f.hidden_field :type_order, value: params[:page]
       br

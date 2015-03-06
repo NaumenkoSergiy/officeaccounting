@@ -1,4 +1,4 @@
-window.Accounts = 
+window.Accounts =
   load: (callback) ->
     $.ajax
       type: 'GET'
@@ -10,7 +10,7 @@ window.Accounts =
 
   loadOption: ->
     Accounts.load (accounts) ->
-      $companyAccount = $('.company_accounts')
+      $companyAccount = $('.company_accounts[data-status=new]')
       page = $companyAccount.data('page')
       path = $companyAccount.data('path')
       if $.isEmptyObject(accounts)
@@ -20,6 +20,7 @@ window.Accounts =
           $companyAccount.append '<option value=' + @value + '>' + @text + '</option>'
           return
         $('#select_account').prepend '<a data-remote=\'true\' href=' + path + '?page=' + page + ' type=\'get\'>' + I18n.t('contract.add_new') + '</a>'
+        $companyAccount.attr 'data-status', 'old'
       return
     return
 
@@ -44,7 +45,7 @@ window.Accounts =
     $('#new_account').hide()
     Accounts.validateFormForNewAccount()
     return
-    
+
   xeditableLoadSource: ->
     Accounts.load (accounts) ->
       $('.change_account[data-status=new]').each ->

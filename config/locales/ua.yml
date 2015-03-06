@@ -206,6 +206,7 @@ ua:
       payment_order_out: "Платіжне доручення вихідне"
       order_p_f_currency: "Заявка на покупку валюти"
       order_s_f_currency: "Заявка на продаж валюти"
+      number: "Номер"
   buttons:
     add: "Додати"
     forward: "Далі"
