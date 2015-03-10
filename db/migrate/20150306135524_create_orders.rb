@@ -7,7 +7,7 @@ class CreateOrders < ActiveRecord::Migration
       t.float    :total
       t.float    :total_grn
       t.float    :rate
-      t.float  :commission
+      t.float    :commission
       t.integer  :account_grn_id
       t.integer  :account_rate_id
       t.integer  :company_id
