@@ -12,6 +12,7 @@ class Money::CurrencyTransactions::OrdersController < ApplicationController
 
   def create
     @order.update_attributes order_params
+    flash.now[:error] = t('validation.errors.all_fields') unless @order.save
     respond_to do |format|
       format.js
     end
