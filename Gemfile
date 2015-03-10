@@ -41,6 +41,7 @@ gem "acts_as_paranoid", github: 'ActsAsParanoid/acts_as_paranoid'
 gem 'bcrypt', '~> 3.1.5'
 gem 'kaminari'
 gem 'ransack'
+gem 'whenever', '~> 0.9.0', require: false
 
 group :development, :test do
   gem 'pry'
