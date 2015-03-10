@@ -19,3 +19,16 @@
     margin-bottom: 10px;
   }
 }
+
+#orders {
+  .modal-dialog {
+    margin-top: 25px;
+    right: -18px;
+    width: 1100px;
+  }
+  #order_list {
+    max-height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+  }
+}

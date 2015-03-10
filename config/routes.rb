@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     namespace 'money' do
       namespace :currency_transactions do
         resources :payment_orders
+        resources :orders
       end
       resources :currencies
       resources :banks

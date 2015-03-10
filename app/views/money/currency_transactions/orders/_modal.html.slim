@@ -1,0 +1,16 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      .row
+        .col-lg-12
+          button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
+      .row
+        .col-lg-12
+          h4#myModalLabel.modal-title = render_order_title(params[:page])
+          .notification.error style='display:none;'
+          = link_to '', '#', class: 'add_new glyphicon glyphicon-plus-sign', id: 'add_new_order'
+    .modal-body
+      .row
+        .col-lg-12
+          #order_form
+          #order_list

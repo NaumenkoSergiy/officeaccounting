@@ -8,7 +8,7 @@
     | Counterparties.checkResident();
     | $.unblockUI();
   - else
-    - if params[:counterparty][:page] == "costs" || params[:counterparty][:page] == "income" || params[:counterparty][:page] == "out"
+    - if params[:counterparty][:page] == "costs" || params[:counterparty][:page] == "income" || params[:counterparty][:type] == "out"
       | $('.counterparty_select').html("#{j select_tag 'money_register[counterparty_id]', '', class: 'company_counterparties', data: { select: false, type: 'new',path: new_purchases_counterparty_path, id: current_user.current_company.id, select: false, page: params[:counterparty][:page]}}");
       | $('.contract_select').html("#{j select_tag 'money_register[contract_id]', '', class: 'counterparty_contracts' , data: { status: :new, select: false, path: new_contract_path, page: params[:counterparty][:page] }}");
       | Contracts.hideContract();

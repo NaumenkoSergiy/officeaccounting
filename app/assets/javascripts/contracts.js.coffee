@@ -88,7 +88,7 @@ window.Contracts =
         'contract[number]': required: I18n.t('validation.errors.cant_be_blank')
         'contract[validity]': required: I18n.t('validation.errors.cant_be_blank')
     return
-    
+
   hideContract: ->
     if $('#counterparty_info').length
       $('#contract_select').hide()

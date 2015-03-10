@@ -1,7 +1,7 @@
 module PaymentOrdersHelper
 
-  def render_payment_order_title(page = '')
-    if page == 'out'
+  def render_payment_order_title(type = '')
+    if type == 'out'
       t('money.currences_tran.payment_order_out')
     else
       t('money.currences_tran.payment_orders_in')
