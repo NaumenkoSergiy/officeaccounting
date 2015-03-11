@@ -7,21 +7,21 @@
     = f.label t('registrations.fields.form_of_incorporation')
     br
     = f.select :form_of_incorporation, options_for_select(@incorporation_forms)
-    i.info.glyphicon.glyphicon-info-sign  title="Організаці́йно-правова́ фо́рма господарюва́ння — форма здійснювання господарської (зокрема, підприємницької) діяльності з відповідною правовою основою, яка визначає характер відносин між засновниками (учасниками), режим майнової відповідальності по зобов'язаннях підприємства (організації), порядок створення, реорганізації, ліквідації, управління, розподілу одержаних прибутків, можливі джерела фінансування діяльності тощо."
+    i.info.glyphicon.glyphicon-info-sign  title= t('tooltip.form_of_incorporation')
 
     br
     = f.label t('registrations.fields.edrpou_code')
     br
 
     = f.text_field :edrpou, :class => 'number', placeholder: t('registrations.fields.enter_edrpou'), maxlength: 8
-    i.info.glyphicon.glyphicon-info-sign  title="Код ЄДРПОУ (Єдиного державного реєстру підприємств та організацій України) — унікальний ідентифікаційний номер юридичної особи в Єдиному державному реєстрі підприємств та організацій України."
+    i.info.glyphicon.glyphicon-info-sign  title=t('tooltip.edrpou_code')
 
     = f.label t('registrations.fields.nace_codes')
     br
     .error-registration style='display:none;'
       = t('validation.errors.cant_be_blank')
     = f.text_field :nace_codes
-    i.info.glyphicon.glyphicon-info-sign  title="«Класифікація видів економічної діяльності» (КВЕД) — складова частина державної системи класифікації і кодування техніко-економічної та соціальної інформації в Україні."
+    i.info.glyphicon.glyphicon-info-sign  title=t('tooltip.nace_codes')
 
     br
     = f.label t('registrations.fields.koatuu')
@@ -29,13 +29,13 @@
     .error-registration style='display:none;'
       = t('validation.errors.cant_be_blank')
     = f.text_field :koatuu, :class => 'number', placeholder: t('registrations.fields.enter_koatuu')
-    i.info.glyphicon.glyphicon-info-sign  title="Державний класифікатор об’єктів адміністративно-територіального устрою України (КОАТУУ)  є складовою частиною єдиної системи класифікації і кодування техніко-економічної та соціальної інформації.КОАТУУ складається з кодів та назв всіх адміністративно-територіальних об’єктів України, які згруповані за ознаками територіальної спільності, історичних, економічних, географічних, етнічних і культурних особливостей. Введіть перші три цифри коду розташування за КОАТУУ"
+    i.info.glyphicon.glyphicon-info-sign  title=t('tooltip.koatuu')
 
     br
     = f.label t('registrations.fields.risk_class')
     br
     = f.select :risk_class, (1..67).to_a
-    i.info.glyphicon.glyphicon-info-sign  title="Клас професійного ризику виробництва - рівень виробничого травматизму і професійних захворювань за видами економічної діяльності, що визначає ступінь вірогідності втрати професійної працездатності або смерті працівника під час виконання трудових обов’язків, з урахуванням результатів аналізу показників виробничого травматизму і професійних захворювань, а також обсягів видатків Фонду соціального страхування від нещасних випадків на виробництві та професійних захворювань, пов’язаних із забезпеченням загальнообов’язкового державного соціального страхування від нещасного випадку на виробництві та професійного захворювання, які спричинили втрату працездатності"
+    i.info.glyphicon.glyphicon-info-sign  title=t('tooltip.risk_class')
 
     br
 
@@ -46,13 +46,13 @@
     = f.label t('registrations.fields.pdv_number')
     br
     = f.text_field :tin, :class => 'number', placeholder: t('registrations.fields.enter_pdv'), maxlength: 10
-    i.info.glyphicon.glyphicon-info-sign  title="Індивідуальний податковий номер (ІПН) — це номер платника податку на додану вартість в реєстрі платників ПДВ. Індивідуальний податковий номер є єдиним для всього інформаційного простору Україна і зберігається за платником податку на додану вартість до моменту виключення його з Реєстру в зв'язку із вибуттям зі складу платників податку на додану вартість."
+    i.info.glyphicon.glyphicon-info-sign  title=t('tooltip.tin')
 
     br
     = f.label t('registrations.fields.state_registration_date')
     br
     = f.text_field :state_registration_date, :class => 'date_reg'
-    i.info.glyphicon.glyphicon-info-sign  title="Моментом прийняття заяви про державну реєстрацію вважається дата та час її реєстрації у базі даних про реєстрацію заяв і запитів."
+    i.info.glyphicon.glyphicon-info-sign  title=t('tooltip.state_registration_date')
 
     br
     = f.label t('registrations.fields.registration_number')
@@ -68,7 +68,7 @@
     = f.label t('registrations.fields.date_reg_rev_com')
     br
     = f.text_field :date_registered_in_revenue_commissioners, :class => 'date_reg'
-    i.info.glyphicon.glyphicon-info-sign  title="Дата реєстрація у податковій"
+    i.info.glyphicon.glyphicon-info-sign  title=t('tooltip.date_reg_rev_com')
 
     br
     = f.label t('registrations.fields.tax_inspection')
@@ -95,7 +95,7 @@
     br
 
     = f.select :tax_system, [t('registrations.fields.general'), t('registrations.fields.simplified')]
-    i.info.glyphicon.glyphicon-info-sign  title="Система оподаткування - це сукупність податків і зборів (обов'язкових платежів), що справляються до бюджетів і державних цільових фондів у встановленому законами України порядку; принципів, форм і методів їхнього встановлення, зміни чи скасування; дій, що забезпечують повну та своєчасну їхню сплату, контроль і відповідальність за порушення податкового законодавства."
+    i.info.glyphicon.glyphicon-info-sign  title=t('tooltip.tax_system')
 
     br
     = link_to '', new_settings_company_path(back: true), :class => 'glyphicon glyphicon-arrow-left back-arrow inline'

@@ -24,7 +24,7 @@
   = label_tag t('companies.new.numbering_format')
   br
   = link_to @company.numbering_format, '#', data: { placement: 'right', name: :numbering_format, pk: @company, model: 'company', url: "companies/#{ @company.id }", xeditable: true }
-  
+
 - else
   = label_tag t('companies.new.full_name')
   br

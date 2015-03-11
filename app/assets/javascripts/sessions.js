@@ -11,7 +11,7 @@ $(document).ready(function() {
     }
     return isValidLogin;
   },
-  "Невірно введний Email або пароль"
+  I18n.t('validation.errors.mail_or_pass_not_valid')
   );
 
   new_session_form.validate({

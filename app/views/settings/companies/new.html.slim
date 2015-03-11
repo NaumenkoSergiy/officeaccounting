@@ -18,13 +18,13 @@
       = f.label t('companies.new.full_name')
       br
       = f.text_field :full_name
-      i.info.glyphicon.glyphicon-info-sign title="Введіть повну назву підприємства наприклад: Товариство з обмеженою відповідальністю «Active-bridge» "
+      i.info.glyphicon.glyphicon-info-sign title=t('tooltip.companies.full_name')
 
       br
       = f.label t('companies.new.short_name')
       br
       = f.text_field :short_name
-      i.info.glyphicon.glyphicon-info-sign title="Введіть коротку назву підприємства наприклад: ТОВ «Active-bridge» "
+      i.info.glyphicon.glyphicon-info-sign title=t('tooltip.companies.short_name')
 
       br
       = f.label t('companies.new.latin_name')
@@ -35,19 +35,19 @@
       = f.label t('companies.new.juridical_address')
       br
       = f.text_field :juridical_address
-      i.info.glyphicon.glyphicon-info-sign title="Юридична адреса - це адреса місцезнаходження виконавчого органу організації, що вказується в установчих документах, на юрадресу компанії надсилається вся офіційна кореспонденція, іноді за юридичною адресою розташований офіс компанії."
+      i.info.glyphicon.glyphicon-info-sign title=t('tooltip.companies.juridical_address')
 
       br
       = f.label t('companies.new.actual_address')
       br
       = f.text_field :actual_address
-      i.info.glyphicon.glyphicon-info-sign title="Фактична адреса - це місцезнаходження юридичної особи, де є фактичне місце ведення діяльності чи розташування офісу, з якого проводиться щоденне керування діяльністю юридичної особи (переважно знаходиться керівництво) та здійснення управління і обліку"
+      i.info.glyphicon.glyphicon-info-sign title=t('tooltip.companies.actual_address')
 
       br
       = f.label t('companies.new.numbering_format')
       br
       = f.text_field :numbering_format
-      i.info.glyphicon.glyphicon-info-sign  title="Це коли випускає на друк акти чи рахунки  - то перед номером префікс ставиться наприклад для Ектів Брідж можна АВ-000000001"
+      i.info.glyphicon.glyphicon-info-sign  title=t('tooltip.companies.numbering_format')
 
       br
       = f.submit t("buttons.forward")

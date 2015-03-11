@@ -7,9 +7,9 @@ class PasswordResetsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user
       user.send_password_reset
-      redirect_to root_url, :notice => 'На вашу електронну адресу відправлений лист з інструкцією по відновленню пароля.'
+      redirect_to root_url, :notice => I18n.t('session.reset_pass_notific')
     else
-      redirect_to root_url, :notice => "Вибачте аккаунт з такою електронною адресою не зареєстрований"
+      redirect_to root_url, :notice => I18n.t('session.not_found_account_notific')
     end
   end
 
@@ -21,9 +21,9 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by_password_reset_token!(params[:id])
 
     if @user.password_reset_sent_at < 2.hours.ago
-      redirect_to new_password_reset_path, :alert => "Час на відновлення пароля закінчився!"
+      redirect_to new_password_reset_path, :alert => I18n.t('session.time_out_reset_pass')
     elsif @user.update_attributes(password_resets_params)
-      redirect_to root_url, :notice => "Пароль був змінений успішно!"
+      redirect_to root_url, :notice => I18n.t('session.change_pass_notific')
     else
       render :edit
     end
