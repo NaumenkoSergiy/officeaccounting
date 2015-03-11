@@ -1,14 +1,14 @@
-= form_for @user, url: password_reset_path(params[:id]) do |f| 
+= form_for @user, url: password_reset_path(params[:id]) do |f|
   - if @user.errors.any?
     .error_messages
-      h2 Пароль підтвердження не є таким як пароль
+      h2 = t('validation.errors.passwords_not_identical')
 
   .field
-    = f.label 'Пароль'
+    = f.label t('session.pass')
     br
     = f.password_field :password
   .field
-    = f.label 'Підтвердження пароля'
+    = f.label t('session.confirm_password')
     br
     = f.password_field :confirm_password
-  .actions = f.submit "Оновити пароль"
+  .actions = f.submit t('session.change_password')

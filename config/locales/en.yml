@@ -249,6 +249,7 @@ en:
     add_currency: "Add currency"
   validation:
     errors:
+      mail_or_pass_not_valid: "Email or password were mistyped"
       cant_be_blank: "This field cannot be blank"
       mail_not_blank: "Email field can't be blank"
       should_be_valid: "this field should be valid"
@@ -339,3 +340,52 @@ en:
     account_not_act: "The account is not activated! Review e-mail and click the link to activate your account!"
     account_act: "Account activated!"
     notific_mail: "On your email sent the activation email!"
+    reset_pass_notific: "It was sent an email with instructions to reset your password."
+    not_found_account_notific: "Sorry, the account with that email address is not registered"
+    time_out_reset_pass: "Time to recovery password is over!"
+    change_pass_notific: "The password was successfully changed!"
+  tooltip:
+    form_of_incorporation: >
+      The legal form of management - putting into effect a form of economic (including business) activities with the
+      appropriate legal basis which defines the relationship between the founders (participants) mode property for the
+      obligations of the enterprise (organization), the establishment, reorganization, liquidation, administration,
+      distribution of profits, possible sources of funding of others.
+    edrpou_code: >
+      EDRPOU (National State Registry of Ukrainian Enterprises and Organizations) unique identification number
+      of a legal entity in the Unified State Register of Enterprises and Organizations of Ukraine
+    nace_codes: >
+      "Classification of Economic Activities" (NACE) - part of the state system of classification and coding of
+      technical, economic and social information in Ukraine.
+    koatuu: >
+      Government classification of objects administrative and territorial division of Ukraine (KOATUU) is part
+      of a single system of classification and coding of technical, economic and social information. KOATUU consists of
+      codes and names of all administrative and territorial units Ukraine, grouped on the basis of territorial identity,
+      historical, geographical, ethnic and cultural backgrounds. Enter the first three digits of the code by location KOATUU
+    risk_class: >
+      Class of professional risk - of industrial accidents and occupational diseases by economic activity that determines
+      the degree of probability of loss of incapacity or death of the employee while performing job duties, taking into
+      account the results of the analysis of indicators of occupational injuries and diseases, as well as expenditures
+      Fund social insurance against accidents at work and occupational diseases associated with the provision of compulsory
+      state social insurance against accidents at work and occupational diseases that caused disability
+    tin: >
+      Individual tax identification number (TIN) - a number of the taxpayer value added in the registry of VAT payers.
+      Individual tax number is the same for all of the information space Ukraine and maintained by the taxpayer value added by
+      the time of his exclusion from the Register in connection with retirement from the payers of value added tax.
+    state_registration_date: >
+      The moment of receiving the statement on state registration is the date and time of its registration in the database of
+      registration statements and requests.
+    date_reg_rev_com: "Date of registration tax"
+    tax_system: >
+      Tax system - a combination of taxes and duties (mandatory payments), paid to the budget and state funds in the laws
+      of Ukraine manner; principles, forms and methods of their installation, alteration or cancellation; action to ensure
+      the full and timely payment of their control and responsibility for tax violations.
+    companies:
+      full_name: "Enter the full name of the company such as: Limited Liability Company «Active-bridge»"
+      short_name: "Enter company name short example: LTD «Active-bridge»"
+      juridical_address: >
+        Registered address - the address of the location of the executive body of the organization, which is indicated in the
+        founding documents, the business address is sent to all official correspondence, sometimes at its Registered office is located.
+      actual_address: >
+        The actual address - this is the location of a legal entity, which is the actual place of business or office location,
+        which is performed daily management of the legal person (mostly is manual) and the management and accounting
+      numbering_format: "It produces when printing documents or accounts - the prefix before the number refers for example to Active Bridge could AV-000000001"
