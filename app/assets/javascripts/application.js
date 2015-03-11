@@ -64,7 +64,7 @@ $(document).on('ready', function() {
       }
     );
   });
-  
+
   $('.left-bar a').click(function(){
     $('.left-bar a').removeClass('current');
     $(this).addClass('current');
@@ -136,6 +136,12 @@ function setObserver() {
 
     if ($('.company_accounts[data-status=new]').length) {
       Accounts.loadOption();
+    }
+    else if ($('.accounts_grn[data-status=new]').length) {
+      Accounts.accountsOnType($('.accounts_grn[data-status=new]'));
+    }
+    else if ($('.accounts_rate[data-status=new]').length) {
+      Accounts.accountsOnType($('.accounts_rate[data-status=new]'));
     }
     else if ($('.change_account[data-status=new]').length) {
       Accounts.xeditableLoadSource();

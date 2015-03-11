@@ -193,6 +193,8 @@ en:
       account_number: "Account number"
       bank: "Bank"
       banks: "Banks"
+      accounts_grn: "You do not have bank accounts in UAH change to the directory account and add a new one!"
+      accounts_foreign_currency: "You do not have bank accounts in foreign currency, go to the directory account and add a new one!"
     costs:
       date: "Date"
       type_of_document: "Type of document"
@@ -218,6 +220,12 @@ en:
       order_p_f_currency: "Order to purchase foreign currency"
       order_s_f_currency: "Order form for sale of foreign currency"
       number: "Number"
+    order:
+      rate: "Rate"
+      commission: "Commission %"
+      account_grn: "Account UAH"
+      account_rate: "Currency account"
+      total_grn: "Total UAH"
   buttons:
     add: "Add"
     forward: "Forward"

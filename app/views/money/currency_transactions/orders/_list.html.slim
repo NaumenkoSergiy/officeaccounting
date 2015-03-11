@@ -1,0 +1,50 @@
+table.table
+  thead
+    tr class='bg-grey'
+      th
+        = t('money.currences_tran.number')
+      th
+        = t('money.costs.date')
+      th
+        = t('money.accounts.bank')
+      th
+        = t('money.currency')
+      th
+        = t('money.costs.total')
+      th
+        = t('money.order.rate')
+      th
+        = t('money.order.commission')
+      th
+        = t('money.order.account_grn')
+      th
+        = t('money.order.account_rate')
+      th
+        = t('money.order.total_grn')
+      th
+
+  tbody
+    - @orders.each do |order|
+      tr id="order_#{order.id}"
+        td
+          = order.id
+        td
+          = order.date
+        td
+          = order.bank_name
+        td
+          = t(order.currency)
+        td
+          = order.total
+        td
+          = order.rate
+        td
+          = order.commission
+        td
+          = order.grn_account_name
+        td
+          = order.foreign_currency_account_name
+        td
+          = order.total_grn
+        td class='width-40'
+          = application_present.destroy_link money_currency_transactions_order_path(order)

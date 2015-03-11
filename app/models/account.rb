@@ -20,4 +20,8 @@ class Account < ActiveRecord::Base
     'Рахунок виборчого фонду' => :electoral_fund,
     'Поточний рахунок УЄФА' => :UEFA
   }
+
+  scope :acconts_on_type, -> (currency) {
+    currency == 'UAH' ? where(currency: currency) : where.not(currency: 'UAH')
+  }
 end

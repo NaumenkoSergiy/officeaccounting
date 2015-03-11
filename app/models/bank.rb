@@ -1,5 +1,6 @@
 class Bank < ActiveRecord::Base
   has_many :credits
+  has_many :orders
   has_one :account
   has_many :counterparties
   has_one :bank_account

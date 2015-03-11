@@ -190,6 +190,8 @@ ua:
       account_number: "Номер рахунку"
       bank: "Банк"
       banks: "Банки"
+      accounts_grn: "У вас немає банківських рахунків по гривні перейдіть в довідник рахунки і додайте новий!"
+      accounts_foreign_currency: "У вас немає банківських рахунків по іноземній валюті перейдіть в довідник рахунки і додайте новий!"
     costs:
       date: "Дата"
       type_of_document: "Тип документу"
@@ -207,6 +209,12 @@ ua:
       order_p_f_currency: "Заявка на покупку валюти"
       order_s_f_currency: "Заявка на продаж валюти"
       number: "Номер"
+    order:
+      rate: "Курс"
+      commission: "Комісія %"
+      account_grn: "Рахунок гривня"
+      account_rate: "Рахунок валюта"
+      total_grn: "Сумма грн."
   buttons:
     add: "Додати"
     forward: "Далі"
