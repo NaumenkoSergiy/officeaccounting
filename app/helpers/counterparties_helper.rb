@@ -1,5 +1,5 @@
 module CounterpartiesHelper
-  def presents_params?
+  def counterparty_page?
     counterparty = params[:counterparty]
     ['costs', 'income'].include?(counterparty[:page]) || 'out' == counterparty[:type]
   end
