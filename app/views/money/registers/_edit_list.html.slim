@@ -15,5 +15,8 @@ tr class='register_#{ register.id } #{register.type_money}'
     = link_to register.total, '#', data: { placement: 'bottom', name: :total, pk: @registers, model: 'money_register', url: money_register_path(register.id), xeditable: true }, class: 'total'
   td
     = t(register.type_money)
+  td class='width-60'
+    span class='glyphicon glyphicon-floppy-save print-save'
+    span class= 'glyphicon glyphicon-print margin-left-15 print-save'
   td class='width-40'
     = application_present.destroy_link money_register_path(register)

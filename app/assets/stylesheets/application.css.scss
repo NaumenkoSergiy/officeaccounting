@@ -41,10 +41,12 @@ div.error, div.invalid {
 
 .glyphicon { font-size: 14px; }
 
-.glyphicon.glyphicon-trash { 
+.glyphicon.glyphicon-trash {
   display: none;
   font-size: 15px;
 }
+
+.print-save { display: none; }
 
 tr {
 
@@ -52,6 +54,11 @@ tr {
     .glyphicon-trash { display: initial; }
 
     .record-remove { display: block; }
+
+    .print-save {
+      display: inline;
+      cursor: pointer;
+    }
   }
 }
 
