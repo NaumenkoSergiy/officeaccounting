@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
 
   validates :date, :bank_id, :currency, :total, :total_grn, :rate, :commission, :account_grn_id, :type_order, :account_rate_id, presence: true
 
-  scope :all_orders_by_type, -> (type_order){
-    where(type_order: type_order)
+  scope :orders_by_type, -> (type_order) {
+    where("type_order = ?", type_order)
   }
 end

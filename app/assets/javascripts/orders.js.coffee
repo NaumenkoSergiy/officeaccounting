@@ -28,8 +28,8 @@ window.Order =
     Order.totalGrn()
 
   AutoDateTime: ->
-    curr_date = new Date()
-    $('#order_date').val $.datepicker.formatDate('dd.mm.yy.' + curr_date.getHours() + ':' + curr_date.getMinutes(), curr_date)
+    currentDate = new Date()
+    $('#order_date').val $.datepicker.formatDate('dd.mm.yy.' + currentDate.getHours() + ':' + currentDate.getMinutes(), currentDate)
 
   totalGrn: ->
     $('#order_rate, #order_commission, #order_total').keyup ->

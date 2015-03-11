@@ -1,11 +1,11 @@
 module OrdersHelper
 
-  def render_order_title(type = '')
-    if type == 'purchase'
-      t('money.currences_tran.order_p_f_currency')
-    else
-      t('money.currences_tran.order_s_f_currency')
-    end
+  def render_order_title(type)
+    title = {
+      purchase: t('money.currences_tran.order_p_f_currency'),
+      sale: t('money.currences_tran.order_s_f_currency')
+    }
+    title[type.to_sym]
   end
 
   def load_currency

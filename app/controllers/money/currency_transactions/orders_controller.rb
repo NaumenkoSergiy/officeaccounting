@@ -50,6 +50,6 @@ class Money::CurrencyTransactions::OrdersController < ApplicationController
 
   def all_orders
     company_orders = current_user.orders.order('orders.created_at DESC')
-    @orders = company_orders.all_orders_by_type(params[:type] || params[:order][:type_order])
+    @orders = company_orders.orders_by_type(params[:type] || params[:order][:type_order])
   end
 end
