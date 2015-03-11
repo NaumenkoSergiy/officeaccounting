@@ -18,6 +18,7 @@ table.table
       th
         = sort_link @search, :type_money, t('contract.type'), {}, { remote: true }
       th
+      th
 
   tbody
     = render partial: 'money/registers/registers_list'
