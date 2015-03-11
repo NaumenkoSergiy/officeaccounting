@@ -2,7 +2,7 @@ class Money::CurrencyTransactions::PaymentOrdersController < ApplicationControll
   before_filter :redirect_to_new_session
   before_action :define_payment_order, only: [:create, :index]
   before_action :payment_order, only: :destroy
-  before_action :all_payment_orders, only: [:index, :create]
+  before_action :payment_orders, only: [:index, :create]
 
   def index
     respond_to do |format|
@@ -46,8 +46,9 @@ class Money::CurrencyTransactions::PaymentOrdersController < ApplicationControll
                                           :type_order).merge!(company_id: current_company.id)
   end
 
-  def all_payment_orders
-    company_payment_orders = current_user.payment_orders.order('payment_orders.created_at DESC')
-    @payment_orders = company_payment_orders.payment_orders(params[:type_order] || params[:payment_order][:type_order])
+  def payment_orders
+    company_payment_orders = current_user.payment_orders
+    @payment_orders = company_payment_orders.by_type(params[:type] || params[:payment_order][:type_order])
+                                            .order('payment_orders.created_at DESC')
   end
 end
