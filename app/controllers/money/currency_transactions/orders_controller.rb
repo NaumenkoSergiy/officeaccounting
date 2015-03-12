@@ -7,6 +7,9 @@ class Money::CurrencyTransactions::OrdersController < ApplicationController
   def index
     respond_to do |format|
       format.js
+      format.json { render json: ActiveModel::ArraySerializer.new(@orders,
+                                                                  each_serializer: OrderSerializer,
+                                                                  root: nil), status: 200 }
     end
   end
 
@@ -36,16 +39,7 @@ class Money::CurrencyTransactions::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:date,
-                                  :bank_id,
-                                  :currency,
-                                  :total,
-                                  :total_grn,
-                                  :rate,
-                                  :commission,
-                                  :account_grn_id,
-                                  :type_order,
-                                  :account_rate_id).merge!(company_id: current_company.id)
+    params.require(:order).permit!.merge(company_id: current_company.id)
   end
 
   def all_orders

@@ -1,4 +1,4 @@
-module Money  
+module Money
   class RegistersController < ApplicationController
     before_filter :redirect_to_new_session
     before_action :set_register, only: [:update, :destroy]

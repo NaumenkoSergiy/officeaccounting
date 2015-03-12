@@ -4,7 +4,7 @@ module Money
     before_action :set_article, only: [:destroy, :update, :show]
     before_action :define_article, only: :index
     before_action :all_articles, only: [:index, :create]
-    
+
     def index
       respond_to do |format|
         format.js

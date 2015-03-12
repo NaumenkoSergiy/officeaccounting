@@ -15,12 +15,12 @@
       .row
         .col.col-lg-4
           = render_type_of_order_link(params[:type])
-          = link_to t('money.currences_tran.payment_order_out'), money_currency_transactions_payment_orders_path(type: params[:type] + 'Out'), remote: true, class: 'btn  btn-primary btn-modal'
+          = link_to t('money.currences_tran.payment_order_out'), money_currency_transactions_payment_orders_path(type: params[:type] + 'Out'), remote: true, class: 'btn btn-primary btn-modal'
           = render_type_of_transaction_link(params[:type])
-          = link_to t('money.currences_tran.payment_orders_in'), money_currency_transactions_payment_orders_path(type: params[:type] + 'In'), remote: true, class: 'btn  btn-primary btn-modal'
+          = link_to t('money.currences_tran.payment_orders_in'), money_currency_transactions_payment_orders_path(type: params[:type] + 'In'), remote: true, class: 'btn btn-primary btn-modal'
         .col.col-lg-4
-          = link_to t('money.currences_tran.turnover_balance'), '#', class: 'btn  btn-primary btn-modal'
-          = link_to t('money.currences_tran.card_number'), '#', class: 'btn  btn-primary btn-modal'
+          = link_to t('money.currences_tran.turnover_balance'), '#', class: 'btn btn-primary btn-modal'
+          = link_to t('money.currences_tran.card_number'), '#', class: 'btn btn-primary btn-modal'
         .col.col-lg-4
-          = link_to t('buttons.currency'), money_currencies_path, remote: true, type: :get, class: 'btn  btn-primary btn-modal'
-          = link_to t('buttons.exchange_rates'), money_exchange_rates_path, remote: true, type: :get, class: 'btn  btn-primary btn-modal'
+          = link_to t('buttons.currency'), money_currencies_path, remote: true, type: :get, class: 'btn btn-primary btn-modal'
+          = link_to t('buttons.exchange_rates'), money_exchange_rates_path, remote: true, type: :get, class: 'btn btn-primary btn-modal'

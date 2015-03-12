@@ -15,12 +15,12 @@
  *= require bootstrap3-editable/bootstrap-editable
  *= require select2
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 @import 'colors';
 @import 'theme';
-@import "jquery-css";
-@import "bootstrap-select";
+@import 'jquery-css';
+@import 'bootstrap-select';
 
 .notification {
   background-color:#e3f7fc;
@@ -30,7 +30,7 @@
   border-radius:10px;
   font-family:Tahoma,Geneva,Arial,sans-serif;
   font-size:1.1em;
-  padding:10px 10px 10px 10px;
+  padding:10px;
   margin:10px;
   cursor: default;
   display: none;
@@ -114,9 +114,9 @@ a.btn-success {
 }
 
 @for $i from 1 through 300 {
-  .width-#{$i} {
-    width: $i*1px;
-  }
+  .width-#{$i} { width: $i*1px; }
+  .padding-left-#{$i} { padding-left:  $i*1px; }
+  .padding-right-#{$i} { padding-right: $i*1px; }
 }
 
 .bg-grey { background-color: #F2F1F0; }
@@ -125,4 +125,13 @@ a.btn-success {
   max-height: 300px;
   overflow-y: scroll;
   margin-bottom: 10px;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

@@ -1,0 +1,53 @@
+= form_for [:money, @currency_transaction], method: :post, remote: :true do |f|
+  .row
+    .col-lg-2
+      = f.label t('money.costs.date')
+      = f.text_field :date, data: { 'date-time-piker': false }
+    .col-lg-2
+      #select_order
+        = f.label t('money.currences_tran.order_p_f_currency')
+        = f.select :order_id, {}, {}, { class: 'orders', data: { select: false, type: 'new' } }
+    .col-lg-2
+      label
+        = t('money.accounts.bank')
+      input#transaction_bank readonly='readonly'
+    .col-lg-2
+      label
+        = t('money.currency')
+      input#transaction_currency readonly='readonly'
+    .col-lg-2
+      label
+        = t('money.order.rate')
+      input#transaction_rate readonly='readonly'
+    .col-lg-2
+      label
+        = t('money.costs.total')
+      input#transaction_total readonly='readonly'
+  .row
+    .col-lg-2
+      label
+        = t('money.order.account_grn')
+      input#transaction_account_grn readonly='readonly'
+    .col-lg-2
+      label
+        = t('money.order.account_rate')
+      input#transaction_account_rate readonly='readonly'
+    .col-lg-2
+      label
+        = t('money.order.commission')
+      input#transaction_commission readonly='readonly'
+    .col-lg-2
+      label
+        = t('money.order.total_grn')
+      input#transaction_total_grn readonly='readonly'
+    .col-lg-2
+      = f.label t('money.order.pension_fund_total')
+      .row
+        .col-lg-6.padding-right-1
+          input#pf_grn.number maxlength='4' placeholder='%'
+        .col-lg-6.padding-left-1
+          = f.text_field :total_pf, readonly: :readonly, placeholder: t('grn')
+    .col-lg-2
+      br
+      = f.hidden_field :type, value: params[:type]
+      = f.submit t('buttons.add')

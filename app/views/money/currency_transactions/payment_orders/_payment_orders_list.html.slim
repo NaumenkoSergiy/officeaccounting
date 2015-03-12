@@ -2,7 +2,7 @@ tr class="payment_order_#{payment_order.id}"
   td
     = payment_order.id
   td
-    = payment_order.date
+    = l(payment_order.date, format: :long)
   td
     = payment_order.account_name
   td

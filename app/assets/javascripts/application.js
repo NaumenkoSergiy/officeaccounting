@@ -171,8 +171,14 @@ function setObserver() {
     else if (!($( '.change_bank' ).length == $( '.change_bank.editable-click' ).length)) {
       Banks.xeditableBanks();
     }
+    else if ($('.orders[data-type=new]').length) {
+      CurrencyTransactions.loadOption();
+    }
     else if ($('[data-select=false]')) {
       setSelect2();
+    }
+    else if ($('[data-date-time-piker=false]')) {
+      setDatatimePiker();
     }
 
     setObserver();
@@ -225,5 +231,11 @@ xeditableParams = function(params) {
 function setSelect2() {
   $("[data-select=false]").each(function() {
     $(this).attr('data-select', true).select2();
+  });
+}
+
+function setDatatimePiker() {
+  $("[data-date-time-piker=false]").each(function() {
+    $(this).attr('data-date-time-piker', true).datetimepicker({lang: I18n.t('datePickerLocal'), format:'d.m.Y-H:i', mask:true});
   });
 }

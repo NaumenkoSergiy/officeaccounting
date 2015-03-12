@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   delegate :id, :short_name, to: :current_company, prefix: true
   delegate :payment_orders, to: :current_company
   delegate :orders, to: :current_company
+  delegate :currency_transactions, to: :current_company
 
   after_create :send_activation_token
 

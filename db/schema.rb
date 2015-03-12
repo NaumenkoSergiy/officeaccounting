@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306135524) do
+ActiveRecord::Schema.define(version: 20150330082541) do
 
   create_table "accounting_accounts", force: :cascade do |t|
     t.integer "account_number", limit: 4
@@ -121,6 +121,16 @@ ActiveRecord::Schema.define(version: 20150306135524) do
     t.datetime "updated_at"
   end
 
+  create_table "currency_transactions", force: :cascade do |t|
+    t.datetime "date"
+    t.integer  "order_id",   limit: 4
+    t.float    "total_pf",   limit: 24
+    t.integer  "company_id", limit: 4
+    t.string   "type",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "incorporation_forms", force: :cascade do |t|
     t.integer "number", limit: 4
     t.string  "name",   limit: 255
@@ -174,7 +184,10 @@ ActiveRecord::Schema.define(version: 20150306135524) do
     t.string   "type_order",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
+
+  add_index "orders", ["deleted_at"], name: "index_orders_on_deleted_at", using: :btree
 
   create_table "payment_orders", force: :cascade do |t|
     t.datetime "date"

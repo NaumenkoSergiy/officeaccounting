@@ -1,0 +1,26 @@
+table.table.noselect
+  thead
+    tr.bg-grey
+      th
+        = t('money.costs.date')
+      th
+        = t('money.currency')
+      th
+        = t('money.currences_tran.order_p_f_currency')
+      th
+        = t('money.order.pension_fund_total')
+      th
+        = t('money.costs.total')
+      th
+        = t('money.order.rate')
+      th
+        = t('money.order.commission')
+      th
+        = t('money.order.total_grn')
+      th
+        = t('money.order.account_grn')
+      th
+        = t('money.order.account_rate')
+      th
+  tbody
+     = render_currency_transactions_list(@currency_transactions)

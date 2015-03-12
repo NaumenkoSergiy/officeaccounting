@@ -20,6 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  time:
+    am: am
+    formats:
+      default: "%a, %d %b %Y %I:%M:%S %p %Z"
+      long: "%B %d, %Y %I:%M %p"
+      short: "%d %b %I:%M %p"
+    pm: pm
   ransack:
     attributes:
       money_register:
@@ -226,6 +233,8 @@ en:
       account_grn: Account UAH
       account_rate: Currency account
       total_grn: Total UAH
+      pension_fund_total: Collection to PF
+      empty_orders: You do not have an application on currency transactions first you need to create it!
   buttons:
     add: Add
     forward: Next
@@ -403,3 +412,4 @@ en:
   income_a: income
   costs_a: costs
   empty_text: Unknown
+  grn: UAH

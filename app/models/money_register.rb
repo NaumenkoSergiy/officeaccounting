@@ -2,7 +2,7 @@ class MoneyRegister < ActiveRecord::Base
   belongs_to :company
   belongs_to :counterparty
   belongs_to :article
-  belongs_to :account
+  belongs_to :account, -> { with_deleted }
   belongs_to :contract
 
   validates :total, :type_document, :contract_id, :counterparty_id, presence: true

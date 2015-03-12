@@ -1,0 +1,16 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      .row
+        .col-lg-12
+          button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
+      .row
+        .col-lg-12
+          h4#myModalLabel.modal-title = render_transaction_title(params[:type])
+          .notification.error
+          = link_to '', '#', class: 'add_new glyphicon glyphicon-plus-sign', id: 'add_new_transaction'
+    .modal-body
+      .row
+        .col-lg-12
+          #currency_purchases_form
+          #currency_purchases_list.scroll-table

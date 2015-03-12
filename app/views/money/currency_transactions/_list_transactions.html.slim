@@ -1,0 +1,24 @@
+tr id="curency_transaction_#{currency_transaction.id}"
+  td
+    = l(currency_transaction.date, format: :long)
+  td
+    = t(currency_transaction.order_currency)
+  td
+    = "№(#{currency_transaction.order_id})"
+  td
+    = currency_transaction.total_pf
+  td
+    = currency_transaction.order_total
+  td
+    = currency_transaction.order_rate
+  td
+    = currency_transaction.order_commission
+  td
+    = currency_transaction.order_total_grn
+  td
+    = currency_transaction.grn_account_name
+  td
+    = currency_transaction.foreign_currency_account_name
+  - if can? :destroy, CurrencyTransaction
+    td.width-40
+      = application_present.destroy_link money_currency_transaction_path(currency_transaction)

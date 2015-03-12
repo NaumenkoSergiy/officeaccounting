@@ -1,4 +1,4 @@
-window.Banks = 
+window.Banks =
   loadBanks: (callback) ->
     $.ajax
       type: 'GET'
@@ -34,7 +34,7 @@ window.Banks =
         'bank[mfo]': required: I18n.t('validation.errors.cant_be_blank')
         'bank[lawyer_adress]': required: I18n.t('validation.errors.cant_be_blank')
     return
-    
+
   xeditableBanks: ->
     Banks.loadBanks (banks) ->
       $('.change_bank').editable
