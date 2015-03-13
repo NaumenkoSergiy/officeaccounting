@@ -15,12 +15,7 @@ RSpec.describe DelegatesController, :type => :controller do
 
     it 'create delegete a new user' do
       role = ROLE[rand(2)]
-      expect {
-        post :create, email: user_delegate[:email],
-                      company_id: company.id,
-                      role: role,
-                      format: :js
-      }.to change(User, :count).by(1)
+      expect { post :create, email: user_delegate[:email], company_id: company.id, role: role, format: :js }.to change(User, :count).by(1)
       expect(UserCompany.last.role).to eq(role)
     end
 

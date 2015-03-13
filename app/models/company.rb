@@ -26,6 +26,7 @@ class Company < ActiveRecord::Base
   delegate :account, :mfo, to: :bank_account, prefix: true
 
   after_create { set_registration }
+  after_initialize :set_state #state initialize not works with rails 4.2
 
   scope :non_current_user, -> (id) {
     company_ids = UserCompany.user_companies(id).pluck(:company_id)
@@ -60,5 +61,11 @@ class Company < ActiveRecord::Base
     user_companies.where(user_id: user_id, company_id: id)
                   .first
                   .current_company
+  end
+
+  private
+
+  def set_state
+    self.state ||= :step1
   end
 end

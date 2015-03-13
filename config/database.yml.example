@@ -8,11 +8,11 @@ default: &default
 
 development:
   <<: *default
-  database: active-books_development
+  database: active_books_development
 
 test:
   <<: *default
-  database: active-books_test
+  database: active_books_test
 
 production:
   <<: *default

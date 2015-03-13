@@ -344,6 +344,7 @@ en:
     not_found_account_notific: "Sorry, the account with that email address is not registered"
     time_out_reset_pass: "Time to recovery password is over!"
     change_pass_notific: "The password was successfully changed!"
+    error_registration: 'Something went wrong! Please email to administrator.'
   tooltip:
     form_of_incorporation: >
       The legal form of management - putting into effect a form of economic (including business) activities with the

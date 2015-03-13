@@ -1,9 +1,0 @@
-default: &default
-  MANDRILL_USERNAME: 's.naumenko@active-bridge.com'
-  MANDRILL_PASSWORD: 'pH6TSzKx9IX4iJNQEQolZA'
-
-development:
-  <<: *default
-
-production:
-  <<: *default

@@ -19,7 +19,6 @@ module ActiveBooks
     #The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     #config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :en
-    ENV.update YAML.load(File.read('config/application.yml'))[Rails.env] rescue {}
 
     config.autoload_paths << File.join(config.root, "lib")
 
@@ -27,3 +26,5 @@ module ActiveBooks
     config.assets.initialize_on_precompile = true
   end
 end
+
+SECRETS = Rails.application.secrets
