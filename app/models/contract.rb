@@ -3,10 +3,9 @@ class Contract < ActiveRecord::Base
 
   belongs_to :company
   belongs_to :counterparty
-  belongs_to :counterparty_including_deleted, class_name: 'Counterparty', foreign_key: 'counterparty_id', with_deleted: true
   has_many :money_registers
 
-  validates :date, :counterparty_id, :validity, :number, presence: true
+  validates :counterparty, :date, :validity, :number, presence: true
 
   CONTRACT_TYPE = [:product, :service]
 end

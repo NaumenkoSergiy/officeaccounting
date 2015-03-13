@@ -13,7 +13,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Configure static asset server for tests with Cache-Control for performance.
-  config.serve_static_assets  = true
+  config.serve_static_files  = true
   config.static_cache_control = 'public, max-age=3600'
 
   # Show full error reports and disable caching.
@@ -40,8 +40,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.mandrillapp.com',
     port:                 587,
-    user_name:            ENV['MANDRILL_USERNAME'],
-    password:             ENV['MANDRILL_PASSWORD'] }
+    user_name:            SECRETS['mandrill_username'],
+    password:             SECRETS['mandrill_password'] }
 
   config.action_mailer.default_url_options = {
     host: 'localhost:3000'

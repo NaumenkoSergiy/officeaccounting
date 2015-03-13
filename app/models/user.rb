@@ -53,6 +53,6 @@ class User < ActiveRecord::Base
   private
 
   def send_activation_token
-    UserMailer.welcome_email(self).deliver! unless self.activated?
+    UserMailer.welcome_email(self).deliver_now! unless self.activated?
   end
 end

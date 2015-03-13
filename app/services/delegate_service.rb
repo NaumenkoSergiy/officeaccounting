@@ -8,7 +8,7 @@ class DelegateService < BaseService
       user = User.new(parse_for_create data)
       if user.save
         user.user_companies.create(company: company, role: data[:role])
-        UserMailer.create_delegate(user, company.full_name).deliver!
+        UserMailer.create_delegate(user, company.full_name).deliver_now!
       else
         { error: I18n.t('validation.errors.mail_should_be_valid') }
       end
@@ -17,7 +17,7 @@ class DelegateService < BaseService
         { error: I18n.t('validation.errors.already_delegated') }
       else
         existing_user.user_companies.create(company: company, role: data[:role])
-        UserMailer.create_delegate_existing_user(existing_user, company).deliver!
+        UserMailer.create_delegate_existing_user(existing_user, company).deliver_now!
       end
     end
   end

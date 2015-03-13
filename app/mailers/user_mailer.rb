@@ -1,10 +1,12 @@
+# encoding: utf-8
+
 class UserMailer < ActionMailer::Base
   default from: 'activebooks.notification@gmail.com'
 
   def welcome_email(user)
     @user = user
-    @url = "#{host}/users/confirm_registration?token=#{user[:activate_token]}"
-    mail(to: @user[:email], subject: 'Welcome to Active Books')
+    @url =  users_confirm_registration_url(token: user.activate_token)
+    mail(to: @user.email, subject: 'Welcome to Active Books')
   end
 
   def host
@@ -14,7 +16,7 @@ class UserMailer < ActionMailer::Base
 
   def password_reset(user)
     @user = user
-    mail :to => user.email, :subject => "Відновлення паролю Active-books"
+    mail(to: user.email, subject: 'Відновлення паролю Active-books')
   end
 
   def create_delegate(user, company)
@@ -23,13 +25,13 @@ class UserMailer < ActionMailer::Base
     user.save!
     @company = company
     @url = "#{host}/password_resets/#{user.password_reset_token}/edit"
-    (mail :to => user.email, :subject => "Запрошення на делегування компанією").deliver!
+    mail(to: user.email, subject: 'Запрошення на делегування компанією').deliver!
   end
 
   def create_delegate_existing_user(user, company)
     @company = company.full_name
     @user = user
     @url = "#{host}#{setting_path(company)}"
-    (mail :to => user.email, :subject => "Запрошення на делегування компанією").deliver!
+    mail(to: user.email, subject: 'Запрошення на делегування компанією').deliver!
   end
 end

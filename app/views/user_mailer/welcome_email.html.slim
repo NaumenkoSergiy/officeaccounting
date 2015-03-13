@@ -9,11 +9,10 @@ p
 ul
   li
     b
-      | email:
-      = @user[:email]
+      = "email: #{@user.email}"
 p
   | To login to the site, just follow this link:
 p
-  = @url
+  = link_to @url, @url
 p
   | Thanks for joining and have a great day!
