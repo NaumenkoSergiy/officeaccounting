@@ -9,7 +9,6 @@ RSpec.describe Order, :type => :model do
     it { should validate_presence_of(:total) }
     it { should validate_presence_of(:total_grn) }
     it { should validate_presence_of(:rate) }
-    it { should validate_presence_of(:commission) }
     it { should validate_presence_of(:account_grn_id) }
     it { should validate_presence_of(:type_order) }
     it { should validate_presence_of(:account_rate_id) }
@@ -18,7 +17,6 @@ RSpec.describe Order, :type => :model do
     it { should_not allow_value('').for(:total) }
     it { should_not allow_value('').for(:total_grn) }
     it { should_not allow_value('').for(:rate) }
-    it { should_not allow_value('').for(:commission) }
     it { should_not allow_value('').for(:account_grn_id) }
     it { should_not allow_value('').for(:type_order) }
     it { should_not allow_value('').for(:account_rate_id) }

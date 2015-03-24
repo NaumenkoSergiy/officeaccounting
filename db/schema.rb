@@ -13,13 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20150306135524) do
 
-  create_table "accounts", force: true do |t|
-    t.string   "name"
-    t.string   "account_type"
-    t.integer  "number"
-    t.string   "currency"
-    t.integer  "bank_id"
-    t.integer  "company_id"
+  create_table "accounts", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.string   "account_type", limit: 255
+    t.integer  "number",       limit: 4
+    t.string   "currency",     limit: 255
+    t.integer  "bank_id",      limit: 4
+    t.integer  "company_id",   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
@@ -27,50 +27,50 @@ ActiveRecord::Schema.define(version: 20150306135524) do
 
   add_index "accounts", ["deleted_at"], name: "index_accounts_on_deleted_at", using: :btree
 
-  create_table "articles", force: true do |t|
-    t.integer "code"
-    t.string  "name"
+  create_table "articles", force: :cascade do |t|
+    t.integer "code", limit: 4
+    t.string  "name", limit: 255
   end
 
-  create_table "bank_accounts", force: true do |t|
-    t.integer "company_id"
-    t.string  "account"
-    t.string  "mfo"
-    t.integer "bank_id"
+  create_table "bank_accounts", force: :cascade do |t|
+    t.integer "company_id", limit: 4
+    t.string  "account",    limit: 255
+    t.string  "mfo",        limit: 255
+    t.integer "bank_id",    limit: 4
   end
 
-  create_table "banks", force: true do |t|
-    t.string  "name"
-    t.integer "code_edrpo"
-    t.integer "mfo"
-    t.string  "lawyer_adress"
+  create_table "banks", force: :cascade do |t|
+    t.string  "name",          limit: 255
+    t.integer "code_edrpo",    limit: 4
+    t.integer "mfo",           limit: 4
+    t.string  "lawyer_adress", limit: 255
   end
 
-  create_table "cashiers", force: true do |t|
-    t.string   "name"
-    t.string   "currency"
-    t.integer  "company_id"
+  create_table "cashiers", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "currency",   limit: 255
+    t.integer  "company_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "companies", force: true do |t|
-    t.string "full_name"
-    t.string "short_name"
-    t.string "latin_name"
-    t.string "juridical_address"
-    t.string "actual_address"
-    t.string "numbering_format"
-    t.string "state"
+  create_table "companies", force: :cascade do |t|
+    t.string "full_name",         limit: 255
+    t.string "short_name",        limit: 255
+    t.string "latin_name",        limit: 255
+    t.string "juridical_address", limit: 255
+    t.string "actual_address",    limit: 255
+    t.string "numbering_format",  limit: 255
+    t.string "state",             limit: 255
   end
 
-  create_table "contracts", force: true do |t|
+  create_table "contracts", force: :cascade do |t|
     t.date     "date"
-    t.string   "number"
-    t.string   "contract_type"
+    t.string   "number",          limit: 255
+    t.string   "contract_type",   limit: 255
     t.date     "validity"
-    t.integer  "counterparty_id"
-    t.integer  "company_id"
+    t.integer  "counterparty_id", limit: 4
+    t.integer  "company_id",      limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
@@ -78,166 +78,154 @@ ActiveRecord::Schema.define(version: 20150306135524) do
 
   add_index "contracts", ["deleted_at"], name: "index_contracts_on_deleted_at", using: :btree
 
-  create_table "counterparties", force: true do |t|
-    t.string   "name"
-    t.boolean  "active"
+  create_table "counterparties", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.boolean  "active",     limit: 1
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "company_id"
-    t.string   "title"
-    t.boolean  "resident"
-    t.string   "edrpo"
-    t.string   "adress"
-    t.string   "account"
-    t.integer  "bank_id"
-    t.integer  "mfo"
+    t.integer  "company_id", limit: 4
+    t.string   "title",      limit: 255
+    t.boolean  "resident",   limit: 1
+    t.string   "edrpo",      limit: 255
+    t.string   "adress",     limit: 255
+    t.string   "account",    limit: 255
+    t.integer  "bank_id",    limit: 4
+    t.integer  "mfo",        limit: 4
     t.datetime "deleted_at"
   end
 
   add_index "counterparties", ["deleted_at"], name: "index_counterparties_on_deleted_at", using: :btree
 
-  create_table "credits", force: true do |t|
-    t.string  "name"
-    t.string  "credit_type"
-    t.string  "account_number"
-    t.integer "bank_id"
-    t.integer "company_id"
+  create_table "credits", force: :cascade do |t|
+    t.string  "name",           limit: 255
+    t.string  "credit_type",    limit: 255
+    t.string  "account_number", limit: 255
+    t.integer "bank_id",        limit: 4
+    t.integer "company_id",     limit: 4
   end
 
-  create_table "currencies", force: true do |t|
-    t.string   "name"
-    t.integer  "company_id"
+  create_table "currencies", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "company_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "incorporation_forms", force: true do |t|
-    t.integer "number"
-    t.string  "name"
+  create_table "incorporation_forms", force: :cascade do |t|
+    t.integer "number", limit: 4
+    t.string  "name",   limit: 255
   end
 
-  create_table "invoice_forms", force: true do |t|
-    t.integer "account_number"
-    t.string  "name"
-    t.string  "invoice_type"
-    t.string  "subcount1"
-    t.string  "subcount2"
+  create_table "invoice_forms", force: :cascade do |t|
+    t.integer "account_number", limit: 4
+    t.string  "name",           limit: 255
+    t.string  "invoice_type",   limit: 255
+    t.string  "subcount1",      limit: 255
+    t.string  "subcount2",      limit: 255
   end
 
-  create_table "koatuus", force: true do |t|
-    t.string "code"
-    t.string "name"
+  create_table "koatuus", force: :cascade do |t|
+    t.string "code", limit: 255
+    t.string "name", limit: 255
   end
 
-  create_table "kveds", force: true do |t|
-    t.string "section"
-    t.string "number"
-    t.string "name"
+  create_table "kveds", force: :cascade do |t|
+    t.string "section", limit: 255
+    t.string "number",  limit: 255
+    t.string "name",    limit: 255
   end
 
-  create_table "money_registers", force: true do |t|
+  create_table "money_registers", force: :cascade do |t|
     t.date     "date"
-    t.string   "type_document"
-    t.integer  "counterparty_id"
-    t.integer  "contract_id"
-    t.integer  "account_id"
-    t.float    "total"
-    t.integer  "article_id"
-    t.integer  "company_id"
-    t.string   "type_money"
+    t.string   "type_document",   limit: 255
+    t.integer  "counterparty_id", limit: 4
+    t.integer  "contract_id",     limit: 4
+    t.integer  "account_id",      limit: 4
+    t.float    "total",           limit: 24
+    t.integer  "article_id",      limit: 4
+    t.integer  "company_id",      limit: 4
+    t.string   "type_money",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "officials", force: true do |t|
-    t.integer "company_id"
-    t.string  "official_type"
-    t.string  "name"
-    t.string  "tin"
-    t.string  "phone"
-    t.string  "email"
+  create_table "officials", force: :cascade do |t|
+    t.integer "company_id",    limit: 4
+    t.string  "official_type", limit: 255
+    t.string  "name",          limit: 255
+    t.string  "tin",           limit: 255
+    t.string  "phone",         limit: 255
+    t.string  "email",         limit: 255
   end
 
-  create_table "order_currencies", force: true do |t|
+  create_table "orders", force: :cascade do |t|
     t.datetime "date"
-    t.integer  "bank_id"
-    t.string   "currency"
-    t.float    "total"
-    t.float    "total_grn"
-    t.float    "rate"
-    t.integer  "commission"
+    t.integer  "bank_id",         limit: 4
+    t.string   "currency",        limit: 255
+    t.float    "total",           limit: 24
+    t.float    "total_grn",       limit: 24
+    t.float    "rate",            limit: 24
+    t.float    "commission",      limit: 24
+    t.integer  "account_grn_id",  limit: 4
+    t.integer  "account_rate_id", limit: 4
+    t.integer  "company_id",      limit: 4
+    t.string   "type_order",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "orders", force: true do |t|
+  create_table "payment_orders", force: :cascade do |t|
     t.datetime "date"
-    t.integer  "bank_id"
-    t.string   "currency"
-    t.float    "total"
-    t.float    "total_grn"
-    t.float    "rate"
-    t.float    "commission"
-    t.integer  "account_grn_id"
-    t.integer  "account_rate_id"
-    t.integer  "company_id"
-    t.string   "type_order"
+    t.integer  "account_id",      limit: 4
+    t.integer  "counterparty_id", limit: 4
+    t.float    "total",           limit: 24
+    t.integer  "article_id",      limit: 4
+    t.string   "type_order",      limit: 255
+    t.integer  "company_id",      limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "currency",        limit: 255
   end
 
-  create_table "payment_orders", force: true do |t|
-    t.datetime "date"
-    t.integer  "account_id"
-    t.integer  "counterparty_id"
-    t.float    "total"
-    t.integer  "article_id"
-    t.string   "type_order"
-    t.integer  "company_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "currency"
-  end
-
-  create_table "registrations", force: true do |t|
-    t.integer "company_id"
-    t.string  "form_of_incorporation"
-    t.string  "legal_form_code"
-    t.string  "edrpou"
-    t.string  "nace_codes"
-    t.string  "koatuu"
-    t.integer "risk_class"
-    t.string  "tin"
+  create_table "registrations", force: :cascade do |t|
+    t.integer "company_id",                                 limit: 4
+    t.string  "form_of_incorporation",                      limit: 255
+    t.string  "legal_form_code",                            limit: 255
+    t.string  "edrpou",                                     limit: 255
+    t.string  "nace_codes",                                 limit: 255
+    t.string  "koatuu",                                     limit: 255
+    t.integer "risk_class",                                 limit: 4
+    t.string  "tin",                                        limit: 255
     t.date    "state_registration_date"
-    t.string  "registration_number"
-    t.string  "registered_by"
+    t.string  "registration_number",                        limit: 255
+    t.string  "registered_by",                              limit: 255
     t.date    "date_registered_in_revenue_commissioners"
-    t.string  "number_registered_in_revenue_commissioners"
+    t.string  "number_registered_in_revenue_commissioners", limit: 255
     t.date    "registered_in_pension_fund"
-    t.string  "code_registered_in_pension_fund"
-    t.string  "tax_system"
-    t.boolean "pdv"
-    t.string  "tax_inspection"
+    t.string  "code_registered_in_pension_fund",            limit: 255
+    t.string  "tax_system",                                 limit: 255
+    t.boolean "pdv",                                        limit: 1
+    t.string  "tax_inspection",                             limit: 255
   end
 
-  create_table "tax_inspections", force: true do |t|
-    t.string "name"
+  create_table "tax_inspections", force: :cascade do |t|
+    t.string "name", limit: 255
   end
 
-  create_table "user_companies", force: true do |t|
-    t.integer "company_id"
-    t.integer "user_id"
-    t.boolean "current_company"
-    t.string  "role"
+  create_table "user_companies", force: :cascade do |t|
+    t.integer "company_id",      limit: 4
+    t.integer "user_id",         limit: 4
+    t.boolean "current_company", limit: 1
+    t.string  "role",            limit: 255
   end
 
-  create_table "users", force: true do |t|
-    t.string   "email"
-    t.string   "activate_token"
-    t.boolean  "is_admin",               default: false
-    t.string   "password_reset_token"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255
+    t.string   "activate_token",         limit: 255
+    t.boolean  "is_admin",               limit: 1,   default: false
+    t.string   "password_reset_token",   limit: 255
     t.datetime "password_reset_sent_at"
-    t.string   "password_digest"
+    t.string   "password_digest",        limit: 255
   end
 
 end
