@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
   delegate :name, to: :grn_account, prefix: true
   delegate :name, to: :foreign_currency_account, prefix: true
 
-  validates :date, :bank_id, :currency, :total, :total_grn, :rate, :commission, :account_grn_id, :type_order, :account_rate_id, presence: true
+  validates :date, :bank_id, :currency, :total, :total_grn, :rate, :account_grn_id, :type_order, :account_rate_id, presence: true
 
   scope :orders_by_type, -> (type_order) {
     where("type_order = ?", type_order)
