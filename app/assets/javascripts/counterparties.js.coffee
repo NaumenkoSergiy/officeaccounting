@@ -1,4 +1,4 @@
-window.Counterparties = 
+window.Counterparties =
   load: (callback) ->
     $.ajax
       type: 'GET'
@@ -89,7 +89,7 @@ window.Counterparties =
       placement: 'bottom'
       trigger: 'manual'
       content: ->
-        '<form id="contract_popover"  data-remote="true" data-counterparty=' + idCounterparty + ' data-contract=' + idContract + 
+        '<form id="contract_popover"  data-remote="true" data-counterparty=' + idCounterparty + ' data-contract=' + idContract +
         ' data-id=' + idRegister + ' action="" role="form">
           <div class="row">
             <div class="col-lg-4">
@@ -113,7 +113,7 @@ window.Counterparties =
                 <button class="btn btn-primary btn-sm editable-submit" type="submit">
                   <i class="glyphicon glyphicon-ok"></i>
                 </button>
-                <button class="btn btn-default btn-sm margin-left-15" type="button">
+                <button class="btn btn-default btn-sm margin-left-3" type="button">
                   <i class="glyphicon glyphicon-remove"></i>
                 </button>
               </div>
