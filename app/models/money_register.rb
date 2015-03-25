@@ -26,5 +26,4 @@ class MoneyRegister < ActiveRecord::Base
   def self.ransackable_attributes(auth_object = nil)
     %w(date type_document total type_money) + _ransackers.keys
   end
-
 end

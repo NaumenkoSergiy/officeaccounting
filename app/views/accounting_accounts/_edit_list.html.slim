@@ -1,0 +1,17 @@
+tr class='accounting_account_#{ accounting_account.id }'
+  td
+    = link_to accounting_account.name, '#', data: { name: :name, placement: 'bottom', pk: accounting_account, model: :accounting_account, url: accounting_account_path(accounting_account.id), xeditable: true }
+  td.width-40
+    = link_to accounting_account.ap, '#', data: { name: :ap, placement: 'bottom', pk: accounting_account, model: :accounting_account, url: accounting_account_path(accounting_account.id), xeditable: true }
+  td
+    = link_to accounting_account.account_number, '#', data: { name: :account_number, placement: 'bottom', pk: accounting_account, model: :accounting_account, url: accounting_account_path(accounting_account.id), xeditable: true }
+  td
+    = link_to t("#{accounting_account.invoice_type}"), '#', data: { name: :invoice_type, placement: 'bottom', type: 'select2', value: accounting_account.invoice_type, source: application_present.translate_array_select2_options(AccountingAccount::GROUPS),  pk: accounting_account, model: :accounting_account, url: accounting_account_path(accounting_account.id), xeditable: true }
+  td
+    = link_to accounting_account.subcount1, '#', data: { name: :subcount1, placement: 'bottom', pk: accounting_account, model: :accounting_account, url: accounting_account_path(accounting_account.id), xeditable: true }
+  td
+    = link_to accounting_account.subcount2, '#', data: { name: :subcount2, placement: 'bottom', pk: accounting_account, model: :accounting_account, url: accounting_account_path(accounting_account.id), xeditable: true }
+  td.width-100
+    = link_to accounting_account.subcount3, '#', data: { name: :subcount3, placement: 'bottom', pk: accounting_account, model: :accounting_account, url: accounting_account_path(accounting_account.id), xeditable: true }
+  td.width-40
+    = application_present.destroy_link accounting_account_path(accounting_account.id)

@@ -124,6 +124,7 @@ String.prototype.translit = (function () {
 })();
 
 function openForm(idform, idbutton) {
+  $("form#" + idform).hide();
   $("#" + idbutton).click(function() {
     $("form#" + idform).toggle();
   });
@@ -194,6 +195,7 @@ function editableStart() {
         type: "PUT",
         dataType: "json"
       },
+      emptytext: I18n.t('empty_text'),
       params: xeditableParams,
       success: function(response, newValue) {
         $("table tr[value='" + id + "'] td#"+name).find('a').text(valueNew || newValue);

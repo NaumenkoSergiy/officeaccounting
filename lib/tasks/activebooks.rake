@@ -5,12 +5,6 @@ namespace :activebooks do
     end
   end
 
-  task add_form_of_invoice: :environment do
-    Constants_invoice::FORMS_OF_INVOICE.each do |form|
-      InvoiceForm.create({account_number: form[:account_number], name: form[:name], invoice_type: form[:type], subcount1: form[:subcount1], subcount2: form[:subcount2] })
-    end
-  end
-
   task add_kved: :environment do
     file = File.read('lib/KVED.json')
     data_hash = JSON.parse(file)
@@ -56,7 +50,6 @@ namespace :activebooks do
   end
 
   task :all => [:add_form_of_incorporation,
-                :add_form_of_invoice,
                 :add_kved,
                 :add_koatuu,
                 :add_tax_inspection,
