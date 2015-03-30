@@ -39,6 +39,8 @@
                   = t('money.references')
                 ul.dropdown-menu
                   li
+                    =link_to t('accounting_accounts'), accounting_accounts_path, remote:true
+                  li
                     = link_to t('buttons.currency'), money_currencies_path, remote: true, type: :get
                   li
                     = link_to t('buttons.exchange_rates'), money_exchange_rates_path, remote: true, type: :get
@@ -64,3 +66,4 @@
           #companyCurrency.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
           #moneyCurrency.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
           #companyBanks.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
+          #accounting_accounts.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"

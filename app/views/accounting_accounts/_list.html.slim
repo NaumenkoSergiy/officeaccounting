@@ -1,0 +1,19 @@
+table.table
+  thead
+    tr
+      th
+        = t('money.accounts.account_name')
+      th
+        = t('ap')
+      th
+        = t('money.accounts.account_number')
+      th
+        = t('group')
+      th
+        = t('subcount1')
+      th
+        = t('subcount2')
+      th
+        = t('subcount3')
+  tbody
+    = render_accounting_accounts_list(@accounting_accounts)

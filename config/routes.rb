@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :sales, only: [:index]
     resources :purchases, only: [:index]
     resources :contracts
+    resources :accounting_accounts, except: :edit
 
     namespace 'settings' do
       resources :companies, only: [:new, :create, :update]

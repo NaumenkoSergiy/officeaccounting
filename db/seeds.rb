@@ -18,3 +18,9 @@ file.each do |form|
   form = eval form[0..-3]
   Bank.create({name: form[:name], code_edrpo: form[:code_edrpo], mfo: form[:mfo], lawyer_adress: form[:lawyer_adress] })
 end
+
+file = File.open('db/accounting_account.txt')
+file.each do |form|
+  form = eval(form[0..-3])
+  AccountingAccount.create({account_number: form[:account_number], name: form[:name], ap: form[:ap], invoice_type: form[:type], subcount1: form[:subcount1], subcount2: form[:subcount2], subcount3: form[:subcount3]})
+end

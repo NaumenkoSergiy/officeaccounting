@@ -28,310 +28,311 @@ ua:
           contract:
             attributes:
               counterparty_id:
-                blank: "Поле не може бути пустим"
+                blank: Поле не може бути пустим
               number:
-                blank: "Поле не може бути пустим"
+                blank: Поле не може бути пустим
           cashier:
             attributes:
               name:
-                blank: "Поле не може бути пустим"
+                blank: Поле не може бути пустим
           account:
             attributes:
               name:
-                blank: "Поле не може бути пустим"
+                blank: Поле не може бути пустим
           article:
             attributes:
               name:
-                blank: "Поле не може бути пустим"
+                blank: Поле не може бути пустим
           bank:
             attributes:
               code_edrpo:
-                not_a_number: "Має бути номером"
+                not_a_number: Має бути номером
               mfo:
-                not_a_number: "Має бути номером"
+                not_a_number: Має бути номером
               lawyer_adress:
-                blank: "Поле не може бути пустим"
+                blank: Поле не може бути пустим
               name:
-                blank: "Поле не може бути пустим"
-  short_symbol: "Короткостроковий"
-  long_symbol: "Довгостроковий"
-  for_today: " на сьогодні "
-  add_existing: "Додате існуюче підприємство"
-  add_new_company: "Додати нове підприємство"
-  enter_bookkeeper: "Введіть головного ПІБ головного бухгалтера"
-  customize_company: "Налаштування компанії"
-  customize_delegetion: "Налаштування делегування компанією"
-  current_company: "Поточне підриємство"
-  general: "Загальна"
-  simplified: "Спрощена"
-  view_symbol: "Перегляд"
-  edit_symbol: "Редагування"
-  add_code: "Додати код"
-  UAH: "UAH - українська гривня"
-  USD: "USD - доллар США"
-  EUR: "EUR - Евро"
-  RUB: "RUB - российский рубль"
-  GBP: "GBP - англійський фунт стерлінг"
-  AUD: "AUD - австралійський долар"
-  AZN: "AZN - Азербайджанський манат"
-  BYR: "BYR - білоруський рубль"
-  DKK: "DKK - датських крон"
-  ISK: "ISK - ісландський крон"
-  KZT: "KZT - казахстанський тенге"
-  CAD: "CAD - канадський долар"
-  MDL: "MDL - молдовський леїв"
-  NOK: "NOK - норвезький крон"
-  PLN: "PLN - польський злот"
-  SGD: "SGD - сінгапурський долар"
-  HUF: "HUF - угорський форинт"
-  TMT: "TMT - Туркменський манат"
-  UZS: "UZS - узбецький сум"
-  CZK: "CZK - чеський крон"
-  SEK: "SEK - шведський крон"
-  CHF: "CHF - швейцарський франк"
-  CNY: "CNY - юань женьміньбі (Китай)"
-  JPY: "JPY - японський єн"
+                blank: Поле не може бути пустим
+  short_symbol: Короткостроковий
+  long_symbol: Довгостроковий
+  for_today:  на сьогодні 
+  add_existing: Додате існуюче підприємство
+  add_new_company: Додати нове підприємство
+  enter_bookkeeper: Введіть головного ПІБ головного бухгалтера
+  customize_company: Налаштування компанії
+  customize_delegetion: Налаштування делегування компанією
+  current_company: Поточне підриємство
+  general: Загальна
+  simplified: Спрощена
+  view_symbol: Перегляд
+  edit_symbol: Редагування
+  add_code: Додати код
+  UAH: UAH - українська гривня
+  USD: USD - доллар США
+  EUR: EUR - Евро
+  RUB: RUB - российский рубль
+  GBP: GBP - англійський фунт стерлінг
+  AUD: AUD - австралійський долар
+  AZN: AZN - Азербайджанський манат
+  BYR: BYR - білоруський рубль
+  DKK: DKK - датських крон
+  ISK: ISK - ісландський крон
+  KZT: KZT - казахстанський тенге
+  CAD: CAD - канадський долар
+  MDL: MDL - молдовський леїв
+  NOK: NOK - норвезький крон
+  PLN: PLN - польський злот
+  SGD: SGD - сінгапурський долар
+  HUF: HUF - угорський форинт
+  TMT: TMT - Туркменський манат
+  UZS: UZS - узбецький сум
+  CZK: CZK - чеський крон
+  SEK: SEK - шведський крон
+  CHF: CHF - швейцарський франк
+  CNY: CNY - юань женьміньбі (Китай)
+  JPY: JPY - японський єн
   date:
     formats:
-      default: ! "%d-%m-%Y"
+      default: ! '%d-%m-%Y'
   navigation:
-    main: "Головна"
-    money: "Гроші"
-    sales: "Продажі"
-    purchases: "Закупівлі"
-    accounting: "Звітність"
-    register: "Журнал"
+    main: Головна
+    money: Гроші
+    sales: Продажі
+    purchases: Закупівлі
+    accounting: Звітність
+    register: Журнал
   top_bar:
-    signout: "Вийти"
+    signout: Вийти
   companies:
     new:
-      add_button: "Додати існуюче підприємство"
-      full_name: "Повна назва"
-      short_name: "Коротка назва"
-      latin_name: "Назва латиницею"
-      juridical_address: "Юридична адресса"
-      actual_address: "Фактична адресса"
-      numbering_format: "Бажаний формат нумерації документів"
+      add_button: Додати існуюче підприємство
+      full_name: Повна назва
+      short_name: Коротка назва
+      latin_name: Назва латиницею
+      juridical_address: Юридична адресса
+      actual_address: Фактична адресса
+      numbering_format: Бажаний формат нумерації документів
   registrations:
     fields:
-      form_of_incorporation: "Організаційно-правова форма (код та назва)"
-      edrpou_code: "Код ЄРДПОУ"
-      enter_edrpou: "Введіть код ЄРДПОУ вашого підприємства"
-      nace_codes: "коди КВЕД"
-      koatuu: "розташування за КОАТУУ"
-      enter_koatuu: "Введіть код розташування за КОАТУУ"
-      risk_class: "клас професійного ризику"
-      is_pdv: "Чи є підприємство платником податку на додану вартість (ПДВ)?"
-      pdv_number: "номер свідоцтва ПДВ"
-      enter_pdv: "Введіть номер свідоцтва ПДВ вашого підприємства"
-      state_registration_date: "дата державної реєстрації"
-      registration_number: "номер реєстрації"
-      enter_registration_number: "Введіть номер реєстрації вашого підприємства"
-      registered_by: "ким зареєстровано"
-      date_reg_rev_com: "реєстрація у податковій"
-      tax_inspection: "місце реєстрації у податковій"
-      registered_in_pension_fund: "дата реєстрації у пенсійному фонді"
-      number_reg_rev_com: "номер реєстрації у податковій"
-      enter_registration_tax: "Введіть номер реєстрації у податковій"
-      enter_reg_pens_fund: "Введіть код пенсійного фонду"
-      code_reg_pens_fund: "код пенсійного фонду"
-      tax_system: "система оподаткування"
-      general: "Загальна"
-      simplified: "Спрощена"
+      form_of_incorporation: Організаційно-правова форма (код та назва)
+      edrpou_code: Код ЄРДПОУ
+      enter_edrpou: Введіть код ЄРДПОУ вашого підприємства
+      nace_codes: коди КВЕД
+      koatuu: розташування за КОАТУУ
+      enter_koatuu: Введіть код розташування за КОАТУУ
+      risk_class: клас професійного ризику
+      is_pdv: Чи є підприємство платником податку на додану вартість (ПДВ)?
+      pdv_number: номер свідоцтва ПДВ
+      enter_pdv: Введіть номер свідоцтва ПДВ вашого підприємства
+      state_registration_date: дата державної реєстрації
+      registration_number: номер реєстрації
+      enter_registration_number: Введіть номер реєстрації вашого підприємства
+      registered_by: ким зареєстровано
+      date_reg_rev_com: реєстрація у податковій
+      tax_inspection: місце реєстрації у податковій
+      registered_in_pension_fund: дата реєстрації у пенсійному фонді
+      number_reg_rev_com: номер реєстрації у податковій
+      enter_registration_tax: Введіть номер реєстрації у податковій
+      enter_reg_pens_fund: Введіть код пенсійного фонду
+      code_reg_pens_fund: код пенсійного фонду
+      tax_system: система оподаткування
+      general: Загальна
+      simplified: Спрощена
   officials:
-    full_name: "ПІБ"
-    enter_full_name: "Введіть ПІБ директора"
-    enter_full_name_bookkeeper: "Введіть ПІБ бухгалтера"
-    tin: "ІПН"
-    enter_ipn: "Введіть ІПН"
-    phone: "Номер телефону"
-    email: "Електронна пошта"
+    full_name: ПІБ
+    enter_full_name: Введіть ПІБ директора
+    enter_full_name_bookkeeper: Введіть ПІБ бухгалтера
+    tin: ІПН
+    enter_ipn: Введіть ІПН
+    phone: Номер телефону
+    email: Електронна пошта
   bank_accounts:
-    account: "Рахунки"
-    enter_account: "Введіть номер рахунку"
-    bank: "Банк"
-    enter_bank: "Введіть повну назву банківської установи"
-    mfo: "МФО"
-    enter_mfo: "Введіть МФО"
+    account: Рахунки
+    enter_account: Введіть номер рахунку
+    bank: Банк
+    enter_bank: Введіть повну назву банківської установи
+    mfo: МФО
+    enter_mfo: Введіть МФО
   block_title:
-    info_officials: "Інформація про посадових осіб"
-    add_bookkeeper: "Додати головного бухгалтера"
-    chief: "Директор(ПІБ)"
-    main_bookkeeper: "Головний бухгалтер (ПІБ)"
-    bank_details: "Банківські реквізити"
-    title: "Назва"
-    block1: "Крок 1: загальна інформація"
-    block2: "Крок 2: Регістраційна інформація"
-    block3: "Крок 3: інформація про посадових осіб"
-    block4: "Крок 4: головний бухгалтер"
-    block5: "Крок 5: банківські реквізити"
-    director: "Директор"
-    companies_list: "Список підприємств"
+    info_officials: Інформація про посадових осіб
+    add_bookkeeper: Додати головного бухгалтера
+    chief: Директор(ПІБ)
+    main_bookkeeper: Головний бухгалтер (ПІБ)
+    bank_details: Банківські реквізити
+    title: Назва
+    block1: 'Крок 1: загальна інформація'
+    block2: 'Крок 2: Регістраційна інформація'
+    block3: 'Крок 3: інформація про посадових осіб'
+    block4: 'Крок 4: головний бухгалтер'
+    block5: 'Крок 5: банківські реквізити'
+    director: Директор
+    companies_list: Список підприємств
   money:
-    documents: "Документи"
-    reports: "Звіти"
-    references: "Довідники"
-    exchange_rates: "Валютні курси"
-    accounts_title: "Рахунки"
-    cashiers_title: "Каси"
-    currency: "Валюта"
-    currency_name: "Назва валюти"
-    cashiers_name: "Назва каси"
-    bank_name: "Назва банку"
-    article_name: "Назва статті"
-    purchase: "Купівля"
-    sale: "Продаж"
-    credit_type: "Тип кредиту"
-    credits: "Кредити"
+    documents: Документи
+    reports: Звіти
+    references: Довідники
+    exchange_rates: Валютні курси
+    accounts_title: Рахунки
+    cashiers_title: Каси
+    currency: Валюта
+    currency_name: Назва валюти
+    cashiers_name: Назва каси
+    bank_name: Назва банку
+    article_name: Назва статті
+    purchase: Купівля
+    sale: Продаж
+    credit_type: Тип кредиту
+    credits: Кредити
     accounts:
-      accounts_info: "У вас немає банківських рахунків натисніть сюди, щоб додати новий!"
-      account_name: "Назва рахунку"
-      account_type: "Тип рахунку "
-      account_number: "Номер рахунку"
-      bank: "Банк"
-      banks: "Банки"
-      accounts_grn: "У вас немає банківських рахунків по гривні перейдіть в довідник рахунки і додайте новий!"
-      accounts_foreign_currency: "У вас немає банківських рахунків по іноземній валюті перейдіть в довідник рахунки і додайте новий!"
+      accounts_info: У вас немає банківських рахунків натисніть сюди, щоб додати новий!
+      account_name: Назва рахунку
+      account_type: Тип рахунку 
+      account_number: Номер рахунку
+      bank: Банк
+      banks: Банки
+      accounts_grn: У вас немає банківських рахунків по гривні перейдіть в довідник рахунки і додайте новий!
+      accounts_foreign_currency: У вас немає банківських рахунків по іноземній валюті перейдіть в довідник рахунки і додайте новий!
     costs:
-      date: "Дата"
-      type_of_document: "Тип документу"
-      counterpary_f: "Від кого (контрагент)"
-      bank_account_c: "Банківський рахунок"
-      contract: "Договір"
-      total: "Сума"
-      article: "Стаття руху грошових коштів"
-    article_info: "У вас не завантаженні статті!"
+      date: Дата
+      type_of_document: Тип документу
+      counterpary_f: Від кого (контрагент)
+      bank_account_c: Банківський рахунок
+      contract: Договір
+      total: Сума
+      article: Стаття руху грошових коштів
+    article_info: У вас не завантаженні статті!
     currences_tran:
-      turnover_balance: "Оборотно сальдова відомість"
-      card_number: "Карточка рахунку"
-      payment_orders_in: "Платіжне доручення вхідне"
-      payment_order_out: "Платіжне доручення вихідне"
-      order_p_f_currency: "Заявка на покупку валюти"
-      order_s_f_currency: "Заявка на продаж валюти"
-      number: "Номер"
+      turnover_balance: Оборотно сальдова відомість
+      card_number: Карточка рахунку
+      payment_orders_in: Платіжне доручення вхідне
+      payment_order_out: Платіжне доручення вихідне
+      order_p_f_currency: Заявка на покупку валюти
+      order_s_f_currency: Заявка на продаж валюти
+      number: Номер
     order:
-      rate: "Курс"
-      commission: "Комісія %"
-      account_grn: "Рахунок гривня"
-      account_rate: "Рахунок валюта"
-      total_grn: "Сумма грн."
+      rate: Курс
+      commission: Комісія %
+      account_grn: Рахунок гривня
+      account_rate: Рахунок валюта
+      total_grn: Сумма грн.
   buttons:
-    add: "Додати"
-    forward: "Далі"
-    pretermit: "Пропустити"
-    complite_company: "Завершення створення компанії"
-    new_company: "Додати підприємство"
-    add_new: "Додати новий"
-    income: "Надходження"
-    spending: "Витрати"
-    buy_currency: "Покупка валюти"
-    currency_sale: "Продаж валюти"
-    balances: "Залишки на рахунках"
-    statement_under_report: "Відомість з під звіту"
-    accounts: "Рахунки"
-    сashier: "Каси"
-    banks: "Банки"
-    currency: "Валюти"
-    exchange_rates: "Валютні курси"
-    loans_borrowings: "Кредити та позики"
-    money_movement: "Статті руху грошей"
-    add_currency: "Додати валюту"
+    add: Додати
+    forward: Далі
+    pretermit: Пропустити
+    complite_company: Завершення створення компанії
+    new_company: Додати підприємство
+    add_new: Додати новий
+    income: Надходження
+    spending: Витрати
+    buy_currency: Покупка валюти
+    currency_sale: Продаж валюти
+    balances: Залишки на рахунках
+    statement_under_report: Відомість з під звіту
+    accounts: Рахунки
+    сashier: Каси
+    banks: Банки
+    currency: Валюти
+    exchange_rates: Валютні курси
+    loans_borrowings: Кредити та позики
+    money_movement: Статті руху грошей
+    add_currency: Додати валюту
   validation:
     errors:
-      mail_or_pass_not_valid: "Невірно введний Email або пароль"
-      cant_be_blank: "Поле не може бути пустим"
-      mail_not_blank: "Поле email не має бути бути порожнім"
-      mail_should_be_valid: "Поле email має буте валідним"
-      should_be_valid: "поле має бути валідним"
-      password_empty: "Поле password не має бути бути порожнім"
-      password_more8: "Поле password має бути довшим 8 символів"
-      password_less32: "Поле password має бути не довшим 32 символів"
-      invalid_format: "Невірний формат"
-      passwords_not_identical: "Паролі неоднакові"
-      invalid_data: "Введені неправильні дані"
-      user_exists: "Користувач існує будь ласка скористaйтеся відновленням паролю!"
-      already_delegated: "Даний користувач вже добавлений на делегування цієї компанії ви не можете додати його ще раз!"
-      all_fields: "Всі поля повинні бути заповненні!"
+      mail_or_pass_not_valid: Невірно введний Email або пароль
+      cant_be_blank: Поле не може бути пустим
+      mail_not_blank: Поле email не має бути бути порожнім
+      mail_should_be_valid: Поле email має буте валідним
+      should_be_valid: поле має бути валідним
+      password_empty: Поле password не має бути бути порожнім
+      password_more8: Поле password має бути довшим 8 символів
+      password_less32: Поле password має бути не довшим 32 символів
+      invalid_format: Невірний формат
+      passwords_not_identical: Паролі неоднакові
+      invalid_data: Введені неправильні дані
+      user_exists: Користувач існує будь ласка скористaйтеся відновленням паролю!
+      already_delegated: Даний користувач вже добавлений на делегування цієї компанії ви не можете додати його ще раз!
+      all_fields: Всі поля повинні бути заповненні!
+      delete_error: Виникла помилка при видаленні
   labels:
-    active: "Активна"
-    user: "Користувач"
-    rights: "Права"
+    active: Активна
+    user: Користувач
+    rights: Права
   contract:
-    contracts: "Договори"
-    date: "Дата"
-    number: "Номер"
-    type: "Тип"
-    validity: "Термін дії"
-    counterparty: "Контрагент"
-    counterparty_add: "Додати нового"
-    add_new: "Додати новий"
-    counterparty_info: "У вас немає контрагентів натисніть сюди, щоб додати нового!"
-    contract_info: "У вас немає договорів з конрагентом натисніть сюди, щоб додати новий!"
-    contract_empty: "У вас немає договорів з конрагентом перейдіть в довідник договорів і додайте новий!"
-  product: "Продукт"
-  service: "Послуга"
-  settings: "Налаштування"
+    contracts: Договори
+    date: Дата
+    number: Номер
+    type: Тип
+    validity: Термін дії
+    counterparty: Контрагент
+    counterparty_add: Додати нового
+    add_new: Додати новий
+    counterparty_info: У вас немає контрагентів натисніть сюди, щоб додати нового!
+    contract_info: У вас немає договорів з конрагентом натисніть сюди, щоб додати новий!
+    contract_empty: У вас немає договорів з конрагентом перейдіть в довідник договорів і додайте новий!
+  product: Продукт
+  service: Послуга
+  settings: Налаштування
   purchases:
-    account_inbox: "Рахунки вхідні"
-    power_of_attorney: "Довіреність"
-    purchase_of_goods: "Придбання товарів і послуг"
-    return: "Повернення"
-    state_calculations: "Стан розрахунків"
-    counterparties: "Контрагенти"
-    products_services: "Товари і послуги"
+    account_inbox: Рахунки вхідні
+    power_of_attorney: Довіреність
+    purchase_of_goods: Придбання товарів і послуг
+    return: Повернення
+    state_calculations: Стан розрахунків
+    counterparties: Контрагенти
+    products_services: Товари і послуги
   counterparty:
-    name_r: "Ім'я представника"
-    name: "Ім'я"
-    is_resident?: "Резидент?"
-    resident: "Резидент"
-    edrpo: "ЄДРПО"
-    account: "Рахунок"
-    address: "Адреса"
+    name_r: Ім'я представника
+    name: Ім'я
+    is_resident?: Резидент?
+    resident: Резидент
+    edrpo: ЄДРПО
+    account: Рахунок
+    address: Адреса
   sales:
-    customer_orders: "Замовлення покупців"
-    accounts_exhibited: "Рахунки виставлені"
-    sales_of_goods: "Продаж товарів і послуг"
-    return_from_buyers: "Повернення від покупців"
-    settlements_with_buyers: "Взаєморозрахунки з покупцями"
-    sale: "Продажі"
-    forms_of_payment: "Форми оплати"
-    categories_prices: "Категорії цін"
-  datePickerLocal: "uk"
-  costs: "Витрати"
-  refund_b: "Повернення грошей покупцю"
-  payments_l: "Розрахунки за кредитами"
-  payments_c: "Інші розрахунки з контрагентами"
-  calculation: "Розрахунки із зарплати"
-  payments_a: "Виплати під звіт"
-  calculation_t: "Розрахунки з податків"
-  write_offs: "Інші списання"
-  payment_pr: "Оплата постачальнику"
-  payment_fb: "Оплата від покупця"
-  refund_s: "Повернення грошей від постачальника"
-  osrhoene_l: "Розрахунки за кредитами"
-  other_revenues: "Інше надходження"
-  return_s: "Повернення з підзвіту"
-  income: "Надходження"
-  success: "Успішно додано!"
-  radius: "Радіус"
-  angle: "Кут"
-  depth: "Глубина"
+    customer_orders: Замовлення покупців
+    accounts_exhibited: Рахунки виставлені
+    sales_of_goods: Продаж товарів і послуг
+    return_from_buyers: Повернення від покупців
+    settlements_with_buyers: Взаєморозрахунки з покупцями
+    sale: Продажі
+    forms_of_payment: Форми оплати
+    categories_prices: Категорії цін
+  datePickerLocal: uk
+  costs: Витрати
+  refund_b: Повернення грошей покупцю
+  payments_l: Розрахунки за кредитами
+  payments_c: Інші розрахунки з контрагентами
+  calculation: Розрахунки із зарплати
+  payments_a: Виплати під звіт
+  calculation_t: Розрахунки з податків
+  write_offs: Інші списання
+  payment_pr: Оплата постачальнику
+  payment_fb: Оплата від покупця
+  refund_s: Повернення грошей від постачальника
+  osrhoene_l: Розрахунки за кредитами
+  other_revenues: Інше надходження
+  return_s: Повернення з підзвіту
+  income: Надходження
+  success: Успішно додано!
+  radius: Радіус
+  angle: Кут
+  depth: Глубина
   session:
-    email: "Електронна пошта"
-    pass: "Пароль"
-    forgot_password: "Забули пароль?"
-    have_account: "Не маєте аккаунта?"
-    create_an_account: "Створити аккаунт"
-    login: "Логін"
-    confirm_password: "Підтвердження пароля"
-    change_password: "Змінити пароль"
-    account_not_act: "Акаунт не активований! Перегляньте електронну пошту і перейдіть за посиланню для активації акаунта!"
-    account_act: "Аккаунт активований!"
-    notific_mail: "На вашу електронну адресу відправленено лист з активацією!"
-    reset_pass_notific: "На вашу електронну адресу відправлений лист з інструкцією по відновленню пароля."
-    not_found_account_notific: "Вибачте, аккаунт з такою електронною адресою не зареєстрований"
-    time_out_reset_pass: "Час на відновлення пароля закінчився!"
-    change_pass_notific: "Пароль був змінений успішно!"
+    email: Електронна пошта
+    pass: Пароль
+    forgot_password: Забули пароль?
+    have_account: Не маєте аккаунта?
+    create_an_account: Створити аккаунт
+    login: Логін
+    confirm_password: Підтвердження пароля
+    change_password: Змінити пароль
+    account_not_act: Акаунт не активований! Перегляньте електронну пошту і перейдіть за посиланню для активації акаунта!
+    account_act: Аккаунт активований!
+    notific_mail: На вашу електронну адресу відправленено лист з активацією!
+    reset_pass_notific: На вашу електронну адресу відправлений лист з інструкцією по відновленню пароля.
+    not_found_account_notific: Вибачте, аккаунт з такою електронною адресою не зареєстрований
+    time_out_reset_pass: Час на відновлення пароля закінчився!
+    change_pass_notific: Пароль був змінений успішно!
     error_registration: 'Щось пішло не так! Зверніться до адміністратора сайту.'
   tooltip:
     form_of_incorporation: >
@@ -365,15 +366,15 @@ ua:
     state_registration_date: >
       Моментом прийняття заяви про державну реєстрацію вважається дата та час її реєстрації у базі даних про реєстрацію заяв
       і запитів.
-    date_reg_rev_com: "Дата реєстрація у податковій"
+    date_reg_rev_com: Дата реєстрація у податковій
     tax_system: >
       Система оподаткування - це сукупність податків і зборів (обов'язкових платежів), що справляються до бюджетів
       і державних цільових фондів у встановленому законами України порядку; принципів, форм і методів їхнього встановлення,
       зміни чи скасування; дій, що забезпечують повну та своєчасну їхню сплату, контроль і відповідальність за порушення
       податкового законодавства.
     companies:
-      full_name: "Введіть повну назву підприємства наприклад: Товариство з обмеженою відповідальністю «Active-bridge»"
-      short_name: "Введіть коротку назву підприємства наприклад: ТОВ «Active-bridge»"
+      full_name: 'Введіть повну назву підприємства наприклад: Товариство з обмеженою відповідальністю «Active-bridge»'
+      short_name: 'Введіть коротку назву підприємства наприклад: ТОВ «Active-bridge»'
       juridical_address: >
         Юридична адреса - це адреса місцезнаходження виконавчого органу організації, що вказується в установчих
         документах, на юридичну адресу компанії надсилається вся офіційна кореспонденція, іноді за юридичною
@@ -381,4 +382,16 @@ ua:
       actual_address: >
         Фактична адреса - це місцезнаходження юридичної особи, де є фактичне місце ведення діяльності чи розташування офісу,
         з якого проводиться щоденне керування діяльністю юридичної особи (переважно знаходиться керівництво) та здійснення управління і обліку
-      numbering_format: "Це коли випускає на друк акти чи рахунки  - то перед номером ставиться префікс  наприклад для Active Bridge можна АВ-000000001"
+      numbering_format: Це коли випускає на друк акти чи рахунки  - то перед номером ставиться префікс  наприклад для Active Bridge можна АВ-000000001
+  accounting_accounts: Бухгалерські рахунки
+  subcount1: Cубконто 1
+  subcount2: Cубконто 2
+  subcount3: Cубконто 3
+  ap: а/п
+  group: Група
+  assets: активи
+  capital: капітал
+  obligations: зобов'язання
+  income_a: доходи
+  costs_a: витрати
+  empty_text: Не вказано

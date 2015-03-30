@@ -14,4 +14,11 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def render_modal_window(title, form_id, list_id, id_button)
+    render partial: 'shared/modal', locals: { title: title,
+                                              form: "<div id='#{form_id}'></div>".html_safe,
+                                              list: "<div id='#{list_id}' class='modal_list'></div>".html_safe,
+                                              id_button: id_button }
+  end
 end

@@ -13,6 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20150306135524) do
 
+  create_table "accounting_accounts", force: :cascade do |t|
+    t.integer "account_number", limit: 4
+    t.string  "name",           limit: 255
+    t.string  "invoice_type",   limit: 255
+    t.string  "subcount1",      limit: 255
+    t.string  "subcount2",      limit: 255
+    t.string  "ap",             limit: 255
+    t.string  "subcount3",      limit: 255
+  end
+
   create_table "accounts", force: :cascade do |t|
     t.string   "name",         limit: 255
     t.string   "account_type", limit: 255
@@ -114,14 +124,6 @@ ActiveRecord::Schema.define(version: 20150306135524) do
   create_table "incorporation_forms", force: :cascade do |t|
     t.integer "number", limit: 4
     t.string  "name",   limit: 255
-  end
-
-  create_table "invoice_forms", force: :cascade do |t|
-    t.integer "account_number", limit: 4
-    t.string  "name",           limit: 255
-    t.string  "invoice_type",   limit: 255
-    t.string  "subcount1",      limit: 255
-    t.string  "subcount2",      limit: 255
   end
 
   create_table "koatuus", force: :cascade do |t|

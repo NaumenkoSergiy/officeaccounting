@@ -33,6 +33,7 @@
   padding:10px 10px 10px 10px;
   margin:10px;
   cursor: default;
+  display: none;
 }
 
 div.error, div.invalid {
@@ -119,3 +120,9 @@ a.btn-success {
 }
 
 .bg-grey { background-color: #F2F1F0; }
+
+.modal_list {
+  max-height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
