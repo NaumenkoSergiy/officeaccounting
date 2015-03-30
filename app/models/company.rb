@@ -8,10 +8,10 @@ class Company < ActiveRecord::Base
 
   has_many :user_companies
   has_many :users, through: :user_companies
-  has_one :registration
+  has_one  :registration
   has_many :officials
-  has_one :bank_account
-  has_one :bank, through: :bank_account
+  has_one  :bank_account
+  has_one  :bank, through: :bank_account
   has_many :currencies
   has_many :credits
   has_many :accounts
@@ -21,6 +21,7 @@ class Company < ActiveRecord::Base
   has_many :money_registers
   has_many :payment_orders
   has_many :orders
+  has_many :currency_transactions
 
   delegate :name, to: :bank, prefix: true
   delegate :account, :mfo, to: :bank_account, prefix: true
@@ -30,7 +31,7 @@ class Company < ActiveRecord::Base
 
   scope :non_current_user, -> (id) {
     company_ids = UserCompany.user_companies(id).pluck(:company_id)
-    where("id not in (?)", company_ids.compact)
+    where('id not in (?)', company_ids.compact)
   }
 
   state_machine :state, initial: :step1 do

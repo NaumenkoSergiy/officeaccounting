@@ -2,10 +2,10 @@ module PaymentOrdersHelper
 
   def render_payment_order_title(type)
     title = {
-      'purchaseOut' => t('money.currences_tran.payment_order_out'),
-      'purchaseIn' => t('money.currences_tran.payment_orders_in'),
-      'saleOut' => t('money.currences_tran.payment_order_out'),
-      'saleIn' => t('money.currences_tran.payment_orders_in')
+      'PurchaseOut' => t('money.currences_tran.payment_order_out'),
+      'PurchaseIn' => t('money.currences_tran.payment_orders_in'),
+      'SaleOut' => t('money.currences_tran.payment_order_out'),
+      'SaleIn' => t('money.currences_tran.payment_orders_in')
     }
     title[type]
   end

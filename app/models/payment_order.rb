@@ -1,6 +1,6 @@
 class PaymentOrder < ActiveRecord::Base
   belongs_to :invoice_form
-  belongs_to :account
+  belongs_to :account, -> { with_deleted }
   belongs_to :counterparty
   belongs_to :company
   belongs_to :article

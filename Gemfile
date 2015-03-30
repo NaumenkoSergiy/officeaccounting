@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.5'
 gem 'kaminari'
 gem 'ransack'
 gem 'whenever', '~> 0.9.0', require: false
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'pry'

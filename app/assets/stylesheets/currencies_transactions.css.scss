@@ -6,11 +6,11 @@
   .btn { margin-bottom: 8px; }
 }
 
-#payment_orders {
+#payment_orders, #currency_purchases {
   .modal-dialog {
     margin-top: 25px;
     right: -18px;
-    width: 920px;
+    width: 1140px;
   }
 
   #payment_orders_table {
@@ -26,10 +26,14 @@
     right: -18px;
     width: 1100px;
   }
+}
 
-  #order_list {
-    max-height: 300px;
-    overflow-y: scroll;
-    margin-bottom: 10px;
-  }
+.scroll-table {
+  max-height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
+
+#currency_purchases_list tr {
+  cursor: default;
 }
