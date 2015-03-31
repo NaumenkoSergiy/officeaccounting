@@ -235,7 +235,7 @@ function setSelect2() {
 }
 
 function setDatatimePiker() {
-  $("[data-date-time-piker=false]").each(function() {
-    $(this).attr('data-date-time-piker', true).datetimepicker({lang: I18n.t('datePickerLocal'), format:'d.m.Y-H:i', mask:true});
+  $("[data-timePicker=false]").each(function() {
+    $(this).attr('data-timePicker', true).datetimepicker({lang: I18n.t('datePickerLocal'), format:'d.m.Y-H:i', mask:true});
   });
 }

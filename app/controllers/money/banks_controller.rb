@@ -1,7 +1,7 @@
 module Money
   class BanksController < ApplicationController
     before_filter :redirect_to_new_session
-    before_action :set_bank, only: [:destroy, :update, :show]
+    before_action :find_bank, only: [:destroy, :update, :show]
     before_action :define_bank, only: :index
     before_action :all_banks, only: [:index, :create]
 
@@ -13,17 +13,13 @@ module Money
     end
 
     def show
-      respond_to do |format|
-        format.js
-      end
+      respond_to { |format| format.js }
     end
 
     def create
       @bank = Bank.new bank_params
-      flash[:error] = t('validation.errors.invalid_data') unless @bank.save
-      respond_to do |format|
-        format.js
-      end
+      flash.now[:error] = t('validation.errors.invalid_data') unless @bank.save
+      respond_to { |format| format.js }
     end
 
     def update
@@ -37,20 +33,18 @@ module Money
     end
 
     def destroy
-      @bank.destroy
-      respond_to do |format|
-        format.js
-      end
+      @bank.assigned? ? flash.now[:error] = t('validation.errors.bank_error') : @bank.destroy
+      respond_to { |format| format.js }
     end
 
     private
 
-    def set_bank
+    def find_bank
       @bank = Bank.find(params[:id])
     end
 
     def bank_params
-      params.require(:bank).permit(:name, :code_edrpo, :mfo, :lawyer_adress)
+      params.require(:bank).permit!
     end
 
     def define_bank

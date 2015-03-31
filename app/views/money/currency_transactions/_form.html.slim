@@ -2,7 +2,7 @@
   .row
     .col-lg-2
       = f.label t('money.costs.date')
-      = f.text_field :date, data: { 'date-time-piker': false }
+      = f.text_field :date, data: { timePicker: false }
     .col-lg-2
       #select_order
         = f.label t('money.currences_tran.order_p_f_currency')
