@@ -3,9 +3,10 @@
       .modal-header
         .row
           .col.col-lg-12
-            button.close aria-hidden="true" data-dismiss="modal" type="button"&times;
+            button.close aria-hidden='true' data-dismiss='modal' type='button'&times;
         .row
           .col.col-lg-12
+            .notification.error
             h4#myModalLabel.modal-title = t('money.accounts.banks')
             = link_to '', '#', class: 'add_new glyphicon glyphicon-plus-sign', id: 'add_new_bank'
         .row

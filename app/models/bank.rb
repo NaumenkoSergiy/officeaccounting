@@ -7,4 +7,8 @@ class Bank < ActiveRecord::Base
 
   validates :name, :lawyer_adress, presence: true
   validates_numericality_of :code_edrpo, :mfo
+
+  def assigned?
+    [credits, orders, account, counterparties, bank_account].any? {|a| a.present?}
+  end
 end

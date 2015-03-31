@@ -273,6 +273,7 @@ en:
       already_delegated: This user is already added to the delegation of the company, you can not add it again!
       all_fields: All fields are mandatory!
       delete_error: An error occurred when deleting
+      bank_error: Removal is not possible, the Bank in use!
   labels:
     active: Active
     user: User
