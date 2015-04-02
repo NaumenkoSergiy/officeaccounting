@@ -60,6 +60,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_tree (2.1.0)
+      activerecord (>= 3.0.0)
     addressable (2.3.7)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
@@ -312,6 +314,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   activeadmin (~> 1.0.0.pre1)
+  acts_as_tree (~> 2.1.0)
   bcrypt (~> 3.1.5)
   bootstrap-kaminari-views
   bootstrap-sass

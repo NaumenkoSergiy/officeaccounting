@@ -1,21 +1,32 @@
 class AccountingAccountsController < ApplicationController
   before_filter :redirect_to_new_session
-  before_action :define_accounting_account, only: [:destroy, :update]
   before_action :accounting_accounts, only: [:index, :create]
   before_action :accounting_account, only: [:index, :create]
+  before_action :find_accounting_account, only: [:show, :update, :destroy]
 
   def index
     respond_to do |format|
       format.js
+      format.json do
+        json = AccountingAccount.select(:id, :account_number).map { |a| { id: a.id, account_number: a.account_number.to_s } }
+        render json: json.sort_by{ |a| a[:account_number] }
+      end
     end
+  end
+
+  def show
+    @children = @accounting_account.children
+    render layout: false
   end
 
   def create
     @accounting_account.update_attributes accounting_accounts_params
-    flash.now[:error] = t('validation.errors.all_fields') unless @accounting_account.save
-    respond_to do |format|
-      format.js
+    if @accounting_account.save
+      @accounting_account.update_directory_field(true) if params[:accounting_account][:parent_id]
+    else
+      flash.now[:error] = t('validation.errors.account_error')
     end
+    respond_to  { |format| format.js }
   end
 
   def update
@@ -30,9 +41,10 @@ class AccountingAccountsController < ApplicationController
 
   def destroy
     flash.now[:error] = t('validation.errors.delete_error') unless @accounting_account.destroy
-    respond_to do |format|
-      format.js
+    if @accounting_account.account_parent? && @accounting_account.children_size == 0
+      @accounting_account.update_directory_field(false)
     end
+    respond_to  { |format| format.js }
   end
 
   private
@@ -41,7 +53,7 @@ class AccountingAccountsController < ApplicationController
     @accounting_account = AccountingAccount.new
   end
 
-  def define_accounting_account
+  def find_accounting_account
     @accounting_account = AccountingAccount.find(params[:id])
   end
 
@@ -50,6 +62,6 @@ class AccountingAccountsController < ApplicationController
   end
 
   def accounting_accounts
-    @accounting_accounts = AccountingAccount.all
+    @accounting_accounts = AccountingAccount.roots.page(params[:page])
   end
 end

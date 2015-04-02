@@ -264,6 +264,7 @@ ua:
       all_fields: Всі поля повинні бути заповненні!
       delete_error: Виникла помилка при видаленні
       bank_error: Видалення не можливе, банк використовується!
+      account_error: Рахунок з даним номером вже існує!
   labels:
     active: Активна
     user: Користувач
@@ -398,6 +399,9 @@ ua:
   subcount1: Cубконто 1
   subcount2: Cубконто 2
   subcount3: Cубконто 3
+  add_sub_account: Додати cубрахунок
+  sub_account: Субрахунок
+  par_account: Батьківський рахунок
   ap: а/п
   group: Група
   assets: активи
