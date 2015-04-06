@@ -156,6 +156,18 @@ ActiveRecord::Schema.define(version: 20150403113222) do
     t.string "name",    limit: 255
   end
 
+  create_table "main_tools", force: :cascade do |t|
+    t.string   "title",           limit: 255
+    t.string   "type",            limit: 255
+    t.string   "serial_number",   limit: 255
+    t.string   "passport_number", limit: 255
+    t.date     "date"
+    t.string   "brand",           limit: 255
+    t.integer  "company_id",      limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "money_registers", force: :cascade do |t|
     t.date     "date"
     t.string   "type_document",   limit: 255

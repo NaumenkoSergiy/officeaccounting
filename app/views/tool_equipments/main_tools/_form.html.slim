@@ -1,0 +1,24 @@
+= form_for  [:tool_equipments, @main_tool], method: :post, remote: :true do |f|
+  .row
+    .col-lg-3
+      = f.label t('block_title.title')
+      = f.text_field :title
+    .col-lg-3
+      = f.label t('group')
+      = f.select :type, merge_class_name_for_select(MainTool::TYPES, 'MainTool::'), {}, { data: { select: false } }
+    .col-lg-3
+      = f.label t('tool_equipments.serial_number')
+      = f.text_field :serial_number
+    .col-lg-3
+      = f.label t('tool_equipments.passport_number')
+      = f.text_field :passport_number
+  .row
+    .col-lg-3
+      = f.label t('tool_equipments.date_of_manufacture')
+      = f.text_field :date
+    .col-lg-3
+      = f.label t('tool_equipments.model')
+      = f.text_field :brand
+    .col-lg-3
+      br
+      = f.submit t('buttons.add')

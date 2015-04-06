@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :contracts
     resources :accounting_accounts, except: :edit
     resources :guide_units, except: :edit
+    resources :tool_equipments, only: :index
 
     namespace 'settings' do
       resources :companies, only: [:new, :create, :update]
@@ -50,6 +51,10 @@ Rails.application.routes.draw do
 
     namespace 'purchases' do
       resources :counterparties
+    end
+
+    namespace 'tool_equipments' do
+      resources :main_tools
     end
 
     get '*path', to: 'application#page_not_found'

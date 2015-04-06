@@ -15,10 +15,23 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
 
-  def render_modal_window(title, form_id, list_id, id_button)
+  def render_modal_window(title, form_id, list_id, id_button, tabs = '')
     render partial: 'shared/modal', locals: { title: title,
                                               form: "<div id='#{form_id}'></div>".html_safe,
-                                              list: "<div id='#{list_id}' class='modal_list'></div>".html_safe,
-                                              id_button: id_button }
+                                              list: "<div id='#{list_id}'></div>".html_safe,
+                                              id_button: id_button,
+                                              tabs: tabs.html_safe }
+  end
+
+  def merge_class_name_for_select(types, class_name)
+    types.map { |a| [t(a), class_name + a.to_s] }
+  end
+
+  def render_list(class_name, folder, array, variable)
+    if can? :update, class_name
+      render partial: folder + 'edit_list', collection: array, as: variable
+    else
+      render partial: folder + 'view_list', collection: array, as: variable
+    end
   end
 end

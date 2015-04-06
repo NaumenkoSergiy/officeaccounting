@@ -22,6 +22,7 @@ class Company < ActiveRecord::Base
   has_many :payment_orders
   has_many :orders
   has_many :currency_transactions
+  has_many :main_tools
 
   delegate :name, to: :bank, prefix: true
   delegate :account, :mfo, to: :bank_account, prefix: true

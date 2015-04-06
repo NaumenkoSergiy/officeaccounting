@@ -65,7 +65,7 @@ en:
               blank: Can't be blank
   short_symbol: short-term
   long_symbol: long-term
-  for_today:  for today 
+  for_today:  for today
   add_existing: Add existing company
   add_new_company: Add new company
   enter_bookkeeper: Enter full name chief bookkeeper
@@ -111,6 +111,7 @@ en:
     purchases: Purchases
     accounting: Accounting
     register: Register
+    tools_equipment: Tools and equipment
   top_bar:
     signout: Signout
   companies:
@@ -415,3 +416,21 @@ en:
   empty_text: Unknown
   grn: UAH
   guide_units: Guide units
+  tool_equipments:
+    main_tools: Main tools
+    material_tools: Materials and equipment
+    purchase: Purchase
+    commissioning: Commissioning
+    moving: Moving
+    write_off: Write-off
+    serial_number: Serial number
+    passport_number: Passport number
+    date_of_manufacture: Release Date , construction
+    model: The model brand
+  Building: Buildings and structures
+  Vehicle: Vehicles
+  Office: Office
+  Furniture: Furniture
+  Equipment: Equipment
+  info:
+    add_new: Unfortunately, you have no account, click here to add a new one!
