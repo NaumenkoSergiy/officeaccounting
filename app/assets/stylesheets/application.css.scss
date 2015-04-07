@@ -117,6 +117,7 @@ a.btn-success {
   .width-#{$i} { width: $i*1px; }
   .padding-left-#{$i} { padding-left:  $i*1px; }
   .padding-right-#{$i} { padding-right: $i*1px; }
+  .margin-top-#{$i} { margin-top: $i*1px; }
 }
 
 .bg-grey { background-color: #F2F1F0; }
@@ -135,3 +136,5 @@ a.btn-success {
   -ms-user-select: none;
   user-select: none;
 }
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus { background-color: #f2f1f0;}

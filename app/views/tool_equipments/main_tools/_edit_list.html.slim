@@ -1,0 +1,13 @@
+tr id="main_tool_#{main_tool.id}"
+  td
+    = link_to main_tool.title, '#', data: { name: :title, placement: 'bottom', pk: main_tool, model: :main_tool, url: tool_equipments_main_tool_path(main_tool), xeditable: true }
+  td
+    = link_to main_tool.serial_number, '#', data: { name: :serial_number, placement: 'bottom', pk: main_tool, model: :main_tool, url: tool_equipments_main_tool_path(main_tool), xeditable: true }
+  td
+    = link_to main_tool.passport_number, '#', data: { name: :passport_number, placement: 'bottom', pk: main_tool, model: :main_tool, url: tool_equipments_main_tool_path(main_tool), xeditable: true }
+  td
+    = link_to l(main_tool.date, format: :default), '#', data: { type: 'date', format: 'dd-mm-yyyy', placement: 'right', name: :date, pk: main_tool, model: :main_tool, url: tool_equipments_main_tool_path(main_tool), xeditable: true }
+  td
+    = link_to main_tool.brand, '#', data: { name: :brand, placement: 'bottom', pk: main_tool, model: :main_tool, url: tool_equipments_main_tool_path(main_tool), xeditable: true }
+  td.width-40
+    = application_present.destroy_link tool_equipments_main_tool_path(main_tool)

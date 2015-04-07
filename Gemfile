@@ -27,6 +27,7 @@ gem "i18n-js", ">= 3.0.0.rc8"
 gem 'paranoia', github: 'radar/paranoia', branch: 'rails4'
 gem 'bcrypt', '~> 3.1.5'
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 gem 'ransack'
 gem 'whenever', '~> 0.9.0', require: false
 gem 'active_model_serializers'

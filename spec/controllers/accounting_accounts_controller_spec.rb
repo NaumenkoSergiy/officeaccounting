@@ -27,7 +27,6 @@ RSpec.describe AccountingAccountsController, type: :controller do
       }.to_not change(AccountingAccount, :count)
     end
     it { expect { post :create, accounting_account: unvalid_accounting_account_attributes, format: :js }.to_not change(AccountingAccount, :count) }
-    it { expect { post :create, accounting_account: unvalid_accounting_account_attributes, format: :js }.to_not change(AccountingAccount, :count) }
   end
 
   describe '#update' do

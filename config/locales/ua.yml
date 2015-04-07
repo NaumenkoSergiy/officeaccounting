@@ -108,6 +108,7 @@ ua:
     purchases: Закупівлі
     accounting: Звітність
     register: Журнал
+    tools_equipment: Засоби та інвентар
   top_bar:
     signout: Вийти
   companies:
@@ -407,3 +408,21 @@ ua:
   empty_text: Не вказано
   grn: грн
   guide_units: Одиниці виміру
+  tool_equipments:
+    main_tools: Основні засоби
+    material_tools: Матеріали та інвентар
+    purchase: Придбання
+    commissioning: Ввод в експлуатацію
+    moving: Переміщення
+    write_off: Списання
+    serial_number: Заводський номер
+    passport_number: Номер паспорта
+    date_of_manufacture: Дата випуску, будівництва
+    model: Модель, марка
+  Building: Будівлі і споруди
+  Vehicle: Транспортні засоби
+  Office: Оргтехніка
+  Furniture: Меблі
+  Equipment: Обладнання
+  info:
+    add_new: Нажаль у вас немає жодного запису, натисніть сюди щоб додати новий!

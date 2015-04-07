@@ -2,7 +2,7 @@
   .row.border-bottom
     .nav.navbar-static-top role='navigation' style='margin-bottom: 0;'
       .navbar-header
-        #path data={ accounts: money_accounts_path, articles: money_articles_path, banks: money_banks_path, contracts: contracts_path, counterparties: purchases_counterparties_path, registers: money_registers_path, currensies: money_currencies_path, orders: money_currency_transactions_orders_path }
+        #path data={ accounts: money_accounts_path, articles: money_articles_path, banks: money_banks_path, contracts: contracts_path, counterparties: purchases_counterparties_path, registers: money_registers_path, currensies: money_currencies_path, orders: money_currency_transactions_orders_path, main_tools: tool_equipments_main_tools_path }
         a.navbar-minimalize.minimalize-styl-2.btn.btn-primary href='#'
           i.fa.fa-bars
         - if current_user.companies.count > 1
@@ -52,6 +52,8 @@
                     = link_to t('contract.contracts'), new_contract_path, remote: true, type: :get
                   li
                     = link_to t('guide_units'), guide_units_path, remote: true
+                  li
+                    = link_to t('tool_equipments.main_tools'), tool_equipments_main_tools_path(type: 'MainTool::Building'), remote: true
         li
           = link_to destroy_sessions_path
             i.fa.fa-sign-out
@@ -70,3 +72,4 @@
           #companyBanks.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
           #accounting_accounts.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
           #guide_units.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
+          #main_tools.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
