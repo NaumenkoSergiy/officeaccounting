@@ -1,0 +1,13 @@
+table.table
+  thead
+    tr.bg-grey
+      th
+        = t('block_title.title')
+      th
+        = t('guide_unit')
+      th
+        = t('accounting_accounts.account')
+      th
+  tbody
+    = render_list('MainTool', 'purchases/nomenclatures/', @nomenclatures, 'nomenclature')
+= paginate @nomenclatures, theme: 'twitter-bootstrap-3', params: { paginate: true }, remote: true

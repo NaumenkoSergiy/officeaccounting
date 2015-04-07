@@ -1,5 +1,6 @@
 class AccountingAccountsController < ApplicationController
   before_filter :redirect_to_new_session
+  before_action :define_accounting_account_service
   before_action :accounting_accounts, only: [:index, :create]
   before_action :accounting_account, only: [:index, :create]
   before_action :find_accounting_account, only: [:show, :update, :destroy]
@@ -7,10 +8,7 @@ class AccountingAccountsController < ApplicationController
   def index
     respond_to do |format|
       format.js
-      format.json do
-        json = AccountingAccount.select(:id, :account_number).map { |a| { id: a.id, account_number: a.account_number.to_s } }
-        render json: json.sort_by{ |a| a[:account_number] }
-      end
+      format.json { render json: @accounting_account_service.accounts_for_select2(params) }
     end
   end
 
@@ -63,5 +61,9 @@ class AccountingAccountsController < ApplicationController
 
   def accounting_accounts
     @accounting_accounts = AccountingAccount.roots.page(params[:page])
+  end
+
+  def define_accounting_account_service
+    @accounting_account_service ||= AccountingAccountService.new(session)
   end
 end

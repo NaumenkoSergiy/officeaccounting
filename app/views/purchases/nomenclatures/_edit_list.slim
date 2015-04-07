@@ -1,0 +1,9 @@
+tr id="nomenclature_#{nomenclature.id}"
+  td
+    = link_to nomenclature.title, '#', data: { name: :title, placement: 'bottom', pk: nomenclature, model: :nomenclature, url: purchases_nomenclature_path(nomenclature), xeditable: true }
+  td
+    = link_to nomenclature.guide_unit_name, '#', data: { name: :guide_unit_id, value: nomenclature.guide_unit.id, placement: 'bottom', pk: nomenclature, model: :nomenclature, url: purchases_nomenclature_path(nomenclature), status: :new }, class: 'change_guide_units'
+  td
+    = link_to nomenclature.account_number, '#', data: { name: :accounting_account_id, value: nomenclature.accounting_account.id, placement: 'bottom', pk: nomenclature, model: :nomenclature, url: purchases_nomenclature_path(nomenclature), status: :new }, class: 'change_accounting_accounts'
+  td.width-40
+    = application_present.destroy_link purchases_nomenclature_path(nomenclature)

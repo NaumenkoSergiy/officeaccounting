@@ -3,4 +3,4 @@ if '<%= flash[:error] %>'
 else
   $('#guide_units_list').html('<%= j(render "guide_units/list") %>')
   $('#new_guide_unit').hide()[0].reset();
-  GuideUnits.loadPlugins()
+editableStart()

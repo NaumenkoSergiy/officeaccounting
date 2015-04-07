@@ -1,0 +1,2 @@
+  li
+    = link_to t("#{subclass.name.gsub('Nomenclature::', '')}"), "#{subclass.name.gsub('Nomenclature::', '#').capitalize}", role: 'tab', data: { type: "#{subclass.name}", toggle: 'tab' }

@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   delegate :orders, to: :current_company
   delegate :currency_transactions, to: :current_company
   delegate :main_tools, to: :current_company
+  delegate :nomenclatures, to: :current_company
 
   after_create :send_activation_token
 

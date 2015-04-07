@@ -34,4 +34,8 @@ module ApplicationHelper
       render partial: folder + 'view_list', collection: array, as: variable
     end
   end
+
+  def translate_subclasses_for_select2(data, parent_class)
+    data.map {|s| [ t(s.name.gsub(parent_class, '')), s.name] }
+  end
 end

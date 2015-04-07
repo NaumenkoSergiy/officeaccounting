@@ -1,4 +1,8 @@
 class AccountingAccount < ActiveRecord::Base
+  acts_as_paranoid
+
+  has_many :nomenclatures
+
   paginates_per 5
   extend ActsAsTree::TreeView
   acts_as_tree order: 'account_number'

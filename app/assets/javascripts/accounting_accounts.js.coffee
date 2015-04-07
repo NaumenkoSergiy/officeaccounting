@@ -1,22 +1,24 @@
 window.AccountingAccount =
-  load: (callback) ->
+  load: (callback, type='') ->
     $.ajax
       type: 'GET'
       dataType: 'json'
       async: false
       url: $('#path').data('accounting-account')
+      data: { type: type }
       success: callback
     return
 
-  loadOption: ->
-    AccountingAccount.load (accounts) ->
-      $accountingAccount = $('.parent_account[data-status=new]')
+  loadOption: (selector, type)->
+    AccountingAccount.load ((accounts) ->
+      $accountingAccount = selector
       $.each accounts, ->
-        option = new Option(@account_number, @id)
+        option = new Option(@text, @value)
         $accountingAccount.append option
         return
       AccountingAccount.loadSubOption($('select.parent_account > option:selected').text())
       $accountingAccount.attr 'data-status', 'old'
+    ), type
 
   loadSubOption: (value) ->
     options = []
@@ -89,3 +91,17 @@ window.AccountingAccount =
     $('#parent_select').html '<select name="accounting_account[parent_id]" class="parent_account" data-status="new" data-select="false"></select>'
     AccountingAccount.changeParentAccount()
     AccountingAccount.loadSubOption($('select.parent_account > option:selected').text())
+
+  xeditable: ->
+    AccountingAccount.load ((accounts) ->
+      $('.change_accounting_accounts[data-status=new]').each ->
+        $(this).editable
+          type: 'select2'
+          select2: 'width': '150px'
+          source: accounts
+          ajaxOptions:
+            type: 'PUT'
+            dataType: 'json'
+          params: xeditableParams
+        $(this).attr 'data-status', 'old'
+    ), 'children'

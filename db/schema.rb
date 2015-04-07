@@ -11,19 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331141350) do
+ActiveRecord::Schema.define(version: 20150450082541) do
 
   create_table "accounting_accounts", force: :cascade do |t|
-    t.integer "account_number", limit: 4
-    t.string  "name",           limit: 255
-    t.string  "invoice_type",   limit: 255
-    t.string  "subcount1",      limit: 255
-    t.string  "subcount2",      limit: 255
-    t.string  "ap",             limit: 255
-    t.string  "subcount3",      limit: 255
-    t.integer "parent_id",      limit: 4
-    t.boolean "directory",      limit: 1,   default: false
+    t.integer  "account_number", limit: 4
+    t.string   "name",           limit: 255
+    t.string   "invoice_type",   limit: 255
+    t.string   "subcount1",      limit: 255
+    t.string   "subcount2",      limit: 255
+    t.string   "ap",             limit: 255
+    t.string   "subcount3",      limit: 255
+    t.integer  "parent_id",      limit: 4
+    t.boolean  "directory",      limit: 1,   default: false
+    t.datetime "deleted_at"
   end
+
+  add_index "accounting_accounts", ["deleted_at"], name: "index_accounting_accounts_on_deleted_at", using: :btree
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -138,7 +141,10 @@ ActiveRecord::Schema.define(version: 20150331141350) do
     t.integer  "user_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
+
+  add_index "guide_units", ["deleted_at"], name: "index_guide_units_on_deleted_at", using: :btree
 
   create_table "incorporation_forms", force: :cascade do |t|
     t.integer "number", limit: 4
@@ -181,6 +187,20 @@ ActiveRecord::Schema.define(version: 20150331141350) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "nomenclatures", force: :cascade do |t|
+    t.string   "title",                 limit: 255
+    t.string   "type",                  limit: 255
+    t.integer  "guide_unit_id",         limit: 4
+    t.integer  "accounting_account_id", limit: 4
+    t.integer  "company_id",            limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "nomenclatures", ["accounting_account_id"], name: "index_nomenclatures_on_accounting_account_id", using: :btree
+  add_index "nomenclatures", ["company_id"], name: "index_nomenclatures_on_company_id", using: :btree
+  add_index "nomenclatures", ["guide_unit_id"], name: "index_nomenclatures_on_guide_unit_id", using: :btree
 
   create_table "officials", force: :cascade do |t|
     t.integer "company_id",    limit: 4
