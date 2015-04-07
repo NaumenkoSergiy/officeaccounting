@@ -50,6 +50,8 @@
                     = link_to t('purchases.counterparties'), new_purchases_counterparty_path, remote: true, type: :get
                   li
                     = link_to t('contract.contracts'), new_contract_path, remote: true, type: :get
+                  li
+                    = link_to t('guide_units'), guide_units_path, remote: true
         li
           = link_to destroy_sessions_path
             i.fa.fa-sign-out
@@ -67,3 +69,4 @@
           #moneyCurrency.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
           #companyBanks.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
           #accounting_accounts.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
+          #guide_units.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"

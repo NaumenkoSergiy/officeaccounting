@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330082541) do
+ActiveRecord::Schema.define(version: 20150403113222) do
 
   create_table "accounting_accounts", force: :cascade do |t|
     t.integer "account_number", limit: 4
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20150330082541) do
     t.string  "subcount2",      limit: 255
     t.string  "ap",             limit: 255
     t.string  "subcount3",      limit: 255
+    t.integer "parent_id",      limit: 4
+    t.boolean "directory",      limit: 1,   default: false
   end
 
   create_table "accounts", force: :cascade do |t|
@@ -127,6 +129,13 @@ ActiveRecord::Schema.define(version: 20150330082541) do
     t.float    "total_pf",   limit: 24
     t.integer  "company_id", limit: 4
     t.string   "type",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "guide_units", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "user_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end

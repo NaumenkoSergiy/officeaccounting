@@ -1,0 +1,5 @@
+tr id='guide_unit_#{ guide_unit.id }'
+  td
+    = link_to guide_unit.name, '#', data: { name: :name, placement: 'bottom', pk: guide_unit, model: :guide_unit, url: guide_unit_path(guide_unit.id), xeditable: true }
+  td
+    = application_present.destroy_link guide_unit_path(guide_unit)

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :companies, through: :user_companies
   has_one :user_company, -> { where(current_company: true) }
   has_one :current_company, through: :user_company, source: :company
+  has_many :guide_units
 
   delegate :accounts, to: :current_company
   delegate :contracts, to: :current_company
