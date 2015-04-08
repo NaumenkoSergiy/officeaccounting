@@ -1,0 +1,10 @@
+table.treetable tr.collapsed span.indenter a {
+  background-image: url(image-path("expand.png"));
+  padding-right: 12px;
+  color: #808080;
+}
+
+table.treetable tr.expanded span.indenter a {
+  background-image: url(image-path("collapse.png"));
+  padding-right: 12px;
+}

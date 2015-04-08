@@ -1,4 +1,31 @@
 window.AccountingAccount =
+  load: (callback) ->
+    $.ajax
+      type: 'GET'
+      dataType: 'json'
+      async: false
+      url: $('#path').data('accounting-account')
+      success: callback
+    return
+
+  loadOption: ->
+    AccountingAccount.load (accounts) ->
+      $accountingAccount = $('.parent_account[data-status=new]')
+      $.each accounts, ->
+        option = new Option(@account_number, @id)
+        $accountingAccount.append option
+        return
+      AccountingAccount.loadSubOption($('select.parent_account > option:selected').text())
+      $accountingAccount.attr 'data-status', 'old'
+
+  loadSubOption: (value) ->
+    options = []
+    for i in [1...4]
+      option = new Option(value + i, value + i)
+      options.push option
+
+    $('select#accounting_account_account_number').html(options).select2('val', options[0].value)
+
   validateFormForNewAccountingAccount: ->
     $('#new_accounting_account').validate
       errorElement: 'div'
@@ -14,10 +41,51 @@ window.AccountingAccount =
     return
 
   loadPlugins: ->
-    $('input.number').numeric
-      negative: false
-      decimal: false
     openForm('new_accounting_account', 'accounting_account_new')
     editableStart()
+    setNumeric()
     AccountingAccount.validateFormForNewAccountingAccount()
+    AccountingAccount.initTreeTable()
+    AccountingAccount.changeParentAccount()
+    $('.sub_account').on 'click', ->
+      AccountingAccount.showSubAccount()
+
+  changeParentAccount: ->
+    $('select.parent_account').on 'change', ->
+      AccountingAccount.loadSubOption($('select.parent_account > option:selected').text())
+
+  initTreeTable: ->
+    $table = $('#accounting_tree')
+    $table.treetable
+      expandable: true
+      onNodeCollapse: ->
+        $('[data-tt-parent-id=' + @id + ']').hide()
+      onNodeExpand: ->
+        node = @
+        if @row.next().is("[data-tt-parent-id]") && @id == @row.next().data('tt-parent-id')
+          $('[data-tt-parent-id=' + node.id + ']').show()
+        else
+          $.ajax(
+            async: false
+            url: $('#path').data('accounting-account') + '/' + node.id).done (html) ->
+              rows = $(html).filter('tr')
+              $table.treetable('loadBranch', node, rows)
+          editableStart()
     return
+
+  showSubAccount: ->
+    if $('.sub_account').is(':checked')
+      $('#bookeeper_account').hide()
+      $('#sub_account_number').removeClass('hidden')
+      $('select.parent_account').attr('name', 'accounting_account[parent_id]')
+      $('select#accounting_account_account_number').attr('name', 'accounting_account[account_number]')
+    else
+      $('#sub_account_number').addClass('hidden')
+      $('select.parent_account').attr('name', '')
+      $('select#accounting_account_account_number').attr('name', '')
+      $('#bookeeper_account').show()
+
+  loadAccount_number: ->
+    $('#parent_select').html '<select name="accounting_account[parent_id]" class="parent_account" data-status="new" data-select="false"></select>'
+    AccountingAccount.changeParentAccount()
+    AccountingAccount.loadSubOption($('select.parent_account > option:selected').text())

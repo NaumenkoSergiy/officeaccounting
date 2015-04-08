@@ -174,6 +174,9 @@ function setObserver() {
     else if ($('.orders[data-type=new]').length) {
       CurrencyTransactions.loadOption();
     }
+    else if ($('.parent_account[data-status=new]').length) {
+      AccountingAccount.loadOption();
+    }
     else if ($('[data-select=false]')) {
       setSelect2();
     }
@@ -237,5 +240,11 @@ function setSelect2() {
 function setDatatimePiker() {
   $("[data-timePicker=false]").each(function() {
     $(this).attr('data-timePicker', true).datetimepicker({lang: I18n.t('datePickerLocal'), format:'d.m.Y-H:i', mask:true});
+  });
+}
+
+function setNumeric() {
+  $("[data-numeric=false]").each(function() {
+    $(this).attr('data-numeric', true).numeric({ negative: false, decimal: false })
   });
 }

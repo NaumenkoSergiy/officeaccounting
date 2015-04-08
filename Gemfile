@@ -31,6 +31,7 @@ gem 'bootstrap-kaminari-views'
 gem 'ransack'
 gem 'whenever', '~> 0.9.0', require: false
 gem 'active_model_serializers'
+gem 'acts_as_tree', '~> 2.1.0'
 
 group :development, :test do
   gem 'pry'

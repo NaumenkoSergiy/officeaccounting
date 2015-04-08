@@ -4,3 +4,6 @@ else
   $('#accounting_accounts_list').html('<%= j(render "accounting_accounts/list") %>')
   $('#new_accounting_account').hide()[0].reset();
   editableStart()
+  AccountingAccount.initTreeTable()
+  AccountingAccount.loadAccount_number()
+  AccountingAccount.showSubAccount()

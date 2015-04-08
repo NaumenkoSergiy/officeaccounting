@@ -15,3 +15,4 @@
 //= require serial
 //= require xy
 //= require jquery-ui/jquery.datetimepicker
+//= require jquery-ui/jquery.treetable

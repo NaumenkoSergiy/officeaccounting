@@ -1,4 +1,4 @@
-table.table
+table#accounting_tree.table
   thead
     tr
       th
@@ -17,3 +17,4 @@ table.table
         = t('subcount3')
   tbody
     = render_accounting_accounts_list(@accounting_accounts)
+= paginate @accounting_accounts, theme: 'twitter-bootstrap-3', remote: true

@@ -275,6 +275,7 @@ en:
       all_fields: All fields are mandatory!
       delete_error: An error occurred when deleting
       bank_error: Removal is not possible, the Bank in use!
+      account_error: Account with this number already exists!
   labels:
     active: Active
     user: User
@@ -407,6 +408,9 @@ en:
   subcount1: Subconto 1
   subcount2: Subconto 2
   subcount3: Subconto 3
+  add_sub_account: Add subaccount
+  sub_account: Subaccount
+  par_account: Parent account
   ap: a/l
   assets: assets
   capital: capital
