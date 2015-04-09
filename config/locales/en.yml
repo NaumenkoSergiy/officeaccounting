@@ -447,3 +447,6 @@ en:
   info:
     add_new: Unfortunately, you have no account, click here to add a new one!
     empty: You don't have any entries go to the directory and add new!
+  personnels:
+    personnel: Personnel
+    department: Departments

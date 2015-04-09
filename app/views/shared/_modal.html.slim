@@ -9,7 +9,7 @@
           h4#myModalLabel.modal-title
             = title
           .notification.error
-          = link_to '', '#', class: 'add_new glyphicon glyphicon-plus-sign', id: id_button
+          = link_to_if id_button.present?, '', '#', class: 'add_new glyphicon glyphicon-plus-sign', id: id_button
     .modal-body
       .row
         .col-lg-12
