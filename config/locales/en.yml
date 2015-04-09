@@ -303,6 +303,7 @@ en:
     state_calculations: State calculations
     counterparties: Counterparties
     products_services: Products and services
+    nomenclature: Nomenclature
   counterparty:
     name_r: The name of the representative
     name: Name
@@ -403,7 +404,9 @@ en:
         The actual address - this is the location of a legal entity, which is the actual place of business or office location,
         which is performed daily management of the legal person (mostly is manual) and the management and accounting
       numbering_format: It produces when printing documents or accounts - the prefix before the number refers for example to Active Bridge could AV-000000001
-  accounting_accounts: Accounting accounts
+  accounting_accounts:
+    accounts: Accounting accounts
+    account: The account
   group: Group
   subcount1: Subconto 1
   subcount2: Subconto 2
@@ -420,6 +423,7 @@ en:
   empty_text: Unknown
   grn: UAH
   guide_units: Guide units
+  guide_unit: Guide unit
   tool_equipments:
     main_tools: Main tools
     material_tools: Materials and equipment
@@ -436,5 +440,10 @@ en:
   Office: Office
   Furniture: Furniture
   Equipment: Equipment
+  Material: Material
+  Product: Product
+  Service: Services
+  Production: Production
   info:
     add_new: Unfortunately, you have no account, click here to add a new one!
+    empty: You don't have any entries go to the directory and add new!

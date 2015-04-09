@@ -51,6 +51,7 @@ Rails.application.routes.draw do
 
     namespace 'purchases' do
       resources :counterparties
+      resources :nomenclatures, except: :edit
     end
 
     namespace 'tool_equipments' do

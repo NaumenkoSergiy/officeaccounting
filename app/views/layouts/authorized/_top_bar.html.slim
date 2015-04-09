@@ -2,18 +2,18 @@
   .row.border-bottom
     .nav.navbar-static-top role='navigation' style='margin-bottom: 0;'
       .navbar-header
-        #path data={ accounts: money_accounts_path, articles: money_articles_path, banks: money_banks_path, contracts: contracts_path, counterparties: purchases_counterparties_path, registers: money_registers_path, currensies: money_currencies_path, orders: money_currency_transactions_orders_path, main_tools: tool_equipments_main_tools_path, accounting_account: accounting_accounts_path }
+        #path data={ accounts: money_accounts_path, articles: money_articles_path, banks: money_banks_path, contracts: contracts_path, counterparties: purchases_counterparties_path, registers: money_registers_path, currensies: money_currencies_path, orders: money_currency_transactions_orders_path, main_tools: tool_equipments_main_tools_path, accounting_account: accounting_accounts_path, guide_units: guide_units_path, nomenclatures: purchases_nomenclatures_path }
         a.navbar-minimalize.minimalize-styl-2.btn.btn-primary href='#'
           i.fa.fa-bars
         - if current_user.companies.size > 1
           i.fa
               = t('current_company')
-          .btn-group role="group" id="company-select"
-            button.btn.btn-default.dropdown-toggle  type="button"  data-toggle="dropdown" aria-expanded="false"
+          .btn-group role='group' id='company-select'
+            button.btn.btn-default.dropdown-toggle  type='button'  data-toggle='dropdown' aria-expanded='false'
               span data-id= current_user.current_company_id
                 = current_user.current_company_short_name
               span.caret
-            ul.dropdown-menu role="menu"
+            ul.dropdown-menu role='menu'
               = render partial: 'layouts/authorized/companies_list', collection: current_user.companies, as: :company
       ul.nav.navbar-top-links.navbar-right
         li
@@ -24,22 +24,21 @@
           span.m-r-sm.text-muted
             = current_user.email
         li.dropdown
-          a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+          = link_to '#', data: { toggle: 'dropdown' }, class: 'dropdown-toggle', role: 'button', aria: {expanded: 'false' }
             i.fa.fa-cog
             = t('settings')
-          ul.dropdown-menu.settings role="menu" aria-labelledby="dropdownMenu1"
+          ul.dropdown-menu.settings role='menu' aria-labelledby='dropdownMenu1'
             li
               = link_to t('buttons.new_company'), new_settings_company_path
             - if current_user.current_company
-              li role="presentation"
+              li role='presentation'
                 = link_to t('settings'), setting_path(current_user.current_company_id)
               li.divider
               li.dropdown-submenu
-                a tabindex="-1" href="#"
-                  = t('money.references')
+                = link_to t('money.references'), '#', tabindex: '-1'
                 ul.dropdown-menu
                   li
-                    =link_to t('accounting_accounts'), accounting_accounts_path, remote:true
+                    =link_to t('accounting_accounts.accounts'), accounting_accounts_path, remote:true
                   li
                     = link_to t('buttons.currency'), money_currencies_path, remote: true, type: :get
                   li
@@ -54,6 +53,8 @@
                     = link_to t('guide_units'), guide_units_path, remote: true
                   li
                     = link_to t('tool_equipments.main_tools'), tool_equipments_main_tools_path(type: 'MainTool::Building'), remote: true
+                  li
+                    = link_to t('purchases.nomenclature'),  purchases_nomenclatures_path(type: 'Nomenclature::Equipment'), remote: true
         li
           = link_to destroy_sessions_path
             i.fa.fa-sign-out
@@ -65,11 +66,12 @@
         .ibox.white-bg
           #error
           = yield
-          #contracts.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
-          #counterparty.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
-          #companyCurrency.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
-          #moneyCurrency.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
-          #companyBanks.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
-          #accounting_accounts.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
-          #guide_units.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
-          #main_tools.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
+          #contracts.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
+          #counterparty.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
+          #companyCurrency.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
+          #moneyCurrency.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
+          #companyBanks.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
+          #accounting_accounts.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
+          #guide_units.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
+          #main_tools.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
+          #nomenclatures.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'

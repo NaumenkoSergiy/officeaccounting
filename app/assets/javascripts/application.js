@@ -175,7 +175,19 @@ function setObserver() {
       CurrencyTransactions.loadOption();
     }
     else if ($('.parent_account[data-status=new]').length) {
-      AccountingAccount.loadOption();
+      AccountingAccount.loadOption($('.parent_account[data-status=new]'), 'parent');
+    }
+    else if ($('.children_account[data-status=new]').length) {
+      AccountingAccount.loadOption($('.children_account[data-status=new]'), 'children');
+    }
+    else if ($('.change_accounting_accounts[data-status=new]').length) {
+      AccountingAccount.xeditable();
+    }
+    else if ($('.guide_units[data-status=new]').length) {
+      GuideUnits.loadOption();
+    }
+    else if ($('.change_guide_units[data-status=new]').length) {
+      GuideUnits.xeditable();
     }
     else if ($('[data-select=false]')) {
       setSelect2();

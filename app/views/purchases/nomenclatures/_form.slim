@@ -1,0 +1,18 @@
+= form_for  [:purchases, @nomenclature], remote: :true do |f|
+  .row
+    .col-lg-3
+      = f.label t('block_title.title')
+      = f.text_field :title
+    .col-lg-3
+      = f.label t('group')
+      = f.select :type, translate_subclasses_for_select2(@subclasses, 'Nomenclature::'), {}, { data: { select: false } }
+    .col-lg-2
+      = f.label t('guide_unit')
+      #guide_unit_select
+        = f.select :guide_unit_id, {}, {}, { data: { select: false, status: :new }, class: 'guide_units' }
+    .col-lg-2
+      = f.label t('accounting_accounts.account')
+      = f.select :accounting_account_id, {}, {}, { data: { select: false, status: :new }, class: 'children_account' }
+    .col-lg-2
+      br
+      = f.submit t('buttons.add')

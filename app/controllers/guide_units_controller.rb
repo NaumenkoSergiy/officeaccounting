@@ -5,7 +5,11 @@ class GuideUnitsController < ApplicationController
   before_action :define_guide_unit, only: [:index, :create]
 
   def index
-    respond_to { |format| format.js }
+    respond_to do |format|
+      format.js
+      format.json { render json: @guide_units.select(:id, :name)
+                                             .map { |guide_unit| { value: guide_unit.id, text: guide_unit.name } }, status: 200 }
+    end
   end
 
   def create
