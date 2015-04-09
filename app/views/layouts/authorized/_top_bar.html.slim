@@ -55,6 +55,8 @@
                     = link_to t('tool_equipments.main_tools'), tool_equipments_main_tools_path(type: 'MainTool::Building'), remote: true
                   li
                     = link_to t('purchases.nomenclature'),  purchases_nomenclatures_path(type: 'Nomenclature::Equipment'), remote: true
+                  li
+                    = link_to t('personnels.department'),  personnels_departments_path, remote: true
         li
           = link_to destroy_sessions_path
             i.fa.fa-sign-out
@@ -75,3 +77,4 @@
           #guide_units.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
           #main_tools.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
           #nomenclatures.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
+          #departments.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"

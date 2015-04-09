@@ -136,6 +136,15 @@ ActiveRecord::Schema.define(version: 20150450082541) do
     t.datetime "updated_at"
   end
 
+  create_table "departments", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "company_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "departments", ["company_id"], name: "index_departments_on_company_id", using: :btree
+
   create_table "guide_units", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.integer  "user_id",    limit: 4

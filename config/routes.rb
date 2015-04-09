@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :accounting_accounts, except: :edit
     resources :guide_units, except: :edit
     resources :tool_equipments, only: :index
+    resources :personnels, only: :index
 
     namespace 'settings' do
       resources :companies, only: [:new, :create, :update]
@@ -56,6 +57,10 @@ Rails.application.routes.draw do
 
     namespace 'tool_equipments' do
       resources :main_tools
+    end
+
+    namespace 'personnels' do
+      resources :departments
     end
 
     get '*path', to: 'application#page_not_found'
