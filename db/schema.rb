@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150450082541) do
+ActiveRecord::Schema.define(version: 20150612070947) do
 
   create_table "accounting_accounts", force: :cascade do |t|
     t.integer  "account_number", limit: 4
@@ -145,6 +145,28 @@ ActiveRecord::Schema.define(version: 20150450082541) do
 
   add_index "departments", ["company_id"], name: "index_departments_on_company_id", using: :btree
 
+  create_table "employees", force: :cascade do |t|
+    t.string   "personnel_number", limit: 255
+    t.string   "type",             limit: 255
+    t.string   "name",             limit: 255
+    t.string   "passport",         limit: 255
+    t.string   "adress",           limit: 255
+    t.date     "date_birth"
+    t.string   "ipn",              limit: 255
+    t.integer  "department_id",    limit: 4
+    t.integer  "position_id",      limit: 4
+    t.integer  "company_id",       limit: 4
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "start_date"
+  end
+
+  add_index "employees", ["company_id"], name: "index_employees_on_company_id", using: :btree
+  add_index "employees", ["deleted_at"], name: "index_employees_on_deleted_at", using: :btree
+  add_index "employees", ["department_id"], name: "index_employees_on_department_id", using: :btree
+  add_index "employees", ["position_id"], name: "index_employees_on_position_id", using: :btree
+
   create_table "guide_units", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.integer  "user_id",    limit: 4
@@ -251,6 +273,15 @@ ActiveRecord::Schema.define(version: 20150450082541) do
     t.datetime "updated_at"
     t.string   "currency",        limit: 255
   end
+
+  create_table "positions", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.integer  "company_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "positions", ["company_id"], name: "index_positions_on_company_id", using: :btree
 
   create_table "registrations", force: :cascade do |t|
     t.integer "company_id",                                 limit: 4

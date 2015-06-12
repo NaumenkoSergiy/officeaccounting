@@ -265,6 +265,8 @@ ua:
       delete_error: Виникла помилка при видаленні
       bank_error: Видалення не можливе, банк використовується!
       account_error: Рахунок з даним номером вже існує!
+      position_error: Видалення не можливе, посада використовується!
+      department_error: Видалення не можливе, відділ використовується!
   labels:
     active: Активна
     user: Користувач
@@ -436,9 +438,27 @@ ua:
   Service: Послуги
   Product: Товари
   Production: Продукція
+  Basic_place: Основне місце
+  Part: За сумісництвом
   info:
     empty: У вас не має жодного запису перейдіть в довідник і додайте новий!
     add_new: Нажаль у вас немає жодного запису, натисніть сюди щоб додати новий!
   personnels:
     personnel: Персонал
-    department: Відділи
+    departments: Відділи
+    positions: Посади
+    employees: Співробітники
+    full_name: ПІБ
+    personnel_number: Табельний номер
+    pn: ТН
+    date_birth: Дата народження
+    start_date: Дата початку роботи
+    passport: Паспорт
+    ipn: ідентифікаційний податковий номер
+    identification_pn: ідентифікаційний ПН
+    adress: Адреса проживання
+    type_employment: Вид зайнятості
+    department: Відділ
+    position: Посада
+    basic_information: Основні дані
+    department_position: Відділ/посада

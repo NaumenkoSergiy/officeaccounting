@@ -61,6 +61,8 @@ Rails.application.routes.draw do
 
     namespace 'personnels' do
       resources :departments
+      resources :positions
+      resources :employees
     end
 
     get '*path', to: 'application#page_not_found'

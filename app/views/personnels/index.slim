@@ -1,0 +1,13 @@
+.container-fluid
+  ul.nav.nav-tabs#personels_tabs.init
+    li.active
+      = link_to t('personnels.employees'), "#employees", role: 'tab', data: { toggle: 'tab' }
+    li
+      = link_to t('personnels.departments'), "#departments", role: 'tab', data: { toggle: 'tab' }
+    li
+      = link_to t('personnels.positions'), "#positions", role: 'tab', data: { toggle: 'tab' }
+
+  .tab-content
+    #employees.tab-pane.active
+    #positions.tab-pane
+    #departments.tab-pane

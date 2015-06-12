@@ -276,6 +276,8 @@ en:
       delete_error: An error occurred when deleting
       bank_error: Removal is not possible, the Bank in use!
       account_error: Account with this number already exists!
+      position_error: Removal is not possible, the Position in use!
+      department_error: Removal is not possible, the Department in use!
   labels:
     active: Active
     user: User
@@ -444,9 +446,27 @@ en:
   Product: Product
   Service: Services
   Production: Production
+  Basic_place: Basic place
+  Part: Part
   info:
     add_new: Unfortunately, you have no account, click here to add a new one!
     empty: You don't have any entries go to the directory and add new!
   personnels:
     personnel: Personnel
-    department: Departments
+    departments: Departments
+    positions: Positions
+    employees: Employees
+    full_name: Full name
+    personnel_number: Personnel number
+    pn: PN
+    date_birth: Date of birth
+    start_date: Start date of work
+    passport: Passport
+    ipn: Tax identification number
+    identification_pn: Tax identification number
+    adress: Residence address
+    type_employment: Type employment
+    department: Department
+    position: Position
+    basic_information: Basic information
+    department_position: Department/Position

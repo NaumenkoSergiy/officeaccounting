@@ -32,6 +32,7 @@ gem 'ransack'
 gem 'whenever', '~> 0.9.0', require: false
 gem 'active_model_serializers'
 gem 'acts_as_tree', '~> 2.1.0'
+gem 'paloma'
 
 group :development, :test do
   gem 'pry'
@@ -53,6 +54,7 @@ group :development do
   gem 'capistrano-rvm'
   gem 'passenger'
   gem 'letter_opener'
+  gem "better_errors"
 end
 
 source 'https://rails-assets.org' do

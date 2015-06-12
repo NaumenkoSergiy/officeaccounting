@@ -1,0 +1,23 @@
+tr class='employee_#{ employee.id }'
+  td
+    = employee.personnel_number
+  td
+    = link_to employee.name, '#', data: { name: :name, type: 'textarea', placement: 'bottom', pk: employee, model: :employee, url: personnels_employee_path(employee.id), xeditable: true }
+  td
+    = link_to employee.passport, '#', data: { name: :passport, placement: 'bottom', pk: employee, model: :employee, url: personnels_employee_path(employee.id), xeditable: true }
+  td
+    = link_to employee.ipn, '#', data: { name: :ipn, placement: 'bottom', pk: employee, model: :employee, url: personnels_employee_path(employee.id), xeditable: true , maxlength: 10}
+  td
+    = link_to l(employee.date_birth, format: :default), '#', data: { type: 'date', format: 'dd-mm-yyyy', placement: 'bottom', name: :date_birth, pk: @employee, model: :employee, url: personnels_employee_path(employee.id), xeditable: true }
+  td
+    = link_to t(employee.type.gsub('Employee::', '')), '#', data: { name: :type, pk: employee, value: employee.type, placement: 'bottom', model: :employee, url: personnels_employee_path(employee.id), xeditable: true, type: 'select', source: translate_subclasses_for_select(@subclasses, 'Employee::') }, class: 'white_space'
+  td
+    = link_to employee.adress, '#', data: { name: :adress, placement: 'bottom', pk: employee, model: :employee, url: personnels_employee_path(employee.id), xeditable: true }
+  td
+    = link_to employee.department_name, '#', data: { name: :department_id, pk: employee, value: employee.department_id, placement: 'bottom', model: :employee, url: personnels_employee_path(employee.id) }, class: 'change_department'
+  td
+    = link_to employee.position_title, '#', data: { name: :position_id, pk: employee, value: employee.position_id, placement: 'bottom', model: :employee, url: personnels_employee_path(employee.id) }, class: 'change_position'
+  td
+    = link_to l(employee.start_date, format: :default), '#', data: { type: 'date', format: 'dd-mm-yyyy', placement: 'bottom', name: :start_date, pk: @employee, model: :employee, url: personnels_employee_path(employee.id), xeditable: true }
+  td style='width:40px;'
+    = application_present.destroy_link personnels_employee_path(employee)

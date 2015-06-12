@@ -2,7 +2,7 @@
   .row.border-bottom
     .nav.navbar-static-top role='navigation' style='margin-bottom: 0;'
       .navbar-header
-        #path data={ accounts: money_accounts_path, articles: money_articles_path, banks: money_banks_path, contracts: contracts_path, counterparties: purchases_counterparties_path, registers: money_registers_path, currensies: money_currencies_path, orders: money_currency_transactions_orders_path, main_tools: tool_equipments_main_tools_path, accounting_account: accounting_accounts_path, guide_units: guide_units_path, nomenclatures: purchases_nomenclatures_path }
+        #path data={ accounts: money_accounts_path, articles: money_articles_path, banks: money_banks_path, contracts: contracts_path, counterparties: purchases_counterparties_path, registers: money_registers_path, currensies: money_currencies_path, orders: money_currency_transactions_orders_path, main_tools: tool_equipments_main_tools_path, accounting_account: accounting_accounts_path, guide_units: guide_units_path, nomenclatures: purchases_nomenclatures_path, departments: personnels_departments_path, positions: personnels_positions_path, employees: personnels_employees_path }
         a.navbar-minimalize.minimalize-styl-2.btn.btn-primary href='#'
           i.fa.fa-bars
         - if current_user.companies.size > 1
@@ -56,7 +56,11 @@
                   li
                     = link_to t('purchases.nomenclature'),  purchases_nomenclatures_path(type: 'Nomenclature::Equipment'), remote: true
                   li
-                    = link_to t('personnels.department'),  personnels_departments_path, remote: true
+                    = link_to t('personnels.departments'),  personnels_departments_path(container: :modal), remote: true
+                  li
+                    = link_to t('personnels.positions'),  personnels_positions_path(container: :modal), remote: true
+                  li
+                    = link_to t('personnels.employees'),  personnels_employees_path(container: :modal), remote: true
         li
           = link_to destroy_sessions_path
             i.fa.fa-sign-out
@@ -77,4 +81,6 @@
           #guide_units.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
           #main_tools.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
           #nomenclatures.modal.fade aria-hidden='true' aria-labelledby='basicModal' role='dialog' tabindex='-1'
-          #departments.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
+          #departments_modal.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
+          #positions_modal.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
+          #employees_modal.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"

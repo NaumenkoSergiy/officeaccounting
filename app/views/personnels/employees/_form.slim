@@ -1,0 +1,42 @@
+= form_for [:personnels, @employee], html: { id: "new_employee_#{ params[:container] }" }, remote: :true do |f|
+  .row
+    .name_block.col-lg-12
+      = t('personnels.basic_information')
+    .col-lg-5
+      = f.label t('personnels.full_name')
+      = f.text_field :name
+    .col-lg-2
+      = f.label t('personnels.personnel_number')
+      = f.text_field :personnel_number, class: 'disabled_input employee_personnel_number', readonly: "readonly", value: @personnel_number + 1
+    .col-lg-3
+      = f.label t('personnels.type_employment')
+      = f.select :type, translate_subclasses_for_select2(@subclasses, 'Employee::'), {}, { data: { select: false } }
+    .col-lg-2
+      = f.label t('personnels.date_birth')
+      = f.text_field :date_birth, id: "employee_date_birth_#{ params[:container] }"
+    .col-lg-4
+      = f.label t('personnels.passport')
+      = f.text_field :passport
+    .col-lg-3
+      = f.label t('personnels.identification_pn')
+      = f.text_field :ipn, class: 'number', maxlength: 10
+    .col-lg-5
+      = f.label t('personnels.adress')
+      = f.text_field :adress
+  .row
+    .name_block.col-lg-12
+      = t('personnels.department_position')
+    .col-lg-4
+      = f.label t('personnels.department')
+      #departament_select
+        = f.select :department_id, {}, {}, { data: { select: false, status: :new }, class: 'departaments' }
+    .col-lg-3
+      = f.label t('personnels.position')
+      #position_select
+        = f.select :position_id, {}, {}, { data: { select: false, status: :new }, class: 'positions' }
+    .col-lg-3
+      = f.label t('personnels.start_date')
+      = f.text_field :start_date, id: "employee_start_date_#{ params[:container] }"
+    .col-lg-2.padding_button
+      br
+      = f.submit t('buttons.add')

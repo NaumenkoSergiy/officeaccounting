@@ -1,0 +1,21 @@
+tr
+  td
+    = employee.personnel_number
+  td
+    = employee.name
+  td
+    = employee.passport
+  td
+    = employee.ipn
+  td
+    = l(employee.date_birth, format: :default)
+  td
+    = t(employee.type.gsub('Employee::', ''))
+  td
+    = employee.adress
+  td
+    = employee.department_name
+  td
+    = employee.position_title
+  td
+    = l(employee.start_date, format: :default)

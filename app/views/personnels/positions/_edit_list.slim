@@ -1,0 +1,5 @@
+tr class='position_#{ position.id }'
+  td
+    = link_to position.title, '#', data: { name: :title, placement: 'bottom', pk: position, model: :position, url: personnels_position_path(position.id), xeditable: true }
+  td
+    = application_present.destroy_link personnels_position_path(position)
