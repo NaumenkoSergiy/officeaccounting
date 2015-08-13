@@ -25,6 +25,8 @@ class Company < ActiveRecord::Base
   has_many :main_tools
   has_many :nomenclatures
   has_many :departments
+  has_many :positions
+  has_many :employees
 
   delegate :name, to: :bank, prefix: true
   delegate :account, :mfo, to: :bank_account, prefix: true

@@ -1,0 +1,32 @@
+#employees,  #employees_modal {
+  .modal-dialog { width: 1024px; }
+
+  a.select2-choice {
+    height: 34px;
+
+    .select2-chosen { margin-top: 3px; }
+  }
+
+  #new_employee {
+    input { border-radius: 4px; }
+    .row {
+      border-bottom: 2px solid #e5e5e5;
+      padding-left: 15px;
+    }
+  }
+
+  #employees_form {
+    margin-bottom: 15px;
+
+    .name_block {
+      font-size: 15px;
+      font-style: italic;
+      margin: 7px 0;
+      padding: 0;
+    }
+  }
+
+  #employees_list {
+    .white_space { white-space: nowrap; }
+  }
+}

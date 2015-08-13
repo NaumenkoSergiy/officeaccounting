@@ -38,4 +38,8 @@ module ApplicationHelper
   def translate_subclasses_for_select2(data, parent_class)
     data.map {|s| [ t(s.name.gsub(parent_class, '')), s.name] }
   end
+
+  def translate_subclasses_for_select(data, parent_class)
+    data.map {|s| {text: t(s.name.gsub(parent_class, '')), value: s.name} }
+  end
 end

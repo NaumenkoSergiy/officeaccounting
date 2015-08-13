@@ -6,7 +6,11 @@ module Personnels
     before_action :define_department, only: [:index, :create]
 
     def index
-      respond_to { |format| format.js }
+      respond_to do |format|
+        format.js
+        format.json { render json: @departments.select(:id, :name)
+                                               .map { |department| { value: department.id, text: department.name } }, status: 200 }
+      end
     end
 
     def create
@@ -26,7 +30,11 @@ module Personnels
     end
 
     def destroy
-      @department.destroy
+      if @department.assigned?
+        flash.now[:error] = t('validation.errors.department_error')
+      else
+        @department.destroy
+      end
       respond_to { |format| format.js }
     end
 

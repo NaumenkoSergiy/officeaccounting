@@ -1,0 +1,8 @@
+= form_for [:personnels, @position], remote: :true do |f|
+  .row
+    .col-lg-6
+      = f.label t('block_title.title')
+      = f.text_field :title
+    .col-lg-6.padding_button
+      br
+      = f.submit t('buttons.add')

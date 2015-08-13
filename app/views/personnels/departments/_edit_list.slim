@@ -1,4 +1,4 @@
-tr id='department_#{ department.id }'
+tr class='department_#{ department.id }'
   td
     = link_to department.name, '#', data: { name: :name, placement: 'bottom', pk: department, model: :department, url: personnels_department_path(department.id), xeditable: true }
   td

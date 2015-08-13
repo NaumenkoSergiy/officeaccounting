@@ -1,0 +1,26 @@
+table.table
+  thead
+    tr.bg-grey
+      th
+        = t('personnels.pn')
+      th
+        = t('personnels.full_name')
+      th
+        = t('personnels.passport')
+      th
+        = t('personnels.identification_pn')
+      th
+        = t('personnels.date_birth')
+      th
+        = t('personnels.type_employment')
+      th
+        = t('personnels.adress')
+      th
+        = t('personnels.department')
+      th
+        = t('personnels.position')
+      th
+        = t('personnels.start_date')
+  tbody
+    = render_list('Employee', 'personnels/employees/', @employees, 'employee')
+= paginate @employees, theme: 'twitter-bootstrap-3', remote: true

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require i18n
 //= require i18n/translations
+//= require paloma
 //= require_tree .
 //= require jquery-ui
 //= require jquery.validate
@@ -171,8 +172,17 @@ function setObserver() {
     else if (!($( '.change_bank' ).length == $( '.change_bank.editable-click' ).length)) {
       Banks.xeditableBanks();
     }
+    else if (!($( '.change_department' ).length == $( '.change_department.editable-click' ).length)) {
+      Department.xeditableDepartments();
+    }
+    else if (!($( '.change_position' ).length == $( '.change_position.editable-click' ).length)) {
+      Position.xeditablePositions();
+    }
     else if ($('.orders[data-type=new]').length) {
       CurrencyTransactions.loadOption();
+    }
+    else if ($('#personels_tabs.init').length) {
+      Personel.initTabs();
     }
     else if ($('.parent_account[data-status=new]').length) {
       AccountingAccount.loadOption($('.parent_account[data-status=new]'), 'parent');
@@ -185,6 +195,12 @@ function setObserver() {
     }
     else if ($('.guide_units[data-status=new]').length) {
       GuideUnits.loadOption();
+    }
+    else if ($('.departaments[data-status=new]').length) {
+      Department.loadOption();
+    }
+    else if ($('.positions[data-status=new]').length) {
+      Position.loadOption();
     }
     else if ($('.change_guide_units[data-status=new]').length) {
       GuideUnits.xeditable();
