@@ -1,11 +1,14 @@
 = form_for  [:purchases, @nomenclature], remote: :true do |f|
   .row
-    .col-lg-3
+    .col-lg-2
       = f.label t('block_title.title')
       = f.text_field :title
-    .col-lg-3
+    .col-lg-2
       = f.label t('group')
       = f.select :type, translate_subclasses_for_select2(@subclasses, 'Nomenclature::'), {}, { data: { select: false } }
+    .col-lg-2
+      = f.label t('count')
+      = f.text_field :count, class: 'number-float'
     .col-lg-2
       = f.label t('guide_unit')
       #guide_unit_select

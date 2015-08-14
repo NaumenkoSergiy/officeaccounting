@@ -426,6 +426,7 @@ en:
   grn: UAH
   guide_units: Guide units
   guide_unit: Guide unit
+  count: Count
   tool_equipments:
     main_tools: Main tools
     material_tools: Materials and equipment

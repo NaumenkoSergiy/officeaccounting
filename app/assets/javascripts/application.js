@@ -222,6 +222,14 @@ function setObserver() {
   mo.observe(document.body, options);
 }
 
+function numericFloatXeditable() {
+  $('.change-numeric-float').on('click', function() {
+    $('input.exitable-number-float').numeric({
+      negative: false
+    });
+  });
+}
+
 function editableStart() {
   return $("[data-xeditable=true]").each(function() {
     var name;

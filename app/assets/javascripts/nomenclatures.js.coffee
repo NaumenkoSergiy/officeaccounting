@@ -24,7 +24,10 @@ window.Nomenclature =
     editableStart()
     Nomenclature.validateFormForNewNomenclature()
     Nomenclature.initTabs()
+    $('input.number-float').numeric
+      negative: false
     $('#nomenclatures_new').remove()
+    numericFloatXeditable()
 
   loadTable: (id) ->
     type = $('[href=' + id + ']').attr('data-type')
