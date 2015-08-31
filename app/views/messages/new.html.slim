@@ -1,0 +1,17 @@
+h1 = t('conversations.new_conversation')
+
+= form_tag messages_path, method: :post do
+  div class="form-group"
+    = label_tag 'message[subject]', t('conversations.subject')
+    = text_field_tag 'message[subject]', nil, class: 'form-control', required: true
+
+  div class="form-group"
+    = label_tag 'message[body]', t('conversations.message')
+    = text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true
+
+  div class="form-group"
+    = label_tag 'recipients', t('conversations.choose_recipients')
+    = hidden_field_tag 'recipients'
+
+  = submit_tag t('conversations.send_message'), class: 'btn btn-primary'
+

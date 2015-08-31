@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
-
+  acts_as_messageable
   has_secure_password
+
+  scope :by_email, -> (query) {
+    where("email LIKE ?", "%#{query.downcase}%")
+    .limit(10)
+    .collect{ |k| { id: k.id.to_s, text: k.email } }
+  }
 
   validates :email, presence: true
   validates :password, length: { minimum: 6, maximum: 32 }
@@ -11,6 +17,7 @@ class User < ActiveRecord::Base
   has_one :user_company, -> { where(current_company: true) }
   has_one :current_company, through: :user_company, source: :company
   has_many :guide_units
+  has_many :chats
 
   delegate :accounts, to: :current_company
   delegate :contracts, to: :current_company
@@ -54,6 +61,14 @@ class User < ActiveRecord::Base
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
+  end
+
+  def mailboxer_email(object)
+    email
+  end
+
+  def online?
+    $redis.exists( self.id )
   end
 
   private

@@ -460,3 +460,22 @@ ua:
     position: Посада
     basic_information: Основні дані
     department_position: Відділ/посада
+  conversations:
+    messages: Повідомлення
+    new_conversation: Створити діалог
+    inbox: Вхідні
+    sent: Відправлені
+    trash: Кошик
+    new_message: Нове повідомлення
+    empty_trash: Очистити кошик
+    move_to_trash: В кошик
+    restore_from_traash: Відновити
+    subject: Тема
+    message: Повідомлення
+    choose_recipients: Вибрати одержувачів
+    send_message: Відправити
+    conversation: Діалог
+    are_you_sure: Ви впевнені?
+    sender_write: написав
+    chat_title: Чат компанії
+    participants: Учасники

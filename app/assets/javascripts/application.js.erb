@@ -16,6 +16,7 @@
 //= require i18n/translations
 //= require paloma
 //= require_tree .
+//= require_tree ../../../vendor/assets/javascripts/chat-js/.
 //= require jquery-ui
 //= require jquery.validate
 //= require jquery.validate.additional-methods
@@ -24,10 +25,33 @@
 //= require bootstrap-select
 //= require select2
 //= require observer
+//= require messages
 
 LEFT_BAR_HIDE = 45;
 LEFT_BAR_SHOW = 220;
+DEFAULT_ROOM_ID = 1;
+$(function() {
+  var faye = new Faye.Client('<%= Rails.application.secrets.broadcast %>');
+  if(typeof gon !== 'undefined'){
+    faye.subscribe('/chat_'+gon.current_user.id, function (data) {
+      eval(data);
+    });
+  }
+});
 
+$(document).ready(
+  $(function () {
+    if(typeof gon !== 'undefined' && gon.current_user)
+      $.chat({
+          userId: gon.current_user.id,
+          roomId: DEFAULT_ROOM_ID,
+          typingText: ' is typing...',
+          emptyRoomText: "There's no one around here.",
+          chatJsContentPath: '/basics/chatjs/',
+          adapter: new Adapter()
+      });
+  })
+);
 $(document).on('ready', function() {
   //set xeditable
   editableStart();
@@ -290,3 +314,56 @@ function setNumeric() {
     $(this).attr('data-numeric', true).numeric({ negative: false, decimal: false })
   });
 }
+
+$(document).on('ready', function() {
+  var str = $(location).attr("href")
+  var elem = $("#messages-menu")
+  if(str.indexOf("conversations") >= 0 || str.indexOf("messages") >= 0)
+    $(elem).show()
+
+  $('.list-group-item').each(function() {
+    if($(this).attr('data-read') == 'false' && str.indexOf("inbox") >= 0)
+      $(this).css('background-color', 'rgba(243,243,243,.85)')
+  })
+
+  $("#messages-link").on('click', function() {
+    var elem = $("#messages-menu")
+    if ( $(elem).is(":hidden") )
+      $(elem).slideDown(300)
+    else
+      $(elem).slideUp(350)
+  });
+
+  $('[id^="trash-"]').on('click', function() {
+    var id = $(this).attr("id").substring(6)
+    if(confirm(I18n.t("are_you_sure"))) {
+      $.ajax({
+        type: 'DELETE',
+        url: '/conversations/' + id,
+        data: { conversation: { id: id } },
+        success: function() {
+          $("#conversation-" + id).remove()
+        }
+      });
+    }
+  });
+
+  $('[id^="restore-"]').on('click', function() {
+    var id = $(this).attr("id").substring(8)
+    $.ajax({
+        type: 'POST',
+        url: '/conversations/' + id + '/restore',
+        data: { conversation: { id: id } },
+        dataType: "json",
+        success: function() {
+          $("#conversation-" + id).remove()
+        }
+      });
+  });
+
+  $('#empty-btn').on('click', function() {
+    if(confirm(I18n.t("are_you_sure"))) {
+      $("#messages-list").remove()
+    }
+  })
+});

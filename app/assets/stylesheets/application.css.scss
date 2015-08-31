@@ -36,9 +36,7 @@
   display: none;
 }
 
-div.error, div.invalid {
-  color: red;
-}
+div.error, div.invalid { color: red; }
 
 .glyphicon { font-size: 14px; }
 
@@ -81,9 +79,7 @@ a.btn-success {
   min-width: 400px;
 
   ul {
-    li {
-      margin: 5px;
-    }
+    li { margin: 5px; }
   }
 }
 
@@ -91,7 +87,7 @@ a.btn-success {
 
 .record-remove {
   display: none;
-  color: grey;
+  color: gray;
 }
 
 .modal-body { font-size: 14px; }
@@ -152,3 +148,9 @@ input[type=checkbox] {
 }
 
 .editableform .btn { width: 49px; }
+
+.dropdown-message { margin-left: 15px; }
+
+.list-group-item { padding: 10px 10px 0px 10px; }
+
+.read { background-color: rgba(243, 243, 243, .85); }

@@ -9,8 +9,24 @@ Rails.application.routes.draw do
     get 'settings/companies/change_company'
     get 'sessions/set_language'
 
+    resources :messages, only: [:new, :create]
+
+    resources :conversations, only: [:index, :show, :destroy] do
+      member do
+        post :reply
+        post :forward
+        post :restore
+      end
+      collection do
+        delete :empty_trash
+      end
+    end
     resources :sessions, only: [:new, :create]
-    resources :users, only: [:new, :create]
+    resources :users, only: [:new, :create, :update] do
+      collection do
+        get :recipients
+      end
+    end
     resources :settings, only: [:index, :show]
     resources :password_resets
     resources :money, only: [:index] do
@@ -65,7 +81,15 @@ Rails.application.routes.draw do
       resources :positions
       resources :employees
     end
-
+    resources :chat do
+      collection do
+        get :list
+      end
+      member do
+        put :change_name
+      end
+    end
+    resources :chat_messages
     get '*path', to: 'application#page_not_found'
   end
 end

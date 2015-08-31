@@ -23,6 +23,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def recipients
+    users = []
+    users = current_company.users.by_email params[:q] if current_company
+    render json: { data: users }
+  end
+
   private
 
   def define_user_service

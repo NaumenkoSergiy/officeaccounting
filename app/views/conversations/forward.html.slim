@@ -1,0 +1,27 @@
+h1 = t('conversations.conversation')
+
+div class="panel panel-default"
+  div class="panel-heading"
+    says FW: 
+    = @conversation.subject
+  div class="panel-body"
+    - @conversation.receipts_for(current_user).reverse_each do |receipt|
+      div class="panel-message"
+        - message = receipt.message
+        span class="panel-info"
+          says from: 
+          = message.sender.email
+          small
+            br
+            says  at (
+            = message.created_at.strftime("%-d %B %Y, %H:%M:%S")
+            says )
+        br
+        = simple_format(message.body)
+
+= form_tag forward_conversation_path(@conversation), method: :post do
+  div class="form-group"
+    = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...'
+    = label_tag 'recipients', t('conversations.choose_recipients')
+    = hidden_field_tag 'recipients'
+  = submit_tag t('conversations.send_message'), class: 'btn btn-primary'

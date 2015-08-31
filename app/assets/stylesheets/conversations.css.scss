@@ -1,0 +1,47 @@
+// Place all the styles related to the Conversations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.restore-btn,
+.trash-btn {
+  cursor: pointer;
+  display: none;
+}
+.list-group-item:hover {
+  background-color: #f3f3f4;
+  .restore-btn,
+  .trash-btn { display: block; }
+}
+.list-group-item { 
+  margin-top: 5px;
+  height: 75px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.testspan { color: inherit; }
+
+.testspan:active { color: inherit; }
+
+.testspan:visited { color: inherit; }
+
+.message-sender {
+  color: #333;
+  font-weight: bold;
+}
+.message-recipient {
+  color: #333;
+  font-weight: bold;
+}
+.message-subject {
+  font-weight: bold;
+  margin-left: 10px;
+}
+.message-date { float: right; }
+
+.message-body { margin-left: 10px; }
+
+.panel-info { margin-left: 10px; }
+
+.panel-message { border-bottom: 1px dashed rgba(103,106,108,0.5); }
+
+.forward { float: right; }
