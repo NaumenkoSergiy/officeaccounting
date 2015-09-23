@@ -1,5 +1,9 @@
 - if flash[:error]
   | $('.notification').show().text("#{flash[:error]}").fadeOut(5000);
 - else
-  | $('#new_order').hide()[0].reset();
-  | $('#order_list').html("#{j render 'money/currency_transactions/orders/list'}");
+  - if params[:order][:path].present?
+    | $('#orders').modal('hide');
+    | $('#select_order').html("#{ j select_tag 'currency_transaction[order_id]', '', class: 'orders', data: { select: false, type: 'new' }}");
+  - else
+    | $('#new_order').hide()[0].reset();
+    | $('#order_list').html("#{j render 'money/currency_transactions/orders/list'}");

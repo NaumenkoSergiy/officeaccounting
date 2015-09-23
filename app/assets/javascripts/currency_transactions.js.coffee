@@ -13,15 +13,16 @@ window.CurrencyTransactions =
 
   loadOption: ->
     CurrencyTransactions.load (orders) ->
+      $selector = $('.orders[data-type=new]')
+
       if $.isEmptyObject(orders)
-        $('#select_order').html(I18n.t('money.order.empty_orders')).css('color':'red')
+        $('#select_order').html('')
       else
         for k,v of orders
-          $('.orders[data-type=new]').append '<option value=' + v.id + '>' + "№ (#{v.id}) #{v.date.slice(0,10)}" + '</option>'
-        $('.orders[data-type=new]').attr 'data-type', 'old'
+          $selector.append '<option value=' + v.id + '>' + "№ (#{v.id}) #{v.date.slice(0,10)}" + '</option>'
+        $selector.attr 'data-type', 'old'
         paymentOrders = orders
         CurrencyTransactions.loadValue($('#currency_transaction_order_id').val())
-      CurrencyTransactions.loadPlugins()
 
   loadPlugins: ->
     openForm('new_currency_transaction', 'add_new_transaction')

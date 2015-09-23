@@ -66,10 +66,6 @@ window.Accounts =
     currency = $selector.data 'currency'
     Accounts.load ((accounts) ->
       if $.isEmptyObject(accounts)
-        if $selector.data('currency') == 'UAH'
-          $selector.after '<div class="error">' + I18n.t('money.accounts.accounts_grn') + '</div>'
-        else
-          $selector.after '<div class="error">' + I18n.t('money.accounts.accounts_foreign_currency') + '</div>'
         $selector.remove()
       else
         $.each accounts, ->

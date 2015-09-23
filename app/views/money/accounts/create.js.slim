@@ -1,9 +1,15 @@
 - if flash[:error]
   | $('.notification.error').show().text("#{flash[:error]}");
 - else
-  - if params[:account][:page].nil?
+  - if page = params[:account][:page]
+    - if ['income', 'cost'].include?(page)
+      | $('#select_account').html("#{ j select_tag 'money_register[account_id]', '', class: 'company_accounts', data: { path: new_money_account_path, status: :new, select: false, id: current_user.current_company.id, page: page }}");
+    - elsif page == 'UAH'
+      | $('#account_grn_id').html("#{ j select_tag 'order[account_grn_id]', '', class: 'accounts_grn', data: { path: new_money_account_path, currency: :UAH, status: :new, select: false }}");
+    - else
+      | $('#account_rate_id').html("#{ j select_tag 'order[account_rate_id]', '', class: 'accounts_rate', data: { path: new_money_account_path, currency: :foreign_currency, status: :new, select: false }}");
+
+    | $('#companyAccount').modal('hide');
+  - else
     | $('#account_list').html("#{j render 'money/accounts/list'}");
     | $('#new_account').hide()[0].reset();
-  - else
-    | $('#select_account').html("#{ j select_tag 'money_register[account_id]', '', class: 'company_accounts', data: { path: new_money_account_path, status: :new, select: false, id: current_user.current_company.id, page: params[:account][:page] }}");
-    | $('#companyAccount').modal('hide');

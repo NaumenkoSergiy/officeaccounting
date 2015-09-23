@@ -22,15 +22,22 @@
     .col-lg-3
       = f.label t('money.order.account_grn')
       br
-      = f.select :account_grn_id, {}, {}, { class: 'accounts_grn', data: { currency: :UAH, status: :new, select: false }}
+      = link_to t('buttons.add_new'), new_money_account_path(page: :UAH), remote: true
+      br
+      #account_grn_id
+        = f.select :account_grn_id, {}, {}, { class: 'accounts_grn', data: { path: new_money_account_path, currency: :UAH, status: :new, select: false }}
     .col-lg-3
       = f.label t('money.order.account_rate')
       br
-      = f.select :account_rate_id, {}, {}, { class: 'accounts_rate', data: { currency: :foreign_currency, status: :new, select: false }}
+      = link_to t('buttons.add_new'), new_money_account_path(page: :foreign_currency), remote: true
+      br
+      #account_rate_id
+        = f.select :account_rate_id, {}, {}, { class: 'accounts_rate', data: { path: new_money_account_path, currency: :foreign_currency, status: :new, select: false }}
     .col-lg-2
       = f.label t('money.order.total_grn')
       = f.text_field :total_grn, readonly: "readonly"
       = f.hidden_field :type_order, value: params[:type]
+      = f.hidden_field 'path', value: params[:path]
     .col-lg-2
       br
       = f.submit t('buttons.add')

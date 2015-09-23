@@ -4,8 +4,9 @@
       = f.label t('money.costs.date')
       = f.text_field :date, data: { timePicker: false }
     .col-lg-2
+      = f.label t('money.currences_tran.order_p_f_currency')
+      = link_to t('buttons.add_new'), money_currency_transactions_orders_path(type: params[:type], path: 'currency_transactions'), remote: true
       #select_order
-        = f.label t('money.currences_tran.order_p_f_currency')
         = f.select :order_id, {}, {}, { class: 'orders', data: { select: false, type: 'new' } }
     .col-lg-2
       label
