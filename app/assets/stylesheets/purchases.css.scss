@@ -36,12 +36,6 @@
   table { margin-bottom: 1px; }
 }
 
-#counterparty_resident, .counterparty_resident {
-  width: auto;
-  height: 15px;
-  margin-right: 10px;
-}
-
 #counterparty_resident {
   float: left;
   margin-left: 10px;
@@ -55,4 +49,8 @@
 
 #new_counterparty {
   .select2-choice { height: 32px; }
+}
+
+.purchases-links {
+  .btn, .btn-group { width: 100%; }
 }

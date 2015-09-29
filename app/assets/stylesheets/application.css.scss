@@ -144,3 +144,11 @@ a.btn-success {
   background-color: rgb(234, 230, 230);
   text-align: right;
 }
+
+input[type=checkbox] {
+  width: auto;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.editableform .btn { width: 49px; }

@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'spring',        group: :development
+gem 'spring','~> 1.4.0',         group: :development
 
 gem 'slim-rails'
 
@@ -33,6 +33,7 @@ gem 'whenever', '~> 0.9.0', require: false
 gem 'active_model_serializers'
 gem 'acts_as_tree', '~> 2.1.0'
 gem 'paloma'
+gem 'simple_form'
 
 group :development, :test do
   gem 'pry'

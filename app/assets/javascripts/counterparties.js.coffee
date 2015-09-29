@@ -132,5 +132,15 @@ window.Counterparties =
     $(document).click (e) ->
       if !$(e.target).is('.conterparty_popover, .popover-content')
         $('.conterparty_popover').popover 'hide'
-      return
-    return
+
+  xeditable: ->
+    Counterparties.load (counterparties) ->
+      $('.change_counterparty').each ->
+        $(@).editable
+          type: 'select2'
+          source: counterparties
+          ajaxOptions:
+            type: 'PUT'
+            dataType: 'json'
+          params: xeditableParams
+        $(@).attr 'data-status', 'old'

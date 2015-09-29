@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   delegate :main_tools, to: :current_company
   delegate :nomenclatures, to: :current_company
   delegate :departments, to: :current_company
+  delegate :products, to: :current_company
 
   after_create :send_activation_token
 

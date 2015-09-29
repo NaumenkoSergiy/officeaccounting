@@ -193,6 +193,9 @@ function setObserver() {
     else if ($('.change_accounting_accounts[data-status=new]').length) {
       AccountingAccount.xeditable();
     }
+    else if ($('.change_counterparty[data-status=new]').length) {
+      Counterparties.xeditable();
+    }
     else if ($('.guide_units[data-status=new]').length) {
       GuideUnits.loadOption();
     }
@@ -262,6 +265,9 @@ xeditableParams = function(params) {
 function setSelect2() {
   $("[data-select=false]").each(function() {
     $(this).attr('data-select', true).select2();
+    if ($(this).hasClass('form-control')) {
+      $(this).removeClass('form-control');
+    };
   });
 }
 

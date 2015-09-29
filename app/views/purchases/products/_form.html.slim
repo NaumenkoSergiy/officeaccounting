@@ -1,0 +1,57 @@
+= simple_form_for [:purchases, @product], remote: true do |f|
+  .row
+    .col-lg-3
+      = f.input :document_type, collection: application_present.translate_array_for_select_options(Product::DOCUMENT_TYPE), input_html: { data: { select: false } }, label: t('purchases.choose_document')
+    .col-lg-2
+      = f.input :date, as: :string, label: t('money.costs.date'), input_html: { class: 'date' }
+    .col-lg-3
+      = f.input :number, input_html: { readonly:''}, label: t('money.currences_tran.number')
+  .row
+    .col-lg-12
+      ul.nav.nav-tabs
+        li.active= link_to t('money.documents'), '#counterparty_product', role: 'tab', data: { toggle: 'tab' }
+        li= link_to t('money.reports'), '#accounting_product', role: 'tab', data: { toggle: 'tab' }
+        li= link_to t('money.references'), '#prepayment_product', role: 'tab', data: { toggle: 'tab' }
+        li= link_to t('money.references'), '#additionally_product', role: 'tab', data: { toggle: 'tab' }
+
+      .tab-content.margin-top-10
+        #accounting_product
+        #prepayment_product
+        #counterparty_product
+        #additionally_product
+          .row
+            .col-lg-3
+              = label_tag '* ' + t('contract.counterparty')
+              .counterparty_select
+                = f.association :counterparty, as: :select, collection: [], input_html: { class: 'company_counterparties', data: { select: false, type: 'new', path: new_purchases_counterparty_path, page: :income } }, label: false
+            .col-lg-2
+              = f.input :document_number, label: t('purchases.counterparty_number_doc')
+            .col-lg-3
+              = f.input :document_date, as: :string, label: t('money.costs.date'), input_html: { class: 'date' }
+          .row
+            .col-lg-3
+              = label_tag '* ' + t('purchases.choose_storage_location')
+              #departament_select
+                = f.association :department, label: false, collection: [], input_html: { class: 'departaments', data: { select: false, status: :new } }
+          .row
+            .col-lg-3
+              = f.input :currency, label: t('money.currency'), collection: application_present.translate_array_for_select_options(Currency::AVAILABLE_CURRENCIES), input_html: { data: { select: false } }
+        .row
+          .col-lg-2
+            = f.input :number, input_html: { readonly:'' }, label: t('money.currences_tran.number')
+          .col-lg-2
+            = f.input :title, label: t('purchases.product_service')
+          .col-lg-2
+            = f.input :amount, label: t('money.amount')
+          .col-lg-2
+            #guide_unit_select
+              = f.association :guide_unit, as: :select, collection: [], label: t('guide_unit'), input_html: { data: { select: false, status: :new }, class: 'guide_units' }
+          .col-lg-2
+            = f.input :price, label: t('money.price')
+          .col-lg-2
+            = f.input :total, input_html: { readonly:'' }, label: t('ransack.attributes.money_register.total')
+        .row
+          .col-lg-3
+            = f.input :conducted, as: :boolean, label: t('purchases.conducted')
+            = f.submit t('buttons.add')
+

@@ -1,0 +1,17 @@
+tr id="product_#{product.id}"
+  td
+    = link_to l(product.date, format: :default), 'javascript:void(false);', data: { type: 'date', format: 'dd-mm-yyyy', placement: 'right', name: :date, pk: product, model: :product, url: purchases_product_path(product), xeditable: true }
+  td
+    = link_to product.number, 'javascript:void(false);', data: { name: :number, placement: 'bottom', pk: product, model: :product, url: purchases_product_path(product), xeditable: true }
+  td
+    = link_to product.counterparty_name, 'javascript:void(false);', data: { name: :counterparty_id, value: product.counterparty_id, placement: 'bottom', pk: product, model: :product, url: purchases_product_path(product), status: :new }, class: 'change_counterparty'
+  td
+    = link_to product.title, 'javascript:void(false);', data: { name: :title, placement: 'bottom', pk: product, model: :product, url: purchases_product_path(product), xeditable: true }
+  td
+    = link_to product.total, 'javascript:void(false);', data: { name: :total, placement: 'bottom', pk: product, model: :product, url: purchases_product_path(product), xeditable: true }
+  td
+    = check_box_tag '', '', product.conducted, data: { url: purchases_product_path(product) }, class: 'conducted'
+  td
+    = link_to product.document_number, 'javascript:void(false);', data: { name: :document_number, placement: 'bottom', pk: product, model: :product, url: purchases_product_path(product), xeditable: true }
+  td.width-40
+    = application_present.destroy_link purchases_product_path(product)
