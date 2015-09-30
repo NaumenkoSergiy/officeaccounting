@@ -27,6 +27,7 @@ class Company < ActiveRecord::Base
   has_many :departments
   has_many :positions
   has_many :employees
+  has_many :products
 
   delegate :name, to: :bank, prefix: true
   delegate :account, :mfo, to: :bank_account, prefix: true

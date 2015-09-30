@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612070947) do
+ActiveRecord::Schema.define(version: 20150925080242) do
 
   create_table "accounting_accounts", force: :cascade do |t|
     t.integer  "account_number", limit: 4
@@ -141,9 +141,11 @@ ActiveRecord::Schema.define(version: 20150612070947) do
     t.integer  "company_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "departments", ["company_id"], name: "index_departments_on_company_id", using: :btree
+  add_index "departments", ["deleted_at"], name: "index_departments_on_deleted_at", using: :btree
 
   create_table "employees", force: :cascade do |t|
     t.string   "personnel_number", limit: 255
@@ -282,6 +284,31 @@ ActiveRecord::Schema.define(version: 20150612070947) do
   end
 
   add_index "positions", ["company_id"], name: "index_positions_on_company_id", using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.integer  "number",          limit: 4
+    t.integer  "amount",          limit: 4
+    t.float    "price",           limit: 24
+    t.float    "total",           limit: 24
+    t.date     "date"
+    t.date     "document_date"
+    t.boolean  "conducted",       limit: 1,   default: false
+    t.string   "title",           limit: 255
+    t.string   "document_type",   limit: 255
+    t.string   "document_number", limit: 255
+    t.string   "currency",        limit: 255
+    t.integer  "guide_unit_id",   limit: 4
+    t.integer  "counterparty_id", limit: 4
+    t.integer  "department_id",   limit: 4
+    t.integer  "company_id",      limit: 4
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "products", ["company_id"], name: "index_products_on_company_id", using: :btree
+  add_index "products", ["counterparty_id"], name: "index_products_on_counterparty_id", using: :btree
+  add_index "products", ["department_id"], name: "index_products_on_department_id", using: :btree
+  add_index "products", ["guide_unit_id"], name: "index_products_on_guide_unit_id", using: :btree
 
   create_table "registrations", force: :cascade do |t|
     t.integer "company_id",                                 limit: 4

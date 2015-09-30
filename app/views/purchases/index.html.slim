@@ -1,6 +1,40 @@
 .container-fluid
-  .row.links
-    = link_to '', '#', data: { toggle: "modal", target: "#purchasesNew"}, class: 'add_new glyphicon glyphicon-plus-sign'
-    = render 'purchases/add_new_modal'
+  .row.purchases-links
+    ul.nav.nav-tabs
+      li.active= link_to t('money.documents'), '#documents', role: 'tab', data: { toggle: 'tab' }
+      li= link_to t('money.reports'), '#reports', role: 'tab', data: { toggle: 'tab' }
+      li= link_to t('money.references'), '#references', role: 'tab', data: { toggle: 'tab' }
+
+    .tab-content.margin-top-10
+      #documents.tab-pane.active
+        ul.nav.nav-tabs
+          li= link_to t('purchases.account_inbox'), '#account_inbox', role: 'tab', data: { toggle: 'tab' }
+          li= link_to t('purchases.power_of_attorney'), '#power_of_attorney', role: 'tab', data: { toggle: 'tab' }
+          li= link_to t('purchases.purchase_of_goods'), '#purchase_of_goods', role: 'tab', data: { toggle: 'tab' }
+          li= link_to t('purchases.return'), '#return', role: 'tab', data: { toggle: 'tab' }
+
+        .tab-content
+          #account_inbox
+          #power_of_attorney
+          #purchase_of_goods
+          #return
+
+      #reports.tab-pane
+        ul.nav.nav-tabs
+          li= link_to t('purchases.state_calculations'), '#state_calculations', role: 'tab', data: { toggle: 'tab' }
+
+        .tab-content
+          #state_calculations
+
+      #references.tab-pane
+        ul.nav.nav-tabs
+          li= link_to t('purchases.counterparties'), new_purchases_counterparty_path, remote: true
+          li= link_to t('purchases.products_services'), '#products_services', role: 'tab', data: { toggle: 'tab', path: new_purchases_product_path }
+
+        .tab-content
+          #products_services.margin-top-10
+            = link_to '', '#products_services_form', class: 'add_new glyphicon glyphicon-plus-sign', 'data-toggle'=>'collapse', 'aria-expanded'=>'false', 'aria-controls'=>'products_services_form'
+            #products_services_form.collapse
+            #products_services_list data-path=purchases_products_path
   .row
-    |Тут буде таблиця!
+    .col.lg-12

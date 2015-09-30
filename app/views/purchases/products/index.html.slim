@@ -1,0 +1,21 @@
+table.table
+  thead
+    tr.bg-grey
+      th
+        = t('money.costs.date')
+      th
+        = t('money.currences_tran.number')
+      th
+        = t('contract.counterparty')
+      th
+        = t('purchases.сontents_of_the_operation')
+      th
+        = t('ransack.attributes.money_register.total')
+      th
+        = t('purchases.mark_as_conducted')
+      th
+        = t('purchases.info_about_doc_counterparty')
+      th
+
+  tbody
+    = render_list('Product', 'purchases/products/', @products, 'product')

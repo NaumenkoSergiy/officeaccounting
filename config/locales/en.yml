@@ -35,34 +35,14 @@ en:
   activerecord:
     errors:
       models:
-        contract:
-          attributes:
-            counterparty_id:
-              blank: Can't be blank
-            number:
-              blank: Can't be blank
-        cashier:
-          attributes:
-            name:
-              blank: Can't be blank
-        account:
-          attributes:
-            name:
-              blank: Can't be blank
-        article:
-          attributes:
-            name:
-              blank: Can't be blank
+        messages:
+          blank: Can't be blank
         bank:
           attributes:
             code_edrpo:
               not_a_number: Should be a number
             mfo:
               not_a_number: Should be a number
-            lawyer_adress:
-              blank: Can't be blank
-            name:
-              blank: Can't be blank
   short_symbol: short-term
   long_symbol: long-term
   for_today:  for today
@@ -179,6 +159,8 @@ en:
     director: Director
     companies_list: List of companies
   money:
+    amount: Amount
+    price: Price
     documents: Document
     reports: Reports
     references: References
@@ -298,6 +280,14 @@ en:
   service: Service
   settings: Settings
   purchases:
+    choose_storage_location: Choose storage location
+    info_about_doc_counterparty: Information about doc. counterparty
+    сontents_of_the_operation: Contents of the operation
+    mark_as_conducted: Mark as conducted
+    conducted: Conducted
+    choose_document: Choose document
+    counterparty_number_doc: Number doc. counterpary
+    product_service: Product/Service
     account_inbox: Account Inbox
     power_of_attorney: Power of Attorney
     purchase_of_goods: The purchase of goods and services
@@ -448,6 +438,9 @@ en:
   Production: Production
   Basic_place: Basic place
   Part: Part
+  profit_invoice: Profit invoice
+  certificate_of_completion: Certificate of completion
+  receiving_products_under_implementation: Receiving products under implementation
   info:
     add_new: Unfortunately, you have no account, click here to add a new one!
     empty: You don't have any entries go to the directory and add new!

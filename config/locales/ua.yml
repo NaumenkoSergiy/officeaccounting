@@ -31,35 +31,19 @@ ua:
         total: Сумма
   activerecord:
       errors:
+        messages:
+          blank: Поле не може бути пустим
         models:
-          contract:
+          product:
             attributes:
-              counterparty_id:
-                blank: Поле не може бути пустим
               number:
-                blank: Поле не може бути пустим
-          cashier:
-            attributes:
-              name:
-                blank: Поле не може бути пустим
-          account:
-            attributes:
-              name:
-                blank: Поле не може бути пустим
-          article:
-            attributes:
-              name:
-                blank: Поле не може бути пустим
+                taken: Продукт з таким намером вже існує!
           bank:
             attributes:
               code_edrpo:
                 not_a_number: Має бути номером
               mfo:
                 not_a_number: Має бути номером
-              lawyer_adress:
-                blank: Поле не може бути пустим
-              name:
-                blank: Поле не може бути пустим
   short_symbol: Короткостроковий
   long_symbol: Довгостроковий
   for_today:  на сьогодні
@@ -176,6 +160,8 @@ ua:
     director: Директор
     companies_list: Список підприємств
   money:
+    amount: Кількість
+    price: Ціна
     documents: Документи
     reports: Звіти
     references: Довідники
@@ -287,6 +273,14 @@ ua:
   service: Послуга
   settings: Налаштування
   purchases:
+    choose_storage_location: Вибір місця зберігання
+    info_about_doc_counterparty: Інформація про док. постачальника
+    сontents_of_the_operation: Зміст операції
+    mark_as_conducted: Відмітка про проведення
+    conducted: Провести
+    choose_document: Вибір документа
+    counterparty_number_doc: Номер док. постач.
+    product_service: Товар/Послуга
     account_inbox: Рахунки вхідні
     power_of_attorney: Довіреність
     purchase_of_goods: Придбання товарів і послуг
@@ -440,6 +434,9 @@ ua:
   Production: Продукція
   Basic_place: Основне місце
   Part: За сумісництвом
+  profit_invoice: Прибуткова накладна
+  certificate_of_completion: Акт виконаних робіт
+  receiving_products_under_implementation: Прийом товару під реалізацію
   info:
     empty: У вас не має жодного запису перейдіть в довідник і додайте новий!
     add_new: Нажаль у вас немає жодного запису, натисніть сюди щоб додати новий!
