@@ -8,11 +8,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-
-gem 'spring','~> 1.4.0',         group: :development
-
+gem 'spring', '~>1.4.0',        group: :development
 gem 'slim-rails'
-
 gem 'rails_12factor', group: :production
 gem 'mandrill_mailer'
 gem 'jquery-validation-rails'

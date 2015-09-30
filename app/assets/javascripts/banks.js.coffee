@@ -9,10 +9,10 @@ window.Banks =
     return
 
   loadOption: ->
-    $('.banks[data-type=new]').attr 'data-type', 'old'
+    $selector = $('.banks[data-type=new]').attr 'data-type', 'old'
     Banks.loadBanks (banks) ->
       $.each banks, ->
-        $('.banks').append '<option value=' + @value + '>' + @text + '</option>'
+        $selector.append '<option value=' + @value + '>' + @text + '</option>'
         return
       return
     return

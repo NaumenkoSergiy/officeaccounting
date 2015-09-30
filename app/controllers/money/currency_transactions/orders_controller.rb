@@ -39,7 +39,7 @@ class Money::CurrencyTransactions::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit!.merge(company_id: current_company.id)
+    params.require(:order).permit!.except(:path).merge(company_id: current_company.id)
   end
 
   def all_orders
