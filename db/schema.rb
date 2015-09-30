@@ -229,6 +229,7 @@ ActiveRecord::Schema.define(version: 20150925080242) do
     t.integer  "company_id",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "count",                 limit: 24
   end
 
   add_index "nomenclatures", ["accounting_account_id"], name: "index_nomenclatures_on_accounting_account_id", using: :btree

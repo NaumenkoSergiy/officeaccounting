@@ -412,6 +412,7 @@ ua:
   grn: грн
   guide_units: Одиниці виміру
   guide_unit: Одиниця виміру
+  count: Кількість
   tool_equipments:
     main_tools: Основні засоби
     material_tools: Матеріали та інвентар

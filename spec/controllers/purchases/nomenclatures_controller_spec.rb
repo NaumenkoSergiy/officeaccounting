@@ -9,7 +9,8 @@ RSpec.describe Purchases::NomenclaturesController, type: :controller do
                                                                       type:'',
                                                                       accounting_account_id: '',
                                                                       guide_unit_id: '',
-                                                                      company_id: '')}
+                                                                      company_id: '',
+                                                                      count: '')}
   let!(:nomenclature) { FactoryGirl.create(:nomenclature) }
 
   before(:each) do |test|
