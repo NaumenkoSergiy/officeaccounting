@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :is_admin?, :application_present, :current_company
   before_filter :set_locale
+  before_action :define_app_service, :set_online, :chat_params
 
   def current_user
     @current_user ||= User.find_by_auth_token!(cookies[:activate_token]) if cookies[:activate_token]
@@ -66,6 +67,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   def current_ability
     @current_ability ||= Ability.new(current_user, params)
   end
@@ -80,5 +82,21 @@ class ApplicationController < ActionController::Base
 
   def default_serializer_options
     { root: false }
+  end
+
+  def chat_params
+    if current_user
+      gon.current_user, gon.users, gon.online_users = @app_service.chat_params(current_user, current_company)
+    end
+  end
+
+  def define_app_service
+    @app_service ||= ApplicationService.new
+  end
+
+  def set_online
+    if current_user
+      $redis.set( current_user.id, nil, ex: 10*60 )
+    end
   end
 end

@@ -1,0 +1,17 @@
+
+div class="clean-trash"
+  - if @box == 'trash'
+    p
+      h1 = t('conversations.trash')
+      div id="empty-btn"
+        =link_to t('conversations.empty_trash'), empty_trash_conversations_path, class: 'btn btn-danger', method: :delete, remote: true
+  -elsif @box == 'inbox'
+    p
+      h1 = t('conversations.inbox')
+  -else
+    p
+      h1 = t('conversations.sent')
+
+ul class="list-group" id="messages-list"
+  = render partial: 'conversations/conversation', collection: @conversations, locals: { box: @box }
+= will_paginate

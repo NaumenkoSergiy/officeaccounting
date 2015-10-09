@@ -1,0 +1,18 @@
+li class="list-group-item clearfix" id= "conversation-#{conversation.id}" data-read="#{conversation.is_unread?(current_user)}"
+  div class="btn-group-vertical pull-right"
+        - if conversation.is_trashed?(current_user)
+          div class='restore-btn btn-xs btn-info'  id="restore-#{conversation.id}" = t('conversations.restore')
+        - else
+          div class='trash-btn btn-xs btn-danger' id="trash-#{conversation.id}" = t('conversations.trash')
+  = link_to conversation_path(conversation), class: "testspan"
+    div
+      = render partial: "conversation_#{box}", locals: { conversation: conversation }
+      br
+        span class="message-subject"
+          = conversation.subject
+      p
+        span class="message-body"
+          = conversation.last_message.body[0, 75]
+        small
+          span class="message-date"
+            = conversation.last_message_data

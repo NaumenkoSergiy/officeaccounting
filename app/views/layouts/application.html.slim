@@ -2,8 +2,9 @@ doctype html
 html
   head
     title ActiveBooks
+    = include_gon
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', SECRETS['faye_url'] , 'data-turbolinks-track' => true
     = csrf_meta_tags
     = insert_paloma_hook
     javascript:

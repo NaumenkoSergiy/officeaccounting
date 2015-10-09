@@ -11,6 +11,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    @user = User.find_by_id(params[:user_id])
+    @user.update_attributes(is_online: false) if @user
+
     session[:user_id] = nil
     redirect_to new_session_path
   end

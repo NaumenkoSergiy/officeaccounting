@@ -464,3 +464,22 @@ en:
     position: Position
     basic_information: Basic information
     department_position: Department/Position
+  conversations:
+    messages: Messages
+    new_conversation: New conversation
+    inbox: Inbox
+    sent: Sent
+    trash: Trash
+    new_message: New message
+    empty_trash: Empty trash
+    move_to_trash: Trash
+    restore_from_traash: Restore
+    subject: Subject
+    message: Message
+    choose_recipients: Choose recipients
+    send_message: Send
+    conversation: Conversation
+    are_you_sure: Are you sure?
+    sender_write: wrote
+    chat_title: Company chat
+    participants: Participants

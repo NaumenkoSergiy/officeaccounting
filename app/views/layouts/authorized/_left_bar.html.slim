@@ -8,16 +8,35 @@ nav.navbar-default.navbar-static-side role='navigation'
       li
         = application_present.nav_link_to(root_path, 'fa-building', t('navigation.main'))
       li
+        li#messages-link
+          - if current_user.mailbox.inbox({:read => false}).present?
+            = application_present.nav_link_to('#', 'fa fa-comments', t('conversations.messages') + ' ' +  image_tag("chat-online.png"))
+          - else
+            = application_present.nav_link_to('#', 'fa fa-comments', t('conversations.messages'))
+        ul#messages-menu style='display: none;' class='nav'
+          li class="dropdown-message"
+            = application_present.nav_link_to(new_message_path, 'fa fa-plus', t('conversations.new_message'))
+          li class="dropdown-message"
+            - if current_user.mailbox.inbox({:read => false}).present?
+              = application_present.nav_link_to(conversations_path(:box => "inbox"), 'fa fa-envelope-o', t('conversations.inbox') + ' (' + current_user.mailbox.inbox({:read => false}).count.to_s + ')')
+            - else
+              = application_present.nav_link_to(conversations_path(:box => "inbox"), 'fa fa-envelope-o', t('conversations.inbox'))
+          li class="dropdown-message"
+            = application_present.nav_link_to(conversations_path(:box => "sent"), 'fa fa-pencil-square-o', t('conversations.sent'))
+          li class="dropdown-message"
+            = application_present.nav_link_to(conversations_path(:box => "trash"), 'fa fa-trash', t('conversations.trash'))
+      li
         = application_present.nav_link_to(money_index_path, 'fa-money', t('navigation.money'))
       li
         = application_present.nav_link_to(sales_path, 'fa-cc-visa', t('navigation.sales'))
       li
         = application_present.nav_link_to(purchases_path, 'fa-pie-chart', t('navigation.purchases'))
       li
-        = application_present.nav_link_to('#', 'fa-file-excel-o', t('navigation.accounting'))
+        = application_present.nav_link_to('javascript:void(false)', 'fa-file-excel-o', t('navigation.accounting'))
       li
-        = application_present.nav_link_to('#', 'fa-file-text', t('navigation.register'))
+        = application_present.nav_link_to('javascript:void(false)', 'fa-file-text', t('navigation.register'))
       li
         = application_present.nav_link_to(tool_equipments_path, 'fa fa-wrench', t('navigation.tools_equipment'))
       li
         = application_present.nav_link_to(personnels_path, 'fa fa-users', t('personnels.personnel'))
+

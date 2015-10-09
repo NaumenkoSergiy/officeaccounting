@@ -1,0 +1,5 @@
+says to: 
+span class="message-recipient"
+  - conversation.participants.each do |recipient|
+    - unless recipient == current_user
+      = recipient.email + ', '

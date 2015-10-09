@@ -223,7 +223,6 @@
                     maskTokens.push(currentToken);
                 }
 
-                //console.log(JSON.stringify(maskTokens));
                 return maskTokens;
             }
 
@@ -580,7 +579,6 @@
                                     }
 
                                     matches = currentMatches.concat(malternateMatches);
-                                    //console.log("alternates " + pos + " -> " + JSON.stringify(matches));
                                     insertStop = true; //insert a stopelemnt when there is an alternate
                                 } else {
                                     match = handleMatch(alternateToken.matches[altIndex], [altIndex].concat(loopNdx), quantifierRecurse);
@@ -1127,7 +1125,6 @@
                             if (eventHandler.type != "setvalue") {
                                 var handler = eventHandler.handler;
                                 eventHandler.handler = function (e) {
-                                    //console.log(e.type);
                                     if (this.readOnly || this.disabled)
                                         e.preventDefault;
                                     else {

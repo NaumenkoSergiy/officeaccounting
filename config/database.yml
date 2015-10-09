@@ -3,7 +3,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password:
+  password: gubernator123
   socket: /var/run/mysqld/mysqld.sock
 
 development:
@@ -17,6 +17,6 @@ test:
 production:
   <<: *default
   username: root
-  password:
+  password: gubernator123
   host: 127.0.0.1
   database: active-books
