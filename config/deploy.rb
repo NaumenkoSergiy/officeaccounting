@@ -83,7 +83,6 @@ namespace :faye do
   task :stop do
     run "kill `cat #{faye_pid}` || true"
   end
-
   before 'deploy', 'faye:stop'
   after :publishing, 'faye:start'
 end
