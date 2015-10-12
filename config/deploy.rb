@@ -28,6 +28,9 @@ set :branch, branch
 set :pty, true
 set :use_sudo, false
 
+set :faye_pid, "#{deploy_to}/shared/pids/faye.pid"
+set :faye_config, "#{deploy_to}/current/faye.ru"
+
 # Default value for :linked_files is []
 # set :linked_files, %w{config/database.yml config/application.yml}
 
@@ -69,19 +72,18 @@ namespace :deploy do
   end
 
   before "deploy", "deploy:check_revision"
+end
 
-  set :faye_pid, "#{deploy_to}/shared/pids/faye.pid"
-  set :faye_config, "#{deploy_to}/current/faye.ru"
-  namespace :faye do
-    desc "Start Faye"
-    task :start do
-      run "cd #{deploy_to}/current && bundle exec rackup #{faye_config} -s thin -E production -D --pid #{faye_pid}"
-    end
-    desc "Stop Faye"
-    task :stop do
-      run "kill `cat #{faye_pid}` || true"
-    end
+namespace :faye do
+  desc "Start Faye"
+  task :start do
+    run "cd #{deploy_to}/current && bundle exec rackup #{faye_config} -s thin -E production -D --pid #{faye_pid}"
   end
-  before 'deploy:update_code', 'faye:stop'
-  after 'deploy:finalize_update', 'faye:start'
+  desc "Stop Faye"
+  task :stop do
+    run "kill `cat #{faye_pid}` || true"
+  end
+
+  before 'deploy', 'faye:stop'
+  after :publishing, 'faye:start'
 end
