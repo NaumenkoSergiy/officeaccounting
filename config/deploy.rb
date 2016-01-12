@@ -6,7 +6,7 @@ branch = ENV['BRANCH'] || 'master'
 
 application = 'active-books'
 
-server '104.131.236.185', user: user, password: 'activebridge', roles: [:app, :web, :db], primary: true
+server '188.226.136.169', user: user, password: 'U$er!depl0er', roles: [:app, :web, :db], primary: true
 set :user, user
 
 # Default deploy_to directory is /var/www/my_app
@@ -18,7 +18,7 @@ set :application, application
 set :repo_url, 'git@github.com:activebridge/active-books.git'
 set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 set :rvm_type, :user
-set :rvm_ruby_version, '2.1.5'
+set :rvm_ruby_version, '2.3.0'
 set :default_shell, '/bin/bash -l'
 
 # Default value for keep_releases is 5
@@ -84,5 +84,5 @@ namespace :faye do
     run "kill `cat #{faye_pid}` || true"
   end
   before 'deploy', 'faye:stop'
-  after :publishing, 'faye:start'
+  after 'deploy:publishing', 'faye:start'
 end
