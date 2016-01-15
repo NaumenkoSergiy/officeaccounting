@@ -1,9 +1,8 @@
 class MessagesController < ApplicationController
+  before_action :redirect_to_new_session
+
   def new
-    @users = []
-    if current_company
-      @users = current_company.users.pluck(:email)
-    end
+    @users = current_company ? current_company.users.pluck(:email) : []
   end
 
   def create
