@@ -1,23 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe ChatController, type: :controller do
+  let(:user) { FactoryGirl.create(:user) }
+  let(:chat) { FactoryGirl.create(:chat) }
 
-  describe "#index" do
-    let(:chat) { FactoryGirl.create(:chat) }
+  describe '#index' do
+    let(:participants) { [1,2] }
 
-    it "when chat exists" do
-      participants = [1,2]
+    it 'when chat exists' do
       get :index, participants: participants, id: chat.id
       data = JSON.parse(response.body)
-      expect(data["chat"]["id"]).to eq chat.id
+      expect(data['chat']['id']).to eq chat.id
     end
   end
 
   describe '#create' do
     let(:chat_attributes) { FactoryGirl.attributes_for(:chat) }
+    let(:participants) { [1,2] }
 
     it 'create new chat' do
-      participants = [1,2]
       expect {
         post :create, participants: participants, format: 'json'
       }.to change(Chat, :count).by(1)
@@ -25,20 +26,17 @@ RSpec.describe ChatController, type: :controller do
   end
 
   describe '#update' do
-    let!(:chat) { FactoryGirl.create(:chat) }
-    let!(:participants) { FactoryGirl.create_list(:participant, 2, chat:chat) }
+    let(:participants_ids) { chat.participants.pluck(:participant_id) << user.id }
 
     it 'update chat' do
-      participants_ids = [chat.participants[0].participant_id,chat.participants[1].participant_id,3]
       expect {
-        put :update, participant_id: 3, id: chat.id, participants: participants_ids, format: :json
+        put :update, id: chat.id, participants: participants_ids, format: :json
       }.to change(chat.participants, :count).by(1)
     end
   end
 
   describe '#destroy' do
     context 'when participants count higher 2' do
-      let!(:chat) { FactoryGirl.create(:chat) }
       let!(:participants) { FactoryGirl.create_list(:participant, 3, chat:chat) }
       it 'kill user from chat' do
         delete :destroy, participant_id: chat.participants[0].participant_id, id: chat.id, format: :json
@@ -49,8 +47,8 @@ RSpec.describe ChatController, type: :controller do
     end
 
     context 'when participants count lower or equal 2' do
-      let!(:chat) { FactoryGirl.create(:chat) }
       let!(:participants) { FactoryGirl.create_list(:participant, 2, chat:chat) }
+
       it 'destroy chat' do
         expect {
           delete :destroy, participant_id: chat.participants[0].participant_id, id: chat.id, format: :json
@@ -59,25 +57,23 @@ RSpec.describe ChatController, type: :controller do
     end
   end
 
-  describe "#list" do
-    let!(:user) { FactoryGirl.create(:user) }
-    let!(:chat) { FactoryGirl.create(:group_chat) }
-    let!(:participants) { FactoryGirl.create_list(:participant, 3, chat: chat) }
+  describe '#list' do
+    let(:chat) { FactoryGirl.create(:group_chat) }
+    let!(:participants) { FactoryGirl.create_list(:participant, 3, chat: chat, participant_id: user.id) }
 
-    it "get chat list" do
+    it 'get chat list' do
       get :list, user_id: user.id
       data = JSON.parse(response.body)
-      expect(data["id"][0]).to eq chat.id
+      expect(data['id'][0]).to eq(chat.id)
     end
   end
 
-  describe "#change_name" do
-    let!(:chat) { FactoryGirl.create(:chat) }
+  describe '#change_name' do
 
-    it "changing chat name" do
+    it 'changing chat name' do
       get :change_name, id: chat.id, name: 'new_chat_name'
       data = JSON.parse(response.body)
-      expect(data["name"]).to eq 'new_chat_name'
+      expect(data['name']).to eq 'new_chat_name'
     end
   end
 end
