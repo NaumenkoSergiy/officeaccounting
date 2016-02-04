@@ -13,6 +13,7 @@ class ChatMessagesService
   def create
     if message = ChatMessage.create(chat: current_chat, sender_id: @params[:sender_id], message_text: @params[:message_text])
       recipients(message)
+      broadcast(message)
     end
   end
 
@@ -42,6 +43,16 @@ class ChatMessagesService
           @params[:recipients] << participant.participant_id
         end
       end
+    end
+  end
+
+  def broadcast(message)
+    @params[:recipients].each do |recipient_id|
+      ActionCable.server.broadcast("chat_#{recipient_id}",
+                                   chat_id: @params[:chat_id],
+                                   sender_id: @params[:sender_id],
+                                   recipients: @params[:recipients],
+                                   message_text: message.message_text)
     end
   end
 end

@@ -15,6 +15,7 @@
 //= require i18n
 //= require i18n/translations
 //= require paloma
+//= require cable
 //= require_tree .
 //= require_tree ../../../vendor/assets/javascripts/chat-js/.
 //= require jquery-ui
@@ -30,14 +31,6 @@
 LEFT_BAR_HIDE = 45;
 LEFT_BAR_SHOW = 220;
 DEFAULT_ROOM_ID = 1;
-$(function() {
-  var faye = new Faye.Client('<%= Rails.application.secrets.broadcast %>');
-  if(typeof gon !== 'undefined'){
-    faye.subscribe('/chat_'+gon.current_user.id, function (data) {
-      eval(data);
-    });
-  }
-});
 
 $(document).ready(
   $(function () {

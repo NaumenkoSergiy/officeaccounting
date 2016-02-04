@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     session = @session_service.create_session params
+    cookies[:token] = verifier.generate(current_user.id) if current_user
     flash.now[:error] = session[:error] if session[:error]
   end
 

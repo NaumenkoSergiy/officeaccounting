@@ -92,3 +92,4 @@ Rails.application.configure do
     host: 'www.active-books.org'
   }
 end
+ActionCable.server.config.allowed_request_origins = [%r{(http|https):\/\/active-books.org}]
