@@ -66,6 +66,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def verifier
+    @verify ||= ActiveSupport::MessageVerifier.new(Rails.application.secrets.secret_key_base)
+  end
+
   private
 
   def current_ability

@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring', '~>1.4.0',        group: :development
+gem 'actioncable', github: 'rails/actioncable', branch: :archive
 gem 'slim-rails'
 gem 'rails_12factor', group: :production
 gem 'mandrill_mailer'
@@ -35,8 +36,7 @@ gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 gem 'mailboxer', github: 'lacco/mailboxer'
 gem 'gon'
-gem 'thin'
-gem 'faye'
+gem 'puma'
 gem 'redis'
 gem 'hiredis'
 group :development, :test do
@@ -53,7 +53,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'

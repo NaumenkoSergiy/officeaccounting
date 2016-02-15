@@ -21,7 +21,7 @@ module ActiveBooks
     #config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :ua
 
-    config.autoload_paths << File.join(config.root, "lib")
+    config.autoload_paths += Dir["#{config.root}/app/channels/**/", "#{config.root}/lib/**/"]
 
     config.exceptions_app = self.routes
     config.assets.initialize_on_precompile = true

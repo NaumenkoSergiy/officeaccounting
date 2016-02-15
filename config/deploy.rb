@@ -1,9 +1,8 @@
 # config valid only for Capistrano 3.1
-lock '3.2.1'
+lock '3.4.0'
 
 user = ENV['USER']
 branch = ENV['BRANCH'] || 'master'
-
 application = 'active-books'
 
 server '188.226.136.169', user: user, password: 'U$er!depl0er', roles: [:app, :web, :db], primary: true
@@ -27,10 +26,6 @@ set :keep_releases, 2
 set :branch, branch
 set :pty, true
 set :use_sudo, false
-
-set :faye_pid, "#{deploy_to}/shared/pids/faye.pid"
-set :faye_config, "#{deploy_to}/current/faye.ru"
-
 # Default value for :linked_files is []
 # set :linked_files, %w{config/database.yml config/application.yml}
 
@@ -72,17 +67,4 @@ namespace :deploy do
   end
 
   before "deploy", "deploy:check_revision"
-end
-
-namespace :faye do
-  desc "Start Faye"
-  task :start do
-    run "cd #{deploy_to}/current && bundle exec rackup #{faye_config} -s thin -E production -D --pid #{faye_pid}"
-  end
-  desc "Stop Faye"
-  task :stop do
-    run "kill `cat #{faye_pid}` || true"
-  end
-  before 'deploy', 'faye:stop'
-  after 'deploy:publishing', 'faye:start'
 end

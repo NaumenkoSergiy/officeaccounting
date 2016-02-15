@@ -42,10 +42,4 @@ module ApplicationHelper
   def translate_subclasses_for_select(data, parent_class)
     data.map {|s| {text: t(s.name.gsub(parent_class, '')), value: s.name} }
   end
-
-  def broadcast(channel, &block)
-    message = {channel: channel, data: capture(&block)}
-    uri = URI.parse(Rails.application.secrets.broadcast)
-    Net::HTTP.post_form(uri, message: message.to_json)
-  end
 end

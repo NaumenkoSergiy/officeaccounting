@@ -12,9 +12,7 @@ class ChatMessagesController < ApplicationController
 
   def create
     @chat_messages_service.create
-    respond_to do |format|
-      format.js {}
-    end
+    head :created
   end
 
   private
