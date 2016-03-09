@@ -1,27 +1,27 @@
 class ApplicationPresenter
   include ActionView::Helpers
 
-  def nav_link_to path, icon, name
+  def nav_link_to(path, icon, name)
     link_to content_tag(:div, i_name(icon, name), class: 'nav-label'), path
   end
 
-  def destroy_link path
-    link_to content_tag(:nav, i_name('fa-trash'), class: 'record-remove white'), path, method: :delete, remote: true, data: {confirm: 'Впевнені?'}
+  def destroy_link(path)
+    link_to content_tag(:nav, i_name('fa-trash'), class: 'record-remove white'), path, method: :delete, remote: true, data: { confirm: 'Впевнені?' }
   end
 
-  def options_for_select2 data
-    data.collect{ |d| {value: d[1], text: d[0]} }
+  def options_for_select2(data)
+    data.collect { |d| { value: d[1], text: d[0] } }
   end
 
-  def translate_select2_hash data
-    data.collect{ |d| {value: d[1], text: t(d[0])} }
+  def translate_select2_hash(data)
+    data.collect { |d| { value: d[1], text: t(d[0]) } }
   end
 
-  def translate_array_select2_options data
-    data.map{ |d| {value: d, text: t(d)} }
+  def translate_array_select2_options(data)
+    data.map { |d| { value: d, text: t(d) } }
   end
 
-  def translate_array_for_select_options array
+  def translate_array_for_select_options(array)
     array.map { |a| [t(a), a] }
   end
 
@@ -30,7 +30,7 @@ class ApplicationPresenter
     (Currency::AVAILABLE_CURRENCIES - current_currencies).map { |a| [t(a), a] }
   end
 
-  def translate_hash hash
+  def translate_hash(hash)
     t_hash = {}
     hash.each do |key, value|
       t_hash[t(key)] = value
@@ -44,7 +44,7 @@ class ApplicationPresenter
 
   private
 
-  def i_name icon, name=nil
+  def i_name(icon, name = nil)
     "#{content_tag(:i, nil, class: "fa #{icon}")} #{name}".html_safe
   end
 
@@ -52,8 +52,8 @@ class ApplicationPresenter
     hash.invert
         .collect do |key, value|
           {
-            value: "#{key}",
-            text:  "#{value}"
+            value: key.to_s,
+            text:  value.to_s
           }
         end
   end
