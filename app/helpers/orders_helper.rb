@@ -1,5 +1,4 @@
 module OrdersHelper
-
   def render_order_title(type)
     title = {
       'CurrencyTransaction::Purchase' => t('money.currences_tran.order_p_f_currency'),

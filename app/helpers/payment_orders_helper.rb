@@ -1,5 +1,4 @@
 module PaymentOrdersHelper
-
   def render_payment_order_title(type)
     title = {
       'PurchaseOut' => t('money.currences_tran.payment_order_out'),
