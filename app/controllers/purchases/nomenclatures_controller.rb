@@ -54,7 +54,7 @@ module Purchases
 
     def all_nomenclatures
       @nomenclatures = current_company.nomenclatures.by_type(params[:type])
-                                                    .page(params[:page])
+                                      .page(params[:page])
     end
 
     def subclasses_of_nomenclature

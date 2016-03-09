@@ -2,9 +2,9 @@ module Settings
   class OfficialsController < ApplicationController
     before_filter :redirect_to_new_session
     before_filter :check_creating_company_step, only: [:new]
+    before_action :set_company, only: [:create]
     before_filter :define_official
     before_action :set_officials, only: [:update]
-    before_action :set_company, only: [:create]
 
     def new
     end
@@ -21,15 +21,13 @@ module Settings
       official = Official.find(params['id'])
       respond_to do |format|
         if official.update(officials_params)
-            format.json { head :no_content } if params[:page]
-            format.js unless params[:page]
+          format.json { head :no_content } if params[:page]
+          format.js unless params[:page]
+        elsif params[:page]
+          format.json { render json: @official.errors, status: :unprocessable_entity }
         else
-          if params[:page]
-            format.json { render json: @official.errors, status: :unprocessable_entity }
-          else
-            flash[:error] = t('validation.errors.invalid_data')
-            format.js
-          end
+          flash[:error] = t('validation.errors.invalid_data')
+          format.js
         end
       end
     end
@@ -42,27 +40,34 @@ module Settings
 
     def define_official
       @official = if params[:back]
-                    if params[:official_type] == 'bookeeper'
-                      @company.officials.find_by(official_type: :bookeeper) ||
-                      current_user.companies.last.officials.new
-                    else
-                      @company.officials.find_by(official_type: :director)
-                    end
+                    company_officials_by_type(params[:official_type])
                   else
-                    if params[:official] && params[:official][:company_id]
-                      Company.find(params[:official][:company_id]).officials.new
-                    else
-                      current_user.companies.last.officials.new
-                    end
+                    company_officials_by_id(params)
                   end
     end
-    
+
     def set_officials
       @official = params[:id] ? Official.find(params[:id]) : Official.new
     end
 
     def set_company
       @company ||= current_user.companies.last
+    end
+
+    def company_officials_by_type(official_type)
+      if official_type == 'bookeeper'
+        @company.officials.find_by(official_type: :bookeeper) || @company.officials.new
+      else
+        @company.officials.find_by(official_type: :director)
+      end
+    end
+
+    def company_officials_by_id(params)
+      if params[:official] && params[:official][:company_id]
+        Company.find(params[:official][:company_id]).officials.new
+      else
+        @company.officials.new
+      end
     end
   end
 end

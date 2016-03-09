@@ -7,15 +7,16 @@ class UsersController < ApplicationController
 
   def create
     user = @user_service.create_user params
-    unless user[:error]
-      redirect_to new_session_path,notice: I18n.t('session.notific_mail')
-    else
+    if user[:error]
       redirect_to new_user_path, flash: { error: user[:error] }
+    else
+      redirect_to new_session_path, notice: I18n.t('session.notific_mail')
     end
   end
 
   def confirm_registration
-    if user = User.find_by_activate_token(params[:token])
+    user = User.find_by_activate_token(params[:token])
+    if user
       user.activate!
       redirect_to new_session_path, notice: I18n.t('session.account_act')
     else

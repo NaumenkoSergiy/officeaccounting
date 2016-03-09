@@ -8,8 +8,10 @@ module Personnels
     def index
       respond_to do |format|
         format.js
-        format.json { render json: @departments.select(:id, :name)
-                                               .map { |department| { value: department.id, text: department.name } }, status: 200 }
+        format.json do
+          render json: @departments.select(:id, :name)
+            .map { |department| { value: department.id, text: department.name } }, status: 200
+        end
       end
     end
 
@@ -54,7 +56,7 @@ module Personnels
 
     def departments
       @departments = current_company.departments.order('departments.created_at DESC')
-                                                .page(params[:page])
+                                    .page(params[:page])
     end
   end
 end

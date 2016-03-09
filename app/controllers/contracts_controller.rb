@@ -13,7 +13,7 @@ class ContractsController < ApplicationController
     @contract = Contract.new
     respond_to do |format|
       format.js
-    end  
+    end
   end
 
   def create
@@ -49,10 +49,10 @@ class ContractsController < ApplicationController
 
   def contract_params
     params.require(:contract).permit(:date,
-                                    :number,
-                                    :contract_type,
-                                    :validity,
-                                    :counterparty_id).merge!(company_id: current_user.current_company.id)
+                                     :number,
+                                     :contract_type,
+                                     :validity,
+                                     :counterparty_id).merge!(company_id: current_user.current_company.id)
   end
 
   def company_contract

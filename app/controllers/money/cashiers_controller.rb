@@ -37,7 +37,7 @@ module Money
 
     def destroy
       @cashier.destroy
-        respond_to do |format|
+      respond_to do |format|
         format.js
       end
     end

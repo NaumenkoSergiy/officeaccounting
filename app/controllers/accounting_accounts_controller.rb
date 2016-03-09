@@ -24,7 +24,7 @@ class AccountingAccountsController < ApplicationController
     else
       flash.now[:error] = t('validation.errors.account_error')
     end
-    respond_to  { |format| format.js }
+    respond_to { |format| format.js }
   end
 
   def update
@@ -42,7 +42,7 @@ class AccountingAccountsController < ApplicationController
     if @accounting_account.account_parent? && @accounting_account.children_size == 0
       @accounting_account.update_directory_field(false)
     end
-    respond_to  { |format| format.js }
+    respond_to { |format| format.js }
   end
 
   private

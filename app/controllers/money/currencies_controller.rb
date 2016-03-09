@@ -1,4 +1,4 @@
-module Money  
+module Money
   class CurrenciesController < ApplicationController
     before_filter :redirect_to_new_session
     before_action :set_currency, only: [:destroy]
@@ -21,7 +21,7 @@ module Money
 
     def destroy
       currency = Currency.find(params[:id])
-      render json:{ success: currency.destroy }
+      render json: { success: currency.destroy }
     end
 
     private
