@@ -49,7 +49,7 @@ module Personnels
 
     def employees
       @employees = current_company.employees.order('employees.created_at DESC')
-                                            .page(params[:page])
+                                  .page(params[:page])
     end
 
     def subclasses_of_employee

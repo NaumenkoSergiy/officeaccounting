@@ -9,11 +9,7 @@ module Money
       respond_to do |format|
         format.js
         format.json do
-          if params[:currency]
-            accounts = @accounts.acconts_on_type(params[:currency])
-          else
-            accounts = @accounts
-          end
+          accounts = params[:currency] ? @accounts.acconts_on_type(params[:currency]) : @accounts
           render json: accounts.map { |account| { value: account.id, text: account.name } }, status: 200
         end
       end

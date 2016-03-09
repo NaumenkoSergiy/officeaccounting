@@ -14,6 +14,6 @@ class MessagesController < ApplicationController
   private
 
   def recipients_emails(params)
-    User.where(id: params.split(","))
+    User.where(id: params.split(','))
   end
 end

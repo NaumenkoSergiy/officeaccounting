@@ -7,9 +7,11 @@ class Money::CurrencyTransactions::OrdersController < ApplicationController
   def index
     respond_to do |format|
       format.js
-      format.json { render json: ActiveModel::ArraySerializer.new(@orders,
-                                                                  each_serializer: OrderSerializer,
-                                                                  root: nil), status: 200 }
+      format.json do
+        render json: ActiveModel::ArraySerializer.new(@orders,
+                                                      each_serializer: OrderSerializer,
+                                                      root: nil), status: 200
+      end
     end
   end
 

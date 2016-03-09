@@ -1,28 +1,22 @@
 class ChatService
-
   def initialize(params)
     @params = params
   end
 
   def index
-    if @params[:goal] == 'participants'
-      current_chat
-    else
-      find_chat
-    end
+    @params[:goal] == 'participants' ? current_chat : find_chat
   end
 
   def create
-    if @params[:id] && curr_chat = existing_chat(@params[:participants], @params[:id])
-      unless participant_state(curr_chat, @params[:participant_id])
-        restore(curr_chat, @params[:participant_id])
-      end
+    curr_chat = existing_chat(@params[:participants], @params[:id]) if @params[:id]
+    if curr_chat
+      restore(curr_chat, @params[:participant_id]) unless participant_state(curr_chat, @params[:participant_id])
       curr_chat
     else
       params_chat(@params[:participants])
-      chat = Chat.create(participants_key: @params[:participants_key], 
-        in_group: @params[:in_group], 
-        name: @params[:name])
+      chat = Chat.create(participants_key: @params[:participants_key],
+                         in_group: @params[:in_group],
+                         name: @params[:name])
       if chat
         create_participants(chat, @params[:participants])
         chat
@@ -34,9 +28,9 @@ class ChatService
     chat = current_chat
     if participant_state(chat, @params[:participant_id])
       params_chat(@params[:participants])
-      if chat.update(participants_key: @params[:participants_key], 
-        in_group: @params[:in_group], 
-        name: @params[:name])
+      if chat.update(participants_key: @params[:participants_key],
+                     in_group: @params[:in_group],
+                     name: @params[:name])
         update_participants(chat, @params[:participants])
       end
     else
@@ -62,35 +56,38 @@ class ChatService
   end
 
   def chats_list
-    chat_list_name, chat_list_id, chat_id = [], [], []
+    chat_list_name = []
+    chat_list_id = []
+    chat_id = []
     Chat.group_chat.each do |chat|
-      if current_participant = chat.current_participant(@params[:user_id])
-        if current_participant.existing
-          chat_list_name << chat.name
-          chat_list_id << chat.participants
-          chat_id << chat.id
-        end
-      end
+      current_participant = chat.current_participant(@params[:user_id])
+      next unless current_participant
+      next unless current_participant.existing
+      chat_list_name << chat.name
+      chat_list_id << chat.participants
+      chat_id << chat.id
     end
-    return chat_list_name, chat_list_id, chat_id
+    [chat_list_name, chat_list_id, chat_id]
   end
 
   private
 
   def restore(chat, participant_id)
-    @params[:participant_id], @params[:existing] = participant_id, true
+    @params[:participant_id] = participant_id
+    @params[:existing] = true
     chat.current_participant(participant_id).update(participant_id: participant_id, existing: true)
   end
 
   def leave(chat, participant_id)
-    @params[:participant_id], @params[:existing] = participant_id, false
+    @params[:participant_id] = participant_id
+    @params[:existing] = false
     chat.current_participant(participant_id).update(participant_id: participant_id, existing: false)
   end
 
   def make_key(participants)
-    key = ""
+    key = ''
     participants.each do |participant|
-      key += participant.to_s + "-"
+      key += participant.to_s + '-'
     end
     @params[:participants_key] = key
   end
@@ -114,11 +111,8 @@ class ChatService
   end
 
   def participant_state(chat, participant_id)
-    if participant = chat.current_participant(participant_id)
-      participant.existing
-    else
-      true
-    end
+    participant = chat.current_participant(participant_id)
+    participant ? participant.existing : true
   end
 
   def create_participants(chat, participants)
@@ -131,7 +125,7 @@ class ChatService
     make_key(participants)
     @params[:in_group] = participants.count >= GROUP_CHAT_PARTICIPANTS_COUNT
     unless @params[:name]
-      @params[:name] = "chat-"
+      @params[:name] = 'chat-'
       if Chat.last && !Chat.last.in_group
         @params[:name] += (Chat.last.id + NAME_INCREMENT).to_s
       end

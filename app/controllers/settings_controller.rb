@@ -9,29 +9,29 @@ class SettingsController < ApplicationController
   def show
     @bookkeeper = @company.officials.find_by(official_type: :bookeeper)
     @director   = @company.officials.find_by(official_type: :director)
-    @incorporation_forms = get_incorporation_forms
+    @incorporation_forms = incorporation_forms
     @search_users = UserCompany.users_for(params[:id], current_user.id)
-    search_company_parent_user = UserCompany.find_by(company_id: params[:id])
-    @company_parent_user = search_company_parent_user.user_id == current_user.id
-  end
-
-  def get_incorporation_forms
-    IncorporationForm.all
-                     .sort_by{|f| f.name}
-                     .collect do |f|
-                       {
-                         value: "#{f.number} #{f.name}", 
-                         text:  "#{f.number} #{f.name}"
-                       }
-                     end
+    @company_parent_user = company_parent_user
   end
 
   private
 
+  def incorporation_forms
+    IncorporationForm.all.sort_by(&:name).collect do |f|
+      {
+        value: "#{f.number} #{f.name}",
+        text:  "#{f.number} #{f.name}"
+      }
+    end
+  end
+
   def company_complete?
     @company = current_user.companies.find(params[:id])
-    unless @company.complite?
-      redirect_to new_settings_company_path
-    end
+    redirect_to new_settings_company_path unless @company.complite?
+  end
+
+  def company_parent_user
+    search_company_parent_user = UserCompany.find_by(company_id: params[:id])
+    search_company_parent_user.user_id == current_user.id
   end
 end

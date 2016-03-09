@@ -9,6 +9,6 @@ class Bank < ActiveRecord::Base
   validates_numericality_of :code_edrpo, :mfo
 
   def assigned?
-    [credits, orders, account, counterparties, bank_account].any? {|a| a.present?}
+    [credits, orders, account, counterparties, bank_account].any?(&:present?)
   end
 end

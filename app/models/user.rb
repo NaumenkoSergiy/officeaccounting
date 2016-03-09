@@ -2,10 +2,10 @@ class User < ActiveRecord::Base
   acts_as_messageable
   has_secure_password
 
-  scope :by_email, -> (query) {
-    where("email LIKE ?", "%#{query.downcase}%")
-    .limit(10)
-    .collect{ |k| { id: k.id.to_s, text: k.email } }
+  scope :by_email, lambda { |query|
+    where('email LIKE ?', "%#{query.downcase}%")
+      .limit(10)
+      .collect { |k| { id: k.id.to_s, text: k.email } }
   }
 
   validates :email, presence: true
@@ -38,8 +38,8 @@ class User < ActiveRecord::Base
   after_create :send_activation_token
 
   ROLES_TITLES = {
-    :view_symbol => :view,
-    :edit_symbol => :edit
+    view_symbol: :view,
+    edit_symbol: :edit
   }
 
   def activated?
@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   end
 
   def activate!
-    self.update_column(:activate_token, nil)
+    update_column(:activate_token, nil)
   end
 
   def send_password_reset
@@ -58,22 +58,32 @@ class User < ActiveRecord::Base
   end
 
   def generate_token(column)
-    begin
+    loop do
+      break if User.exists?(column => self[column]) 
       self[column] = SecureRandom.urlsafe_base64
-    end while User.exists?(column => self[column])
+    end
   end
 
-  def mailboxer_email(object)
+  def mailboxer_email(_object)
     email
   end
 
   def online?
-    $redis.exists( self.id )
+    Redis.current.exists(id)
+  end
+
+  def find_company(company_id = current_company.id)
+    user_companies.find_by(company_id: company_id)
+  end
+
+  def last_company
+    company = current_user.companies.last
+    (!company || company.complite?) ? Company.new : company
   end
 
   private
 
   def send_activation_token
-    UserMailer.welcome_email(self).deliver_now! unless self.activated?
+    UserMailer.welcome_email(self).deliver_now! unless activated?
   end
 end

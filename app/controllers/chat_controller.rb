@@ -4,7 +4,8 @@ class ChatController < ApplicationController
   before_action :sort_participants, only: [:index, :create, :update]
 
   def index
-    if chat = @chat_service.index
+    chat = @chat_service.index
+    if chat
       render json: { chat: chat, participants: chat.participants }
     else
       head :no_content
@@ -12,15 +13,13 @@ class ChatController < ApplicationController
   end
 
   def create
-    if chat = @chat_service.create
-      render json: chat
-    end
+    chat = @chat_service.create
+    render json: chat if chat
   end
 
   def update
-    if chat = @chat_service.update
-      render json: chat
-    end
+    chat = @chat_service.update
+    render json: chat if chat
   end
 
   def destroy
@@ -30,7 +29,7 @@ class ChatController < ApplicationController
 
   def list
     chat_list_name, chat_list_id, chat_id = @chat_service.chats_list
-    render json: {chat_name: chat_list_name, chat_id: chat_list_id, id: chat_id}
+    render json: { chat_name: chat_list_name, chat_id: chat_list_id, id: chat_id }
   end
 
   def change_name

@@ -1,4 +1,4 @@
-module Money  
+module Money
   class CreditsController < ApplicationController
     before_filter :redirect_to_new_session
     before_action :set_credit, only: [:destroy, :update, :show]
@@ -20,7 +20,7 @@ module Money
     def create
       if @credit.update_attributes(credit_params)
         @credits.push @credit
-      else  
+      else
         flash[:error] = t('validation.errors.invalid_data')
       end
       respond_to do |format|

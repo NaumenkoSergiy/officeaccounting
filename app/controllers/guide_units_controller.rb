@@ -7,8 +7,10 @@ class GuideUnitsController < ApplicationController
   def index
     respond_to do |format|
       format.js
-      format.json { render json: @guide_units.select(:id, :name)
-                                             .map { |guide_unit| { value: guide_unit.id, text: guide_unit.name } }, status: 200 }
+      format.json do
+        render json: @guide_units.select(:id, :name)
+          .map { |guide_unit| { value: guide_unit.id, text: guide_unit.name } }, status: 200
+      end
     end
   end
 

@@ -4,6 +4,6 @@ unless Rails.env.production?
   Nomenclature::Product
   Nomenclature::Production
   Nomenclature::Service
-  Employee::Basic_place
+  Employee::BasicPlace
   Employee::Part
 end

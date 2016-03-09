@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def present(object, klass=nil)
+  def present(object, klass = nil)
     klass ||= "#{object.class}Presenter".constantize
     presenter = klass.new(object, self)
     yield presenter if block_given?
@@ -10,9 +10,9 @@ module ApplicationHelper
     new_object = f.object.send "build_#{type}"
     id = "new_#{type}"
     fields = f.send("#{type}_fields", new_object, child_index: id) do |builder|
-      render(type.to_s + "_fields", f: builder)
+      render(type.to_s + '_fields', f: builder)
     end
-    link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+    link_to(name, '#', class: 'add_fields', data: { id: id, fields: fields.delete("\n") })
   end
 
   def render_modal_window(title, form_id, list_id, id_button, tabs = '')
@@ -36,10 +36,10 @@ module ApplicationHelper
   end
 
   def translate_subclasses_for_select2(data, parent_class)
-    data.map {|s| [ t(s.name.gsub(parent_class, '')), s.name] }
+    data.map { |s| [t(s.name.gsub(parent_class, '')), s.name] }
   end
 
   def translate_subclasses_for_select(data, parent_class)
-    data.map {|s| {text: t(s.name.gsub(parent_class, '')), value: s.name} }
+    data.map { |s| { text: t(s.name.gsub(parent_class, '')), value: s.name } }
   end
 end

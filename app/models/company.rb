@@ -33,30 +33,30 @@ class Company < ActiveRecord::Base
   delegate :account, :mfo, to: :bank_account, prefix: true
 
   after_create { set_registration }
-  after_initialize :set_state #state initialize not works with rails 4.2
+  after_initialize :set_state # state initialize not works with rails 4.2
 
-  scope :non_current_user, -> (id) {
+  scope :non_current_user, lambda { |id|
     company_ids = UserCompany.user_companies(id).pluck(:company_id)
     where('id not in (?)', company_ids.compact)
   }
 
   state_machine :state, initial: :step1 do
     event :set_registration do
-      transition :step1 => :step2
+      transition step1: :step2
     end
 
     event :set_official do
-      transition :step2 => :step3
+      transition step2: :step3
     end
 
     event :set_bank_account do
-      transition :step3_1 => :step4
-      transition :step3   => :step3_1
+      transition step3_1: :step4
+      transition step3: :step3_1
     end
 
     event :complite do
-      transition :step3_1 => :complite
-      transition :step4   => :complite
+      transition step3_1: :complite
+      transition step4: :complite
     end
   end
 
@@ -64,7 +64,7 @@ class Company < ActiveRecord::Base
     "#{full_name} (#{short_name})"
   end
 
-  def current_company user_id
+  def current_company(user_id)
     user_companies.where(user_id: user_id, company_id: id)
                   .first
                   .current_company

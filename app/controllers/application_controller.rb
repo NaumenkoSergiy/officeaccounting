@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   skip_before_filter :verify_authenticity_token
 
-  helper_method :current_user, :is_admin?, :application_present, :current_company
+  helper_method :current_user, :admin?, :application_present, :current_company
   before_filter :set_locale
   before_action :define_app_service, :set_online, :chat_params
 
@@ -16,32 +16,20 @@ class ApplicationController < ActionController::Base
   end
 
   def current_admin_user
-    redirect_to root_url unless is_admin?
+    redirect_to root_url unless admin?
     current_user
   end
 
-  def is_admin?
+  def admin?
     current_user.try(:is_admin)
   end
 
   def check_creating_company_step
-    company = current_user.companies.last
-    @company = (!company || company.complite?) ? Company.new : company
-
+    @company = current_user.last_company
     unless params[:back]
-      redirect_path = {
-        step1:    new_settings_company_path,
-        step2:    new_settings_registration_path,
-        step3:    new_settings_official_path,
-        step3_1:  new_settings_official_path(official_type: 'bookeeper'),
-        step4:    new_settings_bank_account_path,
-        complite: new_settings_company_path
-      }
-
+      redirect_path = step_paths
       state = @company.state.to_sym
-      unless redirect_path[state].match(/\/.{1,}\/.{1,}\//).to_s == "/#{params[:locale]}/#{params['controller']}/"
-        redirect_to redirect_path[state]
-      end
+      redirect_to redirect_path[state] unless match_controller?(state)
     end
   end
 
@@ -53,7 +41,7 @@ class ApplicationController < ActionController::Base
     @present ||= ApplicationPresenter.new
   end
 
-  def has_company?
+  def company?
     if current_user && current_user.companies.empty?
       redirect_to new_settings_company_path
     end
@@ -72,6 +60,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def match_controller?(state)
+    redirect_path[state].match %r{/\/.{1,}\/.{1,}\//}.to_s == "/#{params[:locale]}/#{params['controller']}/"
+  end
+
   def current_ability
     @current_ability ||= Ability.new(current_user, params)
   end
@@ -80,7 +72,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || session[:language] || I18n.default_locale
   end
 
-  def default_url_options(options={})
+  def default_url_options(_options = {})
     { locale: I18n.locale }
   end
 
@@ -99,8 +91,17 @@ class ApplicationController < ActionController::Base
   end
 
   def set_online
-    if current_user
-      $redis.set( current_user.id, nil, ex: 10*60 )
-    end
+    Redis.current.set(current_user.id, nil, ex: 10 * 60) if current_user
+  end
+
+  def step_paths
+    {
+      step1:    new_settings_company_path,
+      step2:    new_settings_registration_path,
+      step3:    new_settings_official_path,
+      step3_1:  new_settings_official_path(official_type: 'bookeeper'),
+      step4:    new_settings_bank_account_path,
+      complite: new_settings_company_path
+    }
   end
 end

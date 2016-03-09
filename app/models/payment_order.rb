@@ -11,7 +11,7 @@ class PaymentOrder < ActiveRecord::Base
   delegate :name, to: :counterparty, prefix: true
   delegate :name, to: :account, prefix: true
 
-  scope :by_type, -> (type_order) {
+  scope :by_type, lambda { |type_order|
     where('type_order = ?', type_order)
   }
 end

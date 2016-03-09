@@ -1,7 +1,7 @@
 class Purchases::ProductsController < ApplicationController
   before_action :redirect_to_new_session
-  before_action :find_product, only:[:update, :destroy]
-  before_action :product, only:[:new, :create]
+  before_action :find_product, only: [:update, :destroy]
+  before_action :product, only: [:new, :create]
 
   layout false
 

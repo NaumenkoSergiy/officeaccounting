@@ -1,5 +1,5 @@
 class BaseService
-  def initialize session
+  def initialize(session)
     @session = session
   end
 end

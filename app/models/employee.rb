@@ -6,7 +6,7 @@ class Employee < ActiveRecord::Base
   belongs_to :department
   belongs_to :position
 
-  TYPES = [:Basic_place, :Part]
+  TYPES = [:BasicPlace, :Part]
 
   delegate :name, to: :department, prefix: true
   delegate :title, to: :position, prefix: true

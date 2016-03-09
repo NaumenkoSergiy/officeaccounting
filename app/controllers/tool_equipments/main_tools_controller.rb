@@ -53,7 +53,7 @@ module ToolEquipments
 
     def main_tools
       @main_tools = current_company.main_tools.by_type(params[:type])
-                                              .page(params[:page])
+                                   .page(params[:page])
     end
   end
 end

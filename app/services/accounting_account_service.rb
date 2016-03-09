@@ -6,12 +6,12 @@ class AccountingAccountService < BaseService
 
   def all_accounts(json)
     json.map { |a| { value: a.id, text: a.account_number.to_s } }
-        .sort_by{ |a| a[:account_number] }
+        .sort_by { |a| a[:account_number] }
   end
 
   def children(json)
     json.map { |a| { value: a.id, text: a.account_number.to_s } if a.children.empty? }
         .compact
-        .sort_by{ |a| a[:account_number] }
+        .sort_by { |a| a[:account_number] }
   end
 end

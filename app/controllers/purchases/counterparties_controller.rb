@@ -1,10 +1,10 @@
 module Purchases
   class CounterpartiesController < ApplicationController
     before_action :redirect_to_new_session
-    before_action :has_company?, only: :new
+    before_action :company?, only: :new
     before_action :set_counterparty, only: [:update, :destroy]
     before_action :define_counterparty, only: [:new, :create]
-    before_action :all_counterparties, only: [ :index, :new, :create]
+    before_action :all_counterparties, only: [:index, :new, :create]
 
     def index
       counterparties = @counterparties.map { |counterparty| { value: counterparty.id, text: counterparty.name } }
@@ -58,7 +58,7 @@ module Purchases
                                            :bank_id,
                                            :mfo).merge!(company_id: current_user.current_company.id)
     end
-    
+
     def define_counterparty
       @counterparty ||= Counterparty.new
     end

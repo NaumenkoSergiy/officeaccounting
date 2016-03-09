@@ -2,7 +2,7 @@ $(document).ready(function() {
   $('#registration_form_of_incorporation, #registration_tax_inspection').select2({width: '970px'});
 
   AjaxGetKoatuu = {
-                    url: '/settings/registrations/get_koatuu',
+                    url: '/settings/registrations/koatuu',
                     dataType: 'json',
                     data: function(term) {
                       return { q: term };
