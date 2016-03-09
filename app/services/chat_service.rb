@@ -111,7 +111,8 @@ class ChatService
   end
 
   def participant_state(chat, participant_id)
-    chat.current_participant(participant_id)&.existing
+    participant = chat.current_participant(participant_id)
+    participant ? participant.existing : true
   end
 
   def create_participants(chat, participants)
