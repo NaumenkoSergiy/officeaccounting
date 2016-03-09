@@ -11,7 +11,7 @@ class Chat < ActiveRecord::Base
   end
 
   def current_participant(user_id)
-    self.participants.find_by(participant_id: user_id)
+    participants.find_by(participant_id: user_id)
   end
 
   def self.current_chat(chat_id)

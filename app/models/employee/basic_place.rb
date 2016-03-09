@@ -1,1 +1,1 @@
-class Employee::Basic_place < Employee; end
+class Employee::BasicPlace < Employee; end

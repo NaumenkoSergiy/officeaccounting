@@ -12,6 +12,5 @@ class Product < ActiveRecord::Base
   delegate :name, to: :counterparty, prefix: true
   delegate :name, to: :guide_unit, prefix: true
 
-
   DOCUMENT_TYPE = [:profit_invoice, :certificate_of_completion, :receiving_products_under_implementation]
 end

@@ -1,5 +1,4 @@
 class Account < ActiveRecord::Base
-
   acts_as_paranoid
 
   belongs_to :company
@@ -21,7 +20,7 @@ class Account < ActiveRecord::Base
     'Поточний рахунок УЄФА' => :UEFA
   }
 
-  scope :acconts_on_type, -> (currency) {
+  scope :acconts_on_type, lambda { |currency|
     currency == 'UAH' ? where(currency: currency) : where.not(currency: 'UAH')
   }
 end

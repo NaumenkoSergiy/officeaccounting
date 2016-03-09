@@ -19,11 +19,11 @@ RSpec.describe ChatMessagesController, type: :controller do
     subject { post :create, chat_id: chat.id, sender_id: 1, message_text: "text", format: :js }
     
     it "create new message" do
-      expect{ subject }.to change(ChatMessage, :count).by(1)
+      expect { subject }.to change(ChatMessage, :count).by(1)
     end
 
     it "response" do
-      expect(subject).to render_template(:create)
+      expect(subject).to have_http_status(:created)
     end
   end
 

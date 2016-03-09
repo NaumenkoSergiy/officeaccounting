@@ -2,17 +2,17 @@ class UserCompany < ActiveRecord::Base
   belongs_to :user
   belongs_to :company
 
-  scope :user_companies, -> (user_id) {
+  scope :user_companies, lambda { |user_id|
     where(user_id: user_id)
   }
 
-  scope :users_for, -> (company_id, current_user) {
+  scope :users_for, lambda { |company_id, current_user|
     where(company_id: company_id).where.not(user_id: current_user)
   }
 
   after_create :check_current_company
 
-  def update_current value
+  def update_current(value)
     update_attribute(:current_company, value)
   end
 
@@ -21,6 +21,6 @@ class UserCompany < ActiveRecord::Base
   end
 
   def self.user_permission(company, current_user)
-     find_by(company: company, user: current_user)
+    find_by(company: company, user: current_user)
   end
 end
