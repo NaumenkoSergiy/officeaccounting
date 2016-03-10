@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     unless params[:back]
       redirect_path = step_paths
       state = @company.state.to_sym
-      redirect_to redirect_path[state] unless match_controller?(state)
+      redirect_to redirect_path[state] unless match_controller?(redirect_path[state])
     end
   end
 
@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
 
   def company?
     if current_user && current_user.companies.empty?
-      redirect_to new_settings_company_path
+      redirect_to new_settings_company_path(back: true)
     end
   end
 
@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
   private
 
   def match_controller?(state)
-    redirect_path[state].match %r{/\/.{1,}\/.{1,}\//}.to_s == "/#{params[:locale]}/#{params['controller']}/"
+    %r{/\/.{1,}\/.{1,}\//}.match(state).to_s == "/#{params[:locale]}/#{params['controller']}/"  
   end
 
   def current_ability
