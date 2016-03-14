@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Currency, :type => :model do
+RSpec.describe Currency, type: :model do
   context 'validation name' do
     let(:company) { FactoryGirl.create(:company) }
     let(:first_curr) { Currency::AVAILABLE_CURRENCIES.first }

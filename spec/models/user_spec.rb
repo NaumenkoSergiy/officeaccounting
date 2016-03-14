@@ -1,10 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
-
+RSpec.describe User, type: :model do
   context 'validation email' do
     let(:user) { FactoryGirl.create(:user) }
-	  
+
     describe 'unvalid email validation' do
       it 'has unvalid email' do
         user.email = 'user@foo,com'
@@ -69,7 +68,7 @@ RSpec.describe User, :type => :model do
     end
 
     it 'has valid password' do
-      user.password = Faker::Internet.password(6,32)
+      user.password = Faker::Internet.password(6, 32)
       expect(user).to be_invalid
     end
 

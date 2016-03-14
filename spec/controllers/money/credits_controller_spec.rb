@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Money::CreditsController, :type => :controller do
+RSpec.describe Money::CreditsController, type: :controller do
   let!(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let!(:company) { FactoryGirl.create(:company) }
   let!(:bank) { FactoryGirl.create(:bank) }
@@ -13,17 +13,16 @@ RSpec.describe Money::CreditsController, :type => :controller do
   end
 
   describe '#create' do
-
     it 'add create' do
-      expect {
+      expect do
         post :create, { credit: credit_attributes }.merge!(format: :js)
-      }.to change(Credit, :count).by(1)
+      end.to change(Credit, :count).by(1)
     end
 
     it 'not add credit for none current user', :skip_before do
-      expect {
+      expect do
         post :create, { credit: credit_attributes }.merge!(format: :js)
-      }.to_not change(Credit, :count)
+      end.to_not change(Credit, :count)
     end
   end
 
@@ -38,11 +37,10 @@ RSpec.describe Money::CreditsController, :type => :controller do
   end
 
   describe '#destroy' do
-
     it 'destroy credit' do
-      expect {
+      expect do
         delete :destroy, id: credit.id, format: :js
-      }.to change(Credit, :count).by(-1)
+      end.to change(Credit, :count).by(-1)
     end
   end
 end

@@ -9,8 +9,10 @@ describe ApplicationPresenter do
 
   describe 'current_company_currency_select' do
     it 'return empty array' do
-      @currencies = Currency::AVAILABLE_CURRENCIES.map { |name| FactoryGirl.create(
-      :currency, company_id: company.id, name: name) }
+      @currencies = Currency::AVAILABLE_CURRENCIES.map do |name|
+        FactoryGirl.create(
+          :currency, company_id: company.id, name: name)
+      end
 
       expect(@presenter.current_company_currency_select(@currencies)).to be_empty
     end
@@ -18,15 +20,19 @@ describe ApplicationPresenter do
     context 'without some currencies' do
       let(:first_curr) { Currency::AVAILABLE_CURRENCIES.first }
       let(:last_curr) { Currency::AVAILABLE_CURRENCIES.last }
-      let(:currency1) { FactoryGirl.create(:currency, company_id: company.id,
-                                            name: first_curr) }
-      let(:currency2) { FactoryGirl.create(:currency, company_id: company.id,
-                                            name: last_curr) }
+      let(:currency1) do
+        FactoryGirl.create(:currency, company_id: company.id,
+                                      name: first_curr)
+      end
+      let(:currency2) do
+        FactoryGirl.create(:currency, company_id: company.id,
+                                      name: last_curr)
+      end
       let(:currencies) { [currency1, currency2] }
 
-      subject {
+      subject do
         @presenter.current_company_currency_select(currencies).map { |e| e[1] }
-      }
+      end
 
       it { should_not include(first_curr) }
       it { should_not include(last_curr) }

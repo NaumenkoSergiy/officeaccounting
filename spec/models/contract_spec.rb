@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Contract, :type => :model do
-
+RSpec.describe Contract, type: :model do
   describe 'validation rules' do
     it { should validate_presence_of(:date) }
     it { should validate_presence_of(:number) }

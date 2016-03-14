@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  context "associations" do
+  context 'associations' do
     it { should belong_to(:guide_unit) }
     it { should belong_to(:counterparty) }
     it { should belong_to(:department) }

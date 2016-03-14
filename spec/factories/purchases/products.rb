@@ -13,15 +13,15 @@ FactoryGirl.define do
     conducted { [true, false].sample }
 
     before(:create) do |product|
-        product.counterparty = FactoryGirl.create(:counterparty)
+      product.counterparty = FactoryGirl.create(:counterparty)
     end
 
     before(:create) do |product|
-        product.guide_unit = FactoryGirl.create(:guide_unit)
+      product.guide_unit = FactoryGirl.create(:guide_unit)
     end
 
     before(:create) do |product|
-        product.department = FactoryGirl.create(:department)
+      product.department = FactoryGirl.create(:department)
     end
   end
 end

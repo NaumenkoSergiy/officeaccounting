@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :official do
     official_type do
-      ['Директор', 'Бухгалтер'][rand(2)]
+      %w(Директор Бухгалтер)[rand(2)]
     end
     name  { Faker::Name.name              }
     tin   { Faker::Number.number(8)       }
@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   factory :unvalid_official, class: Official do
     official_type do
-      ['Директор', 'Бухгалтер'][rand(2)]
+      %w(Директор Бухгалтер)[rand(2)]
     end
     name  { nil }
     tin   { nil }

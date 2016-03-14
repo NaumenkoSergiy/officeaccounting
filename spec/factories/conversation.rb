@@ -9,5 +9,5 @@ FactoryGirl.define do
   factory :receipts do
     is_read { false }
     trashed { false }
-    end
+  end
 end

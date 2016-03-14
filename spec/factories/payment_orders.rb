@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :payment_order do
-    date "2015-03-04 20:25:46"
+    date '2015-03-04 20:25:46'
   end
 end

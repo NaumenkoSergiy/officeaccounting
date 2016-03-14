@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Employee, type: :model do
-  context "associations" do
+  context 'associations' do
     it { should belong_to(:company) }
     it { should belong_to(:department) }
     it { should belong_to(:position) }
@@ -28,7 +28,7 @@ RSpec.describe Employee, type: :model do
     it { should_not allow_value('').for(:position_id) }
   end
 
-  describe "delegation" do
+  describe 'delegation' do
     it { should delegate_method(:name).to(:department).with_prefix(true) }
     it { should delegate_method(:title).to(:position).with_prefix(true) }
   end

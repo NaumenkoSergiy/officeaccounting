@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Nomenclature, type: :model do
-  context "associations" do
+  context 'associations' do
     it { should belong_to(:company) }
     it { should belong_to(:guide_unit) }
     it { should belong_to(:accounting_account) }

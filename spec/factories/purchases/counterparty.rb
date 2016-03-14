@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :counterparty, :class => 'Counterparty' do
+  factory :counterparty, class: 'Counterparty' do
     name { Faker::Name.name }
     title { Faker::Name.name }
     adress { Faker::Address.street_address }

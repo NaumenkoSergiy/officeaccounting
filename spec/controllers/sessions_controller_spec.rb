@@ -1,11 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe SessionsController, :type => :controller do
-
+RSpec.describe SessionsController, type: :controller do
   context 'session' do
     let(:unconfirmed_user) { FactoryGirl.create(:user, activate_token: SecureRandom.hex) }
-    let(:none_user) { FactoryGirl.attributes_for(:user)}
-    let(:unconfirmed_admin) { FactoryGirl.create(:user, is_admin: true, activate_token: SecureRandom.hex)}
+    let(:none_user) { FactoryGirl.attributes_for(:user) }
+    let(:unconfirmed_admin) { FactoryGirl.create(:user, is_admin: true, activate_token: SecureRandom.hex) }
 
     before(:all) do
       @user = FactoryGirl.create(:user)

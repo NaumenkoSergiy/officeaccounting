@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.describe Purchases::ProductsController, type: :controller do
   let(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let(:company) { FactoryGirl.create(:company) }
-  let(:product_attributes) { FactoryGirl.attributes_for(:product, counterparty: FactoryGirl.create(:counterparty),
-                                                                    department: FactoryGirl.create(:department),
-                                                                    guide_unit: FactoryGirl.create(:guide_unit))}
+  let(:product_attributes) do
+    FactoryGirl.attributes_for(:product, counterparty: FactoryGirl.create(:counterparty),
+                                         department: FactoryGirl.create(:department),
+                                         guide_unit: FactoryGirl.create(:guide_unit))
+  end
   let!(:product) { FactoryGirl.create(:product, company: company) }
 
   before(:each) do |test|
@@ -24,15 +26,15 @@ RSpec.describe Purchases::ProductsController, type: :controller do
     it { expect { post :create, product: product_attributes, format: :js }.to change(Product, :count).by(1) }
 
     it 'not add product for none current user', :skip_before do
-      expect {
-        post :create, { product: product_attributes, format: :js }
-      }.to_not change(Product, :count)
+      expect do
+        post :create, product: product_attributes, format: :js
+      end.to_not change(Product, :count)
     end
   end
 
   describe '#update' do
     before do
-      put :update, { id: product.id, product: product_attributes, format: :json }
+      put :update, id: product.id, product: product_attributes, format: :json
       product.reload
     end
 

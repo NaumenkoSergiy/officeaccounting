@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Money::ArticlesController, :type => :controller do
+RSpec.describe Money::ArticlesController, type: :controller do
   let!(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let!(:company) { FactoryGirl.create(:company) }
   let!(:article_attributes) { FactoryGirl.attributes_for(:article) }
-  let!(:unvalid_article_attributes) { FactoryGirl.attributes_for(:article, name: '' )}
+  let!(:unvalid_article_attributes) { FactoryGirl.attributes_for(:article, name: '') }
   let!(:article) { FactoryGirl.create(:article) }
 
   before(:each) do |test|
@@ -13,29 +13,28 @@ RSpec.describe Money::ArticlesController, :type => :controller do
   end
 
   describe '#create' do
-
     it 'add article' do
-      expect {
+      expect do
         post :create, { article: article_attributes }.merge!(format: :js)
-      }.to change(Article, :count).by(1)
+      end.to change(Article, :count).by(1)
     end
 
     it 'not add article for none current user', :skip_before do
-      expect {
+      expect do
         post :create, { article: article_attributes }.merge!(format: :js)
-      }.to_not change(Article, :count)
+      end.to_not change(Article, :count)
     end
 
     it 'add article from unvalid article attributes' do
-      expect {
+      expect do
         post :create, { article: unvalid_article_attributes }.merge!(format: :js)
-      }.to_not change(Article, :count)
+      end.to_not change(Article, :count)
     end
 
     it 'not add article with empty attributes' do
-      expect {
+      expect do
         post :create, { article: unvalid_article_attributes }.merge!(format: :js)
-      }.to_not change(Article, :count)
+      end.to_not change(Article, :count)
     end
   end
 
@@ -48,11 +47,10 @@ RSpec.describe Money::ArticlesController, :type => :controller do
   end
 
   describe '#destroy' do
-
     it 'destroy article' do
-      expect {
+      expect do
         delete :destroy, { id: article.id }.merge!(format: :js)
-      }.to change(Article, :count).by(-1)
+      end.to change(Article, :count).by(-1)
     end
   end
 end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Company, type: :model do
-
   it { should have_one(:bank_account) }
   it { should have_one(:bank).through(:bank_account) }
   it { should have_many(:user_companies) }

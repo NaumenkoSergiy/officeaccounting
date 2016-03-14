@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MoneyController, :type => :controller do
+RSpec.describe MoneyController, type: :controller do
   let!(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let!(:company) { FactoryGirl.create(:company) }
 
@@ -11,7 +11,7 @@ RSpec.describe MoneyController, :type => :controller do
 
   describe '#index' do
     it 'return currencies for current_company' do
-      2.times{ FactoryGirl.create(:currency) }
+      2.times { FactoryGirl.create(:currency) }
       get :index
       expect(assigns(:currencies)).to be
       expect(assigns(:search)).to be
