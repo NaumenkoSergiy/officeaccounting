@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     unless params[:back]
       redirect_path = step_paths
       state = @company.state.to_sym
-      redirect_to redirect_path[state] unless match_controller?(redirect_path[state])
+      redirect_to redirect_path[state] unless match_controller?(redirect_path[state]) || @company
     end
   end
 

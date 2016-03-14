@@ -8,6 +8,13 @@ RSpec.describe Settings::CompaniesController, :type => :controller do
     session[:user_id] = user.id unless test.metadata[:skip_before]
   end
 
+  describe '#new' do
+    it 'initialize new company' do
+      get :new, format: :js
+      expect(assigns(:company)).to be_a_new(Company)
+    end
+  end
+
   describe '#create' do
     let(:unvalid_company_attributes) { FactoryGirl.attributes_for(:unvalid_company) }
 
