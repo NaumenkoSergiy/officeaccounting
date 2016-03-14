@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
   end
 
   def last_company
-    company = current_user.companies.last
+    company = companies.last
     (!company || company.complite?) ? Company.new : company
   end
 
