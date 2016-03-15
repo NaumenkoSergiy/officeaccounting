@@ -3,18 +3,19 @@
     .nav.navbar-static-top role='navigation' style='margin-bottom: 0;'
       .navbar-header
         #path data={ accounts: money_accounts_path, articles: money_articles_path, banks: money_banks_path, contracts: contracts_path, counterparties: purchases_counterparties_path, registers: money_registers_path, currensies: money_currencies_path, orders: money_currency_transactions_orders_path, main_tools: tool_equipments_main_tools_path, accounting_account: accounting_accounts_path, guide_units: guide_units_path, nomenclatures: purchases_nomenclatures_path, departments: personnels_departments_path, positions: personnels_positions_path, employees: personnels_employees_path }
-        a.navbar-minimalize.minimalize-styl-2.btn.btn-primary href='#'
-          i.fa.fa-bars
-        - if current_user.companies.size > 1
-          i.fa
-              = t('current_company')
-          span.current-company-top
-             = current_user.current_company_full_name
-          p.change-current-company data-target="#change-company" data-toggle="modal"
-              = t('change_current_company')
-          .row
-            .col-md-12
-              = render 'shared/change_company_modal'
+        .row
+          .col-md-2
+            a.navbar-minimalize.minimalize-styl-2.btn.btn-primary href='#'
+              i.fa.fa-bars
+          .col-md-10
+            p.current-company-top
+              = current_user.current_company_full_name
+            - if current_user.companies.size > 1
+              p.change-current-company data-target="#change-company" data-toggle="modal"
+                  = t('change_current_company')
+              .row
+                .col-md-12
+                  = render 'shared/change_company_modal'
       ul.nav.navbar-top-links.navbar-right
         li
           = link_to '', sessions_set_language_path(locale: 'ua'), class: 'ua-language'
