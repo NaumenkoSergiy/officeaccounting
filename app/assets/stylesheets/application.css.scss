@@ -154,3 +154,20 @@ input[type=checkbox] {
 .list-group-item { padding: 10px 10px 0px 10px; }
 
 .read { background-color: rgba(243, 243, 243, .85); }
+
+span.current-company-top {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+p.change-current-company {
+  color: #999c9e;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#change-company .col-md-12 {
+  padding: 10px;
+  margin-bottom: 5px;
+  &:hover { background: #eee; }
+}
