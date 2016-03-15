@@ -1,19 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe Personnels::EmployeesController, :type => :controller do
+RSpec.describe Personnels::EmployeesController, type: :controller do
   let(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let(:company) { FactoryGirl.create(:company) }
   let(:employee_attributes) { FactoryGirl.attributes_for(:employee) }
-  let(:unvalid_employee_attributes) { FactoryGirl.attributes_for(:employee, personnel_number:'',
-                                                                                    type:'',
-                                                                                    name: '',
-                                                                                    passport: '',
-                                                                                    adress:'',
-                                                                                    date_birth:'',
-                                                                                    ipn:'',
-                                                                                    department_id: '',
-                                                                                    position_id: ''
-                                                                                    )}
+  let(:unvalid_employee_attributes) do
+    FactoryGirl.attributes_for(:employee, personnel_number: '',
+                                          type: '',
+                                          name: '',
+                                          passport: '',
+                                          adress: '',
+                                          date_birth: '',
+                                          ipn: '',
+                                          department_id: '',
+                                          position_id: ''
+                              )
+  end
   let!(:employee) { FactoryGirl.create(:employee, company_id: company.id) }
 
   before(:each) do |test|
@@ -22,25 +24,23 @@ RSpec.describe Personnels::EmployeesController, :type => :controller do
   end
 
   describe '#create' do
-
     it 'add employee' do
-      expect {
+      expect do
         post :create, { employee: employee_attributes }.merge!(format: :js)
-      }.to change(Employee, :count).by(1)
+      end.to change(Employee, :count).by(1)
     end
 
     it 'not add employee for none current user', :skip_before do
-      expect {
+      expect do
         post :create, { employee: employee_attributes }.merge!(format: :js)
-      }.to_not change(Employee, :count)
+      end.to_not change(Employee, :count)
     end
 
     it 'add employee from unvalid employee attributes' do
-      expect {
+      expect do
         post :create, { employee: unvalid_employee_attributes }.merge!(format: :js)
-      }.to_not change(Employee, :count)
+      end.to_not change(Employee, :count)
     end
-
   end
 
   describe '#update' do
@@ -52,12 +52,10 @@ RSpec.describe Personnels::EmployeesController, :type => :controller do
   end
 
   describe '#destroy' do
-
     it 'destroy employee' do
-      expect {
+      expect do
         delete :destroy, { id: employee.id }.merge!(format: :js)
-      }.to change(Employee, :count).by(-1)
+      end.to change(Employee, :count).by(-1)
     end
-
   end
 end

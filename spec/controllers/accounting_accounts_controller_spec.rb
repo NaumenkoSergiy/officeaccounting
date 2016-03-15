@@ -4,14 +4,16 @@ RSpec.describe AccountingAccountsController, type: :controller do
   let(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let(:company) { FactoryGirl.create(:company) }
   let(:accounting_account_attributes) { FactoryGirl.attributes_for(:accounting_account) }
-  let(:unvalid_accounting_account_attributes) { FactoryGirl.attributes_for(:accounting_account,
-                                                                           name:'',
-                                                                           ap:'',
-                                                                           invoice_type: '',
-                                                                           account_number: '',
-                                                                           subcount1: '',
-                                                                           subcount2: '',
-                                                                           subcount3: '')}
+  let(:unvalid_accounting_account_attributes) do
+    FactoryGirl.attributes_for(:accounting_account,
+                               name: '',
+                               ap: '',
+                               invoice_type: '',
+                               account_number: '',
+                               subcount1: '',
+                               subcount2: '',
+                               subcount3: '')
+  end
   let!(:accounting_account) { FactoryGirl.create(:accounting_account) }
 
   before(:each) do |test|
@@ -22,16 +24,16 @@ RSpec.describe AccountingAccountsController, type: :controller do
   describe '#create' do
     it { expect { post :create, accounting_account: accounting_account_attributes, format: :js }.to change(AccountingAccount, :count).by(1) }
     it 'not add accounting_account for none current user', :skip_before do
-      expect {
-        post :create, { accounting_account: accounting_account_attributes, format: :js }
-      }.to_not change(AccountingAccount, :count)
+      expect do
+        post :create, accounting_account: accounting_account_attributes, format: :js
+      end.to_not change(AccountingAccount, :count)
     end
     it { expect { post :create, accounting_account: unvalid_accounting_account_attributes, format: :js }.to_not change(AccountingAccount, :count) }
   end
 
   describe '#update' do
     before do
-      put :update, { id: accounting_account.id, accounting_account: accounting_account_attributes, format: :json }
+      put :update, id: accounting_account.id, accounting_account: accounting_account_attributes, format: :json
       accounting_account.reload
     end
 

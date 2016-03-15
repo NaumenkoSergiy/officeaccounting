@@ -13,7 +13,7 @@ FactoryGirl.define do
     number_registered_in_revenue_commissioners { Faker::Number.number(10) }
     registered_in_pension_fund { Faker::Date.between(2.month.ago, Date.yesterday) }
     code_registered_in_pension_fund { Faker::Number.number(8) }
-    tax_system { ['Загальна', 'Спрощена'][rand(2)] }
+    tax_system { %w(Загальна Спрощена)[rand(2)] }
   end
 
   factory :unvalid_registration, class: Registration do

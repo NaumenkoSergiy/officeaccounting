@@ -1,15 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe ContractsController, :type => :controller do
+RSpec.describe ContractsController, type: :controller do
   let(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let(:company) { FactoryGirl.create(:company) }
   let(:counterparty) { FactoryGirl.create(:counterparty) }
   let(:contract_attributes) { FactoryGirl.attributes_for(:contract, counterparty_id: counterparty.id) }
-  let(:unvalid_contract_attributes) { FactoryGirl.attributes_for(:contract, date:'',
-                                                                            number:'',
-                                                                            contract_type: '',
-                                                                            validity: ''
-                                                                            )}
+  let(:unvalid_contract_attributes) do
+    FactoryGirl.attributes_for(:contract, date: '',
+                                          number: '',
+                                          contract_type: '',
+                                          validity: ''
+                              )
+  end
   let!(:contract) { FactoryGirl.create(:contract, company_id: company.id, counterparty_id: counterparty.id) }
 
   before(:each) do |test|
@@ -18,29 +20,28 @@ RSpec.describe ContractsController, :type => :controller do
   end
 
   describe '#create' do
-
     it 'add contract' do
-      expect {
+      expect do
         post :create, { contract: contract_attributes }.merge!(format: :js)
-      }.to change(Contract, :count).by(1)
+      end.to change(Contract, :count).by(1)
     end
 
     it 'not add contract for none current user', :skip_before do
-      expect {
+      expect do
         post :create, { contract: contract_attributes }.merge!(format: :js)
-      }.to_not change(Contract, :count)
+      end.to_not change(Contract, :count)
     end
 
     it 'add contract from unvalid contract attributes' do
-      expect {
+      expect do
         post :create, { contract: unvalid_contract_attributes }.merge!(format: :js)
-      }.to_not change(Contract, :count)
+      end.to_not change(Contract, :count)
     end
 
     it 'not add contract with empty attributes' do
-      expect {
+      expect do
         post :create, { contract: unvalid_contract_attributes }.merge!(format: :js)
-      }.to_not change(Contract, :count)
+      end.to_not change(Contract, :count)
     end
   end
 
@@ -56,11 +57,10 @@ RSpec.describe ContractsController, :type => :controller do
   end
 
   describe '#destroy' do
-
     it 'destroy contract' do
-      expect {
+      expect do
         delete :destroy, { id: contract.id }.merge!(format: :js)
-      }.to change(Contract, :count).by(-1)
+      end.to change(Contract, :count).by(-1)
     end
   end
 end

@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe PasswordResetsController, :type => :controller do
-
+RSpec.describe PasswordResetsController, type: :controller do
   let(:user) { FactoryGirl.create(:user) }
-    
+
   before(:each) do
     user.update_attribute(:activate_token, nil)
   end

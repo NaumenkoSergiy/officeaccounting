@@ -1,16 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe Purchases::CounterpartiesController, :type => :controller do
+RSpec.describe Purchases::CounterpartiesController, type: :controller do
   let(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let(:company) { FactoryGirl.create(:company) }
   let(:counterparty_attributes) { FactoryGirl.attributes_for(:counterparty) }
-  let(:unvalid_counterparty_attributes) { FactoryGirl.attributes_for(:counterparty, title:'',
-                                                                                    name:'',
-                                                                                    adress: '',
-                                                                                    edrpo: '',
-                                                                                    mfo:'',
-                                                                                    account:''
-                                                                                    )}
+  let(:unvalid_counterparty_attributes) do
+    FactoryGirl.attributes_for(:counterparty, title: '',
+                                              name: '',
+                                              adress: '',
+                                              edrpo: '',
+                                              mfo: '',
+                                              account: ''
+                              )
+  end
   let!(:counterparty) { FactoryGirl.create(:counterparty) }
 
   before(:each) do |test|
@@ -19,29 +21,28 @@ RSpec.describe Purchases::CounterpartiesController, :type => :controller do
   end
 
   describe '#create' do
-
     it 'add counterparty' do
-      expect {
+      expect do
         post :create, { counterparty: counterparty_attributes }.merge!(format: :js)
-      }.to change(Counterparty, :count).by(1)
+      end.to change(Counterparty, :count).by(1)
     end
 
     it 'not add counterparty for none current user', :skip_before do
-      expect {
+      expect do
         post :create, { counterparty: counterparty_attributes }.merge!(format: :js)
-      }.to_not change(Counterparty, :count)
+      end.to_not change(Counterparty, :count)
     end
 
     it 'add counterparty from unvalid counterparty attributes' do
-      expect {
+      expect do
         post :create, { counterparty: unvalid_counterparty_attributes }.merge!(format: :js)
-      }.to_not change(Counterparty, :count)
+      end.to_not change(Counterparty, :count)
     end
 
     it 'not add counterparty with empty attributes' do
-      expect {
+      expect do
         post :create, { counterparty: unvalid_counterparty_attributes }.merge!(format: :js)
-      }.to_not change(Counterparty, :count)
+      end.to_not change(Counterparty, :count)
     end
   end
 
@@ -54,11 +55,10 @@ RSpec.describe Purchases::CounterpartiesController, :type => :controller do
   end
 
   describe '#destroy' do
-
     it 'destroy counterparty' do
-      expect {
+      expect do
         delete :destroy, { id: counterparty.id }.merge!(format: :js)
-      }.to change(Counterparty, :count).by(-1)
+      end.to change(Counterparty, :count).by(-1)
     end
   end
 end

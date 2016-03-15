@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CurrencyTransaction, type: :model do
-  describe "association" do
+  describe 'association' do
     it { should belong_to(:company) }
     it { should belong_to(:order) }
   end
@@ -14,7 +14,7 @@ RSpec.describe CurrencyTransaction, type: :model do
     it { should_not allow_value('').for(:total_pf) }
   end
 
-  describe "delegation" do
+  describe 'delegation' do
     it { should delegate_method(:currency).to(:order).with_prefix(true) }
     it { should delegate_method(:total).to(:order).with_prefix(true) }
     it { should delegate_method(:rate).to(:order).with_prefix(true) }

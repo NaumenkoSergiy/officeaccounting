@@ -16,7 +16,7 @@ RSpec.describe ChatService do
     end
 
     context 'goal does not equal participants' do
-      let(:participants) { [1,2] }
+      let(:participants) { [1, 2] }
       let(:chat_service) { ChatService.new(goal: '', participants: participants) }
 
       it 'find current_chat by participants' do
@@ -42,7 +42,7 @@ RSpec.describe ChatService do
     end
 
     context 'current_chat does not exists' do
-      let(:chat_service) { ChatService.new(participants: [1,2,3], in_group: true, name: 'chat') }
+      let(:chat_service) { ChatService.new(participants: [1, 2, 3], in_group: true, name: 'chat') }
 
       it 'create new chat' do
         expect { chat_service.create }.to change(Chat, :count).by(1)
@@ -60,7 +60,7 @@ RSpec.describe ChatService do
 
   describe 'update method' do
     context 'add new participant to the chat' do
-      let(:chat_service) { ChatService.new(participants: [1,2,3], id: chat.id, in_group: true, name: 'chat') }
+      let(:chat_service) { ChatService.new(participants: [1, 2, 3], id: chat.id, in_group: true, name: 'chat') }
 
       it 'update chat with new participant' do
         expect { chat_service.update }.to change(chat.participants, :count).by(3)
@@ -87,7 +87,7 @@ RSpec.describe ChatService do
       let!(:participants) { FactoryGirl.create_list(:participant, 3, chat: chat) }
       let(:chat_service) { ChatService.new(id: chat.id, participant_id: participants.first.participant_id) }
 
-      it 'switch participant attribute -existing- to false'do
+      it 'switch participant attribute -existing- to false' do
         expect(chat_service.destroy[0].participants.first.existing).to eq(false)
       end
     end
@@ -96,7 +96,7 @@ RSpec.describe ChatService do
       let!(:participants) { FactoryGirl.create_list(:participant, 2, chat: chat) }
       let(:chat_service) { ChatService.new(id: chat.id, participant_id: participants.first.participant_id) }
 
-      it 'destroy chat'do
+      it 'destroy chat' do
         expect { chat_service.destroy }.to change(Chat, :count).by(-1)
       end
     end

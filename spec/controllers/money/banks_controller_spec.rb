@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Money::BanksController, :type => :controller do
+RSpec.describe Money::BanksController, type: :controller do
   let!(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let!(:bank_attributes) { FactoryGirl.attributes_for(:bank) }
-  let!(:unvalid_bank_attributes) { FactoryGirl.attributes_for(:bank, name: '', code_edrpo: '', mfo: '', lawyer_adress: '')}
+  let!(:unvalid_bank_attributes) { FactoryGirl.attributes_for(:bank, name: '', code_edrpo: '', mfo: '', lawyer_adress: '') }
   let!(:bank) { FactoryGirl.create(:bank) }
 
   before(:each) do |test|
@@ -11,29 +11,28 @@ RSpec.describe Money::BanksController, :type => :controller do
   end
 
   describe '#create' do
-
     it 'add bank' do
-      expect {
+      expect do
         post :create, { bank: bank_attributes }.merge!(format: :js)
-      }.to change(Bank, :count).by(1)
+      end.to change(Bank, :count).by(1)
     end
 
     it 'not add currency for none current user', :skip_before do
-      expect {
+      expect do
         post :create, { bank: bank_attributes }.merge!(format: :js)
-      }.to_not change(Bank, :count)
+      end.to_not change(Bank, :count)
     end
 
     it 'add bank from unvalid bank attributes' do
-      expect {
+      expect do
         post :create, { bank: unvalid_bank_attributes }.merge!(format: :js)
-      }.to_not change(Bank, :count)
+      end.to_not change(Bank, :count)
     end
 
     it 'not add bank with empty attributes' do
-      expect {
+      expect do
         post :create, { bank: unvalid_bank_attributes }.merge!(format: :js)
-      }.to_not change(Bank, :count)
+      end.to_not change(Bank, :count)
     end
   end
 
@@ -49,11 +48,10 @@ RSpec.describe Money::BanksController, :type => :controller do
   end
 
   describe '#destroy' do
-
     it 'destroy bank' do
-      expect {
+      expect do
         delete :destroy, { id: bank.id }.merge!(format: :js)
-      }.to change(Bank, :count).by(-1)
+      end.to change(Bank, :count).by(-1)
     end
   end
 end

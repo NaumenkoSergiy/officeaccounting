@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Settings::CompaniesController, :type => :controller do
+RSpec.describe Settings::CompaniesController, type: :controller do
   let(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let(:company_attributes) { FactoryGirl.attributes_for(:company) }
 
@@ -19,21 +19,21 @@ RSpec.describe Settings::CompaniesController, :type => :controller do
     let(:unvalid_company_attributes) { FactoryGirl.attributes_for(:unvalid_company) }
 
     it 'create new company' do
-      expect {
+      expect do
         post :create, { company: company_attributes }.merge!(format: :js)
-      }.to change(Company, :count).by(1)
+      end.to change(Company, :count).by(1)
     end
 
     it 'not create new company with unvalid data' do
-      expect {
+      expect do
         post :create, { company: unvalid_company_attributes }.merge!(format: :js)
-      }.to_not change(Company, :count)
+      end.to_not change(Company, :count)
     end
 
     it 'not create new company without current user', :skip_before do
-      expect {
+      expect do
         post :create, company_attributes
-      }.to_not change(Company, :count)
+      end.to_not change(Company, :count)
     end
   end
 
@@ -74,7 +74,7 @@ RSpec.describe Settings::CompaniesController, :type => :controller do
     let(:new_current_company) { FactoryGirl.create(:company) }
 
     before do
-      FactoryGirl.create(:user_company, company: old_current_company,  user: user, current_company: true)
+      FactoryGirl.create(:user_company, company: old_current_company, user: user, current_company: true)
       FactoryGirl.create(:user_company, company: new_current_company, user: user)
       post :change_company, company_id: new_current_company.id
       user.reload

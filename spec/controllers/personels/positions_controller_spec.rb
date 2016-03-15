@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Personnels::PositionsController, :type => :controller do
+RSpec.describe Personnels::PositionsController, type: :controller do
   let(:user) { FactoryGirl.create(:user, activate_token: nil) }
   let(:company) { FactoryGirl.create(:company) }
   let(:position_attributes) { FactoryGirl.attributes_for(:position) }
@@ -13,25 +13,23 @@ RSpec.describe Personnels::PositionsController, :type => :controller do
   end
 
   describe '#create' do
-
     it 'add position' do
-      expect {
+      expect do
         post :create, { position: position_attributes }.merge!(format: :js)
-      }.to change(Position, :count).by(1)
+      end.to change(Position, :count).by(1)
     end
 
     it 'not add position for none current user', :skip_before do
-      expect {
+      expect do
         post :create, { position: position_attributes }.merge!(format: :js)
-      }.to_not change(Position, :count)
+      end.to_not change(Position, :count)
     end
 
     it 'add position from unvalid position attributes' do
-      expect {
+      expect do
         post :create, { position: unvalid_position_attributes }.merge!(format: :js)
-      }.to_not change(Position, :count)
+      end.to_not change(Position, :count)
     end
-
   end
 
   describe '#update' do
@@ -43,18 +41,16 @@ RSpec.describe Personnels::PositionsController, :type => :controller do
   end
 
   describe '#destroy' do
-
     it 'destroy position' do
-      expect {
+      expect do
         delete :destroy, { id: position.id }.merge!(format: :js)
-      }.to change(Position, :count).by(-1)
+      end.to change(Position, :count).by(-1)
     end
 
     context 'no destroy, position in used' do
       let!(:employee) { FactoryGirl.create(:employee, position_id: position.id) }
 
-      it { expect{ delete :destroy, { id: position.id }.merge!(format: :js) }.to change(Position, :count).by(0) }
+      it { expect { delete :destroy, { id: position.id }.merge!(format: :js) }.to change(Position, :count).by(0) }
     end
-
   end
 end

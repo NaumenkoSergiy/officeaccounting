@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Position, type: :model do
-  context "associations" do
+  context 'associations' do
     it { should belong_to(:company) }
     it { should have_many(:employees) }
   end

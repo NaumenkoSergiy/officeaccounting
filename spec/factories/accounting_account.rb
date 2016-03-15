@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :accounting_account, :class => 'AccountingAccount' do
+  factory :accounting_account, class: 'AccountingAccount' do
     name           { Faker::Name.name }
     ap             { Faker::Name.name }
     invoice_type   { AccountingAccount::GROUPS.to_a[rand(5)][1] }

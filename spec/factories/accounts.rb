@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :account, :class => 'Account' do
+  factory :account, class: 'Account' do
     name { Faker::Name.name }
     account_type { Account::ACCOUNT.to_a[rand(8)][1] }
     number { Faker::Number.number(8) }

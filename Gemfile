@@ -44,6 +44,7 @@ group :development, :test do
   gem 'pry'
   gem 'minitest'
   gem 'rubocop'
+  gem 'simplecov'
 
   gem 'rspec'
   gem 'rspec-rails'
