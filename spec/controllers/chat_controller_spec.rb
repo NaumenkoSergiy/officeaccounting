@@ -7,10 +7,15 @@ RSpec.describe ChatController, type: :controller do
   describe '#index' do
     let(:participants) { [1, 2] }
 
-    it 'when chat exists' do
+    it 'when chat present' do
       get :index, participants: participants, id: chat.id
       data = JSON.parse(response.body)
       expect(data['chat']['id']).to eq chat.id
+    end
+
+    it 'when chat empty' do
+      get :index, participants: participants
+      expect(response).to have_http_status(204)
     end
   end
 

@@ -33,17 +33,28 @@ RSpec.describe Purchases::ProductsController, type: :controller do
   end
 
   describe '#update' do
-    before do
-      put :update, id: product.id, product: product_attributes, format: :json
-      product.reload
+    context 'valid' do
+      before do
+        put :update, id: product.id, product: product_attributes, format: :json
+        product.reload
+      end
+
+      it { expect(product.document_type).to eql(product_attributes[:document_type].to_s) }
+      it { expect(product.date).to eql(product_attributes[:date]) }
+      it { expect(product.number).to eql(product_attributes[:number].to_i) }
+      it { expect(product.title).to eql(product_attributes[:title]) }
+      it { expect(product.total).to eql(product_attributes[:total].to_f) }
+      it { expect(product.conducted).to eql(product_attributes[:conducted]) }
     end
 
-    it { expect(product.document_type).to eql(product_attributes[:document_type].to_s) }
-    it { expect(product.date).to eql(product_attributes[:date]) }
-    it { expect(product.number).to eql(product_attributes[:number].to_i) }
-    it { expect(product.title).to eql(product_attributes[:title]) }
-    it { expect(product.total).to eql(product_attributes[:total].to_f) }
-    it { expect(product.conducted).to eql(product_attributes[:conducted]) }
+    context 'invalid' do
+      let(:product_attributes) { FactoryGirl.attributes_for(:product, title: nil) }
+
+      it 'has errors' do
+        put :update, id: product.id, product: product_attributes, format: :json
+        expect(response).to have_http_status(422)
+      end
+    end
   end
 
   describe '#destroy' do

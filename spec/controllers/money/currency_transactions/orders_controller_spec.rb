@@ -23,6 +23,24 @@ RSpec.describe Money::CurrencyTransactions::OrdersController, type: :controller 
     session[:user_id] = user.id unless test.metadata[:skip_before]
   end
 
+  describe '#index' do
+    let(:bank) { FactoryGirl.create(:bank) }
+    let(:account) { FactoryGirl.create(:account) }
+    let(:forreign_account) { FactoryGirl.create(:account) }
+    let!(:order) do
+      FactoryGirl.create(:order,
+                         company: company,
+                         bank: bank, grn_account: account,
+                         foreign_currency_account: forreign_account)
+    end
+
+    it 'has orders' do
+      get :index, { format: :json, type: order.type_order }, user_id: user.id
+      data = JSON.parse(response.body).first
+      expect(data['id']).to eq(order.id)
+    end
+  end
+
   describe '#create' do
     it 'add order' do
       expect do
