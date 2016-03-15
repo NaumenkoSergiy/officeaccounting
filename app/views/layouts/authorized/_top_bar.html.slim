@@ -8,13 +8,13 @@
         - if current_user.companies.size > 1
           i.fa
               = t('current_company')
-          .btn-group role='group' id='company-select'
-            button.btn.btn-default.dropdown-toggle  type='button'  data-toggle='dropdown' aria-expanded='false'
-              span data-id= current_user.current_company_id
-                = current_user.current_company_short_name
-              span.caret
-            ul.dropdown-menu role='menu'
-              = render partial: 'layouts/authorized/companies_list', collection: current_user.companies, as: :company
+          span.current-company-top
+             = current_user.current_company_full_name
+          p.change-current-company data-target="#change-company" data-toggle="modal"
+              = t('change_current_company')
+          .row
+            .col-md-12
+              = render 'shared/change_company_modal'
       ul.nav.navbar-top-links.navbar-right
         li
           = link_to '', sessions_set_language_path(locale: 'ua'), class: 'ua-language'

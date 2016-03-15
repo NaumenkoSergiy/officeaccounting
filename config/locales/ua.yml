@@ -53,6 +53,7 @@ ua:
   customize_company: Налаштування компанії
   customize_delegetion: Налаштування делегування компанією
   current_company: Поточне підриємство
+  change_current_company: Змінити підприємство
   general: Загальна
   simplified: Спрощена
   view_symbol: Перегляд

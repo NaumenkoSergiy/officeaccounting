@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   delegate :currencies, to: :current_company
   delegate :cashiers, to: :current_company
   delegate :credits, to: :current_company
-  delegate :id, :short_name, to: :current_company, prefix: true
+  delegate :id, :short_name, :full_name, to: :current_company, prefix: true
   delegate :payment_orders, to: :current_company
   delegate :orders, to: :current_company
   delegate :currency_transactions, to: :current_company

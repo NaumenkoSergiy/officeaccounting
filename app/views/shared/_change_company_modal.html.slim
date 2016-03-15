@@ -1,0 +1,11 @@
+#change-company.modal.fade role="dialog" tabindex="-1"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true" &times;
+      .modal-body
+        .row
+          .col-md-12.text-center
+            = current_user.current_company_full_name
+          = render partial: 'layouts/authorized/companies_list', collection: current_user.companies, as: :company
