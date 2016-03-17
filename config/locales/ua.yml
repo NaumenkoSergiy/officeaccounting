@@ -178,6 +178,9 @@ ua:
     sale: Продаж
     credit_type: Тип кредиту
     credits: Кредити
+    chart_column:
+      title: 'Надходження і витрати'
+      period: Період''
     accounts:
       accounts_info: У вас немає банківських рахунків натисніть сюди, щоб додати новий!
       account_name: Назва рахунку
@@ -323,6 +326,7 @@ ua:
   other_revenues: Інше надходження
   return_s: Повернення з підзвіту
   income: Надходження
+  spending: Витрати
   success: Успішно додано!
   radius: Радіус
   angle: Кут

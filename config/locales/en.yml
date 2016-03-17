@@ -177,6 +177,9 @@ en:
     sale: Sale
     credit_type: Credit type
     credits: Credits
+    chart_column:
+      title: 'Income and spending'
+      period: 'Period'
     accounts:
       accounts_info: You do not have bank accounts click here to add a new one!
       account_name: Account name

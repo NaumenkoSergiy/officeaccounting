@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
+gem 'rake', '< 11.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring', '~>1.4.0',        group: :development
 gem 'actioncable', github: 'rails/actioncable', branch: :archive
@@ -40,6 +41,8 @@ gem 'gon'
 gem 'puma'
 gem 'redis'
 gem 'hiredis'
+gem 'google_visualr'
+
 group :development, :test do
   gem 'pry'
   gem 'minitest'
