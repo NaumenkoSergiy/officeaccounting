@@ -1,5 +1,4 @@
 class MoneyRegister < ActiveRecord::Base
-  extend MoneyChartData
 
   belongs_to :company
   belongs_to :counterparty
@@ -18,6 +17,7 @@ class MoneyRegister < ActiveRecord::Base
   DOCUMENT_TYPE_INCOME = [:payment_fb, :refund_s, :osrhoene_l, :other_revenues, :return_s]
 
   scope :by_type, -> (type) { where(type_money: type) }
+  scope :by_month, -> (number) { where('date > ?', number.month.ago) }
 
   def self.ransackable_attributes(_auth_object = nil)
     %w(date type_document total type_money) + _ransackers.keys

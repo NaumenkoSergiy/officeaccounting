@@ -25,7 +25,7 @@ class MoneyController < ApplicationController
   end
 
   def build_charts
-    chart = MoneyChartService.new(@registers)
+    chart = MoneyChartService.new(MoneyChartDataDecorator.new(@registers))
     @main_chart = chart.main
     @article_income_chart = chart.article_income
     @article_costs_chart = chart.article_costs
