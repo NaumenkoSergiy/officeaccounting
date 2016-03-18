@@ -1,4 +1,6 @@
 class MoneyRegister < ActiveRecord::Base
+  extend MoneyChartData
+
   belongs_to :company
   belongs_to :counterparty
   belongs_to :article
@@ -19,16 +21,5 @@ class MoneyRegister < ActiveRecord::Base
 
   def self.ransackable_attributes(_auth_object = nil)
     %w(date type_document total type_money) + _ransackers.keys
-  end
-
-  def self.chart_data
-    data = []
-    [1, 3, 12].map do |number|
-      data_by_month = MoneyRegister.where('date > ?', number.month.ago)
-      income = data_by_month.by_type('income')
-      costs = data_by_month.by_type('costs')
-      data << [number.month.ago.to_date, income.sum(:total), costs.sum(:total)]
-    end
-    data
   end
 end

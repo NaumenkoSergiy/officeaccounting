@@ -5,7 +5,7 @@ class MoneyController < ApplicationController
 
   def index
     @registers = @search.result.page(params[:page])
-    @chart = MoneyChartService.new(@registers).column_chart
+    build_charts
 
     respond_to do |format|
       format.html do
@@ -22,5 +22,13 @@ class MoneyController < ApplicationController
     @search = current_user.money_registers.search params[:q]
     @search.build_condition if @search.conditions.empty?
     @search.build_sort if @search.sorts.empty?
+  end
+
+  def build_charts
+    chart = MoneyChartService.new(@registers)
+    @main_chart = chart.main
+    @article_income_chart = chart.article_income
+    @article_costs_chart = chart.article_costs
+    @account_money_chart = chart.account_money
   end
 end

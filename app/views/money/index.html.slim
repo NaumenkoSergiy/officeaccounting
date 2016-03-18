@@ -2,8 +2,7 @@
   #charts_money
     .row
       .col-lg-12
-        #chart
-        = render_chart @chart, 'chart'
+        = render 'money_charts'
 
   .row
     = search_form_for @search, url: search_money_index_path do |f|
