@@ -1,6 +1,6 @@
 module Personnels
   class EmployeesController < ApplicationController
-    before_filter :redirect_to_new_session
+    before_action :redirect_to_new_session
     before_action :find_employee, only: [:destroy, :update]
     before_action :employees, only: [:index, :create]
     before_action :new_employee, only: [:index, :create]

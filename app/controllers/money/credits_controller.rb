@@ -1,6 +1,6 @@
 module Money
   class CreditsController < ApplicationController
-    before_filter :redirect_to_new_session
+    before_action :redirect_to_new_session
     before_action :set_credit, only: [:destroy, :update, :show]
     before_action :define_credit, only: [:index, :create]
     before_action :all_credits, only: [:index, :create]

@@ -1,9 +1,9 @@
 module Settings
   class OfficialsController < ApplicationController
-    before_filter :redirect_to_new_session
-    before_filter :check_creating_company_step, only: [:new]
+    before_action :redirect_to_new_session
+    before_action :check_creating_company_step, only: [:new]
     before_action :set_company, only: [:create]
-    before_filter :define_official
+    before_action :define_official
     before_action :set_officials, only: [:update]
 
     def new

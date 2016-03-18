@@ -1,7 +1,7 @@
 class MoneyController < ApplicationController
-  before_filter :redirect_to_new_session
-  before_filter :company?, only: [:index]
-  before_filter :build_search, only: [:index]
+  before_action :redirect_to_new_session
+  before_action :company?, only: [:index]
+  before_action :build_search, only: [:index]
 
   def index
     @registers = @search.result.page(params[:page])

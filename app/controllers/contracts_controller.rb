@@ -1,5 +1,5 @@
 class ContractsController < ApplicationController
-  before_filter :redirect_to_new_session
+  before_action :redirect_to_new_session
   before_action :set_contract, only: [:destroy, :update]
   before_action :company_contract, only: [:index, :new, :create]
 

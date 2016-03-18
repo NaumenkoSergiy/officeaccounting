@@ -1,8 +1,8 @@
 module Settings
   class RegistrationsController < ApplicationController
-    before_filter :redirect_to_new_session
-    before_filter :define_registration
-    before_filter :check_creating_company_step, only: [:new]
+    before_action :redirect_to_new_session
+    before_action :define_registration
+    before_action :check_creating_company_step, only: [:new]
 
     def new
       @incorporation_forms = incorporation_forms

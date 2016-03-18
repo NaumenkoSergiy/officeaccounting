@@ -1,7 +1,7 @@
 module Settings
   class BankAccountsController < ApplicationController
-    before_filter :redirect_to_new_session
-    before_filter :define_bank_account, only: [:create]
+    before_action :redirect_to_new_session
+    before_action :define_bank_account, only: [:create]
     before_action :set_bank_account, only: [:update, :new]
 
     def create

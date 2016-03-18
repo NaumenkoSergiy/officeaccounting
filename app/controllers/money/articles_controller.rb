@@ -1,6 +1,6 @@
 module Money
   class ArticlesController < ApplicationController
-    before_filter :redirect_to_new_session
+    before_action :redirect_to_new_session
     before_action :set_article, only: [:destroy, :update, :show]
     before_action :define_article, only: :index
     before_action :all_articles, only: [:index, :create]

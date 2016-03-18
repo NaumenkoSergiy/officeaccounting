@@ -1,6 +1,6 @@
 module Money
   class CurrenciesController < ApplicationController
-    before_filter :redirect_to_new_session
+    before_action :redirect_to_new_session
     before_action :set_currency, only: [:destroy]
     before_action :company_currencies, only: [:index, :create]
 

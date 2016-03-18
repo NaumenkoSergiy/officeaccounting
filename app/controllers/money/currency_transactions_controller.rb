@@ -1,9 +1,9 @@
 module Money
   class CurrencyTransactionsController < ApplicationController
-    before_filter :redirect_to_new_session
-    before_filter :define_currency_transaction, only: [:new, :create]
-    before_filter :currency_transactions, only: [:new, :create]
-    before_filter :find_currency_transaction, only: :destroy
+    before_action :redirect_to_new_session
+    before_action :define_currency_transaction, only: [:new, :create]
+    before_action :currency_transactions, only: [:new, :create]
+    before_action :find_currency_transaction, only: :destroy
 
     def index
       respond_to { |format| format.js }

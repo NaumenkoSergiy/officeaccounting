@@ -1,6 +1,6 @@
 module Money
   class CashiersController < ApplicationController
-    before_filter :redirect_to_new_session
+    before_action :redirect_to_new_session
     before_action :set_cashier, only: [:destroy, :update, :show]
     before_action :define_cashier, only: :index
     before_action :company_cashiers, only: [:index, :create]

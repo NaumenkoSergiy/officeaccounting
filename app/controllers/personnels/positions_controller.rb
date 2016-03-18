@@ -1,6 +1,6 @@
 module Personnels
   class PositionsController < ApplicationController
-    before_filter :redirect_to_new_session
+    before_action :redirect_to_new_session
     before_action :find_position, only: [:destroy, :update]
     before_action :positions, only: [:index, :create]
     before_action :new_position, only: [:index, :create]

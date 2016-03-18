@@ -1,5 +1,5 @@
 class Money::CurrencyTransactions::PaymentOrdersController < ApplicationController
-  before_filter :redirect_to_new_session
+  before_action :redirect_to_new_session
   before_action :define_payment_order, only: [:create, :index]
   before_action :payment_order, only: :destroy
   before_action :payment_orders, only: [:index, :create]
