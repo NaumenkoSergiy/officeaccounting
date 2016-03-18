@@ -1,5 +1,5 @@
 class GuideUnitsController < ApplicationController
-  before_filter :redirect_to_new_session
+  before_action :redirect_to_new_session
   before_action :find_guide_unit, only: [:destroy, :update]
   before_action :guide_units, only: [:index, :create]
   before_action :define_guide_unit, only: [:index, :create]

@@ -1,6 +1,6 @@
 class SettingsController < ApplicationController
-  before_filter :redirect_to_new_session
-  before_filter :company_complete?, only: [:show]
+  before_action :redirect_to_new_session
+  before_action :company_complete?, only: [:show]
 
   def index
     redirect_to new_session_path unless current_user

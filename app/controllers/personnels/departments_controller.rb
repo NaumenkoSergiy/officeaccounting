@@ -1,6 +1,6 @@
 module Personnels
   class DepartmentsController < ApplicationController
-    before_filter :redirect_to_new_session
+    before_action :redirect_to_new_session
     before_action :find_department, only: [:destroy, :update]
     before_action :departments, only: [:index, :create]
     before_action :define_department, only: [:index, :create]

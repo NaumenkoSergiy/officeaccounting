@@ -1,5 +1,5 @@
 class AccountingAccountsController < ApplicationController
-  before_filter :redirect_to_new_session
+  before_action :redirect_to_new_session
   before_action :define_accounting_account_service
   before_action :accounting_accounts, only: [:index, :create]
   before_action :accounting_account, only: [:index, :create]

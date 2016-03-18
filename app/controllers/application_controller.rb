@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   helper_method :current_user, :admin?, :application_present, :current_company
-  before_filter :set_locale
+  before_action :set_locale
   before_action :define_app_service, :set_online, :chat_params
 
   def current_user

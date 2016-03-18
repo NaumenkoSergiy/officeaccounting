@@ -1,5 +1,5 @@
 class DelegatesController < ApplicationController
-  before_filter :redirect_to_new_session, only: [:create]
+  before_action :redirect_to_new_session, only: [:create]
   before_action :set_delegate, only: [:update, :destroy]
   before_action :define_session_service
 

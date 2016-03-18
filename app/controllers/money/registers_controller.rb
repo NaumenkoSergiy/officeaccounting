@@ -1,6 +1,6 @@
 module Money
   class RegistersController < ApplicationController
-    before_filter :redirect_to_new_session
+    before_action :redirect_to_new_session
     before_action :set_register, only: [:update, :destroy]
     before_action :all_registers, only: [:index, :create]
 

@@ -1,6 +1,6 @@
 module ToolEquipments
   class MainToolsController < ApplicationController
-    before_filter :redirect_to_new_session
+    before_action :redirect_to_new_session
     before_action :find_main_tool, only: [:destroy, :update]
     before_action :define_main_tool, only: [:index, :create]
     before_action :main_tools, only: :index
