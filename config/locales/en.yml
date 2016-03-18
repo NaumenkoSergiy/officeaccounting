@@ -177,6 +177,15 @@ en:
     sale: Sale
     credit_type: Credit type
     credits: Credits
+    chart:
+      main:
+        title: 'Income and spending'
+      article_income:
+        title: 'Article income'
+      article_costs:
+        title: 'Article costs'
+      account:
+        title: 'Remain account money'
     accounts:
       accounts_info: You do not have bank accounts click here to add a new one!
       account_name: Account name
@@ -331,6 +340,7 @@ en:
   other_revenues: Other revenues
   return_s: Return with subreport
   income: Income
+  spending: Spending
   success: Successfully added!
   radius: Top Radius
   angle: Angle

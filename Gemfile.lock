@@ -173,6 +173,7 @@ GEM
       json
       multi_json
       request_store (>= 1.0)
+    google_visualr (2.5.1)
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -279,7 +280,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (2.1.0)
-    rake (11.0.1)
+    rake (10.5.0)
     ransack (1.7.0)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
@@ -412,6 +413,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   gon
+  google_visualr
   hiredis
   i18n-js (>= 3.0.0.rc8)
   jbuilder (~> 2.0)
@@ -431,6 +433,7 @@ DEPENDENCIES
   rails (= 4.2)
   rails-assets-observer!
   rails_12factor
+  rake (< 11.0)
   ransack
   redis
   rspec

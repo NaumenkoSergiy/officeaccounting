@@ -27,6 +27,7 @@
 //= require select2
 //= require observer
 //= require messages
+//= require jsapi
 
 LEFT_BAR_HIDE = 45;
 LEFT_BAR_SHOW = 220;
