@@ -9,8 +9,8 @@
               i.fa.fa-bars
           .col-md-10
             p.current-company-top
-              = current_user.current_company_full_name
             - if current_user.companies.size > 1
+              = current_user.current_company_full_name
               p.change-current-company data-target="#change-company" data-toggle="modal"
                   = t('change_current_company')
               .row

@@ -44,9 +44,9 @@ RSpec.describe ChatController, type: :controller do
     context 'when participants count higher 2' do
       let!(:participants) { FactoryGirl.create_list(:participant, 3, chat: chat) }
       it 'kill user from chat' do
-        delete :destroy, participant_id: chat.participants[0].participant_id, id: chat.id, format: :json
+        delete :destroy, participant_id: chat.participants.last.participant_id, id: chat.id, format: :json
         expect(
-          Chat.current_chat(chat.id).participants[0].existing
+          Chat.current_chat(chat.id).participants.last.existing
         ).to eq(false)
       end
     end
