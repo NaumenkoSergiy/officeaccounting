@@ -315,10 +315,10 @@ en:
     account: Account
     address: Address
   sales:
-    customer_orders: Customer orders
-    accounts_exhibited: Accounts exhibited
-    sales_of_goods: Sales of goods and services
-    return_from_buyers: Return from buyers
+    customer_orders: Orders
+    accounts_exhibited: Accounts
+    sales_of_goods: Revenues of goods and services
+    return_from_buyers: Return
     settlements_with_buyers: Settlements with buyers
     sale: Sale
     forms_of_payment: Forms of payment

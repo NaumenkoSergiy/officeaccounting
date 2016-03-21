@@ -308,10 +308,10 @@ ua:
     account: Рахунок
     address: Адреса
   sales:
-    customer_orders: Замовлення покупців
-    accounts_exhibited: Рахунки виставлені
-    sales_of_goods: Продаж товарів і послуг
-    return_from_buyers: Повернення від покупців
+    customer_orders: Замовлення
+    accounts_exhibited: Рахунки
+    sales_of_goods: Надходження товарів і послуг
+    return_from_buyers: Повернення
     settlements_with_buyers: Взаєморозрахунки з покупцями
     sale: Продажі
     forms_of_payment: Форми оплати
