@@ -30,7 +30,6 @@ RSpec.describe ChatService do
       let!(:participants) { FactoryGirl.create_list(:participant, 3, chat: group_chat) }
 
       it 'participant does not exsits in chat' do
-        participants.first.update_attributes(existing: false)
         @chat_service = ChatService.new(id: group_chat.id, participant_id: participants.first.participant_id)
         expect(@chat_service.create.participants.first.existing). to eq true
       end
@@ -73,9 +72,7 @@ RSpec.describe ChatService do
 
     context 'restore participant to the chat' do
       let!(:participants) { FactoryGirl.create_list(:participant, 3, chat: group_chat) }
-
       it 'update chat with restored participant' do
-        participants.first.update_attributes(existing: false)
         @chat_service = ChatService.new(id: group_chat.id, participant_id: participants.first.participant_id)
         expect(@chat_service.create.participants.first.existing).to eq true
       end
