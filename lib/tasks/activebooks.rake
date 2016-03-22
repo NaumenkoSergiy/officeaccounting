@@ -10,21 +10,20 @@ namespace :activebooks do
     data_hash = JSON.parse(file)
 
     data_hash.each do |kved|
-      if kved['КВЕД'].present?
-        name = kved['Наименование']
-        Kved.create(
-          section: kved['Секция'],
-          number: kved['КВЕД'],
-          name: name.kind_of?(Array) ? name.join(',') : name
-        )
-      end
+      next unless kved['КВЕД'].present?
+      name = kved['Наименование']
+      Kved.create(
+        section: kved['Секция'],
+        number: kved['КВЕД'],
+        name: name.is_a?(Array) ? name.join(',') : name
+      )
     end
   end
 
   task add_koatuu: :environment do
     file = File.open('lib/KOATUU.txt')
     file.each do |line|
-      line.gsub!("\n","").gsub!("\t","")
+      line.delete!("\n").delete!("\t")
       Koatuu.create(code: line[0..8], name: line[10..-1])
     end
   end
@@ -38,7 +37,7 @@ namespace :activebooks do
 
   task add_form_of_article: :environment do
     Constants::FORMS_OF_ARTICLE.each do |form|
-      Article.create({code: form[:code], name: form[:name]})
+      Article.create(code: form[:code], name: form[:name])
     end
   end
 
@@ -49,9 +48,9 @@ namespace :activebooks do
     end
   end
 
-  task :all => [:add_form_of_incorporation,
-                :add_kved,
-                :add_koatuu,
-                :add_tax_inspection,
-                :add_form_of_article]
+  task all: [:add_form_of_incorporation,
+             :add_kved,
+             :add_koatuu,
+             :add_tax_inspection,
+             :add_form_of_article]
 end

@@ -17,11 +17,9 @@ module Settings
     end
 
     def update
-      registration = Registration.find(params['id'])
       respond_to do |format|
-        if registration.update(registration_params)
-          format.json { head :no_content } if params[:page]
-          format.js unless params[:page]
+        if @registration.update(registration_params)
+          params[:page] ? format.json { head :no_content } : format.js
         elsif params[:page]
           format.json { render json: @registration.errors, status: :unprocessable_entity }
         else

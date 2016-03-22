@@ -8,7 +8,6 @@
 # role :web, %w{deploy@example.com}
 # role :db,  %w{deploy@example.com}
 
-
 # Extended Server Syntax
 # ======================
 # This can be used to drop a more detailed server definition into the
@@ -17,7 +16,6 @@
 
 # server '104.131.21.46', user: '', password: '', roles: %w{web app}
 
-
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
@@ -25,11 +23,9 @@
 #
 # Global options
 # --------------
- set :ssh_options, {
-   keys: %w(~/.ssh/id_rsa),
-   forward_agent: true,
-   auth_methods: %w(password)
- }
+set :ssh_options, keys: %w(~/.ssh/id_rsa),
+                  forward_agent: true,
+                  auth_methods: %w(password)
 
 load 'lib/tasks/activebooks.rake'
 #
