@@ -1,7 +1,7 @@
 # config valid only for Capistrano 3.1
 lock '3.4.0'
 
-user = ENV['USER']
+user = ENV['USER'] || 'user4deploy'
 branch = ENV['BRANCH'] || 'master'
 application = 'active-books'
 
@@ -15,7 +15,7 @@ set :rails_env, 'production'
 
 set :application, application
 set :repo_url, 'git@github.com:activebridge/active-books.git'
-set :default_env, { rvm_bin_path: '~/.rvm/bin' }
+set :default_env, rvm_bin_path: '~/.rvm/bin'
 set :rvm_type, :user
 set :rvm_ruby_version, '2.3.0'
 set :default_shell, '/bin/bash -l'
@@ -32,14 +32,14 @@ set :use_sudo, false
 # Default value for :scm is :git
 set :scm, :git
 
-desc "Run rake task on server"
+desc 'Run rake task on server'
 
 task :sake do
   on roles(:app), in: :sequence, wait: 5 do
     within release_path do
       as :deploy do
         with rails_env: :production do
-          execute :rake, ENV['task'], "RAILS_ENV=production"
+          execute :rake, ENV['task'], 'RAILS_ENV=production'
         end
       end
     end
@@ -56,15 +56,15 @@ namespace :deploy do
 
   after :publishing, :restart
 
-  desc "Make sure local git is in sync with remote."
+  desc 'Make sure local git is in sync with remote.'
   task :check_revision do
     on roles(:web) do
       unless `git rev-parse HEAD` == `git rev-parse origin/master`
-        puts "WARNING: HEAD is not the same as origin/master"
-        puts "Run `git push` to sync changes."
+        puts 'WARNING: HEAD is not the same as origin/master'
+        puts 'Run `git push` to sync changes.'
       end
     end
   end
 
-  before "deploy", "deploy:check_revision"
+  before 'deploy', 'deploy:check_revision'
 end

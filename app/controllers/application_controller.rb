@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
   private
 
   def match_controller?(state)
-    %r{/\/.{1,}\/.{1,}\//}.match(state).to_s == "/#{params[:locale]}/#{params['controller']}/"  
+    %r{/\/.{1,}\/.{1,}\//}.match(state).to_s == "/#{params[:locale]}/#{params['controller']}/"
   end
 
   def current_ability

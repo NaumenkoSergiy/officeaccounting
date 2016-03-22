@@ -19,11 +19,9 @@ module Settings
     end
 
     def update
-      company = Company.find(params['id'])
       respond_to do |format|
-        if company.update(company_params)
-          format.json { head :no_content } if params[:page]
-          format.js unless params[:page]
+        if @company.update(company_params)
+          params[:page] ? format.json { head :no_content } : format.js
         elsif params[:page]
           format.json { render json: @company.errors, status: :unprocessable_entity }
         else

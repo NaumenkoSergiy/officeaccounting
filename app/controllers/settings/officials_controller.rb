@@ -18,11 +18,9 @@ module Settings
     end
 
     def update
-      official = Official.find(params['id'])
       respond_to do |format|
-        if official.update(officials_params)
-          format.json { head :no_content } if params[:page]
-          format.js unless params[:page]
+        if @official.update(officials_params)
+          params[:page] ? format.json { head :no_content } : format.js
         elsif params[:page]
           format.json { render json: @official.errors, status: :unprocessable_entity }
         else

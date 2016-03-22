@@ -1,5 +1,4 @@
 class MoneyRegister < ActiveRecord::Base
-
   belongs_to :company
   belongs_to :counterparty
   belongs_to :article

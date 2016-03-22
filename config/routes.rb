@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   ActiveAdmin.routes(self)
-  scope "(:locale)", locale: /en|ua/ do
+  scope '(:locale)', locale: /en|ua/ do
     root 'settings#index'
     get 'destroy/sessions' => 'sessions#destroy'
     get 'users/confirm_registration'
