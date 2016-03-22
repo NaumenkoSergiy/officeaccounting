@@ -7,8 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :define_app_service, :set_online, :chat_params
 
   def current_user
-    @current_user ||= User.find_by_auth_token!(cookies[:activate_token]) if cookies[:activate_token]
-    session[:user_id] ? User.find(session[:user_id]) : nil
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
   def redirect_to_new_session
