@@ -179,13 +179,14 @@ en:
     credits: Credits
     chart:
       main:
-        title: 'Income and spending'
+        title: Income and spending
       article_income:
-        title: 'Article income'
+        title: Article income
       article_costs:
-        title: 'Article costs'
+        title: Article costs
       account:
-        title: 'Remain account money'
+        title: Remain account money
+        money: Money
     accounts:
       accounts_info: You do not have bank accounts click here to add a new one!
       account_name: Account name

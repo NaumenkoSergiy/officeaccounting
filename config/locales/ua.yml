@@ -180,13 +180,14 @@ ua:
     credits: Кредити
     chart:
       main:
-        title: 'Надходження і витрати'
+        title: Надходження і витрати
       article_income:
-        title: 'Доходи по статтям'
+        title: Надходження по статтям
       article_costs:
-        title: 'Витрати по статтям'
+        title: Витрати по статтям
       account:
-        title: 'Залишки на рахунках'
+        title: Залишки на рахунках
+        money: Гроші
     accounts:
       accounts_info: У вас немає банківських рахунків натисніть сюди, щоб додати новий!
       account_name: Назва рахунку

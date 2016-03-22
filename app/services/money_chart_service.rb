@@ -30,13 +30,13 @@ class MoneyChartService
     data_table.new_column('number', 'Income')
     data_table.add_rows(registers.article_chart_data('costs'))
 
-    GoogleVisualr::Interactive::PieChart.new(data_table, opts(I18n.t('money.chart.article_income.title')))
+    GoogleVisualr::Interactive::PieChart.new(data_table, opts(I18n.t('money.chart.article_costs.title')))
   end
 
   def account_money
     data_table = GoogleVisualr::DataTable.new
     data_table.new_column('string', 'Account')
-    data_table.new_column('number', 'Money')
+    data_table.new_column('number', I18n.t('money.chart.account.money'))
     data_table.add_rows(registers.account_money_chart)
 
     GoogleVisualr::Interactive::BarChart.new(data_table, opts(I18n.t('money.chart.account.title')))
@@ -45,6 +45,6 @@ class MoneyChartService
   private
 
   def opts(title)
-    { width: 380, height: 240, is3D: true, title: title }
+    { is3D: true, title: title }
   end
 end
