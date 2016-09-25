@@ -9,4 +9,4 @@ development: *local
 
 test: *local
 
-production: *local
+production: redis://h:pcacc98fqnv69o9qg2o6r86md9i@ec2-23-23-156-130.compute-1.amazonaws.com:21719
