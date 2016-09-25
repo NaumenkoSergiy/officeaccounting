@@ -9,4 +9,4 @@ development: *local
 
 test: *local
 
-production: *local
+production: ENV['REDIS_URL']
