@@ -42,6 +42,7 @@ gem 'puma'
 gem 'redis'
 gem 'hiredis'
 gem 'google_visualr'
+gem 'pg'
 
 group :development, :test do
   gem 'pry'
@@ -59,11 +60,11 @@ group :development, :test do
 end
 
 group :development do
-  gem 'capistrano', '~> 3.4.0'
-  gem 'capistrano-rails'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rvm'
-  gem 'passenger'
+  # gem 'capistrano', '~> 3.4.0'
+  # gem 'capistrano-rails'
+  # gem 'capistrano-bundler'
+  # gem 'capistrano-rvm'
+  # gem 'passenger'
   gem 'letter_opener'
   gem "better_errors"
 end
