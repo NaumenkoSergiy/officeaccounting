@@ -1,5 +1,5 @@
 local: &local
-  :url: redis://localhost:6379
+  :url: redis://h:pcacc98fqnv69o9qg2o6r86md9i@ec2-23-23-156-130.compute-1.amazonaws.com:21719
   :host: localhost
   :port: 6379
   :timeout: 1
@@ -9,4 +9,5 @@ development: *local
 
 test: *local
 
-production: redis://h:pcacc98fqnv69o9qg2o6r86md9i@ec2-23-23-156-130.compute-1.amazonaws.com:21719
+production:
+  :url: redis://h:pcacc98fqnv69o9qg2o6r86md9i@ec2-23-23-156-130.compute-1.amazonaws.com:21719
