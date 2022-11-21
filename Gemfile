@@ -26,7 +26,7 @@ gem 'bootstrap-select-rails'
 gem "select2-rails", '~> 3.5.9.3'
 gem "i18n-js", ">= 3.0.0.rc8"
 gem 'paranoia'
-gem 'bcrypt', '~> 3.1.5'
+gem 'bcrypt'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'ransack'
