@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.5.8'
 
-gem 'rails', git: 'https://github.com/nrogap/rails.git', tag: 'v4.2.1.1'
+gem 'rails', '4.2.8'
 # gem 'mysql2', '~> 0.3.18'
 gem 'sass-rails', '~> 5.0.4'
 gem 'sprockets-rails', '~> 2'
@@ -12,7 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'rake', '< 11.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring', '~>1.4.0',        group: :development
-gem 'actioncable', github: 'rails/actioncable', branch: :archive
+gem 'actioncable'
 gem 'slim-rails'
 gem 'rails_12factor', group: :production
 gem 'mandrill_mailer'

@@ -15,7 +15,6 @@
 //= require i18n
 //= require i18n/translations
 //= require paloma
-//= require cable
 //= require_tree .
 //= require_tree ../../../vendor/assets/javascripts/chat-js/.
 //= require jquery-ui

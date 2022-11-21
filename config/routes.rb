@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  mount ActionCable.server => '/cable'
+  # mount ActionCable.server => '/cable'
+  get '/cable' => 'cable#index'
   ActiveAdmin.routes(self)
   scope '(:locale)', locale: /en|ua/ do
     root 'settings#index'
