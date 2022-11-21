@@ -85,8 +85,9 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.mandrillapp.com',
     port:                 587,
-    user_name:            SECRETS['mandrill_username'],
-    password:             SECRETS['mandrill_password'] }
+    user_name:            'sergey.naumenko94@gmail.com',
+    password:             'lenschfpjmkpcyxi'
+}
 
   config.action_mailer.default_url_options = {
     host: 'www.active-books.org'
