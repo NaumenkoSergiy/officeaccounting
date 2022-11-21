@@ -45,12 +45,12 @@ class ChatMessagesService
   end
 
   def broadcast(message)
-    @params[:recipients].each do |recipient_id|
-      ActionCable.server.broadcast("chat_#{recipient_id}",
-                                   chat_id: @params[:chat_id],
-                                   sender_id: @params[:sender_id],
-                                   recipients: @params[:recipients],
-                                   message_text: message.message_text)
-    end
+    # @params[:recipients].each do |recipient_id|
+    #   ActionCable.server.broadcast("chat_#{recipient_id}",
+    #                                chat_id: @params[:chat_id],
+    #                                sender_id: @params[:sender_id],
+    #                                recipients: @params[:recipients],
+    #                                message_text: message.message_text)
+    # end
   end
 end

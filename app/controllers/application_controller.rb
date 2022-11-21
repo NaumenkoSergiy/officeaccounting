@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :admin?, :application_present, :current_company
   before_action :set_locale
-  before_action :define_app_service, :set_online, :chat_params
+  before_action :define_app_service, :chat_params
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
