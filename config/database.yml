@@ -3,8 +3,8 @@ default: &default
   encoding: unicode
   host: localhost
   pool: 5
-  username: postgres
-  password: password
+  username: tradespace
+  password: tradespace
 
 development:
   <<: *default

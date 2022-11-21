@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-gem 'rails', '4.2'
-gem 'mysql2', '~> 0.3.18'
+gem 'rails', git: 'https://github.com/nrogap/rails.git', tag: 'v4.2.1.1'
+# gem 'mysql2', '~> 0.3.18'
 gem 'sass-rails', '~> 5.0.4'
 gem 'sprockets-rails', '~> 2'
 gem 'uglifier', '>= 1.3.0'
@@ -25,7 +25,7 @@ gem 'cancancan', '~> 1.9'
 gem 'bootstrap-select-rails'
 gem "select2-rails", '~> 3.5.9.3'
 gem "i18n-js", ">= 3.0.0.rc8"
-gem 'paranoia', github: 'radar/paranoia', branch: 'rails4'
+gem 'paranoia'
 gem 'bcrypt', '~> 3.1.5'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
@@ -37,9 +37,9 @@ gem 'paloma'
 gem 'simple_form'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
-gem 'mailboxer', github: 'lacco/mailboxer'
+gem 'mailboxer'
 gem 'gon'
-gem 'puma'
+gem 'puma', '4.3.3'
 gem 'redis'
 gem 'hiredis'
 gem 'google_visualr'
@@ -70,6 +70,6 @@ group :development do
   gem "better_errors"
 end
 
-source 'https://rails-assets.org' do
+source 'http://insecure.rails-assets.org' do
   gem 'rails-assets-observer'
 end
