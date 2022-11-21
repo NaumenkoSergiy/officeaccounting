@@ -83,14 +83,15 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.mandrillapp.com',
-    port:                 587,
-    user_name:            'sergey.naumenko94@gmail.com',
-    password:             'lenschfpjmkpcyxi'
-}
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => 'sergey.naumenko94@gmail.com',
+    :password             => 'lenschfpjmkpcyxi',
+    :authentication       => "plain",
+    :enable_starttls_auto => true
 
   config.action_mailer.default_url_options = {
-    host: 'www.active-books.org'
+    host: 'officeaccounting.herokuapp.com'
   }
 end
 # ActionCable.server.config.allowed_request_origins = [%r{(http|https):\/\/active-books.org}]
