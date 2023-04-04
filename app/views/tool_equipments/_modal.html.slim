@@ -14,10 +14,4 @@
       .modal-body
         .row
           .col.col-lg-6
-            = link_to t('tool_equipments.purchase'), '#', remote: true, class: 'btn  btn-primary btn-modal'
-            = link_to t('tool_equipments.commissioning'), '#', remote: true, class: 'btn  btn-primary btn-modal'
-            = link_to t('tool_equipments.moving'), '#', remote: true, class: 'btn  btn-primary btn-modal'
-            = link_to t('tool_equipments.write_off'), '#', remote: true, class: 'btn  btn-primary btn-modal'
-          .col.col-lg-6
             = link_to t('tool_equipments.main_tools'), tool_equipments_main_tools_path(type: 'MainTool::Building'), remote: true, class: 'btn  btn-primary btn-modal'
-            = link_to t('tool_equipments.material_tools'), '#', remote: true, class: 'btn  btn-primary btn-modal'
